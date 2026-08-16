@@ -2433,3 +2433,36 @@ push、精确 SHA 三平台 GitHub Actions 与 canonical URL 远程 clean clone 
 
 本次改动属于 tracked 内容变化，形成新候选，须重新独立完成 Phase 09 §6.9–§6.11。
 上一候选的 run 结论保留为该候选的历史事实，不延用到新候选。
+
+## Phase 09 §6.11 — 重建后候选的发布确认记录（2026-08-16）
+
+本记录性提交描述在它之前已经完成确认的候选 `436cd3b7…`，不描述自身，因此不构成自引用。
+
+| 字段 | 值 |
+|---|---|
+| 仓库 | `https://github.com/Daydreaming24/DSSC_Toolbox_Group-C`；ID `1335821262`（2026-08-16 重建；旧 ID `1332105560` 已随删除失效） |
+| Commit 身份 | `陈凌石 <188458589+Daydreaming24@users.noreply.github.com>` |
+| 候选 commit | `436cd3b79cb081092c606220130b8b2290942e65`；parent `589e9194fcc3d2549737a992c54dc573531eab10` |
+| 候选前 host QA | frozen 104/104；suite `all` 17/17；deliverables、publication-safety、evidence-freshness、documentation、CI 五个 checker 均 exit 0；documentation self-test 与 CI 59/59 self-test 通过 |
+| 本地 Windows clean clone | `PASS`；`git clone --no-local` 至 ignored `build/clean-clone/candidate-436cd3b-windows`；resolved SHA 等于候选；`reproduce.ps1` exit 0；frozen 104/104；`all` 17/17；五个 checker 与两项 self-test 通过；tracked tree clean |
+| 本地 Linux clean clone | `PASS`；WSL2 原生文件系统 `git clone --no-local` 至 `/tmp/dssc-candidate-436cd3b-linux-20260816`；Ubuntu 24.04.4 LTS / x86_64；固定 CPython 3.12.10（python-build-standalone 20250409，临时 `/tmp`，经 `PYTHON_PATH` 传入）；`reproduce.sh` exit 0；其余同上 |
+| Remote / push | `origin`；普通 push `main`（`589e919..436cd3b` fast-forward，无 force） |
+| GitHub Actions | run [`31944645429`](https://github.com/Daydreaming24/DSSC_Toolbox_Group-C/actions/runs/31944645429)；workflow=`Validate C Semantic Governance Package`；event=`push`；branch=`main`；`head_sha=436cd3b79cb081092c606220130b8b2290942e65`；`completed/success` |
+| 必需 job | Ubuntu native Python validation=`success`（job `95158699831`）；Windows PowerShell 5.1 validation=`success`（job `95158699907`）；Docker clean-room validation=`success`（job `95158699948`）；三者 `head_sha` 均等于候选 |
+| 远程 clean clone | 从 canonical GitHub URL 匿名 clone 至 ignored `build/remote-clean-clone/candidate-436cd3b-windows-20260816`；resolved SHA 等于候选；`reproduce.ps1` exit 0；frozen 104/104；`all` 17/17；五个 checker 与两项 self-test 通过；tracked tree clean |
+| 四方 SHA 一致性 | 本地 HEAD = 远程 `refs/heads/main` = Actions `head_sha` = 远程 clone resolved SHA = `436cd3b79cb081092c606220130b8b2290942e65` |
+| ignored 动态证据 | `build/phase-09/candidate.json`、`build/clean-clone/candidate-436cd3b-evidence.json`、`build/ci-verification/run-31944645429.json` |
+
+| 验收 | 状态 |
+|---|---|
+| P09-A13 / P09-A14 | `PASS`；候选绑定的三平台 CI 与 canonical URL 远程 clean clone 均成功 |
+| P09-A16 | `PASS`；本记录性提交完成三项外部事实与候选 SHA 的一致记录 |
+| P00-R05 | `RESOLVED`；重建后的 `origin`、普通 push、三 job CI 与远程 clean clone 均已实际成功 |
+| Tag / GitHub Release / default-branch change / branch protection | `NOT_REQUESTED` |
+| Force push | 禁止；本轮未执行 |
+
+同一重建轮次中被取代的候选 `589e9194…`（run `31942910966`，Windows job `failure`）保留为
+失败事实，见《Phase 09 CI profile 缺陷修复记录》与 `publication-record.md` §2.1。
+
+Phase 09 当前有效状态为 `COMPLETE`。此后任何改变模型、验证逻辑或发布证据实质内容的
+tracked 变化都形成新候选，并须再次独立完成 §6.9–§6.11。

@@ -4617,7 +4617,7 @@
     {
       "id": "dlv-7788c571a3be06b2",
       "path": "docs/v0.4/STATUS.md",
-      "sha256": "e96378ed8c7c5cf1b3799ea1d2d0161c85800561396b7a9678f79cc8b31733ee",
+      "sha256": "bcce1a9609e20e440122b15c2aca47b475a308426c7bcc0b872858e364489ceb",
       "media_type": "text/markdown",
       "role": "documentation",
       "required": true,
@@ -4757,7 +4757,7 @@
     {
       "id": "dlv-448e44ae75ab7022",
       "path": "docs/v0.4/publication-record.md",
-      "sha256": "787ad8302c8c07918ba03383fdef2c2fecc106f758d83083bca9172e61d0e573",
+      "sha256": "23a346716597441c221534beac7baf9216ffd3fd9043df36cd4c579353f4e4b5",
       "media_type": "text/markdown",
       "role": "documentation",
       "required": true,
