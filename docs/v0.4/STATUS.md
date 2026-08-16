@@ -2412,3 +2412,24 @@ push、精确 SHA 三平台 GitHub Actions 与 canonical URL 远程 clean clone 
 §6.9–§6.11：Windows/Linux 本地 clean clone、普通 push、候选绑定的 Ubuntu/Windows/Docker
 三个必需 job 与 canonical URL 远程 clean clone。在该链完成并由 §6.11 记录性提交写入
 `publication-record.md` 与本文件之前，Phase 09 的发布链结论按未闭合处理。
+
+## Phase 09 CI profile 缺陷修复记录 — 2026-08-16
+
+本小节记录一次 required CI gate 缺陷及其修复，按只追加规则写在前述记录之后。
+本节不声称任何 CI run 结果；候选绑定的实际 run 与 clone 结论由后续 §6.11 记录性提交写入。
+
+| 项目 | 记录 |
+|---|---|
+| 触发 | 重建后首个候选的 GitHub Actions run 中，Windows PowerShell 5.1 job 失败；Ubuntu native 与 Docker clean-room job 成功 |
+| 失败点 | `Bootstrap from hash locks` 步骤。venv 契约、bootstrap toolchain、`--require-hashes` 运行时依赖与 `pip check` 全部成功，失败发生在 `bootstrap.ps1` 末尾调用的 `doctor --profile host` |
+| 直接原因 | GitHub `windows-2022` runner 镜像不再提供 Docker：`docker.client`、`docker.server`、`docker.daemon_reachable` 三个 gate FAIL（`docker.compose` 仍为 PASS 2.40.3） |
+| 根本原因 | 合同缺陷而非环境问题。Ubuntu native 与 Windows PowerShell 两个 job 的任何步骤都不调用 Docker，容器轨由独立的 `docker-clean-room` job 与 `container` profile 单独认证；`host` profile 对这两个 job 强制要求 Docker 能力属于过严约束。Ubuntu native job 存在同一潜在缺陷，此前仅因该 runner 恰好仍带 Docker 而未暴露 |
+| 修复 | 新增第三个 doctor profile `host-no-docker`：保留 host 的全部 gate（仓库 `.venv` 隔离、解释器与 `.python-version` 匹配、lock、`pip check`、路径与源码 hash、Git），仅把 Docker 四项声明为 `not_required`。两个原生 job 改用该 profile；`host` 与 `container` 语义不变 |
+| 传参 | `bootstrap.ps1` 新增 `-DoctorProfile`（`ValidateSet host|host-no-docker`，默认 `host`），`bootstrap.sh` 新增 `DOCTOR_PROFILE`（同集合，默认 `host`，脚本开头 fail-fast 校验）。默认行为与修复前完全一致 |
+| 修改文件 | `scripts/doctor.py`、`scripts/dssc_validation/doctor_core.py`、`scripts/bootstrap.ps1`、`scripts/bootstrap.sh`、`scripts/check_ci.py`、`.github/workflows/validate.yml`、`docs/environment.md`、`scripts/README.md`、`deliverables.json`、`core-results.json` |
+| 证据刷新 | 修改 `doctor.py` / `doctor_core.py` 后 `check_evidence_freshness.py` 如期报 `STALE_SOURCE_HASH`；在重新执行认证 `all` 后更新 `core-results.json` 的对应 `source_hashes`。`evidence-index.json` 只登记路径与角色，无需变更；本文件 Phase 01 小节的源码 hash 表保持为历史快照，不回写 |
+| 已知操作影响 | trust marker 绑定 bootstrap 源文件 hash，因此既有 `.venv` 在本次改动后会按设计 fail closed，需重建。clean clone 不受影响 |
+| 本地验证 | frozen 104/104；suite `all` 17/17 `SUCCESS`；deliverables / publication-safety / evidence-freshness / documentation / CI 五个 checker 均 exit 0；documentation self-test 与 CI self-test 59/59 通过（两条引用旧 bootstrap/doctor 字面量的负控已同步更新）；`bash -n` 与 PowerShell 解析通过；三个 profile 的正例、`host` 回归与非法值拒绝均实测 |
+
+本次改动属于 tracked 内容变化，形成新候选，须重新独立完成 Phase 09 §6.9–§6.11。
+上一候选的 run 结论保留为该候选的历史事实，不延用到新候选。

@@ -77,7 +77,7 @@
     {
       "id": "dlv-a5c0f08bc43f53a0",
       "path": ".github/workflows/validate.yml",
-      "sha256": "430b490ae5d486aafac5cffb40a8d224b987439f5e222d11b0df82ca2138f1c3",
+      "sha256": "d4b8c68084449e7d2e4939102b4fe0c009916df71d8caae54ffc46a97c6d5f53",
       "media_type": "application/yaml",
       "role": "workflow",
       "required": true,
@@ -469,7 +469,7 @@
     {
       "id": "dlv-161ab34b40dc66ed",
       "path": "C_Semantic_Treehouse/evidence/releases/v0.4/core-results.json",
-      "sha256": "d26fb4c7d172c4cd1b8a6fe7385fed2f37c39bf5fc264a452979204371c9a753",
+      "sha256": "f4fcbf04c39be78768cabd5afbf0c91d1296396d0a47ebe0fb67833ecea7ecac",
       "media_type": "application/json",
       "role": "evidence",
       "required": true,
@@ -4407,7 +4407,7 @@
     {
       "id": "dlv-a9108d0ec7645406",
       "path": "docs/environment.md",
-      "sha256": "445a2e8055819b5427d639e8255778aba6d0a770bf49707521b7086d907cc17d",
+      "sha256": "08a2e403d38c10a0fa69b4f68c02d06947ef111f2fac828ae48c2ca5973642fd",
       "media_type": "text/markdown",
       "role": "documentation",
       "required": true,
@@ -4617,7 +4617,7 @@
     {
       "id": "dlv-7788c571a3be06b2",
       "path": "docs/v0.4/STATUS.md",
-      "sha256": "9b8b8acc9f841cabee2dfa03a08a05337ad51b24a8fb3f813caf243dd97e5a0d",
+      "sha256": "e96378ed8c7c5cf1b3799ea1d2d0161c85800561396b7a9678f79cc8b31733ee",
       "media_type": "text/markdown",
       "role": "documentation",
       "required": true,
@@ -5729,7 +5729,7 @@
     {
       "id": "dlv-25b96aa16f8b9f68",
       "path": "scripts/README.md",
-      "sha256": "5eb7f234878d7f07f0428db276c0353e9880955bde704e9ebe980b80109bd510",
+      "sha256": "6d3a98788d26a138c3a2a712da0b4a4b93ebf547b3664fe465711dd681153ded",
       "media_type": "text/markdown",
       "role": "environment",
       "required": true,
@@ -5743,7 +5743,7 @@
     {
       "id": "dlv-d4b726b681f636bd",
       "path": "scripts/bootstrap.ps1",
-      "sha256": "e0d10a0c960fbd9b41a77ecedef20814be438a5f9eec1ea196b287bfaacec300",
+      "sha256": "3715c12cdb39bc6478668d4de23db89214c8fec6abc62d3de22ab4f9f11f3622",
       "media_type": "text/x-powershell",
       "role": "script",
       "required": true,
@@ -5757,7 +5757,7 @@
     {
       "id": "dlv-ad8a239f2d9110a9",
       "path": "scripts/bootstrap.sh",
-      "sha256": "4d15377d9c8162abb89c4db632e7ceae948082703d24d2804f5d22499e51d9aa",
+      "sha256": "96ee39b2d2cfe883a5ed27c64e1ee88fec671b9b991b5bf22d163036aba08c57",
       "media_type": "text/x-shellscript",
       "role": "script",
       "required": true,
@@ -5771,7 +5771,7 @@
     {
       "id": "dlv-ab61b4be7e13bdf9",
       "path": "scripts/check_ci.py",
-      "sha256": "159ff40fd567f33182ff88a3f93438b4dcf88c79a1938917870ed2b6f9d78500",
+      "sha256": "68205e2af6fca25532ed8831b699f054fb5c5a6995c4a6a2a1b7c26213bb8d88",
       "media_type": "text/x-python",
       "role": "checker",
       "required": true,
@@ -5869,7 +5869,7 @@
     {
       "id": "dlv-92afdcb4f2cf8229",
       "path": "scripts/doctor.py",
-      "sha256": "39d3a43249ec3470793577b533516e9b0048ab2503121994834635b49e50143f",
+      "sha256": "bc55aa59e2aef3c32f72ab0d7441627510d087e5d20f58af12d8d0fdbc87433a",
       "media_type": "text/x-python",
       "role": "script",
       "required": true,
@@ -6065,7 +6065,7 @@
     {
       "id": "dlv-10570cce12494d86",
       "path": "scripts/dssc_validation/doctor_core.py",
-      "sha256": "d3dcb4fc18b82386aa2a4579aec6857a9facaff8ef40ee9e6a56e9529d961faa",
+      "sha256": "8438e3d2c025d8033aece922acab799767c68f3fe9c3304ff88bcfbef89ee88d",
       "media_type": "text/x-python",
       "role": "script",
       "required": true,

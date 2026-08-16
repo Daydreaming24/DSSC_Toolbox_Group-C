@@ -19,7 +19,7 @@ Linux：
 PYTHON_PATH=/absolute/path/to/python3.12 ./scripts/bootstrap.sh
 ```
 
-两份 bootstrap 都要求准确 CPython 3.12.10 和 `ensurepip` 25.0.1，创建或复用仓库 `.venv`，从 `requirements-bootstrap.lock` 固定 pip 25.0.1、pip-tools 7.4.1、setuptools 75.8.2 与 wheel 0.45.1，再以 `--require-hashes` 安装根 `requirements.lock`。首次成功会写入绑定 base interpreter、bootstrap/contract、两份 lock 和 venv 全树 fingerprint 的 trust marker；复用时先由 base Python `-I -S` 静态验证 marker 与全树，再启动 venv Python。未知残留、`.pth` 漂移及非允许 symlink/junction 均失败关闭。pip 命令同时使用 `--isolated` 和系统空配置文件，阻断 `target/prefix/root/user` 重定向。最后执行 `pip check` 和 `doctor --profile host`。重复运行消费相同 lock；Windows `-SkipDoctor` 和 Linux `SKIP_DOCTOR=1` 只用于受控诊断。
+两份 bootstrap 都要求准确 CPython 3.12.10 和 `ensurepip` 25.0.1，创建或复用仓库 `.venv`，从 `requirements-bootstrap.lock` 固定 pip 25.0.1、pip-tools 7.4.1、setuptools 75.8.2 与 wheel 0.45.1，再以 `--require-hashes` 安装根 `requirements.lock`。首次成功会写入绑定 base interpreter、bootstrap/contract、两份 lock 和 venv 全树 fingerprint 的 trust marker；复用时先由 base Python `-I -S` 静态验证 marker 与全树，再启动 venv Python。未知残留、`.pth` 漂移及非允许 symlink/junction 均失败关闭。pip 命令同时使用 `--isolated` 和系统空配置文件，阻断 `target/prefix/root/user` 重定向。最后执行 `pip check` 和 `doctor`，默认 profile 为 `host`；Windows `-DoctorProfile` 与 Linux `DOCTOR_PROFILE` 可改为 `host-no-docker`，用于不执行容器轨的原生 runner（CI 的 Ubuntu native 与 Windows job 即如此），两者都只接受这两个值。重复运行消费相同 lock；Windows `-SkipDoctor` 和 Linux `SKIP_DOCTOR=1` 只用于受控诊断。
 
 ## Doctor
 

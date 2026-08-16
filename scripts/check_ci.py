@@ -990,7 +990,8 @@ def _canonical_core_steps(job_id: str) -> tuple[_CanonicalRunStep, ...]:
                 "bash",
                 _run_block(
                     "set -euo pipefail",
-                    'PYTHON_PATH="$(command -v python)" ./scripts/bootstrap.sh',
+                    'PYTHON_PATH="$(command -v python)" '
+                    "DOCTOR_PROFILE=host-no-docker ./scripts/bootstrap.sh",
                 ),
                 "lock.install",
             ),
@@ -1026,7 +1027,8 @@ def _canonical_core_steps(job_id: str) -> tuple[_CanonicalRunStep, ...]:
                 _run_block(
                     "$ErrorActionPreference = 'Stop'",
                     "$BasePython = (Get-Command python.exe -ErrorAction Stop).Source",
-                    r"& .\scripts\bootstrap.ps1 -PythonPath $BasePython",
+                    r"& .\scripts\bootstrap.ps1 -PythonPath $BasePython "
+                    "-DoctorProfile host-no-docker",
                     "if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }",
                 ),
                 "lock.install",
@@ -1121,12 +1123,13 @@ def _canonical_doctor_step(job_id: str) -> _CanonicalRunStep:
     if job_id == "ubuntu-native":
         run = _run_block(
             "set -euo pipefail",
-            "./.venv/bin/python -I scripts/doctor.py --profile host",
+            "./.venv/bin/python -I scripts/doctor.py --profile host-no-docker",
         )
         name = "Run host doctor"
     elif job_id == "windows-powershell":
         run = _run_block(
-            r"& .\.venv\Scripts\python.exe -I scripts\doctor.py --profile host",
+            r"& .\.venv\Scripts\python.exe -I scripts\doctor.py "
+            "--profile host-no-docker",
             "exit $LASTEXITCODE",
         )
         name = "Run host doctor"
@@ -2016,9 +2019,10 @@ def _negative_controls() -> list[tuple[str, tuple[str, ...], Callable[[str], str
             ("lock.install",),
             lambda text: _replace_once(
                 text,
-                '          PYTHON_PATH="$(command -v python)" ./scripts/bootstrap.sh\n',
+                '          PYTHON_PATH="$(command -v python)" '
+                "DOCTOR_PROFILE=host-no-docker ./scripts/bootstrap.sh\n",
                 "          echo 'PYTHON_PATH=\"$(command -v python)\" "
-                "./scripts/bootstrap.sh'\n",
+                "DOCTOR_PROFILE=host-no-docker ./scripts/bootstrap.sh'\n",
             ),
         ),
         (
@@ -2166,9 +2170,10 @@ def _negative_controls() -> list[tuple[str, tuple[str, ...], Callable[[str], str
             ("doctor.required",),
             lambda text: _replace_once(
                 text,
-                "          ./.venv/bin/python -I scripts/doctor.py --profile host\n",
+                "          ./.venv/bin/python -I scripts/doctor.py "
+                "--profile host-no-docker\n",
                 "          echo './.venv/bin/python -I scripts/doctor.py "
-                "--profile host'\n",
+                "--profile host-no-docker'\n",
             ),
         ),
         (

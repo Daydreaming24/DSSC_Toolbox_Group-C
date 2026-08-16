@@ -11,6 +11,12 @@ export PIP_DISABLE_PIP_VERSION_CHECK=1
 export PIP_CONFIG_FILE=/dev/null
 unset PIP_TARGET PIP_PREFIX PIP_ROOT PIP_USER
 
+DOCTOR_PROFILE="${DOCTOR_PROFILE:-host}"
+if [[ "${DOCTOR_PROFILE}" != "host" && "${DOCTOR_PROFILE}" != "host-no-docker" ]]; then
+  echo "ERROR: DOCTOR_PROFILE must be host or host-no-docker" >&2
+  exit 2
+fi
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd -P)"
 cd "${REPO_ROOT}"
@@ -170,8 +176,8 @@ echo "Writing hash-bound .venv trust marker ..."
 "${BASE_PYTHON}" -I -S "${VENV_CONTRACT}" --mode write-marker --venv "${VENV_DIR}" --expected-version "${EXPECTED}" --expected-pip-version 25.0.1 --base-python "${BASE_PYTHON}" --bootstrap-source-file "${BASH_SOURCE[0]}" --runtime-lock-file "${LOCK_FILE}" --bootstrap-lock-file "${BOOT_LOCK}"
 
 if [[ "${SKIP_DOCTOR:-0}" != "1" ]]; then
-  echo "Running doctor --profile host ..."
-  "${VENV_PYTHON}" -I "${REPO_ROOT}/scripts/doctor.py" --profile host
+  echo "Running doctor --profile ${DOCTOR_PROFILE} ..."
+  "${VENV_PYTHON}" -I "${REPO_ROOT}/scripts/doctor.py" --profile "${DOCTOR_PROFILE}"
 fi
 
 echo "Bootstrap complete."

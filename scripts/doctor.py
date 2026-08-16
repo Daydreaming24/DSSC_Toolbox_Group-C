@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
 """DSSC environment doctor entrypoint.
 
-Requires an explicit --profile host|container. Wrappers and the container image
-must pass profile explicitly (or set DSSC_VALIDATION_PROFILE=container inside
-the fixed image). Profile is never inferred from missing Docker CLI.
+Requires an explicit --profile host|host-no-docker|container. Wrappers and the
+container image must pass profile explicitly (or set
+DSSC_VALIDATION_PROFILE=container inside the fixed image). Profile is never
+inferred from missing Docker CLI.
+
+`host` is the full host profile and requires Git plus Docker client, server,
+Compose and a reachable daemon. `host-no-docker` keeps every host gate,
+including the repository `.venv` isolation and Git, but declares the Docker
+capability gates out of scope; it is for native validation runners that never
+execute the container track, which is certified separately by the `container`
+profile. `container` is selected only by the fixed image entrypoint.
 """
 
 from __future__ import annotations

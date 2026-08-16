@@ -174,7 +174,7 @@ docker compose -f docker-compose.validation.yml run --rm validation
 
 典型文件名为 `doctor-host.result.json` / `doctor-host.machine.json`、`suite-environment-host.*` 和 `suite-environment-container.*`。baseline 另生成 `baseline-<profile>.result.json`、`.environment.json` 与 `.md`。每份正式 suite result 记录 `contract_version`、registry SHA-256、runtime lock SHA-256，以及 runner 和实际加载 helper 的源文件 SHA-256。host source state 来自 Git；container source state 来自构建参数、镜像 ENV 与 OCI label。
 
-`--profile host` 要求 Git、Docker client/server/Compose 和 daemon 连通。主机 PowerShell/sh 包装固定传递 `host`。`container` 只由固定镜像入口选择，并同时校验 Linux/amd64 与镜像内置 `DSSC_VALIDATION_CONTAINER_CONTRACT`；CLI、环境变量或镜像合同不一致时入口返回非零。
+`--profile host` 要求 Git、Docker client/server/Compose 和 daemon 连通。主机 PowerShell/sh 包装固定传递 `host`。`--profile host-no-docker` 保留 host 的全部 gate（仓库 `.venv` 隔离、解释器、lock、`pip check`、Git 等），但把 Docker 四项能力声明为 `not_required`；它用于不执行容器轨的原生验证 runner，容器轨由 `container` profile 与专用 job 单独认证。CI 的 Ubuntu native 与 Windows PowerShell job 使用 `host-no-docker`（分别通过 `DOCTOR_PROFILE=host-no-docker` 与 `-DoctorProfile host-no-docker` 传入 bootstrap），因为这两个 job 不调用 Docker。`container` 只由固定镜像入口选择，并同时校验 Linux/amd64 与镜像内置 `DSSC_VALIDATION_CONTAINER_CONTRACT`；CLI、环境变量或镜像合同不一致时入口返回非零。三个 profile 之外的值由 CLI 与 `DSSC_VALIDATION_PROFILE` 一并拒绝。
 
 ## 6. 网络与离线边界
 

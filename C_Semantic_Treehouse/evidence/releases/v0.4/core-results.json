@@ -38,7 +38,7 @@
   },
   "source_hashes": {
     "scripts/check_documentation.py": "c317fc57719bfcac5ce857edf8f3b066a6fc1a3e7f1118fa42cb4b563ec0d52d",
-    "scripts/doctor.py": "39d3a43249ec3470793577b533516e9b0048ab2503121994834635b49e50143f",
+    "scripts/doctor.py": "bc55aa59e2aef3c32f72ab0d7441627510d087e5d20f58af12d8d0fdbc87433a",
     "scripts/dssc_validation/__init__.py": "8b9374a28d7ec2f7c534bf9f4de5f9d3542333de79939dec97803eb892be70f1",
     "scripts/dssc_validation/baseline_manifest.py": "2af85f6324713e8557a538146e188301c183bfea2d0ab9743180fdc27a90c564",
     "scripts/dssc_validation/baseline_report.py": "c1d6cf8f478042990422da6fc7029bd6f80925708820a76a66b04d712d18e4fa",
@@ -52,7 +52,7 @@
     "scripts/dssc_validation/checks_traceability.py": "6ab3846a5fa8ce02a88e52c9e10eda5874d8be40a93a844b362d96715c896fa4",
     "scripts/dssc_validation/checks_v04.py": "dfb0e7244179db957eb4e3fedbbf79b2e02716fe18196b513724c9e1bd157302",
     "scripts/dssc_validation/d_group_contract.py": "64303239832ab1452bc09eda44afd75351fc36a0d96711c63a93c04f0ed04a57",
-    "scripts/dssc_validation/doctor_core.py": "d3dcb4fc18b82386aa2a4579aec6857a9facaff8ef40ee9e6a56e9529d961faa",
+    "scripts/dssc_validation/doctor_core.py": "8438e3d2c025d8033aece922acab799767c68f3fe9c3304ff88bcfbef89ee88d",
     "scripts/dssc_validation/entrypoint_catalog.py": "aef63d7df168d80a7614f5ff49c4681f431feb8f52a0c9e12eca0fa27821c088",
     "scripts/dssc_validation/evidence.py": "ce57ba02a9b05c58c8c5ff5a925498ad3cc86363ff0993ca2b0a5e02f17a3aa3",
     "scripts/dssc_validation/hashing.py": "7daa83ded49ee3a01e6692d0c0269ea640d27f050d13e1af726eb6976bf11fe3",

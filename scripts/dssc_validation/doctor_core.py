@@ -455,6 +455,19 @@ def _docker_capabilities(
         }
         return result, json.loads(json.dumps(result))
 
+    if profile == "host-no-docker":
+        # Native host validation that never executes the container track. The
+        # Docker capability gates are intentionally out of scope; the container
+        # track is certified by its own dedicated profile and job.
+        reason = "host-no-docker profile does not exercise the container track"
+        result = {
+            "client": _not_required(reason),
+            "server": _not_required(reason),
+            "compose": _not_required(reason),
+            "daemon_reachable": _not_required(reason),
+        }
+        return result, json.loads(json.dumps(result))
+
     commands = {
         "client": ["docker", "version", "--format", "{{.Client.Version}}"],
         "server": ["docker", "version", "--format", "{{.Server.Version}}"],
@@ -502,8 +515,8 @@ def _pip_check(root: Path, executable: Path) -> tuple[dict[str, Any], dict[str, 
 
 
 def run_doctor(root: Path, profile: str) -> tuple[dict[str, Any], dict[str, Any]]:
-    if profile not in ("host", "container"):
-        raise ValueError("profile must be host or container")
+    if profile not in ("host", "host-no-docker", "container"):
+        raise ValueError("profile must be host, host-no-docker or container")
 
     root = root.resolve()
     invoked_executable = Path(sys.executable)
@@ -532,7 +545,7 @@ def run_doctor(root: Path, profile: str) -> tuple[dict[str, Any], dict[str, Any]
         and (profile == "container" or in_repo_venv)
         and container_ok
     )
-    if profile == "host":
+    if profile != "container":
         venv_isolation = check_current_venv(
             root / ".venv",
             EXPECTED_PYTHON_VERSION,
@@ -659,10 +672,11 @@ def run_doctor(root: Path, profile: str) -> tuple[dict[str, Any], dict[str, Any]
         ("path_access", path_access_ok),
         ("source_hashes", not source_issues and bool(source_hashes)),
     ]
+    if profile != "container":
+        gates.append(("git", git_result["status"] == "PASS"))
     if profile == "host":
         gates.extend(
             [
-                ("git", git_result["status"] == "PASS"),
                 ("docker_client", docker_result["client"]["status"] == "PASS"),
                 ("docker_server", docker_result["server"]["status"] == "PASS"),
                 ("docker_compose", docker_result["compose"]["status"] == "PASS"),
@@ -691,8 +705,8 @@ def run_doctor(root: Path, profile: str) -> tuple[dict[str, Any], dict[str, Any]
             "pointer_bits_match": pointer_bits == 64,
             "version_file_match": version_file_value == EXPECTED_PYTHON_VERSION,
             "expected_context": interpreter_context,
-            "repo_venv_required": profile == "host",
-            "repo_venv_match": in_repo_venv if profile == "host" else None,
+            "repo_venv_required": profile != "container",
+            "repo_venv_match": in_repo_venv if profile != "container" else None,
         },
         "container_identity": container_result,
         "venv_isolation": venv_isolation,
@@ -813,8 +827,10 @@ def _print_human(result: dict[str, Any], machine: dict[str, Any]) -> None:
 
 def _resolve_profile(cli_profile: str | None) -> str:
     env_profile = os.environ.get("DSSC_VALIDATION_PROFILE", "").strip()
-    if env_profile and env_profile not in ("host", "container"):
-        raise ValueError("DSSC_VALIDATION_PROFILE must be host or container")
+    if env_profile and env_profile not in ("host", "host-no-docker", "container"):
+        raise ValueError(
+            "DSSC_VALIDATION_PROFILE must be host, host-no-docker or container"
+        )
     if cli_profile and env_profile and cli_profile != env_profile:
         raise ValueError(
             f"profile mismatch: --profile={cli_profile} and "
@@ -824,14 +840,16 @@ def _resolve_profile(cli_profile: str | None) -> str:
         return cli_profile
     if env_profile:
         return env_profile
-    raise ValueError("--profile host|container is required")
+    raise ValueError("--profile host|host-no-docker|container is required")
 
 
 def doctor_main(argv: list[str] | None = None) -> int:
     import argparse
 
     parser = argparse.ArgumentParser(description="DSSC environment doctor")
-    parser.add_argument("--profile", choices=("host", "container"), default=None)
+    parser.add_argument(
+        "--profile", choices=("host", "host-no-docker", "container"), default=None
+    )
     parser.add_argument("--json", action="store_true", help="print normalized JSON")
     args = parser.parse_args(argv)
     try:

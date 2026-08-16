@@ -12,7 +12,9 @@
 [CmdletBinding()]
 param(
     [string]$PythonPath = "",
-    [switch]$SkipDoctor
+    [switch]$SkipDoctor,
+    [ValidateSet('host', 'host-no-docker')]
+    [string]$DoctorProfile = 'host'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -211,8 +213,8 @@ Write-Host "Writing hash-bound .venv trust marker ..."
 if ($LASTEXITCODE -ne 0) { throw "failed to write repository .venv trust marker" }
 
 if (-not $SkipDoctor) {
-    Write-Host "Running doctor --profile host ..."
-    & $VenvPython -I (Join-Path $RepoRoot 'scripts\doctor.py') --profile host
+    Write-Host "Running doctor --profile $DoctorProfile ..."
+    & $VenvPython -I (Join-Path $RepoRoot 'scripts\doctor.py') --profile $DoctorProfile
     if ($LASTEXITCODE -ne 0) { throw "doctor failed with exit $LASTEXITCODE" }
 }
 

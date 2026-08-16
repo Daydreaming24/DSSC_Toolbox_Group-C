@@ -36,7 +36,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          PYTHON_PATH="$(command -v python)" ./scripts/bootstrap.sh
+          PYTHON_PATH="$(command -v python)" DOCTOR_PROFILE=host-no-docker ./scripts/bootstrap.sh
 
       - name: Verify installed dependency graph
         shell: bash
@@ -48,7 +48,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          ./.venv/bin/python -I scripts/doctor.py --profile host
+          ./.venv/bin/python -I scripts/doctor.py --profile host-no-docker
 
       - name: Check CI policy
         shell: bash
@@ -127,7 +127,7 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           $BasePython = (Get-Command python.exe -ErrorAction Stop).Source
-          & .\scripts\bootstrap.ps1 -PythonPath $BasePython
+          & .\scripts\bootstrap.ps1 -PythonPath $BasePython -DoctorProfile host-no-docker
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
       - name: Verify installed dependency graph
@@ -139,7 +139,7 @@ jobs:
       - name: Run host doctor
         shell: powershell
         run: |
-          & .\.venv\Scripts\python.exe -I scripts\doctor.py --profile host
+          & .\.venv\Scripts\python.exe -I scripts\doctor.py --profile host-no-docker
           exit $LASTEXITCODE
 
       - name: Check CI policy
