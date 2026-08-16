@@ -1,0 +1,12 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ex: <https://example.org/dssc-energy#>
+
+SELECT ?datasetId ?title ?providerName ?spatial WHERE {
+  ?dataset a dcat:Dataset ;
+           ex:datasetId ?datasetId ;
+           dct:title ?title ;
+           ex:providerName ?providerName ;
+           dct:spatial ?spatial .
+}
+ORDER BY ?datasetId ?title ?providerName ?spatial

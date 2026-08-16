@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "release_id": "v0.4",
+  "description": "Stable tracked evidence index for the v0.4 GitHub candidate. Lists reviewed release evidence paths and roles only. Dynamic HEAD, CI run, and remote-clone bindings are out of scope for this file (Phase 09 §6.6 / §6.11).",
+  "entries": [
+    {
+      "id": "core-results",
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/core-results.json",
+      "role": "evidence"
+    },
+    {
+      "id": "core-report",
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/core-report.md",
+      "role": "evidence"
+    },
+    {
+      "id": "release-evidence-readme",
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/README.md",
+      "role": "evidence"
+    },
+    {
+      "id": "baseline-evidence-readme",
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/baseline/README.md",
+      "role": "evidence"
+    },
+    {
+      "id": "baseline-host-result",
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/baseline/baseline-host.result.json",
+      "role": "evidence"
+    },
+    {
+      "id": "baseline-container-result",
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/baseline/baseline-container.result.json",
+      "role": "evidence"
+    },
+    {
+      "id": "model-evidence-readme",
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/model/README.md",
+      "role": "evidence"
+    },
+    {
+      "id": "model-host-result",
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/model/v0.4-model-host.result.json",
+      "role": "evidence"
+    },
+    {
+      "id": "model-container-result",
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/model/v0.4-model-container.result.json",
+      "role": "evidence"
+    }
+  ]
+}

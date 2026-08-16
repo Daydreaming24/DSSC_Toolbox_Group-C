@@ -1,0 +1,2 @@
+endpointURL	format	accrualPeriodicity	unit
+https://api.example.org/energy/buildings/hourly	application/json	hourly	kWh

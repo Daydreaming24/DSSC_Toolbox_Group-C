@@ -1,0 +1,13 @@
+﻿Smoke check: http://localhost:4200/
+curl exit code: 0
+HTTP/1.1 200 OK
+Vary: Origin
+Content-Type: text/html
+Cache-Control: no-cache
+Date: Thu, 25 Jun 2026 09:38:31 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+---
+Smoke check: http://localhost:8014/
+curl exit code: 28
+curl: (28) Operation timed out after 5011 milliseconds with 0 bytes received

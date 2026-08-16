@@ -1,0 +1,48 @@
+{
+  "compared_keys": [
+    "checks",
+    "contract_smoke",
+    "counts",
+    "exit_code",
+    "jsonld",
+    "message",
+    "program_status",
+    "record_inheritance",
+    "registry_contract_version",
+    "registry_path",
+    "registry_schema_path",
+    "registry_schema_sha256",
+    "registry_sha256",
+    "release_manifest",
+    "requirements_implementation",
+    "requirements_lock_sha256",
+    "requirements_registry",
+    "requirements_validation",
+    "schema",
+    "sha256sums",
+    "shape_derivation",
+    "source_hash_issues",
+    "source_hashes",
+    "suite",
+    "suite_registry",
+    "traceability_evidence",
+    "turtle"
+  ],
+  "container_normalized_view_sha256": "e25c0511a66f20cda0cc8471c6cc1f53c9fa4597ae141d17254b88ec029a0aaa",
+  "container_result": {
+    "path": "build/phase-04/current/docker/v0.4-model-container.result.json",
+    "sha256": "f81b169f32fcb5473ee185e6c1fbd39b7e817ebd9ea115f4aa0caa34c754467c"
+  },
+  "exit_code": 0,
+  "host_normalized_view_sha256": "e25c0511a66f20cda0cc8471c6cc1f53c9fa4597ae141d17254b88ec029a0aaa",
+  "host_result": {
+    "path": "build/phase-04/current/v0.4-model-host.result.json",
+    "sha256": "77d062ec2a5e9feb307629deeff23ff52841c12d0f93cf84843d4eae7fbd03a3"
+  },
+  "inputs_successful": true,
+  "normalized_equal": true,
+  "profiles_valid": true,
+  "program_status": "SUCCESS",
+  "schema": "dssc.phase04.host-container-comparison.v1",
+  "suite": "v0.4-model"
+}

@@ -1,0 +1,9 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX ex: <https://example.org/dssc-energy#>
+
+ASK WHERE {
+  ?dataset a dcat:Dataset ;
+           ex:temporalStart ?temporalStart ;
+           ex:temporalEnd ?temporalEnd .
+  FILTER (?temporalStart <= ?temporalEnd)
+}

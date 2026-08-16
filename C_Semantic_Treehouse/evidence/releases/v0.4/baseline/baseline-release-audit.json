@@ -1,0 +1,67 @@
+{
+  "checks": {
+    "absolute_paths_absent": true,
+    "markdown_derived_from_json": true,
+    "normalized_json": true,
+    "sensitive_patterns_absent": true,
+    "source_hashes_fresh": true,
+    "timestamps_absent": true
+  },
+  "counts": {
+    "discovered": 9,
+    "executed": 9,
+    "failed": 0,
+    "passed": 9,
+    "skipped": 0
+  },
+  "files": [
+    {
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/baseline/README.md",
+      "sha256": "10c6f71e993df20a51041094cd8c11bbcb486257fd664035a5956051f184c405",
+      "size_bytes": 616
+    },
+    {
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/baseline/baseline-container.md",
+      "sha256": "ab37b51fdce697749737e272a02b0130c8c95a2c97309f1be7ef97df3e48e16e",
+      "size_bytes": 3345
+    },
+    {
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/baseline/baseline-container.result.json",
+      "sha256": "e0943c148d35f63c99fe18b49a36cdf30e79d0e5c02ba65c7feaedf9fe6865b6",
+      "size_bytes": 78469
+    },
+    {
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/baseline/baseline-host-container-comparison.json",
+      "sha256": "ce789f0a0f4b4fccc5e96d026f36654507d36db2c8ff9ba12bd973743ff65c82",
+      "size_bytes": 3643
+    },
+    {
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/baseline/baseline-host.md",
+      "sha256": "ed2a1fd7f26a876105d4c37c8b6751978bbb87a2a97fa74cb2274a07884f83a3",
+      "size_bytes": 3340
+    },
+    {
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/baseline/baseline-host.result.json",
+      "sha256": "3d7cd75294063d49e5ca307d46fa7170f97509746b04659d054e49df6caab68d",
+      "size_bytes": 78464
+    },
+    {
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/baseline/docker-image.json",
+      "sha256": "8c88697f15718b659dbc0c292c35b174afe093f0de4dbb6cd66d06b8b7e1a54d",
+      "size_bytes": 998
+    },
+    {
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/baseline/negative-controls.json",
+      "sha256": "4e242d820d7108efe5d3a2e188d9d92d30cf0977cf56db14459d63ae7870e12b",
+      "size_bytes": 21225
+    },
+    {
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/baseline/phase02-contract-controls.json",
+      "sha256": "a50bdb3f83c0dff80e47341af8e46c43baeb138ec1e9e044411559265c77eb24",
+      "size_bytes": 9074
+    }
+  ],
+  "program_status": "SUCCESS",
+  "publisher_sha256": "94cb9191e6682573ca257cb6d8c0ad256335e4559bf6f0f63eecb101a855ec0a",
+  "schema": "dssc.baseline.release-audit.v1"
+}

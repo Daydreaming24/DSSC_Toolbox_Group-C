@@ -1,0 +1,197 @@
+{
+  "$schema": "schemas/baseline-test-cases.schema.json",
+  "manifest_schema_version": "1.0.0",
+  "suite": "baseline",
+  "releases": [
+    {"id": "v0.1", "description": "Initial metadata vocabulary and SHACL baseline."},
+    {"id": "v0.2", "description": "Validation-oriented metadata baseline."},
+    {"id": "v0.3", "description": "Metadata plus Energy Reading Record baseline."}
+  ],
+  "validators": [
+    {"id": "rdflib-turtle", "category": "rdf", "engine": "RDFLib"},
+    {"id": "pyld-jsonld", "category": "jsonld", "engine": "PyLD"},
+    {"id": "pyshacl", "category": "shacl", "engine": "pySHACL"},
+    {"id": "jsonschema-draft7", "category": "jsonschema", "engine": "jsonschema Draft7Validator"},
+    {"id": "openapi-spec-validator", "category": "openapi", "engine": "openapi-spec-validator"},
+    {"id": "rdflib-sparql", "category": "sparql", "engine": "RDFLib SPARQL"}
+  ],
+  "artifacts": [
+    {"id": "baseline-expected-results", "release": "baseline", "kind": "reference", "path": "C_Semantic_Treehouse/validation/expected-results.md", "sha256": "f8865dc12d4c511e074de87f2bdfbdab5954a9a1be734bd75a66523642eb862d"},
+    {"id": "sparql-competency-questions", "release": "baseline", "kind": "reference", "path": "C_Semantic_Treehouse/tests/sparql/competency-questions.md", "sha256": "dc8bb2a44e4f222efb36d3461098b8b926428b6af7a90aafba4236606bfd2218"},
+
+    {"id": "v01-ontology", "release": "v0.1", "kind": "ontology", "path": "C_Semantic_Treehouse/model/v0.1/building-energy-ontology.ttl", "sha256": "c851b37acfca56e72913475ed8b6048a617214b149be8beffb0858dc36c5bcac"},
+    {"id": "v01-metadata-context", "release": "v0.1", "kind": "context", "path": "C_Semantic_Treehouse/model/v0.1/data-product-context.jsonld", "sha256": "5bd7e049128f249879f3a52e93d979acfc14b8cabcb828a4e966379b243b05cc"},
+    {"id": "v01-metadata-shapes", "release": "v0.1", "kind": "shapes", "path": "C_Semantic_Treehouse/model/v0.1/data-product-metadata-shapes.ttl", "sha256": "7f93a41b0aa70478a6398b3ee223d13a7dbb64f5dd2cc9409e51a64c60912721"},
+    {"id": "v01-metadata-valid", "release": "v0.1", "kind": "data", "path": "C_Semantic_Treehouse/model/v0.1/data-product-valid.jsonld", "sha256": "1f99d51492f7bfac467fac6cda4827f98f770ffd6947d934996367b046aaf86c"},
+
+    {"id": "v02-ontology", "release": "v0.2", "kind": "ontology", "path": "C_Semantic_Treehouse/model/v0.2/building-energy-ontology.ttl", "sha256": "800f74d26133fd0c111747113945029ccd2edeca990cad5d893007a973032631"},
+    {"id": "v02-metadata-context", "release": "v0.2", "kind": "context", "path": "C_Semantic_Treehouse/model/v0.2/data-product-context.jsonld", "sha256": "fe96dd475dd5d116d6271ad1b14a3228f59686a865313ac2dbb81d6c91b6da2a"},
+    {"id": "v02-metadata-invalid", "release": "v0.2", "kind": "data", "path": "C_Semantic_Treehouse/model/v0.2/data-product-invalid.jsonld", "sha256": "9fe8164622db3fb54fe72ed7411fa10c45dafce6c63122151360249ca08431e2"},
+    {"id": "v02-metadata-shapes", "release": "v0.2", "kind": "shapes", "path": "C_Semantic_Treehouse/model/v0.2/data-product-metadata-shapes.ttl", "sha256": "1a8bbcf62022313488d227969e47285537dda1c7347e787399eff8d2229ab351"},
+    {"id": "v02-metadata-valid", "release": "v0.2", "kind": "data", "path": "C_Semantic_Treehouse/model/v0.2/data-product-valid.jsonld", "sha256": "34aadddd5523c12fa8bab6cc3c7c31c161168284b5d9be853e36ee03ecc38f5a"},
+
+    {"id": "v03-ontology", "release": "v0.3", "kind": "ontology", "path": "C_Semantic_Treehouse/model/v0.3/building-energy-ontology.ttl", "sha256": "b3081a4ea960e7b90f4a2e836e99dfa092f29346106cd1e2b9f7c58b0d598e7d"},
+    {"id": "v03-metadata-context", "release": "v0.3", "kind": "context", "path": "C_Semantic_Treehouse/model/v0.3/data-product-context.jsonld", "sha256": "fe96dd475dd5d116d6271ad1b14a3228f59686a865313ac2dbb81d6c91b6da2a"},
+    {"id": "v03-metadata-shapes", "release": "v0.3", "kind": "shapes", "path": "C_Semantic_Treehouse/model/v0.3/data-product-metadata-shapes.ttl", "sha256": "3241483f15de178c6e1f8d40ea931e600975cddcb1e30845ae2dbf747e734a2f"},
+    {"id": "v03-metadata-valid", "release": "v0.3", "kind": "data", "path": "C_Semantic_Treehouse/model/v0.3/data-product-valid.jsonld", "sha256": "ab16fcafc72a7af02e7fba079f37a6216ac89356504e755377b2ba9cf3afab21"},
+    {"id": "v03-record-schema", "release": "v0.3", "kind": "json-schema", "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record.schema.json", "sha256": "dd07414e3752bf582bf5e721009064e16d7be3e1e06d60daaad08000869ccfa9"},
+    {"id": "v03-record-context", "release": "v0.3", "kind": "context", "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-context.jsonld", "sha256": "9727da9b8650dc444d719113a6978a3a26a59bfd1fde011a98e4c1f4b476f748"},
+    {"id": "v03-record-invalid", "release": "v0.3", "kind": "data", "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-invalid.jsonld", "sha256": "e516f6a8e4ea811170c72e922b86ac7ea46594046704d01a55a2c8e13cd8f358"},
+    {"id": "v03-record-shapes", "release": "v0.3", "kind": "shapes", "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-shapes.ttl", "sha256": "84d1eee9cfeecd1791117552611e83d36af7df4f3b4c783ddbd75d45bae66c9a"},
+    {"id": "v03-record-valid", "release": "v0.3", "kind": "data", "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-valid.jsonld", "sha256": "8f7509ad08fb9a62cdff1d6c904801c9421c3ce768bdd9ecb651cd480aa158e1"},
+    {"id": "v03-openapi", "release": "v0.3", "kind": "openapi", "path": "C_Semantic_Treehouse/model/v0.3/openapi-fragment.yaml", "sha256": "d0f52629f625f7b6656854e352be01b9c40b8d2a943dca0423b70cff168a473c"},
+
+    {"id": "cq01-query", "release": "v0.3", "kind": "sparql-query", "path": "C_Semantic_Treehouse/tests/sparql/queries/cq01-dataset-id.rq", "sha256": "7964d1ba924602d827beb5c1cbe7c8c7af7331520cf76c87d7aefa5ffe86c9e4"},
+    {"id": "cq01-expected", "release": "v0.3", "kind": "expected-tsv", "path": "C_Semantic_Treehouse/tests/sparql/expected/cq01-dataset-id.tsv", "sha256": "48d4acfe26a34b362d5ba5670b8f35b34fbdd7cf71ad2e8f0facec694957c17d"},
+    {"id": "cq02-query", "release": "v0.3", "kind": "sparql-query", "path": "C_Semantic_Treehouse/tests/sparql/queries/cq02-provider.rq", "sha256": "0b468d38158039ba2fff4083d7d6df021425cbb02410ac75a23f6e9ca9be747a"},
+    {"id": "cq02-expected", "release": "v0.3", "kind": "expected-tsv", "path": "C_Semantic_Treehouse/tests/sparql/expected/cq02-provider.tsv", "sha256": "1dc6bbceaf5e4d09f9192613f299552b82295dd34edbd24c662b601ab9742de2"},
+    {"id": "cq03-query", "release": "v0.3", "kind": "sparql-query", "path": "C_Semantic_Treehouse/tests/sparql/queries/cq03-endpoint.rq", "sha256": "ccac37c49f83a4b5608af465a8f62df4a24d0295fe8f71322b99e15384188584"},
+    {"id": "cq03-expected", "release": "v0.3", "kind": "expected-tsv", "path": "C_Semantic_Treehouse/tests/sparql/expected/cq03-endpoint.tsv", "sha256": "69bacd4ad88ecb0066def483a8f778cd652a1d0dddf2e343195c198557120b51"},
+    {"id": "cq04-query", "release": "v0.3", "kind": "sparql-query", "path": "C_Semantic_Treehouse/tests/sparql/queries/cq04-format-frequency.rq", "sha256": "f5f88522cd4509acb0ebd7402833fb9f9d181d5773de492e48724ba5fa21c539"},
+    {"id": "cq04-expected", "release": "v0.3", "kind": "expected-tsv", "path": "C_Semantic_Treehouse/tests/sparql/expected/cq04-format-frequency.tsv", "sha256": "c5c13dc9d6eb801fe4c3b46a8daa0bc6b1e553324e6e5872fa4d8c1e6348b526"},
+    {"id": "cq05-query", "release": "v0.3", "kind": "sparql-query", "path": "C_Semantic_Treehouse/tests/sparql/queries/cq05-unit.rq", "sha256": "ce92a6d39530488b73dde4a7103b35078bdf0421a3769e4812e86923f80cdaff"},
+    {"id": "cq05-expected", "release": "v0.3", "kind": "expected-tsv", "path": "C_Semantic_Treehouse/tests/sparql/expected/cq05-unit.tsv", "sha256": "c5a3d03175d27f556f2a478dd22ece03c110ee5798a3a541edf94b5b7727ae51"},
+    {"id": "cq06-query", "release": "v0.3", "kind": "sparql-query", "path": "C_Semantic_Treehouse/tests/sparql/queries/cq06-coverage.rq", "sha256": "fc4ef70bb3ac15d6b8a5ee3ecc9e72eddca1adae6706c941712228c0c84d1670"},
+    {"id": "cq06-expected", "release": "v0.3", "kind": "expected-tsv", "path": "C_Semantic_Treehouse/tests/sparql/expected/cq06-coverage.tsv", "sha256": "137e0beb4bfb8f24f207a454e1eec0d724ec9faf65df1d90591beab811c57a34"},
+    {"id": "cq07-query", "release": "v0.3", "kind": "sparql-query", "path": "C_Semantic_Treehouse/tests/sparql/queries/cq07-conforms-to.rq", "sha256": "d9c73ec6f6e83295be47c908146ce9770b484fb24e2520c1381dc7639e0e1cfe"},
+    {"id": "cq07-expected", "release": "v0.3", "kind": "expected-tsv", "path": "C_Semantic_Treehouse/tests/sparql/expected/cq07-conforms-to.tsv", "sha256": "1b85c26bcc6c64153ee5eb323667594d61ef3c1413ba01564a3c6ae8db5cba08"},
+    {"id": "cq08-query", "release": "v0.3", "kind": "sparql-query", "path": "C_Semantic_Treehouse/tests/sparql/queries/cq08-record-fields.rq", "sha256": "2111de056c7f7303821ef11012b8e246eb857b187a54c8ff07df6ba66788531b"},
+    {"id": "cq08-expected", "release": "v0.3", "kind": "expected-tsv", "path": "C_Semantic_Treehouse/tests/sparql/expected/cq08-record-fields.tsv", "sha256": "b023b694a37bd01d0b8b8402f258326448b745373b12b53d9369de6046c6294a"}
+  ],
+  "reference_artifact_ids": [
+    "baseline-expected-results",
+    "sparql-competency-questions"
+  ],
+  "required_case_ids": [
+    "rdf-v0-1-ontology",
+    "rdf-v0-1-metadata-shapes",
+    "rdf-v0-2-ontology",
+    "rdf-v0-2-metadata-shapes",
+    "rdf-v0-3-ontology",
+    "rdf-v0-3-metadata-shapes",
+    "rdf-v0-3-record-shapes",
+    "jsonld-v0-1-metadata-context",
+    "jsonld-v0-1-metadata-valid",
+    "jsonld-v0-2-metadata-context",
+    "jsonld-v0-2-metadata-valid",
+    "jsonld-v0-2-metadata-invalid",
+    "jsonld-v0-3-metadata-context",
+    "jsonld-v0-3-metadata-valid",
+    "jsonld-v0-3-record-context",
+    "jsonld-v0-3-record-valid",
+    "jsonld-v0-3-record-invalid",
+    "shacl-v0-1-metadata-valid",
+    "shacl-v0-2-metadata-valid",
+    "shacl-v0-2-metadata-invalid",
+    "shacl-v0-3-metadata-valid",
+    "shacl-v0-3-record-valid",
+    "jsonschema-v0-3-record-valid",
+    "jsonschema-v0-3-record-invalid",
+    "openapi-v0-3-fragment-valid",
+    "sparql-cq01-dataset-id",
+    "sparql-cq02-provider",
+    "sparql-cq03-endpoint",
+    "sparql-cq04-format-frequency",
+    "sparql-cq05-unit",
+    "sparql-cq06-coverage",
+    "sparql-cq07-conforms-to",
+    "sparql-cq08-record-fields"
+  ],
+  "cases": [
+    {"id": "rdf-v0-1-ontology", "release": "v0.1", "validator": "rdflib-turtle", "category": "rdf", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"input": "v01-ontology"}, "oracle": {"parse_success": true, "expected_triple_count": 30}},
+    {"id": "rdf-v0-1-metadata-shapes", "release": "v0.1", "validator": "rdflib-turtle", "category": "rdf", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"input": "v01-metadata-shapes"}, "oracle": {"parse_success": true, "expected_triple_count": 32}},
+    {"id": "rdf-v0-2-ontology", "release": "v0.2", "validator": "rdflib-turtle", "category": "rdf", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"input": "v02-ontology"}, "oracle": {"parse_success": true, "expected_triple_count": 54}},
+    {"id": "rdf-v0-2-metadata-shapes", "release": "v0.2", "validator": "rdflib-turtle", "category": "rdf", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"input": "v02-metadata-shapes"}, "oracle": {"parse_success": true, "expected_triple_count": 62}},
+    {"id": "rdf-v0-3-ontology", "release": "v0.3", "validator": "rdflib-turtle", "category": "rdf", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"input": "v03-ontology"}, "oracle": {"parse_success": true, "expected_triple_count": 101}},
+    {"id": "rdf-v0-3-metadata-shapes", "release": "v0.3", "validator": "rdflib-turtle", "category": "rdf", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"input": "v03-metadata-shapes"}, "oracle": {"parse_success": true, "expected_triple_count": 62}},
+    {"id": "rdf-v0-3-record-shapes", "release": "v0.3", "validator": "rdflib-turtle", "category": "rdf", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"input": "v03-record-shapes"}, "oracle": {"parse_success": true, "expected_triple_count": 40}},
+
+    {"id": "jsonld-v0-1-metadata-context", "release": "v0.1", "validator": "pyld-jsonld", "category": "jsonld", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"input": "v01-metadata-context", "local_contexts": []}, "oracle": {"json_parse_success": true, "offline_expansion_success": true, "network_request_count": 0, "expected_top_level_node_count": 0}},
+    {"id": "jsonld-v0-1-metadata-valid", "release": "v0.1", "validator": "pyld-jsonld", "category": "jsonld", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"input": "v01-metadata-valid", "local_contexts": ["v01-metadata-context"]}, "oracle": {"json_parse_success": true, "offline_expansion_success": true, "network_request_count": 0, "expected_top_level_node_count": 1}},
+    {"id": "jsonld-v0-2-metadata-context", "release": "v0.2", "validator": "pyld-jsonld", "category": "jsonld", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"input": "v02-metadata-context", "local_contexts": []}, "oracle": {"json_parse_success": true, "offline_expansion_success": true, "network_request_count": 0, "expected_top_level_node_count": 0}},
+    {"id": "jsonld-v0-2-metadata-valid", "release": "v0.2", "validator": "pyld-jsonld", "category": "jsonld", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"input": "v02-metadata-valid", "local_contexts": ["v02-metadata-context"]}, "oracle": {"json_parse_success": true, "offline_expansion_success": true, "network_request_count": 0, "expected_top_level_node_count": 1}},
+    {"id": "jsonld-v0-2-metadata-invalid", "release": "v0.2", "validator": "pyld-jsonld", "category": "jsonld", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"input": "v02-metadata-invalid", "local_contexts": ["v02-metadata-context"]}, "oracle": {"json_parse_success": true, "offline_expansion_success": true, "network_request_count": 0, "expected_top_level_node_count": 1}},
+    {"id": "jsonld-v0-3-metadata-context", "release": "v0.3", "validator": "pyld-jsonld", "category": "jsonld", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"input": "v03-metadata-context", "local_contexts": []}, "oracle": {"json_parse_success": true, "offline_expansion_success": true, "network_request_count": 0, "expected_top_level_node_count": 0}},
+    {"id": "jsonld-v0-3-metadata-valid", "release": "v0.3", "validator": "pyld-jsonld", "category": "jsonld", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"input": "v03-metadata-valid", "local_contexts": ["v03-metadata-context"]}, "oracle": {"json_parse_success": true, "offline_expansion_success": true, "network_request_count": 0, "expected_top_level_node_count": 1}},
+    {"id": "jsonld-v0-3-record-context", "release": "v0.3", "validator": "pyld-jsonld", "category": "jsonld", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"input": "v03-record-context", "local_contexts": []}, "oracle": {"json_parse_success": true, "offline_expansion_success": true, "network_request_count": 0, "expected_top_level_node_count": 0}},
+    {"id": "jsonld-v0-3-record-valid", "release": "v0.3", "validator": "pyld-jsonld", "category": "jsonld", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"input": "v03-record-valid", "local_contexts": ["v03-record-context"]}, "oracle": {"json_parse_success": true, "offline_expansion_success": true, "network_request_count": 0, "expected_top_level_node_count": 1}},
+    {"id": "jsonld-v0-3-record-invalid", "release": "v0.3", "validator": "pyld-jsonld", "category": "jsonld", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"input": "v03-record-invalid", "local_contexts": ["v03-record-context"]}, "oracle": {"json_parse_success": true, "offline_expansion_success": true, "network_request_count": 0, "expected_top_level_node_count": 1}},
+
+    {
+      "id": "shacl-v0-1-metadata-valid", "release": "v0.1", "validator": "pyshacl", "category": "shacl", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS",
+      "artifact_refs": {"data": "v01-metadata-valid", "shapes": "v01-metadata-shapes", "local_contexts": ["v01-metadata-context"]},
+      "engine_config": {"inference": "none", "advanced": false, "abort_on_first": false, "meta_shacl": true, "allow_warnings": false, "allow_infos": false},
+      "oracle": {"expected_conforms": true, "expected_target_activation_minimum": 1, "expected_result_count": 0, "expected_violation_count": 0, "expected_warning_count": 0, "expected_info_count": 0}
+    },
+    {
+      "id": "shacl-v0-2-metadata-valid", "release": "v0.2", "validator": "pyshacl", "category": "shacl", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS",
+      "artifact_refs": {"data": "v02-metadata-valid", "shapes": "v02-metadata-shapes", "local_contexts": ["v02-metadata-context"]},
+      "engine_config": {"inference": "none", "advanced": false, "abort_on_first": false, "meta_shacl": true, "allow_warnings": false, "allow_infos": false},
+      "oracle": {"expected_conforms": true, "expected_target_activation_minimum": 1, "expected_result_count": 0, "expected_violation_count": 0, "expected_warning_count": 0, "expected_info_count": 0}
+    },
+    {
+      "id": "shacl-v0-2-metadata-invalid", "release": "v0.2", "validator": "pyshacl", "category": "shacl", "enabled": true, "required": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS",
+      "artifact_refs": {"data": "v02-metadata-invalid", "shapes": "v02-metadata-shapes", "local_contexts": ["v02-metadata-context"]},
+      "engine_config": {"inference": "none", "advanced": false, "abort_on_first": false, "meta_shacl": true, "allow_warnings": false, "allow_infos": false},
+      "oracle": {
+        "expected_conforms": false,
+        "expected_target_activation_minimum": 1,
+        "expected_result_count": {"exact": 3},
+        "expected_results": [
+          {"source_shape": {"kind": "anonymous-property-shape", "owner_node_shape": "https://w3id.org/dssc-demo/building-energy#DataProductMetadataShape-v0_2"}, "focus_node": "https://w3id.org/dssc-demo/building-energy/data-product/building-energy-hourly-v1-invalid", "path": "https://w3id.org/dssc-demo/building-energy#providerName", "constraint_component": "http://www.w3.org/ns/shacl#MinCountConstraintComponent", "severity": "http://www.w3.org/ns/shacl#Violation", "message": "providerName is required and must be a string.", "count": 1},
+          {"source_shape": {"kind": "anonymous-property-shape", "owner_node_shape": "https://w3id.org/dssc-demo/building-energy#DataProductMetadataShape-v0_2"}, "focus_node": "https://w3id.org/dssc-demo/building-energy/data-product/building-energy-hourly-v1-invalid", "path": "https://w3id.org/dssc-demo/building-energy#temporalEnd", "constraint_component": "http://www.w3.org/ns/shacl#MinCountConstraintComponent", "severity": "http://www.w3.org/ns/shacl#Violation", "message": "temporalEnd is required and must be an xsd:date.", "count": 1},
+          {"source_shape": {"kind": "anonymous-property-shape", "owner_node_shape": "https://w3id.org/dssc-demo/building-energy#DataProductMetadataShape-v0_2"}, "focus_node": "https://w3id.org/dssc-demo/building-energy/data-product/building-energy-hourly-v1-invalid", "path": "https://w3id.org/dssc-demo/building-energy#unit", "constraint_component": "http://www.w3.org/ns/shacl#InConstraintComponent", "severity": "http://www.w3.org/ns/shacl#Violation", "message": "unit must be kWh in v0.2.", "count": 1}
+        ]
+      }
+    },
+    {
+      "id": "shacl-v0-3-metadata-valid", "release": "v0.3", "validator": "pyshacl", "category": "shacl", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS",
+      "artifact_refs": {"data": "v03-metadata-valid", "shapes": "v03-metadata-shapes", "local_contexts": ["v03-metadata-context"]},
+      "engine_config": {"inference": "none", "advanced": false, "abort_on_first": false, "meta_shacl": true, "allow_warnings": false, "allow_infos": false},
+      "oracle": {"expected_conforms": true, "expected_target_activation_minimum": 1, "expected_result_count": 0, "expected_violation_count": 0, "expected_warning_count": 0, "expected_info_count": 0}
+    },
+    {
+      "id": "shacl-v0-3-record-valid", "release": "v0.3", "validator": "pyshacl", "category": "shacl", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS",
+      "artifact_refs": {"data": "v03-record-valid", "shapes": "v03-record-shapes", "local_contexts": ["v03-record-context"]},
+      "engine_config": {"inference": "none", "advanced": false, "abort_on_first": false, "meta_shacl": true, "allow_warnings": false, "allow_infos": false},
+      "oracle": {"expected_conforms": true, "expected_target_activation_minimum": 1, "expected_result_count": 0, "expected_violation_count": 0, "expected_warning_count": 0, "expected_info_count": 0}
+    },
+
+    {
+      "id": "jsonschema-v0-3-record-valid", "release": "v0.3", "validator": "jsonschema-draft7", "category": "jsonschema", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS",
+      "artifact_refs": {"instance": "v03-record-valid", "schema": "v03-record-schema"},
+      "engine_config": {"draft": "draft-07", "format_checker": true},
+      "oracle": {"expected_error_count": {"exact": 0}}
+    },
+    {
+      "id": "jsonschema-v0-3-record-invalid", "release": "v0.3", "validator": "jsonschema-draft7", "category": "jsonschema", "enabled": true, "required": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS",
+      "artifact_refs": {"instance": "v03-record-invalid", "schema": "v03-record-schema"},
+      "engine_config": {"draft": "draft-07", "format_checker": true},
+      "oracle": {
+        "expected_error_count": {"exact": 4},
+        "expected_errors": [
+          {"instance_pointer": "", "schema_pointer": "/required", "keyword": "required", "message": "'meterId' is a required property", "count": 1},
+          {"instance_pointer": "/energyKWh", "schema_pointer": "/properties/energyKWh/type", "keyword": "type", "message": "'12.4' is not of type 'number'", "count": 1},
+          {"instance_pointer": "/timestamp", "schema_pointer": "/properties/timestamp/format", "keyword": "format", "message": "'not-a-date-time' is not a 'date-time'", "count": 1},
+          {"instance_pointer": "/unit", "schema_pointer": "/properties/unit/enum", "keyword": "enum", "message": "'MWh' is not one of ['kWh']", "count": 1}
+        ]
+      }
+    },
+
+    {
+      "id": "openapi-v0-3-fragment-valid", "release": "v0.3", "validator": "openapi-spec-validator", "category": "openapi", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS",
+      "artifact_refs": {"document": "v03-openapi"},
+      "engine_config": {"full_validation": true, "network_allowed": false},
+      "oracle": {"expected_valid": true}
+    },
+
+    {"id": "sparql-cq01-dataset-id", "release": "v0.3", "validator": "rdflib-sparql", "category": "sparql", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"graph_inputs": ["v03-ontology", "v03-metadata-valid", "v03-record-valid"], "local_contexts": ["v03-metadata-context", "v03-record-context"], "query": "cq01-query", "expected": "cq01-expected"}, "engine_config": {"comparison": "exact-tsv", "sort_rows": true, "preserve_duplicates": true}, "oracle": {"expected_variables": ["datasetId"], "expected_row_count": 1}},
+    {"id": "sparql-cq02-provider", "release": "v0.3", "validator": "rdflib-sparql", "category": "sparql", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"graph_inputs": ["v03-ontology", "v03-metadata-valid", "v03-record-valid"], "local_contexts": ["v03-metadata-context", "v03-record-context"], "query": "cq02-query", "expected": "cq02-expected"}, "engine_config": {"comparison": "exact-tsv", "sort_rows": true, "preserve_duplicates": true}, "oracle": {"expected_variables": ["providerName"], "expected_row_count": 1}},
+    {"id": "sparql-cq03-endpoint", "release": "v0.3", "validator": "rdflib-sparql", "category": "sparql", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"graph_inputs": ["v03-ontology", "v03-metadata-valid", "v03-record-valid"], "local_contexts": ["v03-metadata-context", "v03-record-context"], "query": "cq03-query", "expected": "cq03-expected"}, "engine_config": {"comparison": "exact-tsv", "sort_rows": true, "preserve_duplicates": true}, "oracle": {"expected_variables": ["endpointUrl"], "expected_row_count": 1}},
+    {"id": "sparql-cq04-format-frequency", "release": "v0.3", "validator": "rdflib-sparql", "category": "sparql", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"graph_inputs": ["v03-ontology", "v03-metadata-valid", "v03-record-valid"], "local_contexts": ["v03-metadata-context", "v03-record-context"], "query": "cq04-query", "expected": "cq04-expected"}, "engine_config": {"comparison": "exact-tsv", "sort_rows": true, "preserve_duplicates": true}, "oracle": {"expected_variables": ["format", "frequency"], "expected_row_count": 1}},
+    {"id": "sparql-cq05-unit", "release": "v0.3", "validator": "rdflib-sparql", "category": "sparql", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"graph_inputs": ["v03-ontology", "v03-metadata-valid", "v03-record-valid"], "local_contexts": ["v03-metadata-context", "v03-record-context"], "query": "cq05-query", "expected": "cq05-expected"}, "engine_config": {"comparison": "exact-tsv", "sort_rows": true, "preserve_duplicates": true}, "oracle": {"expected_variables": ["unit"], "expected_row_count": 1}},
+    {"id": "sparql-cq06-coverage", "release": "v0.3", "validator": "rdflib-sparql", "category": "sparql", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"graph_inputs": ["v03-ontology", "v03-metadata-valid", "v03-record-valid"], "local_contexts": ["v03-metadata-context", "v03-record-context"], "query": "cq06-query", "expected": "cq06-expected"}, "engine_config": {"comparison": "exact-tsv", "sort_rows": true, "preserve_duplicates": true}, "oracle": {"expected_variables": ["spatialCoverage", "temporalStart", "temporalEnd"], "expected_row_count": 1}},
+    {"id": "sparql-cq07-conforms-to", "release": "v0.3", "validator": "rdflib-sparql", "category": "sparql", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"graph_inputs": ["v03-ontology", "v03-metadata-valid", "v03-record-valid"], "local_contexts": ["v03-metadata-context", "v03-record-context"], "query": "cq07-query", "expected": "cq07-expected"}, "engine_config": {"comparison": "exact-tsv", "sort_rows": true, "preserve_duplicates": true}, "oracle": {"expected_variables": ["modelVersion"], "expected_row_count": 1}},
+    {"id": "sparql-cq08-record-fields", "release": "v0.3", "validator": "rdflib-sparql", "category": "sparql", "enabled": true, "required": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "artifact_refs": {"graph_inputs": ["v03-ontology", "v03-metadata-valid", "v03-record-valid"], "local_contexts": ["v03-metadata-context", "v03-record-context"], "query": "cq08-query", "expected": "cq08-expected"}, "engine_config": {"comparison": "exact-tsv", "sort_rows": true, "preserve_duplicates": true}, "oracle": {"expected_variables": ["field", "label"], "expected_row_count": 6}}
+  ]
+}

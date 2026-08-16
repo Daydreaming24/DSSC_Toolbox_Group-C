@@ -1,0 +1,14 @@
+kind	property
+allowed	http://purl.org/dc/terms/accrualPeriodicity
+allowed	http://purl.org/dc/terms/description
+allowed	http://purl.org/dc/terms/format
+allowed	http://purl.org/dc/terms/license
+allowed	http://purl.org/dc/terms/spatial
+allowed	http://purl.org/dc/terms/title
+allowed	http://www.w3.org/ns/dcat#endpointURL
+allowed	https://example.org/dssc-energy#datasetId
+allowed	https://example.org/dssc-energy#providerName
+allowed	https://example.org/dssc-energy#temporalEnd
+allowed	https://example.org/dssc-energy#temporalStart
+allowed	https://example.org/dssc-energy#unit
+ignored	http://www.w3.org/1999/02/22-rdf-syntax-ns#type

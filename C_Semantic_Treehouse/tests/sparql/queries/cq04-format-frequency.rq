@@ -1,0 +1,8 @@
+PREFIX be: <https://w3id.org/dssc-demo/building-energy#>
+
+SELECT ?format ?frequency WHERE {
+  ?dataset a be:DataProductMetadata ;
+           be:format ?format ;
+           be:frequency ?frequency .
+}
+ORDER BY ?format ?frequency

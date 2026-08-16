@@ -1,0 +1,39 @@
+# Clean-room validation compose (Phase 08).
+# Host Docker starts the container; the container does NOT require Docker CLI
+# and must not mount the Docker socket or Windows engine pipe.
+
+services:
+  validation:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Dockerfile.validation
+      platforms:
+        - linux/amd64
+      args:
+        DSSC_SOURCE_COMMIT: "${DSSC_SOURCE_COMMIT:-unknown}"
+        DSSC_SOURCE_DIRTY: "${DSSC_SOURCE_DIRTY:-unknown}"
+    image: dssc-c-validation:v0.4
+    working_dir: /workspace
+    user: "10001:10001"
+    environment:
+      DSSC_VALIDATION_PROFILE: container
+    read_only: true
+    network_mode: none
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp
+    volumes:
+      # Only generated evidence crosses the clean-room boundary. Repository
+      # sources, .venv, .git, secrets, and Docker sockets are never mounted.
+      # Mounting the build root under a Phase 08-specific host sink preserves
+      # every registry-selected phase path without touching earlier evidence.
+      - ./build/ci/docker:/workspace/build
+    # Do NOT mount /var/run/docker.sock or Windows npipe:////./pipe/docker_engine.
+    # The default and the Dockerfile CMD both run the frozen `all` suite.
+    command:
+      - --suite
+      - all

@@ -1,0 +1,71 @@
+@prefix be: <https://w3id.org/dssc-demo/building-energy#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+be:DataProductMetadataShape-v0_3
+    a sh:NodeShape ;
+    sh:targetClass be:DataProductMetadata ;
+    sh:property [
+        sh:path dct:identifier ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "datasetId is required and must be a single string." ;
+    ] ;
+    sh:property [
+        sh:path be:providerName ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "providerName is required and must be a string." ;
+    ] ;
+    sh:property [
+        sh:path be:endpointUrl ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:message "endpointUrl is required and must be an IRI." ;
+    ] ;
+    sh:property [
+        sh:path be:format ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in ("JSON") ;
+        sh:message "format must be JSON in v0.3." ;
+    ] ;
+    sh:property [
+        sh:path be:frequency ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in ("hourly") ;
+        sh:message "frequency must be hourly in v0.3." ;
+    ] ;
+    sh:property [
+        sh:path be:unit ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in ("kWh") ;
+        sh:message "unit must be kWh in v0.3." ;
+    ] ;
+    sh:property [
+        sh:path be:spatialCoverage ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "spatialCoverage is required and must be a string." ;
+    ] ;
+    sh:property [
+        sh:path be:temporalStart ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:date ;
+        sh:message "temporalStart is required and must be an xsd:date." ;
+    ] ;
+    sh:property [
+        sh:path be:temporalEnd ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:date ;
+        sh:message "temporalEnd is required and must be an xsd:date." ;
+    ] .

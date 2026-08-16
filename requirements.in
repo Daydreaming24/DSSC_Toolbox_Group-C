@@ -1,0 +1,11 @@
+# Direct runtime dependencies for DSSC C Semantic Governance v0.4.
+# Root requirements.in + requirements.lock are the sole authoritative install sources.
+# Compatibility ranges keep installs on CPython 3.12 while allowing security patches
+# within the locked resolution recorded in requirements.lock.
+
+rdflib>=7.0.0,<8
+pyshacl>=0.26.0,<1
+pyld>=2.0.4,<3
+jsonschema>=4.22.0,<5
+PyYAML>=6.0.1,<7
+openapi-spec-validator>=0.7.1,<1

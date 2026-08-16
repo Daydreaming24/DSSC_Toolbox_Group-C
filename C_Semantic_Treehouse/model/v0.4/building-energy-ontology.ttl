@@ -1,0 +1,50 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix ex: <https://example.org/dssc-energy#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/dssc-demo/building-energy/v0.4>
+    a owl:Ontology ;
+    owl:versionIRI <https://w3id.org/dssc-demo/building-energy/v0.4> ;
+    owl:priorVersion <https://w3id.org/dssc-demo/building-energy/v0.3> ;
+    owl:versionInfo "0.4" ;
+    dct:title "Building Energy Semantic Model v0.4" ;
+    dct:description "Breaking metadata wire-profile migration to the D-group dcat:Dataset contract. The v0.3 Energy Reading Record sub-contract is unchanged and inherited through the release manifest." ;
+    dct:created "2026-08-10"^^xsd:date .
+
+ex:datasetId
+    a owl:DatatypeProperty ;
+    rdfs:label "dataset identifier" ;
+    rdfs:comment "The single non-blank string identifier used by the D-group v0.4 metadata wire profile." ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:range xsd:string .
+
+ex:providerName
+    a owl:DatatypeProperty ;
+    rdfs:label "provider name" ;
+    rdfs:comment "The single non-blank human-readable provider name used by the D-group v0.4 metadata wire profile." ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:range xsd:string .
+
+ex:unit
+    a owl:DatatypeProperty ;
+    rdfs:label "unit" ;
+    rdfs:comment "The single energy-unit token used by the D-group v0.4 metadata wire profile; the normative value is kWh." ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:range xsd:string .
+
+ex:temporalStart
+    a owl:DatatypeProperty ;
+    rdfs:label "temporal start" ;
+    rdfs:comment "The inclusive start date of the Dataset temporal coverage in the D-group v0.4 metadata wire profile." ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:range xsd:date .
+
+ex:temporalEnd
+    a owl:DatatypeProperty ;
+    rdfs:label "temporal end" ;
+    rdfs:comment "The inclusive end date of the Dataset temporal coverage in the D-group v0.4 metadata wire profile." ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:range xsd:date .

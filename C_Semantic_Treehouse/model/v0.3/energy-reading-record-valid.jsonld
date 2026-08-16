@@ -1,0 +1,15 @@
+{
+  "@context": "energy-reading-record-context.jsonld",
+  "@id": "https://w3id.org/dssc-demo/building-energy/reading/BLD-001-MTR-001-202605010000",
+  "@type": "EnergyReadingRecord",
+  "buildingId": "BLD-001",
+  "meterId": "MTR-001",
+  "timestamp": "2026-05-01T00:00:00+08:00",
+  "energyKWh": 12.4,
+  "unit": "kWh",
+  "location": {
+    "city": "Shenzhen",
+    "district": "Nanshan"
+  },
+  "conformsTo": "https://w3id.org/dssc-demo/building-energy/v0.3"
+}

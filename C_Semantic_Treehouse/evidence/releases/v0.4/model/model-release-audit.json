@@ -1,0 +1,68 @@
+{
+  "checks": {
+    "absolute_paths_absent": true,
+    "docker_source_state_bound": true,
+    "git_attribute_audited": true,
+    "host_container_equal": true,
+    "machine_inputs_not_published": true,
+    "markdown_derived_from_json": true,
+    "normalized_json": true,
+    "publish_plan_ready": true,
+    "sensitive_patterns_absent": true,
+    "source_hashes_fresh": true,
+    "timestamps_absent": true
+  },
+  "counts": {
+    "discovered": 8,
+    "executed": 8,
+    "failed": 0,
+    "passed": 8,
+    "skipped": 0
+  },
+  "files": [
+    {
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/model/git-attribute-audit.json",
+      "sha256": "31c79a2aacda3ec982cd662694609dbe286c60ffffe28e42e4df21702cb209fc",
+      "size_bytes": 1193
+    },
+    {
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/model/negative-controls.json",
+      "sha256": "5695a95216b5c896b1cbb110e75eecec604b9377b3c0f0ce11c3ce05e58d1fcb",
+      "size_bytes": 30727
+    },
+    {
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/model/README.md",
+      "sha256": "646e3f9e8c64e763b624e1be81d8a50b0b4a6c9b056c3dba89ab1d5d2e2ba104",
+      "size_bytes": 1538
+    },
+    {
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/model/v0.4-model-container.md",
+      "sha256": "685cc7bed1c9b4dbdf62b4df6b6d2cb1648e84de9c13367713ec41b272fd85bd",
+      "size_bytes": 1643
+    },
+    {
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/model/v0.4-model-container.result.json",
+      "sha256": "f81b169f32fcb5473ee185e6c1fbd39b7e817ebd9ea115f4aa0caa34c754467c",
+      "size_bytes": 69383
+    },
+    {
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/model/v0.4-model-host.md",
+      "sha256": "31f5a852c3113643b57f3f9878736e8909130c549674994fae26327a77980b35",
+      "size_bytes": 1638
+    },
+    {
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/model/v0.4-model-host.result.json",
+      "sha256": "77d062ec2a5e9feb307629deeff23ff52841c12d0f93cf84843d4eae7fbd03a3",
+      "size_bytes": 69373
+    },
+    {
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/model/v0.4-model-host-container-comparison.json",
+      "sha256": "5a1cbd23a914463e6d14127a7db96f0dc029431985db43a7716c59d146c06a46",
+      "size_bytes": 1419
+    }
+  ],
+  "program_status": "SUCCESS",
+  "publish_plan_sha256": "20beb8cd3d37a76761df2cc59cbcd55ce8681e6f01317e0da977ec8713b481f3",
+  "publisher_sha256": "af81ec93959d851ebc64129abcf58c67bdcc6707d778898fdcbf2afae1d6a062",
+  "schema": "dssc.phase04.model.release-audit.v1"
+}

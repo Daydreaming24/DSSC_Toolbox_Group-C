@@ -1,0 +1,144 @@
+{
+  "$schema": "schemas/validation-suites.schema.json",
+  "contract_version": "1.6.0",
+  "suites": [
+    {
+      "id": "frozen",
+      "status": "IMPLEMENTED",
+      "depends_on": [],
+      "components": [
+        {
+          "id": "frozen.manifest",
+          "entrypoint": "check_frozen_files"
+        }
+      ],
+      "owner_phase": "01",
+      "description": "Verify frozen-files-SHA256SUMS byte integrity for protected inputs and archives."
+    },
+    {
+      "id": "environment",
+      "status": "IMPLEMENTED",
+      "depends_on": [],
+      "components": [
+        {
+          "id": "environment.doctor",
+          "entrypoint": "check_environment"
+        }
+      ],
+      "owner_phase": "01",
+      "description": "Verify fixed CPython, repo venv or container interpreter, lock, direct deps, pip check, and profile capabilities."
+    },
+    {
+      "id": "baseline",
+      "status": "IMPLEMENTED",
+      "depends_on": ["environment"],
+      "components": [
+        {
+          "id": "baseline.reproduction",
+          "entrypoint": "check_baseline"
+        }
+      ],
+      "owner_phase": "02",
+      "description": "Reproduce the manifest-bound v0.1-v0.3 baseline with 33 fail-closed cases (Phase 02)."
+    },
+    {
+      "id": "traceability",
+      "status": "IMPLEMENTED",
+      "depends_on": ["environment"],
+      "components": [
+        {
+          "id": "traceability.contract-audit",
+          "entrypoint": "check_traceability"
+        }
+      ],
+      "owner_phase": "03",
+      "description": "Validate the requirements schema and cross-record semantics, D-group TTL bidirectional coverage, source smoke audit, and accepted blocking ADRs (Phase 03)."
+    },
+    {
+      "id": "v0.4-model",
+      "status": "IMPLEMENTED",
+      "depends_on": ["environment", "traceability"],
+      "components": [
+        {
+          "id": "v0.4-model.release-contract",
+          "entrypoint": "check_v04_model"
+        }
+      ],
+      "owner_phase": "04",
+      "description": "Validate the v0.4 release schema and cross-record manifest semantics, artifact hashes and provenance, requirements implementation coverage, inherited record contract, offline JSON-LD, and contract smoke (Phase 04)."
+    },
+    {
+      "id": "v0.4",
+      "status": "IMPLEMENTED",
+      "depends_on": ["environment", "v0.4-model"],
+      "components": [
+        {
+          "id": "v0.4.test-case-schema",
+          "entrypoint": "check_v04_test_case_schema"
+        },
+        {
+          "id": "v0.4.manifest-semantics",
+          "entrypoint": "check_v04_manifest_semantics"
+        },
+        {
+          "id": "v0.4.fixture-hashes",
+          "entrypoint": "check_v04_fixture_hashes"
+        },
+        {
+          "id": "v0.4.four-state",
+          "entrypoint": "check_v04_four_state"
+        },
+        {
+          "id": "v0.4.report-assertions",
+          "entrypoint": "check_v04_report_assertions"
+        },
+        {
+          "id": "v0.4.target-activation",
+          "entrypoint": "check_v04_target_activation"
+        },
+        {
+          "id": "v0.4.fault-injection",
+          "entrypoint": "check_v04_fault_injection"
+        }
+      ],
+      "owner_phase": "05",
+      "description": "Validate the Phase 05 test-case schema and semantics, fixture bytes, four-state classification, SHACL report assertions, target activation, and fail-closed fault controls."
+    },
+    {
+      "id": "all",
+      "status": "IMPLEMENTED",
+      "depends_on": [
+        "frozen",
+        "environment",
+        "baseline",
+        "traceability",
+        "v0.4-model",
+        "v0.4"
+      ],
+      "components": [
+        {
+          "id": "all.composition",
+          "entrypoint": "check_all_composition"
+        },
+        {
+          "id": "all.semantic-sparql",
+          "entrypoint": "check_semantic_sparql"
+        },
+        {
+          "id": "all.quality",
+          "entrypoint": "check_quality_metrics"
+        },
+        {
+          "id": "all.governance",
+          "entrypoint": "check_governance"
+        },
+        {
+          "id": "all.documentation",
+          "entrypoint": "check_documentation"
+        }
+      ],
+      "owner_phase": "05",
+      "description": "Deterministically expand the six constituent public suites, verify their fixed composition, and run the Phase 06 SPARQL, quality, and governance checks followed by the Phase 07 documentation check."
+    }
+  ]
+}

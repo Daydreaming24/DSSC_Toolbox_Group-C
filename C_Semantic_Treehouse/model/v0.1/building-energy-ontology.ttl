@@ -1,0 +1,48 @@
+@prefix be: <https://w3id.org/dssc-demo/building-energy#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/dssc-demo/building-energy/v0.1>
+    a owl:Ontology ;
+    owl:versionIRI <https://w3id.org/dssc-demo/building-energy/v0.1> ;
+    owl:versionInfo "0.1" ;
+    dct:title "Building Energy Semantic Model v0.1" ;
+    dct:description "Baseline metadata vocabulary for the Building Energy Consumption Data Product." ;
+    dct:created "2026-06-25"^^xsd:date .
+
+be:DataProductMetadata
+    a owl:Class ;
+    rdfs:subClassOf dcat:Dataset ;
+    rdfs:label "Data Product Metadata" ;
+    rdfs:comment "Metadata describing a data product for catalogue discovery and data offering creation." .
+
+be:providerName
+    a owl:DatatypeProperty ;
+    rdfs:label "provider name" ;
+    rdfs:comment "Human-readable name of the organization publishing the data product." ;
+    rdfs:domain be:DataProductMetadata ;
+    rdfs:range xsd:string .
+
+be:format
+    a owl:DatatypeProperty ;
+    rdfs:label "format" ;
+    rdfs:comment "Serialization format used by the data product payload." ;
+    rdfs:domain be:DataProductMetadata ;
+    rdfs:range xsd:string .
+
+be:frequency
+    a owl:DatatypeProperty ;
+    rdfs:label "frequency" ;
+    rdfs:comment "Expected update or accrual frequency of the data product." ;
+    rdfs:domain be:DataProductMetadata ;
+    rdfs:range xsd:string .
+
+be:spatialCoverage
+    a owl:DatatypeProperty ;
+    rdfs:label "spatial coverage" ;
+    rdfs:comment "Human-readable spatial coverage of the data product." ;
+    rdfs:domain be:DataProductMetadata ;
+    rdfs:range xsd:string .

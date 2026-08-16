@@ -1,0 +1,12 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ex: <https://example.org/dssc-energy#>
+
+SELECT ?endpointURL ?format ?accrualPeriodicity ?unit WHERE {
+  ?dataset a dcat:Dataset ;
+           dcat:endpointURL ?endpointURL ;
+           dct:format ?format ;
+           dct:accrualPeriodicity ?accrualPeriodicity ;
+           ex:unit ?unit .
+}
+ORDER BY ?endpointURL ?format ?accrualPeriodicity ?unit

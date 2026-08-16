@@ -1,0 +1,13 @@
+{
+  "@context": "data-product-context.jsonld",
+  "@id": "https://w3id.org/dssc-demo/building-energy/data-product/building-energy-hourly-v1-invalid",
+  "@type": "DataProductMetadata",
+  "datasetId": "building-energy-hourly-v1-invalid",
+  "endpointUrl": "https://api.example.org/energy/buildings/hourly",
+  "format": "JSON",
+  "frequency": "hourly",
+  "unit": "MWh",
+  "spatialCoverage": "Shenzhen demo district",
+  "temporalStart": "2026-05-01",
+  "conformsTo": "https://w3id.org/dssc-demo/building-energy/v0.2"
+}

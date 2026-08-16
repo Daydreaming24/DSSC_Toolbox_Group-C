@@ -1,0 +1,389 @@
+{
+  "@context": {
+    "dct": "http://purl.org/dc/terms/",
+    "dssc": "https://w3id.org/dssc-demo/vocab/governance#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Activity": "prov:Activity",
+    "Agent": "prov:Agent",
+    "Entity": "prov:Entity",
+    "activityKind": "dssc:activityKind",
+    "artifactKind": "dssc:artifactKind",
+    "change": "dssc:change",
+    "compatibility": "dssc:compatibility",
+    "description": "dct:description",
+    "evidenceRef": "dssc:evidenceRef",
+    "generated": {
+      "@id": "prov:generated",
+      "@type": "@id"
+    },
+    "generatedAtTime": {
+      "@id": "prov:generatedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "hadMember": {
+      "@id": "prov:hadMember",
+      "@type": "@id"
+    },
+    "inherits": {
+      "@id": "dssc:inherits",
+      "@type": "@id"
+    },
+    "manifestRole": "dssc:manifestRole",
+    "path": "dssc:path",
+    "priorVersion": {
+      "@id": "dssc:priorVersion",
+      "@type": "@id"
+    },
+    "releaseArtifactRef": "dssc:releaseArtifactRef",
+    "sha256": "dssc:sha256",
+    "sourceRef": "dssc:sourceRef",
+    "status": "dssc:status",
+    "startedAtTime": {
+      "@id": "prov:startedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "endedAtTime": {
+      "@id": "prov:endedAtTime",
+      "@type": "xsd:dateTime"
+    },
+    "title": "dct:title",
+    "used": {
+      "@id": "prov:used",
+      "@type": "@id"
+    },
+    "wasAssociatedWith": {
+      "@id": "prov:wasAssociatedWith",
+      "@type": "@id"
+    },
+    "wasAttributedTo": {
+      "@id": "prov:wasAttributedTo",
+      "@type": "@id"
+    },
+    "wasDerivedFrom": {
+      "@id": "prov:wasDerivedFrom",
+      "@type": "@id"
+    },
+    "wasGeneratedBy": {
+      "@id": "prov:wasGeneratedBy",
+      "@type": "@id"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "https://w3id.org/dssc-demo/agents/c-group",
+      "@type": "Agent",
+      "title": "DSSC C Group",
+      "description": "Semantic derivation and governance maintainer for the Building Energy research package."
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/agents/chen-lingshi",
+      "@type": [
+        "Agent",
+        "prov:Person"
+      ],
+      "title": "陈凌石 (Chen Lingshi)",
+      "description": "Named repository maintainer, GitHub identity Daydreaming24. Carried out the migration of the v0-v0.3 material into this repository, the v0.4 model derivation from the frozen D-group contract, the reproducible validation harness, the governance and provenance materials, and the release engineering. Accepted the P00-R14 final human-governance responsibilities recorded in docs/v0.4/human-decisions.md.",
+      "prov:actedOnBehalfOf": {
+        "@id": "https://w3id.org/dssc-demo/agents/c-group"
+      }
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/agents/d-group",
+      "@type": "Agent",
+      "title": "DSSC D Group",
+      "description": "Source authority for the received v0.4 normative SHACL contract and explanatory change note."
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/activity/model-generation",
+      "@type": "Activity",
+      "activityKind": "historical-model-generation",
+      "status": "completed",
+      "title": "v0.1-v0.3 historical model generation",
+      "startedAtTime": "2026-06-25T00:00:00Z",
+      "endedAtTime": "2026-06-25T23:59:59Z",
+      "wasAssociatedWith": "https://w3id.org/dssc-demo/agents/c-group",
+      "generated": [
+        "https://w3id.org/dssc-demo/building-energy/v0.1",
+        "https://w3id.org/dssc-demo/building-energy/v0.2",
+        "https://w3id.org/dssc-demo/building-energy/v0.3"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/v0.1",
+      "@type": "Entity",
+      "title": "Building Energy Semantic Model v0.1",
+      "description": "Frozen baseline metadata model.",
+      "generatedAtTime": "2026-06-25T00:00:00Z",
+      "wasGeneratedBy": "https://w3id.org/dssc-demo/building-energy/activity/model-generation",
+      "wasAttributedTo": "https://w3id.org/dssc-demo/agents/c-group"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/v0.2",
+      "@type": "Entity",
+      "title": "Building Energy Semantic Model v0.2",
+      "description": "Frozen stricter metadata model.",
+      "generatedAtTime": "2026-06-25T00:00:00Z",
+      "wasGeneratedBy": "https://w3id.org/dssc-demo/building-energy/activity/model-generation",
+      "wasDerivedFrom": "https://w3id.org/dssc-demo/building-energy/v0.1",
+      "wasAttributedTo": "https://w3id.org/dssc-demo/agents/c-group"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/v0.3",
+      "@type": "Entity",
+      "title": "Building Energy Semantic Model v0.3",
+      "description": "Frozen v0.2-compatible metadata plus the Energy Reading Record extension.",
+      "generatedAtTime": "2026-06-25T00:00:00Z",
+      "wasGeneratedBy": "https://w3id.org/dssc-demo/building-energy/activity/model-generation",
+      "wasDerivedFrom": "https://w3id.org/dssc-demo/building-energy/v0.2",
+      "wasAttributedTo": "https://w3id.org/dssc-demo/agents/c-group"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/report/rdf-validation",
+      "@type": "Entity",
+      "title": "Historical RDF validation report",
+      "generatedAtTime": "2026-06-25T00:00:00Z",
+      "wasGeneratedBy": "https://w3id.org/dssc-demo/building-energy/activity/model-generation"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/report/pyshacl-validation",
+      "@type": "Entity",
+      "title": "Historical pySHACL validation report",
+      "generatedAtTime": "2026-06-25T00:00:00Z",
+      "wasGeneratedBy": "https://w3id.org/dssc-demo/building-energy/activity/model-generation"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/report/jsonld-validation",
+      "@type": "Entity",
+      "title": "Historical JSON-LD validation report",
+      "generatedAtTime": "2026-06-25T00:00:00Z",
+      "wasGeneratedBy": "https://w3id.org/dssc-demo/building-energy/activity/model-generation"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/report/jsonschema-validation",
+      "@type": "Entity",
+      "title": "Historical JSON Schema validation report",
+      "generatedAtTime": "2026-06-25T00:00:00Z",
+      "wasGeneratedBy": "https://w3id.org/dssc-demo/building-energy/activity/model-generation"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/report/openapi-validation",
+      "@type": "Entity",
+      "title": "Historical OpenAPI validation report",
+      "generatedAtTime": "2026-06-25T00:00:00Z",
+      "wasGeneratedBy": "https://w3id.org/dssc-demo/building-energy/activity/model-generation"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/report/sparql-competency",
+      "@type": "Entity",
+      "title": "Historical SPARQL competency report",
+      "generatedAtTime": "2026-06-25T00:00:00Z",
+      "wasGeneratedBy": "https://w3id.org/dssc-demo/building-energy/activity/model-generation"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/report/quality-metrics",
+      "@type": "Entity",
+      "title": "Historical quality metrics report",
+      "generatedAtTime": "2026-06-25T00:00:00Z",
+      "wasGeneratedBy": "https://w3id.org/dssc-demo/building-energy/activity/model-generation"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/source/d-shape-v0.4",
+      "@type": "Entity",
+      "title": "D-group v0.4 normative Shape",
+      "sourceRef": "d-shape-v04",
+      "path": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl",
+      "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda",
+      "wasAttributedTo": "https://w3id.org/dssc-demo/agents/d-group"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/source/d-change-note-v0.4",
+      "@type": "Entity",
+      "title": "D-group v0.4 explanatory change note",
+      "sourceRef": "d-change-note",
+      "path": "inputs/d-group/v0.4/received/初始TTL到最终TTL修改说明.md",
+      "sha256": "d95a98be50641dbf4c131818547756183bf795edc426668c7c43c00f934bc7b4",
+      "wasAttributedTo": "https://w3id.org/dssc-demo/agents/d-group"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/activity/c-group-v0.4-derivation",
+      "@type": "Activity",
+      "activityKind": "semantic-model-derivation",
+      "status": "completed",
+      "title": "C-group v0.4 metadata derivation",
+      "used": [
+        "https://w3id.org/dssc-demo/building-energy/v0.3",
+        "https://w3id.org/dssc-demo/building-energy/source/d-shape-v0.4",
+        "https://w3id.org/dssc-demo/building-energy/source/d-change-note-v0.4"
+      ],
+      "generated": "https://w3id.org/dssc-demo/building-energy/v0.4",
+      "wasAssociatedWith": "https://w3id.org/dssc-demo/agents/c-group"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/v0.4",
+      "@type": "Entity",
+      "title": "Building Energy Semantic Model v0.4",
+      "description": "D-group metadata wire profile with explicit inheritance of the unchanged v0.3 Energy Reading Record sub-contract.",
+      "compatibility": "wire-profile-breaking",
+      "priorVersion": "https://w3id.org/dssc-demo/building-energy/v0.3",
+      "inherits": "https://w3id.org/dssc-demo/building-energy/contract/v0.3-energy-reading-record",
+      "wasGeneratedBy": "https://w3id.org/dssc-demo/building-energy/activity/c-group-v0.4-derivation",
+      "wasDerivedFrom": [
+        "https://w3id.org/dssc-demo/building-energy/v0.3",
+        "https://w3id.org/dssc-demo/building-energy/source/d-shape-v0.4"
+      ],
+      "wasAttributedTo": "https://w3id.org/dssc-demo/agents/c-group"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/contract/v0.3-energy-reading-record",
+      "@type": "Entity",
+      "title": "Inherited v0.3 Energy Reading Record contract",
+      "change": "none",
+      "wasDerivedFrom": "https://w3id.org/dssc-demo/building-energy/v0.3",
+      "hadMember": [
+        "https://w3id.org/dssc-demo/building-energy/artifact/v04-inherited-record-schema",
+        "https://w3id.org/dssc-demo/building-energy/artifact/v04-inherited-record-context",
+        "https://w3id.org/dssc-demo/building-energy/artifact/v04-inherited-record-shapes",
+        "https://w3id.org/dssc-demo/building-energy/artifact/v04-inherited-record-valid",
+        "https://w3id.org/dssc-demo/building-energy/artifact/v04-inherited-record-invalid"
+      ]
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/artifact/v04-inherited-record-schema",
+      "@type": "Entity",
+      "releaseArtifactRef": "v04-inherited-record-schema",
+      "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record.schema.json",
+      "sha256": "dd07414e3752bf582bf5e721009064e16d7be3e1e06d60daaad08000869ccfa9"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/artifact/v04-inherited-record-context",
+      "@type": "Entity",
+      "releaseArtifactRef": "v04-inherited-record-context",
+      "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-context.jsonld",
+      "sha256": "9727da9b8650dc444d719113a6978a3a26a59bfd1fde011a98e4c1f4b476f748"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/artifact/v04-inherited-record-shapes",
+      "@type": "Entity",
+      "releaseArtifactRef": "v04-inherited-record-shapes",
+      "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-shapes.ttl",
+      "sha256": "84d1eee9cfeecd1791117552611e83d36af7df4f3b4c783ddbd75d45bae66c9a"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/artifact/v04-inherited-record-valid",
+      "@type": "Entity",
+      "releaseArtifactRef": "v04-inherited-record-valid",
+      "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-valid.jsonld",
+      "sha256": "8f7509ad08fb9a62cdff1d6c904801c9421c3ce768bdd9ecb651cd480aa158e1"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/artifact/v04-inherited-record-invalid",
+      "@type": "Entity",
+      "releaseArtifactRef": "v04-inherited-record-invalid",
+      "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-invalid.jsonld",
+      "sha256": "e516f6a8e4ea811170c72e922b86ac7ea46594046704d01a55a2c8e13cd8f358"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/manifest/release",
+      "@type": "Entity",
+      "manifestRole": "release",
+      "path": "C_Semantic_Treehouse/manifests/release-manifest.json",
+      "sha256": "35b194fe0c280c9a01067d2c9eac205c9e178da235ba06596719144b975111d8"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/manifest/baseline",
+      "@type": "Entity",
+      "manifestRole": "baseline",
+      "sourceRef": "baseline-contract",
+      "path": "C_Semantic_Treehouse/manifests/baseline-test-cases.json",
+      "sha256": "e8fb57fe2f609c48c0340cf8e3b78d2e8f81d0fe0fd3ab505468cfe315767e43"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/manifest/requirements",
+      "@type": "Entity",
+      "manifestRole": "requirements",
+      "path": "C_Semantic_Treehouse/manifests/v0.4-requirements.json",
+      "sha256": "53953e915d6da6159b342a04f1dc6d0ff6a8f53bd5892eb7933551710ebe014e"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/manifest/v0.4-test-cases",
+      "@type": "Entity",
+      "manifestRole": "v0.4-test-cases",
+      "path": "C_Semantic_Treehouse/manifests/v0.4-test-cases.json",
+      "sha256": "87e367ea285ddc7feb5fa7f3f4b6c0035be0b768de5e56398ac422abaf494e5a"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/manifest/validation-suites",
+      "@type": "Entity",
+      "manifestRole": "validation-suites",
+      "path": "C_Semantic_Treehouse/manifests/validation-suites.json",
+      "sha256": "09c74417a9b674206070ea2d25cea45ed7704f9485269eb264446f0472d51836"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/activity/phase-06-governance-validation",
+      "@type": "Activity",
+      "activityKind": "local-manifest-and-governance-validation",
+      "status": "completed",
+      "title": "Phase 06 local governance validation",
+      "used": [
+        "https://w3id.org/dssc-demo/building-energy/manifest/release",
+        "https://w3id.org/dssc-demo/building-energy/manifest/baseline",
+        "https://w3id.org/dssc-demo/building-energy/manifest/requirements",
+        "https://w3id.org/dssc-demo/building-energy/manifest/v0.4-test-cases",
+        "https://w3id.org/dssc-demo/building-energy/manifest/validation-suites"
+      ],
+      "generated": "https://w3id.org/dssc-demo/building-energy/evidence/phase-06-manifest-preflight",
+      "wasAssociatedWith": "https://w3id.org/dssc-demo/agents/c-group"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/evidence/phase-06-manifest-preflight",
+      "@type": "Entity",
+      "artifactKind": "deterministic-validation-artifact",
+      "status": "completed",
+      "title": "Phase 06 five-manifest schema and semantic preflight",
+      "path": "build/phase-06/governance/manifest-preflight.json",
+      "sha256": "b3365657770dffda8770ee0c9aaef3784072825d7ca230b5228b33e1d1f14aec",
+      "wasGeneratedBy": "https://w3id.org/dssc-demo/building-energy/activity/phase-06-governance-validation"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/activity/v0.4-release-approval",
+      "@type": "Activity",
+      "activityKind": "release-approval",
+      "status": "responsibility-accepted",
+      "title": "v0.4 human release governance responsibility",
+      "description": "Maintainer Daydreaming24 accepted the P00-R14 final human-governance responsibilities under DEC-P09-P00-R14-RESPONSIBILITY-ACCEPTED; item-level semantic, domain, D-group, and release sign-offs remain pending.",
+      "evidenceRef": "docs/v0.4/human-decisions.md",
+      "wasAssociatedWith": "https://w3id.org/dssc-demo/agents/c-group"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/activity/v0.4-ci-validation",
+      "@type": "Activity",
+      "activityKind": "ci",
+      "status": "confirmed",
+      "title": "v0.4 candidate-bound CI validation",
+      "description": "Confirmed candidate-bound Ubuntu, Windows, and Docker GitHub Actions evidence is recorded without embedding a moving run identifier in this stable provenance document.",
+      "evidenceRef": "docs/v0.4/publication-record.md",
+      "wasAssociatedWith": "https://w3id.org/dssc-demo/agents/c-group"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/activity/v0.4-github-publication",
+      "@type": "Activity",
+      "activityKind": "github-publication",
+      "status": "confirmed",
+      "title": "v0.4 GitHub repository publication",
+      "description": "Ordinary push and canonical-URL remote clean-clone evidence is confirmed in the publication record; tag and GitHub Release remain separately NOT_REQUESTED.",
+      "evidenceRef": "docs/v0.4/publication-record.md",
+      "wasAssociatedWith": "https://w3id.org/dssc-demo/agents/c-group"
+    },
+    {
+      "@id": "https://w3id.org/dssc-demo/building-energy/activity/v0.4-treehouse-run",
+      "@type": "Activity",
+      "activityKind": "treehouse-run",
+      "status": "completed-local-optional",
+      "title": "v0.4 Semantic Treehouse optional local run",
+      "description": "Controlled local deployment, import, export, and SHACL execution completed; runtime is PAUSED and Semantic Treehouse publication remains NOT RUN.",
+      "evidenceRef": "C_Semantic_Treehouse/C_semantic_treehouse_usage.md",
+      "wasAssociatedWith": "https://w3id.org/dssc-demo/agents/c-group"
+    }
+  ]
+}

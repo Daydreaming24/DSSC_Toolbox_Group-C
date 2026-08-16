@@ -1,0 +1,17 @@
+{
+  "@context": "data-product-context.jsonld",
+  "@id": "https://example.org/dssc-energy/datasets/building-energy-hourly-v1",
+  "@type": "Dataset",
+  "datasetId": "building-energy-hourly-v1",
+  "title": "Building Energy Consumption Dataset API",
+  "description": "Hourly electricity consumption readings for demo buildings in a city energy data space.",
+  "providerName": "Energy Data Provider Ltd.",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "spatial": "Shenzhen demo district",
+  "frequency": "hourly",
+  "unit": "kWh",
+  "temporalStart": "2026-05-01",
+  "temporalEnd": "2026-05-02",
+  "endpointUrl": "https://api.example.org/energy/buildings/hourly",
+  "format": "application/json"
+}

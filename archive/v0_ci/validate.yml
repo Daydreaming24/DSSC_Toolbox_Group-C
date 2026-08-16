@@ -1,0 +1,37 @@
+name: Validate C Semantic Governance Package
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install validation dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r C_Semantic_Treehouse/requirements.txt
+
+      - name: Run validation harness
+        run: make validate
+
+      - name: Upload validation reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: c-semantic-validation-reports
+          path: |
+            C_Semantic_Treehouse/validation/*.md
+            C_Semantic_Treehouse/quality/*.md
+            C_Semantic_Treehouse/evidence/*.md
+          if-no-files-found: warn

@@ -1,0 +1,2846 @@
+{
+  "$schema": "schemas/v0.4-test-cases.schema.json",
+  "manifest_schema_version": "1.0.0",
+  "suite": "v0.4",
+  "release": {
+    "id": "v0.4"
+  },
+  "profile": {
+    "id": "dssc-building-energy-metadata-v0.4"
+  },
+  "shape_artifact": {
+    "assertion_id": "shape-v04-metadata-shapes",
+    "artifact_id": "v04-metadata-shapes",
+    "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+    "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+  },
+  "engine": {
+    "name": "pySHACL",
+    "version": "0.40.1",
+    "inference": "none",
+    "advanced": true,
+    "abort_on_first": false,
+    "meta_shacl": true,
+    "allow_warnings": false,
+    "allow_infos": false,
+    "do_owl_imports": false
+  },
+  "evidence_refs": {
+    "meta_shacl": {
+      "assertion_id": "evidence-v04-meta-shacl",
+      "kind": "META_SHACL",
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/model/v0.4-model-host.result.json",
+      "sha256": "77d062ec2a5e9feb307629deeff23ff52841c12d0f93cf84843d4eae7fbd03a3"
+    },
+    "shape_structure": {
+      "assertion_id": "evidence-v04-shape-structure",
+      "kind": "SHAPE_STRUCTURE",
+      "path": "C_Semantic_Treehouse/evidence/releases/v0.4/model/v0.4-model-host.result.json",
+      "sha256": "77d062ec2a5e9feb307629deeff23ff52841c12d0f93cf84843d4eae7fbd03a3"
+    }
+  },
+  "cases": [
+    {
+      "case_id": "D04-PC001",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc001",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/pass/D04-PC001-valid-one-dataset-iri-baseline.jsonld",
+        "format": "json-ld",
+        "sha256": "d6bc8c4d626a6db08adbead1a12e3d02e390feead75c265bf164c33800fd87da"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R001",
+        "D04-R002",
+        "D04-R003",
+        "D04-R004",
+        "D04-R005",
+        "D04-R006",
+        "D04-R007",
+        "D04-R008",
+        "D04-R009",
+        "D04-R010",
+        "D04-R011",
+        "D04-R012",
+        "D04-R013",
+        "D04-R014",
+        "D04-R015",
+        "D04-R016",
+        "D04-R017"
+      ],
+      "decision_ids": [
+        "ADR-001",
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "PASS",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 0
+        }
+      }
+    },
+    {
+      "case_id": "D04-PC002",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc002",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC002-zero-dataset-nodes.jsonld",
+        "format": "json-ld",
+        "sha256": "992af8fb570a3319a5cbbb8b6c57564e62905b6b62d25b7f196ba183a7cd2a5b"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R001"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc002-01",
+            "requirement_id": "D04-R001",
+            "source_shape": "ex:DatasetCardinalityShape",
+            "source_constraint_component": "sh:SPARQLConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "The submitted RDF graph must contain exactly one dcat:Dataset. Found 0 or more than 1."
+            },
+            "count": {
+              "exact": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC003",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc003",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC003-two-dataset-nodes.jsonld",
+        "format": "json-ld",
+        "sha256": "dcf14124812891810270003f0474ef27b74d7fba96ca27f365bd32bce85dcb99"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R001"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc003-01",
+            "requirement_id": "D04-R001",
+            "source_shape": "ex:DatasetCardinalityShape",
+            "source_constraint_component": "sh:SPARQLConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "The submitted RDF graph must contain exactly one dcat:Dataset. Found 0 or more than 1."
+            },
+            "count": {
+              "exact": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC004",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc004",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC004-blank-node-dataset.jsonld",
+        "format": "json-ld",
+        "sha256": "1417beb873467ec19d85c3acc4f0e558c8f686f9d59ebd2b0f4008e86bdd45ad"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R002"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc004-01",
+            "requirement_id": "D04-R002",
+            "source_shape": "ex:BuildingEnergyDatasetShape",
+            "source_constraint_component": "sh:NodeKindConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "PRESENT"
+            },
+            "count": {
+              "exact": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC005",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc005",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC005-dataset-id-missing.jsonld",
+        "format": "json-ld",
+        "sha256": "0bd3b5d9e9cc301e27f908cd055b76fd47e1c971057e5795aa7ee3096d980b9f"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R003"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc005-01",
+            "requirement_id": "D04-R003",
+            "source_shape": "ex:DatasetIdShape",
+            "source_constraint_component": "sh:MinCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:datasetId is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:datasetId"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC006",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc006",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC006-dataset-id-multi-valued.jsonld",
+        "format": "json-ld",
+        "sha256": "4d84548792b490a3841015dc7d7a57023fab7621694d89fe28e6b73e4def820b"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R003"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc006-01",
+            "requirement_id": "D04-R003",
+            "source_shape": "ex:DatasetIdShape",
+            "source_constraint_component": "sh:MaxCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:datasetId is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:datasetId"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC007",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc007",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC007-dataset-id-non-string.jsonld",
+        "format": "json-ld",
+        "sha256": "1e0d7adc70ff67de682667abc820252610ed7f4fec5886f8b7b3c9f62c6f1cea"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R003"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc007-01",
+            "requirement_id": "D04-R003",
+            "source_shape": "ex:DatasetIdShape",
+            "source_constraint_component": "sh:DatatypeConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:datasetId is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:datasetId"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC008",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc008",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC008-dataset-id-empty-string.jsonld",
+        "format": "json-ld",
+        "sha256": "4a1598705ab6c541fac581dfd2104cd562d94636f66a1e36c1f56dc9a07123a7"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R003"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 2
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc008-01",
+            "requirement_id": "D04-R003",
+            "source_shape": "ex:DatasetIdShape",
+            "source_constraint_component": "sh:MinLengthConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:datasetId is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:datasetId"
+          },
+          {
+            "assertion_id": "result-d04-pc008-02",
+            "requirement_id": "D04-R003",
+            "source_shape": "ex:DatasetIdShape",
+            "source_constraint_component": "sh:PatternConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:datasetId is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:datasetId"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC009",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc009",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC009-dataset-id-whitespace-string.jsonld",
+        "format": "json-ld",
+        "sha256": "4ab685e942948807755968a45132c89dc892ed52990a75797644e288ed948f92"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R003"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc009-01",
+            "requirement_id": "D04-R003",
+            "source_shape": "ex:DatasetIdShape",
+            "source_constraint_component": "sh:PatternConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:datasetId is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:datasetId"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC010",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc010",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC010-title-missing.jsonld",
+        "format": "json-ld",
+        "sha256": "ef1d62433a84993fbff342455728085b1380f0b50ae83336eb0d052cf434b44f"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R004"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc010-01",
+            "requirement_id": "D04-R004",
+            "source_shape": "ex:TitleShape",
+            "source_constraint_component": "sh:MinCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:title is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:title"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC011",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc011",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC011-title-multi-valued.jsonld",
+        "format": "json-ld",
+        "sha256": "2c2610aff0b66e5515309f4778691cab1b17fb0a25fd1e696d8e2bc6c9ade7dc"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R004"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc011-01",
+            "requirement_id": "D04-R004",
+            "source_shape": "ex:TitleShape",
+            "source_constraint_component": "sh:MaxCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:title is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:title"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC012",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc012",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC012-title-non-string.jsonld",
+        "format": "json-ld",
+        "sha256": "157efa59263d01b8c1dfb7801c80ae9490d41ce969f5dc2bb7ac990c7380ec2b"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R004"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc012-01",
+            "requirement_id": "D04-R004",
+            "source_shape": "ex:TitleShape",
+            "source_constraint_component": "sh:DatatypeConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:title is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:title"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC013",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc013",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC013-title-empty-string.jsonld",
+        "format": "json-ld",
+        "sha256": "f1b0d35cee73408fafbf2c405c2e8653a8270f3378dc9cbf69c74b8464ac9b66"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R004"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 2
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc013-01",
+            "requirement_id": "D04-R004",
+            "source_shape": "ex:TitleShape",
+            "source_constraint_component": "sh:MinLengthConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:title is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:title"
+          },
+          {
+            "assertion_id": "result-d04-pc013-02",
+            "requirement_id": "D04-R004",
+            "source_shape": "ex:TitleShape",
+            "source_constraint_component": "sh:PatternConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:title is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:title"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC014",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc014",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC014-title-whitespace-string.jsonld",
+        "format": "json-ld",
+        "sha256": "f1fda3300b97d07aa20bbc3d6076cf9cd6783b395ea8908f0fcb10be74b48038"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R004"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc014-01",
+            "requirement_id": "D04-R004",
+            "source_shape": "ex:TitleShape",
+            "source_constraint_component": "sh:PatternConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:title is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:title"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC015",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc015",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC015-provider-name-missing.jsonld",
+        "format": "json-ld",
+        "sha256": "ce94a181264182f34fcb398f2970d9b91caafba3d4caa923b3c8a2d0facbcdcb"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R005"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc015-01",
+            "requirement_id": "D04-R005",
+            "source_shape": "ex:ProviderNameShape",
+            "source_constraint_component": "sh:MinCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:providerName is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:providerName"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC016",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc016",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC016-provider-name-multi-valued.jsonld",
+        "format": "json-ld",
+        "sha256": "acff92a550695c716502a5dd38c9ec78f2e20535a099d16f3e9e9acac4bf338c"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R005"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc016-01",
+            "requirement_id": "D04-R005",
+            "source_shape": "ex:ProviderNameShape",
+            "source_constraint_component": "sh:MaxCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:providerName is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:providerName"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC017",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc017",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC017-provider-name-non-string.jsonld",
+        "format": "json-ld",
+        "sha256": "8bf3aa986b8d66feb9b5c3b6cceb2cd9f5cde5d878c793ba677ea8c916235dd4"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R005"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc017-01",
+            "requirement_id": "D04-R005",
+            "source_shape": "ex:ProviderNameShape",
+            "source_constraint_component": "sh:DatatypeConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:providerName is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:providerName"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC018",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc018",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC018-provider-name-empty-string.jsonld",
+        "format": "json-ld",
+        "sha256": "842dbd217d3ec12cdb5d9c3fe03baf423cf87815a008d15431adeaaf1933536e"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R005"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 2
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc018-01",
+            "requirement_id": "D04-R005",
+            "source_shape": "ex:ProviderNameShape",
+            "source_constraint_component": "sh:MinLengthConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:providerName is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:providerName"
+          },
+          {
+            "assertion_id": "result-d04-pc018-02",
+            "requirement_id": "D04-R005",
+            "source_shape": "ex:ProviderNameShape",
+            "source_constraint_component": "sh:PatternConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:providerName is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:providerName"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC019",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc019",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC019-provider-name-whitespace-string.jsonld",
+        "format": "json-ld",
+        "sha256": "6b39d64743b0ec24459415c5609fd5b13123c18b75c3fdd7a160548a550125c7"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R005"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc019-01",
+            "requirement_id": "D04-R005",
+            "source_shape": "ex:ProviderNameShape",
+            "source_constraint_component": "sh:PatternConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:providerName is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:providerName"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC020",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc020",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC020-spatial-missing.jsonld",
+        "format": "json-ld",
+        "sha256": "0dcb40dd46edce4c1ef417783062639ca3eef789f1b9155b6a521b0ec95b5be5"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R006"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc020-01",
+            "requirement_id": "D04-R006",
+            "source_shape": "ex:SpatialShape",
+            "source_constraint_component": "sh:MinCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:spatial is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:spatial"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC021",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc021",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC021-spatial-multi-valued.jsonld",
+        "format": "json-ld",
+        "sha256": "ae1c5c9e7d20bebdf564354a34b009e6e0985c6609b851d3ac63afdbe2ebe54c"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R006"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc021-01",
+            "requirement_id": "D04-R006",
+            "source_shape": "ex:SpatialShape",
+            "source_constraint_component": "sh:MaxCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:spatial is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:spatial"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC022",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc022",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC022-spatial-non-string.jsonld",
+        "format": "json-ld",
+        "sha256": "40f1e2d1ed82bd586b1b09caf2027e2da42669a2be7b46162f17345e0c4acc4b"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R006"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc022-01",
+            "requirement_id": "D04-R006",
+            "source_shape": "ex:SpatialShape",
+            "source_constraint_component": "sh:DatatypeConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:spatial is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:spatial"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC023",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc023",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC023-spatial-empty-string.jsonld",
+        "format": "json-ld",
+        "sha256": "692bfe15f4f3246a55f593b82568c4080f8739eaefa2e63dc5a949523b035a55"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R006"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 2
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc023-01",
+            "requirement_id": "D04-R006",
+            "source_shape": "ex:SpatialShape",
+            "source_constraint_component": "sh:MinLengthConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:spatial is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:spatial"
+          },
+          {
+            "assertion_id": "result-d04-pc023-02",
+            "requirement_id": "D04-R006",
+            "source_shape": "ex:SpatialShape",
+            "source_constraint_component": "sh:PatternConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:spatial is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:spatial"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC024",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc024",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC024-spatial-whitespace-string.jsonld",
+        "format": "json-ld",
+        "sha256": "c68982ff9ba308baae765a02c13161ee0504a368f5cb3a9b78f5e8d7e6bd64fb"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R006"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc024-01",
+            "requirement_id": "D04-R006",
+            "source_shape": "ex:SpatialShape",
+            "source_constraint_component": "sh:PatternConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:spatial is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:spatial"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC025",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc025",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC025-frequency-missing.jsonld",
+        "format": "json-ld",
+        "sha256": "ec6d81bbb0d67a5b0b0c08e684db53c59b285c4e1229219af3e71f04391801c1"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R007"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc025-01",
+            "requirement_id": "D04-R007",
+            "source_shape": "ex:FrequencyShape",
+            "source_constraint_component": "sh:MinCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:accrualPeriodicity is required and must equal hourly (exact match, case-sensitive)."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:accrualPeriodicity"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC026",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc026",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC026-frequency-multi-value-bypass.jsonld",
+        "format": "json-ld",
+        "sha256": "00b372e32d06e82e408c9155937e12791d6c92cafc0f5a0265241b5c53aed1ce"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R007"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 2
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc026-01",
+            "requirement_id": "D04-R007",
+            "source_shape": "ex:FrequencyShape",
+            "source_constraint_component": "sh:MaxCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:accrualPeriodicity is required and must equal hourly (exact match, case-sensitive)."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:accrualPeriodicity"
+          },
+          {
+            "assertion_id": "result-d04-pc026-02",
+            "requirement_id": "D04-R007",
+            "source_shape": "ex:FrequencyShape",
+            "source_constraint_component": "sh:InConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:accrualPeriodicity is required and must equal hourly (exact match, case-sensitive)."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:accrualPeriodicity"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC027",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc027",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC027-frequency-non-string.jsonld",
+        "format": "json-ld",
+        "sha256": "3af5553e927da4ae68fcd695bdff579bb77e195c6d99511f487c6c474e8de416"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R007"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 2
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc027-01",
+            "requirement_id": "D04-R007",
+            "source_shape": "ex:FrequencyShape",
+            "source_constraint_component": "sh:DatatypeConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:accrualPeriodicity is required and must equal hourly (exact match, case-sensitive)."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:accrualPeriodicity"
+          },
+          {
+            "assertion_id": "result-d04-pc027-02",
+            "requirement_id": "D04-R007",
+            "source_shape": "ex:FrequencyShape",
+            "source_constraint_component": "sh:InConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:accrualPeriodicity is required and must equal hourly (exact match, case-sensitive)."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:accrualPeriodicity"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC028",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc028",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC028-frequency-wrong-value.jsonld",
+        "format": "json-ld",
+        "sha256": "c20341b937f96009d91466bcbd2a06c429302e5bf18c5163990b64f2a0eef243"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R007"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc028-01",
+            "requirement_id": "D04-R007",
+            "source_shape": "ex:FrequencyShape",
+            "source_constraint_component": "sh:InConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:accrualPeriodicity is required and must equal hourly (exact match, case-sensitive)."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:accrualPeriodicity"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC029",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc029",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC029-frequency-case-mismatch.jsonld",
+        "format": "json-ld",
+        "sha256": "42c570005ba22d727f8100807a443307ce85ba15c45a591bc7d40d5fa4b20d6c"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R007"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc029-01",
+            "requirement_id": "D04-R007",
+            "source_shape": "ex:FrequencyShape",
+            "source_constraint_component": "sh:InConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:accrualPeriodicity is required and must equal hourly (exact match, case-sensitive)."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:accrualPeriodicity"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC030",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc030",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC030-unit-missing.jsonld",
+        "format": "json-ld",
+        "sha256": "a16ffd6bce9a5b30badfc38c5d8379378a8866336a642d9adb9d33c297781d53"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R008"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc030-01",
+            "requirement_id": "D04-R008",
+            "source_shape": "ex:UnitShape",
+            "source_constraint_component": "sh:MinCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:unit is required and must equal kWh (exact match, case-sensitive)."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:unit"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC031",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc031",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC031-unit-multi-value-bypass.jsonld",
+        "format": "json-ld",
+        "sha256": "83bab60a7c2caae925c64cf9039046a528ff2abc9155b8f6a4a14dcb22d17215"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R008"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 2
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc031-01",
+            "requirement_id": "D04-R008",
+            "source_shape": "ex:UnitShape",
+            "source_constraint_component": "sh:MaxCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:unit is required and must equal kWh (exact match, case-sensitive)."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:unit"
+          },
+          {
+            "assertion_id": "result-d04-pc031-02",
+            "requirement_id": "D04-R008",
+            "source_shape": "ex:UnitShape",
+            "source_constraint_component": "sh:InConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:unit is required and must equal kWh (exact match, case-sensitive)."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:unit"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC032",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc032",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC032-unit-non-string.jsonld",
+        "format": "json-ld",
+        "sha256": "7ffe005bb9da1968c191501c6809fff5983297de76a410cd5bde989909084740"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R008"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 2
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc032-01",
+            "requirement_id": "D04-R008",
+            "source_shape": "ex:UnitShape",
+            "source_constraint_component": "sh:DatatypeConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:unit is required and must equal kWh (exact match, case-sensitive)."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:unit"
+          },
+          {
+            "assertion_id": "result-d04-pc032-02",
+            "requirement_id": "D04-R008",
+            "source_shape": "ex:UnitShape",
+            "source_constraint_component": "sh:InConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:unit is required and must equal kWh (exact match, case-sensitive)."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:unit"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC033",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc033",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC033-unit-wrong-value.jsonld",
+        "format": "json-ld",
+        "sha256": "9c1206546eeb58d870ca85ccb1beda56bdc3281e390d5d5a876ddb5db51e83e7"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R008"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc033-01",
+            "requirement_id": "D04-R008",
+            "source_shape": "ex:UnitShape",
+            "source_constraint_component": "sh:InConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:unit is required and must equal kWh (exact match, case-sensitive)."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:unit"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC034",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc034",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC034-format-missing.jsonld",
+        "format": "json-ld",
+        "sha256": "065f15ac085e3f430cb6baa20af1815577caab3c198d6a49054d65d222dbb75a"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R009"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc034-01",
+            "requirement_id": "D04-R009",
+            "source_shape": "ex:FormatShape",
+            "source_constraint_component": "sh:MinCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:format is required and must equal application/json."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:format"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC035",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc035",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC035-format-multi-value-bypass.jsonld",
+        "format": "json-ld",
+        "sha256": "e883db53ca0097752cb803753bc46e6606d3e80ee7b9cfc35423b7d6c196f00e"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R009"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 2
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc035-01",
+            "requirement_id": "D04-R009",
+            "source_shape": "ex:FormatShape",
+            "source_constraint_component": "sh:MaxCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:format is required and must equal application/json."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:format"
+          },
+          {
+            "assertion_id": "result-d04-pc035-02",
+            "requirement_id": "D04-R009",
+            "source_shape": "ex:FormatShape",
+            "source_constraint_component": "sh:InConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:format is required and must equal application/json."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:format"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC036",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc036",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC036-format-non-string.jsonld",
+        "format": "json-ld",
+        "sha256": "c69d5694857a9bdc50f98f0a354ef1d5e917922f3fcd17b58d6ab4153fd3c6db"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R009"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 2
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc036-01",
+            "requirement_id": "D04-R009",
+            "source_shape": "ex:FormatShape",
+            "source_constraint_component": "sh:DatatypeConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:format is required and must equal application/json."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:format"
+          },
+          {
+            "assertion_id": "result-d04-pc036-02",
+            "requirement_id": "D04-R009",
+            "source_shape": "ex:FormatShape",
+            "source_constraint_component": "sh:InConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:format is required and must equal application/json."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:format"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC037",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc037",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC037-format-wrong-value.jsonld",
+        "format": "json-ld",
+        "sha256": "02857c7a2421aedf92b7b1ee3e2d9d68ae7ac03bf7a2dc8419cfac27c2b7a166"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R009"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc037-01",
+            "requirement_id": "D04-R009",
+            "source_shape": "ex:FormatShape",
+            "source_constraint_component": "sh:InConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:format is required and must equal application/json."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:format"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC038",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc038",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC038-endpoint-missing.jsonld",
+        "format": "json-ld",
+        "sha256": "10009798e2d1a7988967f857df2577b77d06c77aa4a0e3cafc6f8cbdb692de1d"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R010"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc038-01",
+            "requirement_id": "D04-R010",
+            "source_shape": "ex:EndpointUrlShape",
+            "source_constraint_component": "sh:MinCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dcat:endpointURL is required and must be one HTTPS IRI."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dcat:endpointURL"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC039",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc039",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC039-endpoint-multi-valued.jsonld",
+        "format": "json-ld",
+        "sha256": "8b8a3cca00678d08fe6431989e76b824d7b8504f41f5b55a7bd11181b4de121e"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R010"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc039-01",
+            "requirement_id": "D04-R010",
+            "source_shape": "ex:EndpointUrlShape",
+            "source_constraint_component": "sh:MaxCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dcat:endpointURL is required and must be one HTTPS IRI."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dcat:endpointURL"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC040",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc040",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC040-endpoint-ordinary-string.jsonld",
+        "format": "json-ld",
+        "sha256": "cd8d7d74f532a7a9777df3d49e5a214ee9643c41ca831fb227fa2976bae137f0"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R010"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc040-01",
+            "requirement_id": "D04-R010",
+            "source_shape": "ex:EndpointUrlShape",
+            "source_constraint_component": "sh:NodeKindConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dcat:endpointURL is required and must be one HTTPS IRI."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dcat:endpointURL"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC041",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc041",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC041-endpoint-http-iri.jsonld",
+        "format": "json-ld",
+        "sha256": "f0a81a4cb2eeee57029acde5da8cf14fdfd6c94454b5d85a7ba16a1cf2b65181"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R010"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc041-01",
+            "requirement_id": "D04-R010",
+            "source_shape": "ex:EndpointUrlShape",
+            "source_constraint_component": "sh:PatternConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dcat:endpointURL is required and must be one HTTPS IRI."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dcat:endpointURL"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC042",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc042",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC042-temporal-start-missing.jsonld",
+        "format": "json-ld",
+        "sha256": "e7ab2200b5e3b3e34c42a5cd0d0d8bea9935316496fe5bd649e5400e9dfc745f"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R011"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc042-01",
+            "requirement_id": "D04-R011",
+            "source_shape": "ex:TemporalStartShape",
+            "source_constraint_component": "sh:MinCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:temporalStart is required and must be one xsd:date."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:temporalStart"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC043",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc043",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC043-temporal-start-multi-valued.jsonld",
+        "format": "json-ld",
+        "sha256": "575bd2759dcaaf5970f2a496c9d4e7054ea6adaf05a94d4a48ebebe548d55e19"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R011"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc043-01",
+            "requirement_id": "D04-R011",
+            "source_shape": "ex:TemporalStartShape",
+            "source_constraint_component": "sh:MaxCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:temporalStart is required and must be one xsd:date."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:temporalStart"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC044",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc044",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC044-temporal-start-wrong-datatype.jsonld",
+        "format": "json-ld",
+        "sha256": "92c87f5b647010e7845f6ce6d663d8308c4153e9a303c80d2129e1de68a97df7"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R011"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc044-01",
+            "requirement_id": "D04-R011",
+            "source_shape": "ex:TemporalStartShape",
+            "source_constraint_component": "sh:DatatypeConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:temporalStart is required and must be one xsd:date."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:temporalStart"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC045",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc045",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC045-temporal-end-missing.jsonld",
+        "format": "json-ld",
+        "sha256": "dd98e007fea765cbdfbe0ef9e78091ae357ef15e9efa20aa15b06038f357851a"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R012"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc045-01",
+            "requirement_id": "D04-R012",
+            "source_shape": "ex:TemporalEndShape",
+            "source_constraint_component": "sh:MinCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:temporalEnd is required and must be one xsd:date."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:temporalEnd"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC046",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc046",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC046-temporal-end-multi-valued.jsonld",
+        "format": "json-ld",
+        "sha256": "f1c0b9c837c1100fea79866fb6353ffcc3ffedcdc7ad2ae9f0e0c4f35cffed39"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R012"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc046-01",
+            "requirement_id": "D04-R012",
+            "source_shape": "ex:TemporalEndShape",
+            "source_constraint_component": "sh:MaxCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:temporalEnd is required and must be one xsd:date."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:temporalEnd"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC047",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc047",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC047-temporal-end-wrong-datatype.jsonld",
+        "format": "json-ld",
+        "sha256": "2961acca970a60b0f6404b3e823a705a22e3162ca1fceb8a4312629f3264ad0f"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R012"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc047-01",
+            "requirement_id": "D04-R012",
+            "source_shape": "ex:TemporalEndShape",
+            "source_constraint_component": "sh:DatatypeConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:temporalEnd is required and must be one xsd:date."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:temporalEnd"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC048",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc048",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/pass/D04-PC048-equal-temporal-boundaries.jsonld",
+        "format": "json-ld",
+        "sha256": "2fa760f20c79050d050c6f7ee980fe6799fcf18ebc678badf452565448b71cb3"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R013"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "PASS",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 0
+        }
+      }
+    },
+    {
+      "case_id": "D04-PC049",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc049",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC049-reversed-temporal-boundaries.jsonld",
+        "format": "json-ld",
+        "sha256": "f41a1a900b3cc4eaf78919d7ab92a8591fda0fe7601666d8b921cb6ab4a28322"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R013"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc049-01",
+            "requirement_id": "D04-R013",
+            "source_shape": "ex:TemporalOrderShape",
+            "source_constraint_component": "sh:SPARQLConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:temporalStart must not be later than ex:temporalEnd."
+            },
+            "count": {
+              "exact": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC050",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc050",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/pass/D04-PC050-description-omitted.jsonld",
+        "format": "json-ld",
+        "sha256": "d6bc8c4d626a6db08adbead1a12e3d02e390feead75c265bf164c33800fd87da"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R014"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "PASS",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 0
+        }
+      }
+    },
+    {
+      "case_id": "D04-PC051",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc051",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/pass/D04-PC051-description-valid-string.jsonld",
+        "format": "json-ld",
+        "sha256": "90b3351645c390f3821e07546fea147f626c4379fbf09e50aa5e57724fcbca28"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R014"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "PASS",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 0
+        }
+      }
+    },
+    {
+      "case_id": "D04-PC052",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc052",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC052-description-multi-valued.jsonld",
+        "format": "json-ld",
+        "sha256": "4c506a7eb8dde90386b58f4bdee32ce891f84619ebee3522cb35fe41ca6e1505"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R014"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc052-01",
+            "requirement_id": "D04-R014",
+            "source_shape": "ex:DescriptionShape",
+            "source_constraint_component": "sh:MaxCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:description is optional; if supplied, it must be one xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:description"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC053",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc053",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC053-description-wrong-datatype.jsonld",
+        "format": "json-ld",
+        "sha256": "d84eb0250868fc477f13a6839bb6b2225c8155e5169b77222f7898ca49bb1f12"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R014"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc053-01",
+            "requirement_id": "D04-R014",
+            "source_shape": "ex:DescriptionShape",
+            "source_constraint_component": "sh:DatatypeConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:description is optional; if supplied, it must be one xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:description"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC054",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc054",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/pass/D04-PC054-license-omitted.jsonld",
+        "format": "json-ld",
+        "sha256": "d6bc8c4d626a6db08adbead1a12e3d02e390feead75c265bf164c33800fd87da"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R015"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "PASS",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 0
+        }
+      }
+    },
+    {
+      "case_id": "D04-PC055",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc055",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/pass/D04-PC055-license-valid-https-iri.jsonld",
+        "format": "json-ld",
+        "sha256": "90b3351645c390f3821e07546fea147f626c4379fbf09e50aa5e57724fcbca28"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R015"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "PASS",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 0
+        }
+      }
+    },
+    {
+      "case_id": "D04-PC056",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc056",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC056-license-multi-valued.jsonld",
+        "format": "json-ld",
+        "sha256": "eb9ded4cf236eee6818b2a8aa2901c5aa1ac593edd3ba813de8e2ca508d2b8fe"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R015"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc056-01",
+            "requirement_id": "D04-R015",
+            "source_shape": "ex:LicenseShape",
+            "source_constraint_component": "sh:MaxCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:license is optional; if supplied, it must be one HTTPS IRI."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:license"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC057",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc057",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC057-license-ordinary-string.jsonld",
+        "format": "json-ld",
+        "sha256": "b2d6110b0c9827016f5f96aed04fe14c65ed12d99c46e0bc3b0d3d3437104fca"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R015"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc057-01",
+            "requirement_id": "D04-R015",
+            "source_shape": "ex:LicenseShape",
+            "source_constraint_component": "sh:NodeKindConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:license is optional; if supplied, it must be one HTTPS IRI."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:license"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC058",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc058",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC058-license-http-iri.jsonld",
+        "format": "json-ld",
+        "sha256": "291ef522dc4aa1bc4cfe22ef42ffa8d7af4dfce4bb011d973908eabdfc760184"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R015"
+      ],
+      "decision_ids": [
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc058-01",
+            "requirement_id": "D04-R015",
+            "source_shape": "ex:LicenseShape",
+            "source_constraint_component": "sh:PatternConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "dct:license is optional; if supplied, it must be one HTTPS IRI."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "dct:license"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC059",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc059",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/inapplicable/D04-PC059-single-undeclared-dataset-property.jsonld",
+        "format": "json-ld",
+        "sha256": "8a22f91aad8874528a6ff21513296211dc422109ef1ab0ca8aa5c601f85e9420"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R016"
+      ],
+      "decision_ids": [
+        "ADR-001",
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "INAPPLICABLE",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 1
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc059-01",
+            "requirement_id": "D04-R016",
+            "source_shape": "ex:DatasetClosedShape",
+            "source_constraint_component": "sh:ClosedConstraintComponent",
+            "severity": "sh:Warning",
+            "message": {
+              "policy": "EXACT",
+              "value": "The dataset contains a property outside the declared metadata profile. Such properties are flagged as INAPPLICABLE."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:unexpectedProperty"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC060",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc060",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/fail/D04-PC060-undeclared-property-plus-violation.jsonld",
+        "format": "json-ld",
+        "sha256": "a1fa686fc9cf9d01b8102955cbd5f9bb3a2a1aee4d19c4434d571fa6efd259d9"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R005",
+        "D04-R016"
+      ],
+      "decision_ids": [
+        "ADR-001",
+        "ADR-002",
+        "ADR-003"
+      ],
+      "expected_business_status": "FAIL",
+      "oracle": {
+        "expected_target_activation_minimum": 1,
+        "result_count": {
+          "exact": 2
+        },
+        "expected_results": [
+          {
+            "assertion_id": "result-d04-pc060-01",
+            "requirement_id": "D04-R016",
+            "source_shape": "ex:DatasetClosedShape",
+            "source_constraint_component": "sh:ClosedConstraintComponent",
+            "severity": "sh:Warning",
+            "message": {
+              "policy": "EXACT",
+              "value": "The dataset contains a property outside the declared metadata profile. Such properties are flagged as INAPPLICABLE."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:unexpectedProperty"
+          },
+          {
+            "assertion_id": "result-d04-pc060-02",
+            "requirement_id": "D04-R005",
+            "source_shape": "ex:ProviderNameShape",
+            "source_constraint_component": "sh:MinCountConstraintComponent",
+            "severity": "sh:Violation",
+            "message": {
+              "policy": "EXACT",
+              "value": "ex:providerName is required and must be one non-blank xsd:string."
+            },
+            "count": {
+              "exact": 1
+            },
+            "result_path": "ex:providerName"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D04-PC061",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc061",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/untestable/D04-PC061-malformed-json-sut.jsonld",
+        "format": "json-ld",
+        "sha256": "6a04514f11d06b0f874cfe052032bb344768ced9980a52a601cf857c7f9ecc4c"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R017"
+      ],
+      "decision_ids": [
+        "ADR-001",
+        "ADR-002"
+      ],
+      "expected_business_status": "UNTESTABLE",
+      "oracle": {
+        "failure_stage": "INPUT_PARSE",
+        "reason_code": "MALFORMED_JSON"
+      }
+    },
+    {
+      "case_id": "D04-PC062",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc062",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/untestable/D04-PC062-invalid-jsonld-sut.jsonld",
+        "format": "json-ld",
+        "sha256": "554bd498f565a7b3e39402e3a3e59b4c498ed9ac97e6ab1688093f47d399864c"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R017"
+      ],
+      "decision_ids": [
+        "ADR-001",
+        "ADR-002"
+      ],
+      "expected_business_status": "UNTESTABLE",
+      "oracle": {
+        "failure_stage": "OFFLINE_LOAD",
+        "reason_code": "JSONLD_EXPANSION_ERROR"
+      }
+    },
+    {
+      "case_id": "D04-PC063",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc063",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/untestable/D04-PC063-missing-local-context-required-by-sut.jsonld",
+        "format": "json-ld",
+        "sha256": "55c93ee48b7e1a7002c30856ab63d410bbdfd3dd9b01ad3bf3fcba0e9eea5096"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R017"
+      ],
+      "decision_ids": [
+        "ADR-001",
+        "ADR-002"
+      ],
+      "expected_business_status": "UNTESTABLE",
+      "oracle": {
+        "failure_stage": "OFFLINE_LOAD",
+        "reason_code": "OFFLINE_CONTEXT_UNAVAILABLE"
+      }
+    },
+    {
+      "case_id": "D04-PC064",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc064",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/untestable/D04-PC064-controlled-validator-timeout.jsonld",
+        "format": "json-ld",
+        "sha256": "d6bc8c4d626a6db08adbead1a12e3d02e390feead75c265bf164c33800fd87da"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R017"
+      ],
+      "decision_ids": [
+        "ADR-001",
+        "ADR-002"
+      ],
+      "expected_business_status": "UNTESTABLE",
+      "oracle": {
+        "failure_stage": "VALIDATOR_EXECUTION",
+        "reason_code": "VALIDATOR_TIMEOUT"
+      }
+    },
+    {
+      "case_id": "D04-PC065",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc065",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/untestable/D04-PC065-controlled-validator-crash.jsonld",
+        "format": "json-ld",
+        "sha256": "d6bc8c4d626a6db08adbead1a12e3d02e390feead75c265bf164c33800fd87da"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R017"
+      ],
+      "decision_ids": [
+        "ADR-001",
+        "ADR-002"
+      ],
+      "expected_business_status": "UNTESTABLE",
+      "oracle": {
+        "failure_stage": "VALIDATOR_EXECUTION",
+        "reason_code": "VALIDATOR_CRASH"
+      }
+    },
+    {
+      "case_id": "D04-PC066",
+      "fixture": {
+        "assertion_id": "fixture-d04-pc066",
+        "path": "C_Semantic_Treehouse/fixtures/v0.4/untestable/D04-PC066-controlled-service-runtime-fault.jsonld",
+        "format": "json-ld",
+        "sha256": "d6bc8c4d626a6db08adbead1a12e3d02e390feead75c265bf164c33800fd87da"
+      },
+      "release_id": "v0.4",
+      "profile_id": "dssc-building-energy-metadata-v0.4",
+      "shape_artifact_assertion_id": "shape-v04-metadata-shapes",
+      "requirement_ids": [
+        "D04-R017"
+      ],
+      "decision_ids": [
+        "ADR-001",
+        "ADR-002"
+      ],
+      "expected_business_status": "UNTESTABLE",
+      "oracle": {
+        "failure_stage": "VALIDATOR_EXECUTION",
+        "reason_code": "VALIDATION_SERVICE_RUNTIME_EXCEPTION"
+      }
+    }
+  ]
+}

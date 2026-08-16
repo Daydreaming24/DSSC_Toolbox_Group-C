@@ -1,0 +1,983 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dssc.local/schemas/v0.4-requirements.schema.json",
+  "title": "DSSC v0.4 D-group requirements registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "manifest_schema_version",
+    "profile",
+    "decision_catalog",
+    "issue_catalog",
+    "planned_cases",
+    "requirements"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "schemas/v0.4-requirements.schema.json"
+    },
+    "manifest_schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "profile": {
+      "$ref": "#/$defs/profile"
+    },
+    "decision_catalog": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "$ref": "#/$defs/decision"
+      }
+    },
+    "issue_catalog": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/issue"
+      }
+    },
+    "planned_cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/plannedCase"
+      }
+    },
+    "requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/requirement"
+      }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "repoPath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*//)(?!.*/$).+$"
+    },
+    "curie": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._-]*:[^\\s]+$"
+    },
+    "requirementId": {
+      "type": "string",
+      "pattern": "^D04-R[0-9]{3}$"
+    },
+    "plannedCaseId": {
+      "type": "string",
+      "pattern": "^D04-PC[0-9]{3}$"
+    },
+    "obligationId": {
+      "type": "string",
+      "pattern": "^D04-TO-R[0-9]{3}-[A-Z0-9-]+$"
+    },
+    "issueId": {
+      "type": "string",
+      "pattern": "^D04-I[0-9]{3}$"
+    },
+    "businessStatus": {
+      "enum": ["PASS", "FAIL", "INAPPLICABLE", "UNTESTABLE"]
+    },
+    "artifactLocator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/repoPath"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "normative_source",
+        "explanatory_sources",
+        "status_header_source",
+        "query_hash_algorithm",
+        "business_status_precedence"
+      ],
+      "properties": {
+        "id": {
+          "const": "dssc-building-energy-metadata-v0.4"
+        },
+        "version": {
+          "const": "v0.4"
+        },
+        "normative_source": {
+          "$ref": "#/$defs/artifactLocator"
+        },
+        "explanatory_sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/artifactLocator"
+          },
+          "uniqueItems": true
+        },
+        "status_header_source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "sha256", "line_start", "line_end"],
+          "properties": {
+            "path": {
+              "$ref": "#/$defs/repoPath"
+            },
+            "sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "line_start": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "line_end": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "query_hash_algorithm": {
+          "const": "SHA-256-UTF8-RDF-LEXICAL-FORM"
+        },
+        "business_status_precedence": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "prefixItems": [
+            {"const": "UNTESTABLE"},
+            {"const": "FAIL"},
+            {"const": "INAPPLICABLE"},
+            {"const": "PASS"}
+          ],
+          "items": false
+        }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "path"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^ADR-00[1-3]$"
+        },
+        "path": {
+          "$ref": "#/$defs/repoPath"
+        }
+      }
+    },
+    "issue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "summary", "resolution"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/issueId"
+        },
+        "status": {
+          "enum": ["OPEN", "DOCUMENTED", "RESOLVED"]
+        },
+        "summary": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "resolution": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "iriTerm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["term_type", "value"],
+      "properties": {
+        "term_type": {
+          "const": "IRI"
+        },
+        "value": {
+          "$ref": "#/$defs/curie"
+        }
+      }
+    },
+    "integerTerm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["term_type", "value"],
+      "properties": {
+        "term_type": {
+          "const": "INTEGER"
+        },
+        "value": {
+          "type": "integer"
+        }
+      }
+    },
+    "booleanTerm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["term_type", "value"],
+      "properties": {
+        "term_type": {
+          "const": "BOOLEAN"
+        },
+        "value": {
+          "type": "boolean"
+        }
+      }
+    },
+    "literalTerm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["term_type", "value"],
+      "properties": {
+        "term_type": {
+          "const": "LITERAL"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "textTerm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["term_type", "value"],
+      "properties": {
+        "term_type": {
+          "const": "TEXT"
+        },
+        "value": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "rdfListTerm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["term_type", "items"],
+      "properties": {
+        "term_type": {
+          "const": "RDF_LIST"
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              {"$ref": "#/$defs/iriTerm"},
+              {"$ref": "#/$defs/integerTerm"},
+              {"$ref": "#/$defs/booleanTerm"},
+              {"$ref": "#/$defs/literalTerm"}
+            ]
+          }
+        }
+      }
+    },
+    "propertyPathShapeTerm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["term_type", "path"],
+      "properties": {
+        "term_type": {
+          "const": "PROPERTY_PATH_SHAPE"
+        },
+        "path": {
+          "$ref": "#/$defs/iriTerm"
+        }
+      }
+    },
+    "sparqlConstraintTerm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["term_type", "rdf_types", "messages", "select"],
+      "properties": {
+        "term_type": {
+          "const": "SPARQL_CONSTRAINT"
+        },
+        "rdf_types": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/curie"
+          },
+          "uniqueItems": true
+        },
+        "messages": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "uniqueItems": true
+        },
+        "select": {
+          "$ref": "#/$defs/queryHash"
+        }
+      }
+    },
+    "term": {
+      "oneOf": [
+        {"$ref": "#/$defs/iriTerm"},
+        {"$ref": "#/$defs/integerTerm"},
+        {"$ref": "#/$defs/booleanTerm"},
+        {"$ref": "#/$defs/literalTerm"},
+        {"$ref": "#/$defs/textTerm"},
+        {"$ref": "#/$defs/rdfListTerm"},
+        {"$ref": "#/$defs/propertyPathShapeTerm"},
+        {"$ref": "#/$defs/sparqlConstraintTerm"}
+      ]
+    },
+    "queryHash": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hash_algorithm", "sha256", "length_chars"],
+      "properties": {
+        "hash_algorithm": {
+          "const": "SHA-256-UTF8-RDF-LEXICAL-FORM"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "length_chars": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "predicate", "value", "owner_shape"],
+      "properties": {
+        "kind": {
+          "enum": [
+            "DIRECT_TARGET_CLASS",
+            "DIRECT_TARGET_NODE",
+            "OWNER_TARGET_CLASS",
+            "OPERATIONAL_SCOPE"
+          ]
+        },
+        "predicate": {
+          "oneOf": [
+            {"$ref": "#/$defs/curie"},
+            {"type": "null"}
+          ]
+        },
+        "value": {
+          "oneOf": [
+            {"$ref": "#/$defs/term"},
+            {"type": "null"}
+          ]
+        },
+        "owner_shape": {
+          "oneOf": [
+            {"$ref": "#/$defs/curie"},
+            {"type": "null"}
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {"const": "OWNER_TARGET_CLASS"}
+            },
+            "required": ["kind"]
+          },
+          "then": {
+            "properties": {
+              "predicate": {"const": "sh:targetClass"},
+              "owner_shape": {"const": "ex:BuildingEnergyDatasetShape"},
+              "value": {"$ref": "#/$defs/iriTerm"}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {"const": "OPERATIONAL_SCOPE"}
+            },
+            "required": ["kind"]
+          },
+          "then": {
+            "properties": {
+              "predicate": {"type": "null"},
+              "owner_shape": {"type": "null"},
+              "value": {"type": "null"}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {"const": "DIRECT_TARGET_CLASS"}
+            },
+            "required": ["kind"]
+          },
+          "then": {
+            "properties": {
+              "predicate": {"const": "sh:targetClass"},
+              "owner_shape": {"type": "null"},
+              "value": {"$ref": "#/$defs/iriTerm"}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {"const": "DIRECT_TARGET_NODE"}
+            },
+            "required": ["kind"]
+          },
+          "then": {
+            "properties": {
+              "predicate": {"const": "sh:targetNode"},
+              "owner_shape": {"type": "null"},
+              "value": {"$ref": "#/$defs/iriTerm"}
+            }
+          }
+        }
+      ]
+    },
+    "constraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component", "predicate", "value"],
+      "properties": {
+        "component": {
+          "type": "string",
+          "pattern": "^sh:[A-Za-z]+ConstraintComponent$"
+        },
+        "predicate": {
+          "type": "string",
+          "pattern": "^sh:[A-Za-z]+$"
+        },
+        "value": {
+          "$ref": "#/$defs/term"
+        }
+      }
+    },
+    "shaclLocator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "document",
+        "sha256",
+        "shape",
+        "target",
+        "path",
+        "severity",
+        "messages",
+        "constraint_components",
+        "constraints"
+      ],
+      "properties": {
+        "kind": {
+          "const": "SHACL_SHAPE"
+        },
+        "document": {
+          "$ref": "#/$defs/repoPath"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "shape": {
+          "$ref": "#/$defs/curie"
+        },
+        "target": {
+          "$ref": "#/$defs/target"
+        },
+        "path": {
+          "oneOf": [
+            {"$ref": "#/$defs/curie"},
+            {"type": "null"}
+          ]
+        },
+        "severity": {
+          "enum": ["sh:Violation", "sh:Warning"]
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "uniqueItems": true
+        },
+        "constraint_components": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^sh:[A-Za-z]+ConstraintComponent$"
+          },
+          "uniqueItems": true
+        },
+        "constraints": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/constraint"
+          }
+        },
+        "sparql": {
+          "$ref": "#/$defs/queryHash"
+        }
+      }
+    },
+    "headerLocator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "document",
+        "sha256",
+        "line_start",
+        "line_end",
+        "quoted_text",
+        "target",
+        "shape",
+        "path",
+        "severity",
+        "messages",
+        "constraint_components",
+        "constraints"
+      ],
+      "properties": {
+        "kind": {
+          "const": "TTL_HEADER_COMMENT"
+        },
+        "document": {
+          "$ref": "#/$defs/repoPath"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "line_start": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "line_end": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "quoted_text": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "target": {
+          "$ref": "#/$defs/target"
+        },
+        "shape": {
+          "type": "null"
+        },
+        "path": {
+          "type": "null"
+        },
+        "severity": {
+          "type": "null"
+        },
+        "messages": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "constraint_components": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "constraints": {
+          "type": "array",
+          "maxItems": 0
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_type", "locator"],
+      "properties": {
+        "source_type": {
+          "enum": ["NORMATIVE", "OPERATIONAL"]
+        },
+        "locator": {
+          "oneOf": [
+            {"$ref": "#/$defs/shaclLocator"},
+            {"$ref": "#/$defs/headerLocator"}
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "source_type": {"const": "NORMATIVE"}
+            },
+            "required": ["source_type"]
+          },
+          "then": {
+            "properties": {
+              "locator": {"$ref": "#/$defs/shaclLocator"}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "source_type": {"const": "OPERATIONAL"}
+            },
+            "required": ["source_type"]
+          },
+          "then": {
+            "properties": {
+              "locator": {"$ref": "#/$defs/headerLocator"}
+            }
+          }
+        }
+      ]
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["positive", "negative"],
+      "properties": {
+        "positive": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "uniqueItems": true
+        },
+        "negative": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["impact", "summary"],
+      "properties": {
+        "impact": {
+          "enum": ["UNCHANGED", "BREAKING", "ADDITIVE", "TIGHTENED", "OPERATIONAL"]
+        },
+        "summary": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "implementationReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "phase", "path", "description"],
+      "properties": {
+        "status": {
+          "enum": ["PLANNED", "IMPLEMENTED"]
+        },
+        "phase": {
+          "type": "string",
+          "pattern": "^[0-9]{2}$"
+        },
+        "path": {
+          "oneOf": [
+            {"$ref": "#/$defs/repoPath"},
+            {"type": "null"}
+          ]
+        },
+        "description": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {"const": "IMPLEMENTED"}
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "path": {"$ref": "#/$defs/repoPath"}
+            }
+          }
+        }
+      ]
+    },
+    "implementation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "artifact_refs", "fixture_refs", "evidence_refs"],
+      "properties": {
+        "status": {
+          "enum": ["PLANNED", "IMPLEMENTED"]
+        },
+        "artifact_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/implementationReference"
+          }
+        },
+        "fixture_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/implementationReference"
+          }
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/implementationReference"
+          }
+        }
+      }
+    },
+    "testObligation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "assertion", "covers_components", "planned_case_ids"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/obligationId"
+        },
+        "type": {
+          "enum": ["POSITIVE", "NEGATIVE", "BOUNDARY", "OPERATIONAL"]
+        },
+        "assertion": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "covers_components": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^sh:[A-Za-z]+ConstraintComponent$"
+          },
+          "uniqueItems": true
+        },
+        "planned_case_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/plannedCaseId"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "rule_kind",
+        "business_rule",
+        "sources",
+        "boundaries",
+        "expected_business_statuses",
+        "v0_3_compatibility",
+        "implementation",
+        "test_obligations",
+        "decision_refs",
+        "issue_refs"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/requirementId"
+        },
+        "rule_kind": {
+          "enum": ["NORMATIVE_SHACL", "OPERATIONAL_CLASSIFICATION"]
+        },
+        "business_rule": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/source"
+          }
+        },
+        "boundaries": {
+          "$ref": "#/$defs/boundaries"
+        },
+        "expected_business_statuses": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/businessStatus"
+          },
+          "uniqueItems": true
+        },
+        "v0_3_compatibility": {
+          "$ref": "#/$defs/compatibility"
+        },
+        "implementation": {
+          "$ref": "#/$defs/implementation"
+        },
+        "test_obligations": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/testObligation"
+          },
+          "allOf": [
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "type": {"const": "POSITIVE"}
+                },
+                "required": ["type"]
+              },
+              "minContains": 1
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "enum": ["NEGATIVE", "BOUNDARY", "OPERATIONAL"]
+                  }
+                },
+                "required": ["type"]
+              },
+              "minContains": 1
+            }
+          ]
+        },
+        "decision_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/repoPath"
+          },
+          "uniqueItems": true
+        },
+        "issue_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/issueId"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "plannedCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "mutation_axis",
+        "baseline",
+        "single_axis",
+        "expected_business_status",
+        "expected_program_status",
+        "expected_source_shapes",
+        "covers_requirement_ids",
+        "covers_components",
+        "artifact_status",
+        "fixture_ref"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/plannedCaseId"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "mutation_axis": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "baseline": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "single_axis": {
+          "type": "boolean"
+        },
+        "expected_business_status": {
+          "oneOf": [
+            {"$ref": "#/$defs/businessStatus"},
+            {"type": "null"}
+          ]
+        },
+        "expected_program_status": {
+          "enum": ["SUCCESS", "ERROR"]
+        },
+        "expected_source_shapes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/curie"
+          },
+          "uniqueItems": true
+        },
+        "covers_requirement_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/requirementId"
+          },
+          "uniqueItems": true
+        },
+        "covers_components": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^sh:[A-Za-z]+ConstraintComponent$"
+          },
+          "uniqueItems": true
+        },
+        "artifact_status": {
+          "const": "PLANNED"
+        },
+        "fixture_ref": {
+          "type": "null"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "expected_program_status": {"const": "ERROR"}
+            },
+            "required": ["expected_program_status"]
+          },
+          "then": {
+            "properties": {
+              "expected_business_status": {"type": "null"}
+            }
+          },
+          "else": {
+            "properties": {
+              "expected_business_status": {"$ref": "#/$defs/businessStatus"}
+            }
+          }
+        }
+      ]
+    }
+  }
+}

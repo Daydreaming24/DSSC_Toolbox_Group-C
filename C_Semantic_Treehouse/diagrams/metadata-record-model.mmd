@@ -1,0 +1,28 @@
+%% Phase 07 validates structure only. Mermaid parser, renderer, and visual QA: NOT RUN.
+flowchart LR
+    Provider["Provider<br/>Energy Data Provider Ltd."]
+    DatasetV04["dcat:Dataset v0.4 metadata<br/>D-group ex:/dcat:/dct: wire profile"]
+    RecordV03["Energy Reading Record v0.3<br/>inherited unchanged"]
+    PackageRelease["Package/release contract<br/>v0.4 metadata plus inherited v0.3 record artifacts"]
+    DShape["D-group normative SHACL Shape<br/>byte-bound C artifact"]
+    Harness["Deterministic four-state harness<br/>program SUCCESS or ERROR"]
+    PASS["PASS<br/>no Violation or Warning"]
+    FAIL["FAIL<br/>one or more Violations"]
+    INAPPLICABLE["INAPPLICABLE<br/>approved Closed Shape Warning only"]
+    UNTESTABLE["UNTESTABLE<br/>controlled SUT or validator fault"]
+    AOffering["A offering<br/>v0.4 metadata field contract"]
+    BProvenance["B provenance<br/>model URI, release identity, and hashes"]
+    DValidation["D validation<br/>Shape, fixtures, oracle, and report"]
+
+    Provider -->|"publishes"| DatasetV04
+    PackageRelease -->|"contains the v0.4 metadata contract"| DatasetV04
+    PackageRelease -->|"inherits exact v0.3 record artifacts"| RecordV03
+    DShape -->|"authoritative constraints"| Harness
+    DatasetV04 -->|"submission under test"| Harness
+    Harness -->|"no result"| PASS
+    Harness -->|"Violation precedence"| FAIL
+    Harness -->|"Warning without Violation"| INAPPLICABLE
+    Harness -->|"controlled inability to judge"| UNTESTABLE
+    DatasetV04 -->|"offering contract"| AOffering
+    PackageRelease -->|"release identity and lineage"| BProvenance
+    Harness -->|"report and assertions"| DValidation

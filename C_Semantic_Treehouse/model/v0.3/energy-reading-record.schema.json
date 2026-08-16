@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://w3id.org/dssc-demo/building-energy/v0.3/energy-reading-record.schema.json",
+  "title": "Energy Reading Record",
+  "description": "JSON Schema for one Building Energy Consumption API record.",
+  "type": "object",
+  "required": [
+    "buildingId",
+    "meterId",
+    "timestamp",
+    "energyKWh",
+    "unit",
+    "location"
+  ],
+  "properties": {
+    "@context": {
+      "description": "Optional JSON-LD context reference.",
+      "type": [
+        "string",
+        "object",
+        "array"
+      ]
+    },
+    "@id": {
+      "description": "Optional JSON-LD node identifier.",
+      "type": "string",
+      "format": "uri"
+    },
+    "@type": {
+      "description": "Optional JSON-LD type.",
+      "type": [
+        "string",
+        "array"
+      ]
+    },
+    "buildingId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "meterId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "energyKWh": {
+      "type": "number",
+      "minimum": 0
+    },
+    "unit": {
+      "type": "string",
+      "enum": [
+        "kWh"
+      ]
+    },
+    "location": {
+      "type": "object",
+      "required": [
+        "city",
+        "district"
+      ],
+      "properties": {
+        "city": {
+          "type": "string",
+          "minLength": 1
+        },
+        "district": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "conformsTo": {
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "additionalProperties": false
+}

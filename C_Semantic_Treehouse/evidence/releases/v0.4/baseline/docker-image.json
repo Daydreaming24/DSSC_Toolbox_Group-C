@@ -1,0 +1,37 @@
+{
+  "architecture": "amd64",
+  "base_image_digest": "sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db",
+  "image": "dssc-c-validation:v0.4-env",
+  "image_id": "sha256:cbd62bff463dbb40fbfc2171eea69d77d426154d3c93dcb00fbc5347a3ebb3d9",
+  "image_user": "dssc",
+  "os": "linux",
+  "repo_digests": [
+    "dssc-c-validation@sha256:cbd62bff463dbb40fbfc2171eea69d77d426154d3c93dcb00fbc5347a3ebb3d9"
+  ],
+  "runtime_contract": {
+    "cap_drop": [
+      "ALL"
+    ],
+    "forbidden_mount_count": 0,
+    "mount_count": 2,
+    "mount_targets": [
+      "phase-01-current",
+      "phase-02-current"
+    ],
+    "network_mode": "none",
+    "privileged": false,
+    "read_only_root": true,
+    "security_opt": [
+      "no-new-privileges:true"
+    ],
+    "tmpfs_targets": [
+      "temporary-directory"
+    ]
+  },
+  "runtime_user": "10001:10001",
+  "schema": "dssc.baseline.docker-image.v1",
+  "source_state": {
+    "commit": "957ddef353b673363bc8d4961fd5a38edb107d8f",
+    "dirty": true
+  }
+}

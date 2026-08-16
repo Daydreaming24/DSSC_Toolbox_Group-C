@@ -1,0 +1,926 @@
+{
+  "baseline": {
+    "canonical_target_activation_count": 4,
+    "canonical_target_error": null,
+    "ok": true,
+    "release_codes": [],
+    "release_ok": true,
+    "requirements_codes": [],
+    "requirements_implementation_codes": [],
+    "requirements_implementation_ok": true,
+    "requirements_ok": true,
+    "validation_suites_codes": [],
+    "validation_suites_ok": true
+  },
+  "control_count": 38,
+  "controls": [
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-path-absolute.json",
+      "control_input_sha256": "709a3e1fa8fa0ea7d73b0d797bfd4ba445b286cc9a16484bcceda6bc0d1f30a7",
+      "details": {
+        "issue_count": 7
+      },
+      "family": "release",
+      "id": "release-path-absolute",
+      "observed_codes": [
+        "ARTIFACT_OUTSIDE_RELEASE_ROOT",
+        "SCHEMA_VALIDATION",
+        "SOURCE_BINDING_MISMATCH",
+        "UNSAFE_PATH",
+        "V04_CHECKSUM_DERIVATION_SOURCES",
+        "V04_NATIVE_ARTIFACT_SET",
+        "V04_NATIVE_ORIGIN"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "UNSAFE_PATH"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-path-traversal.json",
+      "control_input_sha256": "eaf33b9fda643e0b6672d3c41fba2e0269d4f492c74a7445c040bc78d15ba554",
+      "details": {
+        "issue_count": 7
+      },
+      "family": "release",
+      "id": "release-path-traversal",
+      "observed_codes": [
+        "ARTIFACT_OUTSIDE_RELEASE_ROOT",
+        "SCHEMA_VALIDATION",
+        "SOURCE_BINDING_MISMATCH",
+        "UNSAFE_PATH",
+        "V04_CHECKSUM_DERIVATION_SOURCES",
+        "V04_NATIVE_ARTIFACT_SET",
+        "V04_NATIVE_ORIGIN"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "UNSAFE_PATH"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-artifact-missing.json",
+      "control_input_sha256": "21baa2c12fbc1651fb83b0deb84cd6806040d345f359ec11d5784aed5a011fbb",
+      "details": {
+        "issue_count": 5
+      },
+      "family": "release",
+      "id": "release-artifact-missing",
+      "observed_codes": [
+        "ARTIFACT_MISSING",
+        "SOURCE_BINDING_MISMATCH",
+        "V04_CHECKSUM_DERIVATION_SOURCES",
+        "V04_NATIVE_ARTIFACT_SET",
+        "V04_NATIVE_ORIGIN"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "ARTIFACT_MISSING"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-artifact-empty.json",
+      "control_input_sha256": "08b6ab7542ae7c200898ffe04048baf43bd0f9309b684b1cfff3f6bf549e41d5",
+      "details": {
+        "issue_count": 6
+      },
+      "family": "release",
+      "id": "release-artifact-empty",
+      "observed_codes": [
+        "ARTIFACT_EMPTY",
+        "HASH_MISMATCH",
+        "SOURCE_BINDING_MISMATCH",
+        "V04_CHECKSUM_DERIVATION_SOURCES",
+        "V04_NATIVE_ARTIFACT_SET",
+        "V04_NATIVE_ORIGIN"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "ARTIFACT_EMPTY"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-artifact-hash-mismatch.json",
+      "control_input_sha256": "1ea70e3249537dd795470b0de2e4628f59a16e62911fcec67d553c1ebb85a695",
+      "details": {
+        "issue_count": 3
+      },
+      "family": "release",
+      "id": "release-artifact-hash-mismatch",
+      "observed_codes": [
+        "HASH_MISMATCH",
+        "SOURCE_BINDING_MISMATCH",
+        "V04_CHECKSUM_DERIVATION_SOURCES"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "HASH_MISMATCH"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-d-source-hash-mismatch.json",
+      "control_input_sha256": "c28e89c643294fef215d21a099789ea7382dcd0160aab877fe062c397decbaa7",
+      "details": {
+        "issue_count": 1
+      },
+      "family": "release",
+      "id": "release-d-source-hash-mismatch",
+      "observed_codes": [
+        "HASH_MISMATCH"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "HASH_MISMATCH"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-d-byte-copy-target-changed.json",
+      "control_input_sha256": "c28e89c643294fef215d21a099789ea7382dcd0160aab877fe062c397decbaa7",
+      "details": {
+        "issue_count": 1
+      },
+      "family": "release",
+      "id": "release-d-byte-copy-target-changed",
+      "observed_codes": [
+        "HASH_MISMATCH"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "HASH_MISMATCH"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-frozen-entry-drift.json",
+      "control_input_sha256": "9df356620b1702a1c532424f5035e611710d32d92e6f568ef0f923a64923605b",
+      "details": {
+        "issue_count": 1
+      },
+      "family": "release",
+      "id": "release-frozen-entry-drift",
+      "observed_codes": [
+        "FROZEN_RELEASE_DRIFT"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "FROZEN_RELEASE_DRIFT"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-record-inherited-hash-drift.json",
+      "control_input_sha256": "004808856d2e9c21530fa0ca60f04989ebf51a1c0c93319ef2bbdba3fa75d600",
+      "details": {
+        "issue_count": 4
+      },
+      "family": "release",
+      "id": "release-record-inherited-hash-drift",
+      "observed_codes": [
+        "HASH_MISMATCH",
+        "INHERITED_HASH_DRIFT",
+        "RECORD_INHERITANCE_SET",
+        "SAME_PATH_HASH_CONFLICT"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "INHERITED_HASH_DRIFT"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-current-missing.json",
+      "control_input_sha256": "c3159842c1decfb06cf767943684ac8f2950816decf2bb1cdc733ba288a4139c",
+      "details": {
+        "issue_count": 2
+      },
+      "family": "release",
+      "id": "release-current-missing",
+      "observed_codes": [
+        "CURRENT_RELEASE_NOT_V04",
+        "SCHEMA_VALIDATION"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "CURRENT_RELEASE_NOT_V04"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-current-duplicate-key.json",
+      "control_input_sha256": "acc1145f2033e7aa05d84f5af5cc7657bfcfd54f1ddbc67700bd40a4b975d000",
+      "details": {
+        "issue_count": 1
+      },
+      "family": "release",
+      "id": "release-current-duplicate-key",
+      "observed_codes": [
+        "DUPLICATE_JSON_KEY"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "DUPLICATE_JSON_KEY"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-current-not-v04.json",
+      "control_input_sha256": "d2888c492f53e6aa5bb2ed378ca51b4aaa27169ebf0ebba10f6f5847afca796c",
+      "details": {
+        "issue_count": 2
+      },
+      "family": "release",
+      "id": "release-current-not-v04",
+      "observed_codes": [
+        "CURRENT_RELEASE_NOT_V04",
+        "SCHEMA_VALIDATION"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "CURRENT_RELEASE_NOT_V04"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-current-status-duplicate.json",
+      "control_input_sha256": "fa87955b2c546aa9441737b898d8f1d1a3c6309113a6502eab63665598cab609",
+      "details": {
+        "issue_count": 4
+      },
+      "family": "release",
+      "id": "release-current-status-duplicate",
+      "observed_codes": [
+        "CURRENT_RELEASE_CARDINALITY",
+        "FROZEN_RELEASE_STATUS",
+        "SCHEMA_VALIDATION"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "CURRENT_RELEASE_CARDINALITY"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-duplicate-release-id.json",
+      "control_input_sha256": "f5fb8a85188c6eb808062e88e49fb6d76f93a0840e7649287f91eecd335412e5",
+      "details": {
+        "issue_count": 62
+      },
+      "family": "release",
+      "id": "release-duplicate-release-id",
+      "observed_codes": [
+        "ARTIFACT_OUTSIDE_RELEASE_ROOT",
+        "CURRENT_RELEASE_CARDINALITY",
+        "DANGLING_INHERITED_RELEASE",
+        "DUPLICATE_RELEASE_ID",
+        "FROZEN_RELEASE_DRIFT",
+        "FROZEN_RELEASE_STATUS",
+        "HISTORICAL_ARTIFACT_ORIGIN",
+        "INHERITED_PATH_OUTSIDE_SOURCE_ROOT",
+        "RECORD_INHERITANCE_SET",
+        "RELEASE_SET_OR_ORDER",
+        "SCHEMA_VALIDATION",
+        "V04_CHECKSUM_DERIVATION_SOURCES",
+        "V04_NATIVE_ARTIFACT_SET",
+        "V04_NATIVE_ORIGIN",
+        "V04_NORMATIVE_INPUT_SET",
+        "V04_REQUIREMENT_COVERAGE",
+        "V04_SHAPE_DERIVATION_SOURCE"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "DUPLICATE_RELEASE_ID"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-duplicate-artifact-id.json",
+      "control_input_sha256": "75343e21f3cbf39415a21e9ecffea0715e52afa52cec7d4d071aaaea563f037e",
+      "details": {
+        "issue_count": 3
+      },
+      "family": "release",
+      "id": "release-duplicate-artifact-id",
+      "observed_codes": [
+        "DANGLING_ARTIFACT_SOURCE_REFERENCE",
+        "DUPLICATE_ARTIFACT_ID",
+        "V04_CHECKSUM_DERIVATION_SOURCES"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "DUPLICATE_ARTIFACT_ID"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-dangling-prior.json",
+      "control_input_sha256": "c11aa929ac7837e456cb4c8fdc395cd581b503b274e692e85fb9e7843099fee0",
+      "details": {
+        "issue_count": 4
+      },
+      "family": "release",
+      "id": "release-dangling-prior",
+      "observed_codes": [
+        "DANGLING_PRIOR_RELEASE",
+        "PRIOR_RELEASE_CHAIN",
+        "SCHEMA_VALIDATION"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "DANGLING_PRIOR_RELEASE"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-prior-cycle.json",
+      "control_input_sha256": "4ba5780ca1b852cbb6d059a4744682176c0477e9d03fc4b92f27055181625a05",
+      "details": {
+        "issue_count": 3
+      },
+      "family": "release",
+      "id": "release-prior-cycle",
+      "observed_codes": [
+        "PRIOR_RELEASE_CHAIN",
+        "PRIOR_RELEASE_CYCLE",
+        "SCHEMA_VALIDATION"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "PRIOR_RELEASE_CYCLE"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-dangling-inherited-release.json",
+      "control_input_sha256": "94764871505b3c653d73630a8318964304900c6301d5017c4a0b034ffa82d6ec",
+      "details": {
+        "issue_count": 3
+      },
+      "family": "release",
+      "id": "release-dangling-inherited-release",
+      "observed_codes": [
+        "DANGLING_INHERITED_ARTIFACT",
+        "DANGLING_INHERITED_RELEASE",
+        "SCHEMA_VALIDATION"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "DANGLING_INHERITED_RELEASE"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-dangling-inherited-artifact.json",
+      "control_input_sha256": "b10d957e0643e4f2509c034202900568a097ce2bfd730ab92e59cb1439b1a14c",
+      "details": {
+        "issue_count": 1
+      },
+      "family": "release",
+      "id": "release-dangling-inherited-artifact",
+      "observed_codes": [
+        "DANGLING_INHERITED_ARTIFACT"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "DANGLING_INHERITED_ARTIFACT"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-dangling-source.json",
+      "control_input_sha256": "b25b5022f3b29a7520a941cc629f5848fd9de43c0ffed2740256e17551025bd7",
+      "details": {
+        "issue_count": 2
+      },
+      "family": "release",
+      "id": "release-dangling-source",
+      "observed_codes": [
+        "DANGLING_SOURCE_REFERENCE",
+        "V04_NORMATIVE_INPUT_SET"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "DANGLING_SOURCE_REFERENCE"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-dangling-requirement.json",
+      "control_input_sha256": "28f5a8ef2226a89df20041df8e007172a432f28444fd8d4acb99638ff4f35e3a",
+      "details": {
+        "issue_count": 2
+      },
+      "family": "release",
+      "id": "release-dangling-requirement",
+      "observed_codes": [
+        "DANGLING_REQUIREMENT_REFERENCE",
+        "V04_REQUIREMENT_COVERAGE"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "DANGLING_REQUIREMENT_REFERENCE"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-dangling-validator.json",
+      "control_input_sha256": "4e2162bf027e5df670052ab5850b598b160c9d6fd5f8be2548f73a4e9a9dbc70",
+      "details": {
+        "issue_count": 1
+      },
+      "family": "release",
+      "id": "release-dangling-validator",
+      "observed_codes": [
+        "DANGLING_VALIDATOR_REFERENCE"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "DANGLING_VALIDATOR_REFERENCE"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-dangling-artifact-source.json",
+      "control_input_sha256": "664a36a0ce4faca55c22a92fca7570ae482a2b0afe192aa21c106df8c45cab1d",
+      "details": {
+        "issue_count": 1
+      },
+      "family": "release",
+      "id": "release-dangling-artifact-source",
+      "observed_codes": [
+        "DANGLING_ARTIFACT_SOURCE_REFERENCE"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "DANGLING_ARTIFACT_SOURCE_REFERENCE"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-same-path-hash-conflict.json",
+      "control_input_sha256": "a85e282fb1aeccf1c8a0a553c377ff26fa5ed2dc1fc2a015e188faaea8d72674",
+      "details": {
+        "issue_count": 6
+      },
+      "family": "release",
+      "id": "release-same-path-hash-conflict",
+      "observed_codes": [
+        "HASH_MISMATCH",
+        "SAME_PATH_HASH_CONFLICT",
+        "SOURCE_BINDING_MISMATCH",
+        "V04_CHECKSUM_DERIVATION_SOURCES",
+        "V04_NATIVE_ARTIFACT_SET",
+        "V04_NATIVE_ORIGIN"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "SAME_PATH_HASH_CONFLICT"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "release",
+      "control_input_path": "build/phase-04/negative-controls/cases/release-inheritance-cycle.json",
+      "control_input_sha256": "3debfbd2b80914feed9bb3b4f8dfa2ea7eb707894baa88ebb3d3e7b72a39d111",
+      "details": {
+        "issue_count": 3
+      },
+      "family": "release",
+      "id": "release-inheritance-cycle",
+      "observed_codes": [
+        "HISTORICAL_ARTIFACT_ORIGIN",
+        "INHERITANCE_CYCLE",
+        "INHERITED_HASH_DRIFT"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "INHERITANCE_CYCLE"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "implementation",
+      "control_input_path": "build/phase-04/negative-controls/cases/requirements-implementation-omits-rule.json",
+      "control_input_sha256": "171a9af8c0e7c6fc6bb7da9867e49d562da8875856a81ac42aa62bae35bf14ef",
+      "details": {
+        "issue_count": 1
+      },
+      "family": "requirements",
+      "id": "requirements-implementation-omits-rule",
+      "observed_codes": [
+        "IMPLEMENTATION_COVERAGE_MISSING"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "IMPLEMENTATION_COVERAGE_MISSING"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "requirements",
+      "control_input_path": "build/phase-04/negative-controls/cases/requirements-duplicate-id.json",
+      "control_input_sha256": "c2e13502f2479f30679bbfe380880864d519f115bde91e1679b6820aa4b99100",
+      "details": {
+        "issue_count": 13
+      },
+      "family": "requirements",
+      "id": "requirements-duplicate-id",
+      "observed_codes": [
+        "DANGLING_REQUIREMENT_REFERENCE",
+        "DUPLICATE_REQUIREMENT_ID",
+        "PLANNED_CASE_COMPONENT_NOT_IN_REQUIREMENT",
+        "REQUIREMENT_ID_SET_OR_ORDER"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "DUPLICATE_REQUIREMENT_ID"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "requirements",
+      "control_input_path": "build/phase-04/negative-controls/cases/requirements-dangling-implementation-artifact.json",
+      "control_input_sha256": "252e3aafe80ec55b82e6d8854a165995db2586ad912084d7bf14f6c7c4c9dd9f",
+      "details": {
+        "issue_count": 1
+      },
+      "family": "requirements",
+      "id": "requirements-dangling-implementation-artifact",
+      "observed_codes": [
+        "DANGLING_IMPLEMENTED_REFERENCE"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "DANGLING_IMPLEMENTED_REFERENCE"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "requirements",
+      "control_input_path": "build/phase-04/negative-controls/cases/requirements-dangling-decision.json",
+      "control_input_sha256": "3366b5e3a1ce3c843ecb85ed82c2cb1ab30467495ca81cb3b368bac5a7b902e8",
+      "details": {
+        "issue_count": 1
+      },
+      "family": "requirements",
+      "id": "requirements-dangling-decision",
+      "observed_codes": [
+        "DANGLING_DECISION_REFERENCE"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "DANGLING_DECISION_REFERENCE"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "suites",
+      "control_input_path": "build/phase-04/negative-controls/cases/validation-suites-duplicate-suite-id.json",
+      "control_input_sha256": "15384f395641950b1a81e2fc66c7e72cf8e67a5c9e95b3304d95adf591ce3dbc",
+      "details": {
+        "issue_count": 4
+      },
+      "family": "validation-suites",
+      "id": "validation-suites-duplicate-suite-id",
+      "observed_codes": [
+        "duplicate_component",
+        "duplicate_suite_id",
+        "schema_violation",
+        "suite_order"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "duplicate_suite_id"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "suites",
+      "control_input_path": "build/phase-04/negative-controls/cases/validation-suites-dangling-dependency.json",
+      "control_input_sha256": "da1ba005e9321a3610fd0bf98ef81277ba3c9c4455daa4795d595cb0772ed563",
+      "details": {
+        "issue_count": 2
+      },
+      "family": "validation-suites",
+      "id": "validation-suites-dangling-dependency",
+      "observed_codes": [
+        "dangling_dependency",
+        "schema_violation"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "dangling_dependency"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "suites",
+      "control_input_path": "build/phase-04/negative-controls/cases/validation-suites-dependency-cycle.json",
+      "control_input_sha256": "10fe30f5032cb94fbd05d1d86ee0c32bbb73a27f44cb2ec1bc11eeeead1eb26f",
+      "details": {
+        "issue_count": 1
+      },
+      "family": "validation-suites",
+      "id": "validation-suites-dependency-cycle",
+      "observed_codes": [
+        "dependency_cycle"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "dependency_cycle"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "suites",
+      "control_input_path": "build/phase-04/negative-controls/cases/validation-suites-zero-component.json",
+      "control_input_sha256": "240b1b28f35333384a874383492768790a61e95ec4e4b47c3cc914cfe8cfea04",
+      "details": {
+        "issue_count": 2
+      },
+      "family": "validation-suites",
+      "id": "validation-suites-zero-component",
+      "observed_codes": [
+        "schema_violation",
+        "zero_components"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "zero_components"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "suites",
+      "control_input_path": "build/phase-04/negative-controls/cases/validation-suites-unknown-entrypoint.json",
+      "control_input_sha256": "4bde06679cd8442098b3fbafdff534b4a6bfb9cd27dafec5e7ba231679917fd9",
+      "details": {
+        "issue_count": 1
+      },
+      "family": "validation-suites",
+      "id": "validation-suites-unknown-entrypoint",
+      "observed_codes": [
+        "unknown_entrypoint"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "unknown_entrypoint"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "suites",
+      "control_input_path": "build/phase-04/negative-controls/cases/validation-suites-duplicate-component.json",
+      "control_input_sha256": "8b4f5cf562e7bf135a9aa02556d4edc7545d82fd08a907a1ccd57ab875124023",
+      "details": {
+        "issue_count": 2
+      },
+      "family": "validation-suites",
+      "id": "validation-suites-duplicate-component",
+      "observed_codes": [
+        "duplicate_component",
+        "duplicate_entrypoint"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "duplicate_component"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "suites",
+      "control_input_path": "build/phase-04/negative-controls/cases/validation-suites-shell-command-payload.json",
+      "control_input_sha256": "9c6105b1aa5bec210cca4a7ec58e7f04c5ac9ce5bddadb005d56f3cdf197c11e",
+      "details": {
+        "issue_count": 2
+      },
+      "family": "validation-suites",
+      "id": "validation-suites-shell-command-payload",
+      "observed_codes": [
+        "schema_violation",
+        "shell_payload"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "shell_payload"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "suites",
+      "control_input_path": "build/phase-04/negative-controls/cases/validation-suites-duplicate-dependency.json",
+      "control_input_sha256": "864d9ba655d749103189fe7b6ab6fa30e914abdeaf3f4e961f335b7426bb4fc3",
+      "details": {
+        "issue_count": 2
+      },
+      "family": "validation-suites",
+      "id": "validation-suites-duplicate-dependency",
+      "observed_codes": [
+        "duplicate_dependency",
+        "schema_violation"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "duplicate_dependency"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    },
+    {
+      "checker": "target-zero",
+      "details": {
+        "issue_count": 12,
+        "removed_target_statement_count": 4,
+        "zero_target_case_count": 6
+      },
+      "family": "model",
+      "id": "shacl-target-zero",
+      "observed_codes": [
+        "SHACL_TARGET_ZERO",
+        "SMOKE_ASSERTION_FAILED"
+      ],
+      "observed_exit_code": 1,
+      "passed": true,
+      "rejected": true,
+      "required_codes": [
+        "SHACL_TARGET_ZERO"
+      ],
+      "required_codes_present": true,
+      "shell_payload_sentinel_absent": true
+    }
+  ],
+  "diagnostic_baseline_bypassed": false,
+  "exit_code": 0,
+  "failed_count": 0,
+  "failed_ids": [],
+  "passed_count": 38,
+  "runner_path": "build/phase-04/negative-controls/run_phase04_controls.py",
+  "runner_sha256": "0cd8773254f233b1788be1f17caafc2d1e2ba221636ad33bff5a6af302f5529d",
+  "schema": "dssc.phase04.negative-controls.v1",
+  "selected_families": [
+    "model",
+    "release",
+    "requirements",
+    "validation-suites"
+  ],
+  "skipped_count": 0,
+  "source_hash_issues": [],
+  "source_hashes": {
+    "C_Semantic_Treehouse/manifests/release-manifest.json": "7d75676b898fdbc00c9b1da78900054aec5f426690822e07970200b5fd88076a",
+    "C_Semantic_Treehouse/manifests/schemas/release-manifest.schema.json": "9029520a45dfc9933cbd254d9cbf4c65e7669ecbd0b20cf916c793a09ac695d3",
+    "C_Semantic_Treehouse/manifests/schemas/v0.4-requirements.schema.json": "32a65c25e7a425e8550a17c42ed413c961ac004c3a9778b379bca52cc03d99fb",
+    "C_Semantic_Treehouse/manifests/schemas/validation-suites.schema.json": "70d436cd0509da2fcec8b602c1bffc5f00490d24c13c2ee47caf84791199802a",
+    "C_Semantic_Treehouse/manifests/v0.4-requirements.json": "53953e915d6da6159b342a04f1dc6d0ff6a8f53bd5892eb7933551710ebe014e",
+    "C_Semantic_Treehouse/manifests/validation-suites.json": "1ae6361e956c2bf41f86e987caf0879ce4483f76f9f1e042b0442edb3f049829",
+    "scripts/dssc_validation/baseline_manifest.py": "2af85f6324713e8557a538146e188301c183bfea2d0ab9743180fdc27a90c564",
+    "scripts/dssc_validation/d_group_contract.py": "64303239832ab1452bc09eda44afd75351fc36a0d96711c63a93c04f0ed04a57",
+    "scripts/dssc_validation/entrypoint_catalog.py": "e919ae67a42a53df466447b53d12d8604b92fb78b149471144d1db250800190e",
+    "scripts/dssc_validation/hashing.py": "7daa83ded49ee3a01e6692d0c0269ea640d27f050d13e1af726eb6976bf11fe3",
+    "scripts/dssc_validation/lock_contract.py": "4cfcf85b0d09fd05201358df41faf05c780a743dce5f6ced0080b3784f157d4d",
+    "scripts/dssc_validation/model_contract.py": "75e975db21b07fd2efe7210ddee4feb95682ab0821fbaaeaf4e765feda50686c",
+    "scripts/dssc_validation/model_validation.py": "f454b22c0cdc7c6400a2f13d8ef7d42bc7b04c6d5d6b9c573d87fff489929100",
+    "scripts/dssc_validation/release_manifest.py": "1969407851cfb24b502236b3308edf795633d73d0a6c3e97b63fe421f7141741",
+    "scripts/dssc_validation/requirements_registry.py": "2b34f9c959c7194f4b579abd3861ee636b78f538b2b8e852e3c05701ff3ee754",
+    "scripts/dssc_validation/suite_registry.py": "6ea31afe0675dff63c18c7871bb936584807289ce49f1d0f72730eb9d7e73ab0"
+  },
+  "status": "SUCCESS"
+}

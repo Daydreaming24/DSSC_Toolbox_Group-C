@@ -1,0 +1,16 @@
+PREFIX ex: <https://example.org/dssc-energy#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+
+SELECT ?kind ?property WHERE {
+  {
+    ex:DatasetClosedShape sh:property/sh:path ?property .
+    BIND ("allowed" AS ?kind)
+  }
+  UNION
+  {
+    ex:DatasetClosedShape sh:ignoredProperties/rdf:rest*/rdf:first ?property .
+    BIND ("ignored" AS ?kind)
+  }
+}
+ORDER BY ?kind ?property

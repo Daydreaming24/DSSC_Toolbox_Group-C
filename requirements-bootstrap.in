@@ -1,0 +1,8 @@
+# Direct bootstrap and lock-generation tools (not runtime validation deps).
+# The generated lock includes this complete toolchain and every transitive
+# dependency with SHA-256 hashes. Ordinary bootstrap consumes the lock only.
+
+pip==25.0.1
+pip-tools==7.4.1
+setuptools==75.8.2
+wheel==0.45.1

@@ -1,0 +1,71 @@
+# DSSC C Semantic Governance — fixed clean-room validation image (Phase 08)
+# Base: official CPython 3.12.10 slim, pinned by immutable digest.
+# Architecture boundary: multi-arch index digest below; primary tested platform
+# is linux/amd64 (Docker Desktop linux engine on Windows host).
+#
+# Index digest (multi-arch): sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db
+# linux/amd64 manifest:      sha256:97983fa8cc88343512862c62307159a82261c3528dc025f79e5a3f7af43e50b4
+
+FROM python:3.12.10-slim-bookworm@sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUTF8=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_CONFIG_FILE=/dev/null \
+    PIP_NO_CACHE_DIR=1 \
+    DSSC_VALIDATION_PROFILE=container \
+    DSSC_VALIDATION_CONTAINER_CONTRACT=dssc.phase01.container.v1-linux-amd64-python-3.12.10-fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db
+
+# Non-root user for validation runs.
+RUN useradd --create-home --uid 10001 --shell /usr/sbin/nologin dssc
+
+WORKDIR /workspace
+
+# The image is runnable without any host mount. Compose replaces only
+# /workspace/build with a Phase 08-specific evidence sink; all repository
+# sources remain image-owned. Pre-provision every planned Phase once so the
+# registry-selected active-Phase output never requires an image contract change.
+RUN mkdir -p /workspace/build/phase-01/current \
+    /workspace/build/phase-02/current \
+    /workspace/build/phase-03/current \
+    /workspace/build/phase-04/current \
+    /workspace/build/phase-05/current \
+    /workspace/build/phase-06/current \
+    /workspace/build/phase-07/current \
+    /workspace/build/phase-08/current \
+    /workspace/build/phase-09/current \
+    && chown -R dssc:dssc /workspace/build
+
+# Install dependencies first for layer caching. Copy only lock files.
+COPY requirements-bootstrap.lock requirements.lock /tmp/dssc-locks/
+
+# Normalize pip toolchain then install runtime lock with hash verification.
+# Always use this image's isolated python -m pip (never host/global pip).
+RUN python -I -m pip --isolated --disable-pip-version-check install --upgrade --no-cache-dir --index-url https://pypi.org/simple --require-hashes -r /tmp/dssc-locks/requirements-bootstrap.lock \
+    && python -I -c "from importlib.metadata import version; expected={'pip':'25.0.1','pip-tools':'7.4.1','setuptools':'75.8.2','wheel':'0.45.1'}; raise SystemExit(1 if any(version(k) != v for k, v in expected.items()) else 0)" \
+    && python -I -m pip --isolated --disable-pip-version-check install --no-cache-dir --index-url https://pypi.org/simple --require-hashes -r /tmp/dssc-locks/requirements.lock \
+    && python -I -m pip --isolated --disable-pip-version-check check \
+    && rm -rf /tmp/dssc-locks
+
+# Bind the immutable source commit and the build-time dirty state into the
+# clean-room image. These arguments are supplied by the host evidence run and
+# deliberately appear after dependency installation so the locked dependency
+# layers remain reusable.
+ARG DSSC_SOURCE_COMMIT=unknown
+ARG DSSC_SOURCE_DIRTY=unknown
+ENV DSSC_SOURCE_COMMIT=${DSSC_SOURCE_COMMIT} \
+    DSSC_SOURCE_DIRTY=${DSSC_SOURCE_DIRTY}
+LABEL org.opencontainers.image.revision=${DSSC_SOURCE_COMMIT} \
+      org.dssc.source-dirty=${DSSC_SOURCE_DIRTY}
+
+# Copy repository inputs needed for validation (including every frozen record).
+COPY --chown=dssc:dssc . /workspace
+
+USER dssc
+
+# ENTRYPOINT invokes the same scripts/validate.py used on the host.  The
+# default is the Phase 07-frozen public `all` suite; callers may still append a
+# public suite for focused diagnostics without changing the image logic.
+ENTRYPOINT ["python", "-I", "scripts/validate.py", "--profile", "container"]
+CMD ["--suite", "all"]

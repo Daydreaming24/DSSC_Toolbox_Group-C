@@ -1,0 +1,8 @@
+RepositoryPath	SourceRole	SourcePath	SHA256	Reason
+archive/v0_validation_reports/all-validations-report.md	v0-core-zip	C_Semantic_Treehouse/validation/all-validations-report.md	ee1477c4de0d74a62c44aea064ac2009c29f4ac8d32f4e742b455c3d7d55e728	personal absolute paths
+archive/v0_docs/phases/phase-08-ci-pipeline-and-final-repository-hardening.md	read-only-reference	v1_docs/phases/phase-08-ci-pipeline-and-final-repository-hardening.md	e3a4aa4b20e7143ac1e9b5c7426416533b68679ce648e7cf343241b4d69ef75e	personal absolute path
+archive/v0_evidence/C_Semantic_Treehouse/evidence/semantic-treehouse-local-deployment.md	v0-core-zip	C_Semantic_Treehouse/evidence/semantic-treehouse-local-deployment.md	981e1c841e17ac06d934a0f73ff8ae5e5c18ecdb327603871e313e6600a6f433	personal absolute path
+archive/v0_evidence/C_Semantic_Treehouse/evidence/treehouse-compose-candidates.txt	v0-core-zip	C_Semantic_Treehouse/evidence/treehouse-compose-candidates.txt	272e08b1e4cc0e6f6f067e0e487979678de5dd55ac9f5cbb1214fc5d216f01d3	personal absolute paths
+archive/v0_evidence/C_Semantic_Treehouse/evidence/treehouse-compose-file.txt	v0-core-zip	C_Semantic_Treehouse/evidence/treehouse-compose-file.txt	eac48402e77908c5ee8d8c50a0f80cef41b2c6801faf9c041847621eedf96f6c	personal absolute path
+archive/v0_evidence/C_Semantic_Treehouse/evidence/treehouse-docker-compose.log	v0-core-zip	C_Semantic_Treehouse/evidence/treehouse-docker-compose.log	0a5d79a0b72a9ae57beccdd749355709ecca056b1c82c6183daf978f88d3e62a	personal absolute and temporary paths
+archive/v0_phase_summaries/PHASE_8_SUMMARY.md	v0-core-zip	C_Semantic_Treehouse/PHASE_8_SUMMARY.md	4ab56c1aac032a51f7581db74cc90a8cd74687c37b29a05cd50036db45971579	personal absolute path

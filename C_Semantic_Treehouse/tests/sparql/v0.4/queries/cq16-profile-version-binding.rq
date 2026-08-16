@@ -1,0 +1,13 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+ASK WHERE {
+  <https://w3id.org/dssc-demo/building-energy/v0.4>
+      a owl:Ontology ;
+      owl:versionIRI <https://w3id.org/dssc-demo/building-energy/v0.4> ;
+      owl:priorVersion <https://w3id.org/dssc-demo/building-energy/v0.3> ;
+      owl:versionInfo "0.4" .
+  ?dataset a dcat:Dataset .
+  FILTER NOT EXISTS { ?dataset dct:conformsTo ?payloadVersion }
+}

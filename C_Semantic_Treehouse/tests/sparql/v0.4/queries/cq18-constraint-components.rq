@@ -1,0 +1,18 @@
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+
+SELECT DISTINCT ?constraintComponent WHERE {
+  VALUES (?predicate ?constraintComponent) {
+    (sh:minCount sh:MinCountConstraintComponent)
+    (sh:maxCount sh:MaxCountConstraintComponent)
+    (sh:datatype sh:DatatypeConstraintComponent)
+    (sh:minLength sh:MinLengthConstraintComponent)
+    (sh:pattern sh:PatternConstraintComponent)
+    (sh:in sh:InConstraintComponent)
+    (sh:nodeKind sh:NodeKindConstraintComponent)
+    (sh:sparql sh:SPARQLConstraintComponent)
+    (sh:closed sh:ClosedConstraintComponent)
+    (sh:property sh:PropertyConstraintComponent)
+  }
+  ?shape ?predicate ?constraintValue .
+}
+ORDER BY ?constraintComponent

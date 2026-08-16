@@ -1,0 +1,44 @@
+{
+  "@context": {
+    "ex": "https://example.org/dssc-energy#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dct": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Dataset": "dcat:Dataset",
+    "datasetId": "ex:datasetId",
+    "title": "dct:title",
+    "description": "dct:description",
+    "providerName": "ex:providerName",
+    "license": {
+      "@id": "dct:license",
+      "@type": "@id"
+    },
+    "spatial": "dct:spatial",
+    "frequency": "dct:accrualPeriodicity",
+    "unit": "ex:unit",
+    "temporalStart": {
+      "@id": "ex:temporalStart",
+      "@type": "xsd:date"
+    },
+    "temporalEnd": {
+      "@id": "ex:temporalEnd",
+      "@type": "xsd:date"
+    },
+    "endpointUrl": {
+      "@id": "dcat:endpointURL",
+      "@type": "@id"
+    },
+    "format": "dct:format"
+  },
+  "@id": "https://example.org/dssc-energy/datasets/building-energy-hourly-v1",
+  "@type": "Dataset",
+  "datasetId": "building-energy-hourly-v1",
+  "title": "Building Energy Consumption Dataset API",
+  "providerName": "Energy Data Provider Ltd.",
+  "frequency": "hourly",
+  "unit": "kWh",
+  "temporalStart": "2026-05-01",
+  "temporalEnd": "2026-05-02",
+  "endpointUrl": "https://api.example.org/energy/buildings/hourly",
+  "format": "application/json"
+}

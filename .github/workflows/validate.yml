@@ -1,0 +1,306 @@
+name: Validate C Semantic Governance Package
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ubuntu-native:
+    name: Ubuntu native Python validation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Set up CPython 3.12.10
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12.10"
+
+      - name: Bootstrap from hash locks
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHON_PATH="$(command -v python)" ./scripts/bootstrap.sh
+
+      - name: Verify installed dependency graph
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./.venv/bin/python -I -m pip --isolated --disable-pip-version-check check
+
+      - name: Run host doctor
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./.venv/bin/python -I scripts/doctor.py --profile host
+
+      - name: Check CI policy
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./.venv/bin/python -I scripts/check_ci.py
+          ./.venv/bin/python -I scripts/check_ci.py --self-test
+
+      - name: Validate frozen
+        shell: bash
+        run: ./scripts/validate.sh --suite frozen
+
+      - name: Validate environment
+        shell: bash
+        run: ./scripts/validate.sh --suite environment
+
+      - name: Validate baseline
+        shell: bash
+        run: ./scripts/validate.sh --suite baseline
+
+      - name: Validate traceability
+        shell: bash
+        run: ./scripts/validate.sh --suite traceability
+
+      - name: Validate v0.4 model
+        shell: bash
+        run: ./scripts/validate.sh --suite v0.4-model
+
+      - name: Validate v0.4 fixtures
+        shell: bash
+        run: ./scripts/validate.sh --suite v0.4
+
+      - name: Validate complete contract
+        shell: bash
+        run: ./scripts/validate.sh --suite all
+
+      - name: Summarize business and program status
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## Ubuntu validation status"
+            echo "### Business status"
+            echo "Fixture-level PASS, FAIL, INAPPLICABLE, and UNTESTABLE outcomes are recorded in the uploaded suite result JSON."
+            echo "### Program status"
+            echo "Authoritative SUCCESS or ERROR values and exit codes are recorded separately in the suite result JSON. GitHub job status: ${{ job.status }}."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload CI evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: validation-${{ github.job }}
+          path: |
+            build/**/*.json
+            build/**/*.md
+          if-no-files-found: error
+
+  windows-powershell:
+    name: Windows PowerShell 5.1 validation
+    runs-on: windows-2022
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Set up CPython 3.12.10
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12.10"
+
+      - name: Bootstrap from hash locks
+        shell: powershell
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $BasePython = (Get-Command python.exe -ErrorAction Stop).Source
+          & .\scripts\bootstrap.ps1 -PythonPath $BasePython
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Verify installed dependency graph
+        shell: powershell
+        run: |
+          & .\.venv\Scripts\python.exe -I -m pip --isolated --disable-pip-version-check check
+          exit $LASTEXITCODE
+
+      - name: Run host doctor
+        shell: powershell
+        run: |
+          & .\.venv\Scripts\python.exe -I scripts\doctor.py --profile host
+          exit $LASTEXITCODE
+
+      - name: Check CI policy
+        shell: powershell
+        run: |
+          & .\.venv\Scripts\python.exe -I scripts\check_ci.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & .\.venv\Scripts\python.exe -I scripts\check_ci.py --self-test
+          exit $LASTEXITCODE
+
+      - name: Validate frozen
+        shell: powershell
+        run: .\scripts\validate.ps1 -Suite frozen
+
+      - name: Validate environment
+        shell: powershell
+        run: .\scripts\validate.ps1 -Suite environment
+
+      - name: Validate baseline
+        shell: powershell
+        run: .\scripts\validate.ps1 -Suite baseline
+
+      - name: Validate traceability
+        shell: powershell
+        run: .\scripts\validate.ps1 -Suite traceability
+
+      - name: Validate v0.4 model
+        shell: powershell
+        run: .\scripts\validate.ps1 -Suite v0.4-model
+
+      - name: Validate v0.4 fixtures
+        shell: powershell
+        run: .\scripts\validate.ps1 -Suite v0.4
+
+      - name: Validate complete contract
+        shell: powershell
+        run: .\scripts\validate.ps1 -Suite all
+
+      - name: Summarize business and program status
+        if: always()
+        shell: powershell
+        run: |
+          @"
+          ## Windows validation status
+          ### Business status
+          Fixture-level PASS, FAIL, INAPPLICABLE, and UNTESTABLE outcomes are recorded in the uploaded suite result JSON.
+          ### Program status
+          Authoritative SUCCESS or ERROR values and exit codes are recorded separately in the suite result JSON. GitHub job status: ${{ job.status }}.
+          "@ | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8 -Append
+
+      - name: Upload CI evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: validation-${{ github.job }}
+          path: |
+            build/**/*.json
+            build/**/*.md
+          if-no-files-found: error
+
+  docker-clean-room:
+    name: Docker clean-room validation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Prepare isolated Docker evidence directory
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo install -d -o 10001 -g 10001 build/ci/docker
+          source_commit="$(git rev-parse HEAD)"
+          if [[ -n "$(git status --porcelain --untracked-files=all)" ]]; then
+            source_dirty=true
+          else
+            source_dirty=false
+          fi
+          {
+            echo "DSSC_SOURCE_COMMIT=$source_commit"
+            echo "DSSC_SOURCE_DIRTY=$source_dirty"
+          } >> "$GITHUB_ENV"
+
+      - name: Build fixed validation image without cache
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker compose -f docker-compose.validation.yml build --no-cache --pull validation
+
+      - name: Run container doctor
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker compose -f docker-compose.validation.yml run --rm --entrypoint python validation -I scripts/doctor.py --profile container
+
+      - name: Verify installed dependency graph
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker compose -f docker-compose.validation.yml run --rm --entrypoint python validation -I -m pip --isolated --disable-pip-version-check check
+
+      - name: Check CI policy in validation image
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker compose -f docker-compose.validation.yml run --rm --entrypoint python validation -I scripts/check_ci.py
+          docker compose -f docker-compose.validation.yml run --rm --entrypoint python validation -I scripts/check_ci.py --self-test
+
+      - name: Validate frozen
+        shell: bash
+        run: docker compose -f docker-compose.validation.yml run --rm validation --suite frozen
+
+      - name: Validate environment
+        shell: bash
+        run: docker compose -f docker-compose.validation.yml run --rm validation --suite environment
+
+      - name: Validate baseline
+        shell: bash
+        run: docker compose -f docker-compose.validation.yml run --rm validation --suite baseline
+
+      - name: Validate traceability
+        shell: bash
+        run: docker compose -f docker-compose.validation.yml run --rm validation --suite traceability
+
+      - name: Validate v0.4 model
+        shell: bash
+        run: docker compose -f docker-compose.validation.yml run --rm validation --suite v0.4-model
+
+      - name: Validate v0.4 fixtures
+        shell: bash
+        run: docker compose -f docker-compose.validation.yml run --rm validation --suite v0.4
+
+      - name: Validate complete contract
+        shell: bash
+        run: docker compose -f docker-compose.validation.yml run --rm validation --suite all
+
+      - name: Summarize business and program status
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            echo "## Docker validation status"
+            echo "### Business status"
+            echo "Fixture-level PASS, FAIL, INAPPLICABLE, and UNTESTABLE outcomes are recorded in the uploaded suite result JSON."
+            echo "### Program status"
+            echo "Authoritative SUCCESS or ERROR values and exit codes are recorded separately in the suite result JSON. GitHub job status: ${{ job.status }}."
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [[ -d build/ci/docker ]]; then
+            sudo chmod -R a+rX build/ci/docker
+          fi
+
+      - name: Upload CI evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: validation-${{ github.job }}
+          path: |
+            build/**/*.json
+            build/**/*.md
+          if-no-files-found: error

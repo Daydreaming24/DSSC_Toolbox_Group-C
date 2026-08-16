@@ -1,0 +1,40 @@
+{
+  "datasetId": "building-energy-hourly-v1",
+  "providerName": "Energy Data Provider Ltd.",
+  "license": "CC-BY-4.0",
+  "records": [
+    {
+      "buildingId": "BLD-001",
+      "meterId": "MTR-001",
+      "timestamp": "2026-05-01T00:00:00+08:00",
+      "energyKWh": 12.4,
+      "unit": "kWh",
+      "location": {
+        "city": "Shenzhen",
+        "district": "Nanshan"
+      }
+    },
+    {
+      "buildingId": "BLD-001",
+      "meterId": "MTR-001",
+      "timestamp": "2026-05-01T01:00:00+08:00",
+      "energyKWh": 10.9,
+      "unit": "kWh",
+      "location": {
+        "city": "Shenzhen",
+        "district": "Nanshan"
+      }
+    },
+    {
+      "buildingId": "BLD-002",
+      "meterId": "MTR-014",
+      "timestamp": "2026-05-01T00:00:00+08:00",
+      "energyKWh": 21.7,
+      "unit": "kWh",
+      "location": {
+        "city": "Shenzhen",
+        "district": "Futian"
+      }
+    }
+  ]
+}

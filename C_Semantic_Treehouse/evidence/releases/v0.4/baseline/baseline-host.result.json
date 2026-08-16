@@ -1,0 +1,2799 @@
+{
+  "artifact_hashes": [
+    {
+      "id": "baseline-expected-results",
+      "kind": "reference",
+      "path": "C_Semantic_Treehouse/validation/expected-results.md",
+      "release": "baseline",
+      "sha256": "f8865dc12d4c511e074de87f2bdfbdab5954a9a1be734bd75a66523642eb862d",
+      "size_bytes": 3513
+    },
+    {
+      "id": "sparql-competency-questions",
+      "kind": "reference",
+      "path": "C_Semantic_Treehouse/tests/sparql/competency-questions.md",
+      "release": "baseline",
+      "sha256": "dc8bb2a44e4f222efb36d3461098b8b926428b6af7a90aafba4236606bfd2218",
+      "size_bytes": 1094
+    },
+    {
+      "id": "v01-ontology",
+      "kind": "ontology",
+      "path": "C_Semantic_Treehouse/model/v0.1/building-energy-ontology.ttl",
+      "release": "v0.1",
+      "sha256": "c851b37acfca56e72913475ed8b6048a617214b149be8beffb0858dc36c5bcac",
+      "size_bytes": 1795
+    },
+    {
+      "id": "v01-metadata-context",
+      "kind": "context",
+      "path": "C_Semantic_Treehouse/model/v0.1/data-product-context.jsonld",
+      "release": "v0.1",
+      "sha256": "5bd7e049128f249879f3a52e93d979acfc14b8cabcb828a4e966379b243b05cc",
+      "size_bytes": 521
+    },
+    {
+      "id": "v01-metadata-shapes",
+      "kind": "shapes",
+      "path": "C_Semantic_Treehouse/model/v0.1/data-product-metadata-shapes.ttl",
+      "release": "v0.1",
+      "sha256": "7f93a41b0aa70478a6398b3ee223d13a7dbb64f5dd2cc9409e51a64c60912721",
+      "size_bytes": 1291
+    },
+    {
+      "id": "v01-metadata-valid",
+      "kind": "data",
+      "path": "C_Semantic_Treehouse/model/v0.1/data-product-valid.jsonld",
+      "release": "v0.1",
+      "sha256": "1f99d51492f7bfac467fac6cda4827f98f770ffd6947d934996367b046aaf86c",
+      "size_bytes": 426
+    },
+    {
+      "id": "v02-ontology",
+      "kind": "ontology",
+      "path": "C_Semantic_Treehouse/model/v0.2/building-energy-ontology.ttl",
+      "release": "v0.2",
+      "sha256": "800f74d26133fd0c111747113945029ccd2edeca990cad5d893007a973032631",
+      "size_bytes": 2927
+    },
+    {
+      "id": "v02-metadata-context",
+      "kind": "context",
+      "path": "C_Semantic_Treehouse/model/v0.2/data-product-context.jsonld",
+      "release": "v0.2",
+      "sha256": "fe96dd475dd5d116d6271ad1b14a3228f59686a865313ac2dbb81d6c91b6da2a",
+      "size_bytes": 798
+    },
+    {
+      "id": "v02-metadata-invalid",
+      "kind": "data",
+      "path": "C_Semantic_Treehouse/model/v0.2/data-product-invalid.jsonld",
+      "release": "v0.2",
+      "sha256": "9fe8164622db3fb54fe72ed7411fa10c45dafce6c63122151360249ca08431e2",
+      "size_bytes": 513
+    },
+    {
+      "id": "v02-metadata-shapes",
+      "kind": "shapes",
+      "path": "C_Semantic_Treehouse/model/v0.2/data-product-metadata-shapes.ttl",
+      "release": "v0.2",
+      "sha256": "1a8bbcf62022313488d227969e47285537dda1c7347e787399eff8d2229ab351",
+      "size_bytes": 2107
+    },
+    {
+      "id": "v02-metadata-valid",
+      "kind": "data",
+      "path": "C_Semantic_Treehouse/model/v0.2/data-product-valid.jsonld",
+      "release": "v0.2",
+      "sha256": "34aadddd5523c12fa8bab6cc3c7c31c161168284b5d9be853e36ee03ecc38f5a",
+      "size_bytes": 575
+    },
+    {
+      "id": "v03-ontology",
+      "kind": "ontology",
+      "path": "C_Semantic_Treehouse/model/v0.3/building-energy-ontology.ttl",
+      "release": "v0.3",
+      "sha256": "b3081a4ea960e7b90f4a2e836e99dfa092f29346106cd1e2b9f7c58b0d598e7d",
+      "size_bytes": 5238
+    },
+    {
+      "id": "v03-metadata-context",
+      "kind": "context",
+      "path": "C_Semantic_Treehouse/model/v0.3/data-product-context.jsonld",
+      "release": "v0.3",
+      "sha256": "fe96dd475dd5d116d6271ad1b14a3228f59686a865313ac2dbb81d6c91b6da2a",
+      "size_bytes": 798
+    },
+    {
+      "id": "v03-metadata-shapes",
+      "kind": "shapes",
+      "path": "C_Semantic_Treehouse/model/v0.3/data-product-metadata-shapes.ttl",
+      "release": "v0.3",
+      "sha256": "3241483f15de178c6e1f8d40ea931e600975cddcb1e30845ae2dbf747e734a2f",
+      "size_bytes": 2107
+    },
+    {
+      "id": "v03-metadata-valid",
+      "kind": "data",
+      "path": "C_Semantic_Treehouse/model/v0.3/data-product-valid.jsonld",
+      "release": "v0.3",
+      "sha256": "ab16fcafc72a7af02e7fba079f37a6216ac89356504e755377b2ba9cf3afab21",
+      "size_bytes": 575
+    },
+    {
+      "id": "v03-record-schema",
+      "kind": "json-schema",
+      "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record.schema.json",
+      "release": "v0.3",
+      "sha256": "dd07414e3752bf582bf5e721009064e16d7be3e1e06d60daaad08000869ccfa9",
+      "size_bytes": 1662
+    },
+    {
+      "id": "v03-record-context",
+      "kind": "context",
+      "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-context.jsonld",
+      "release": "v0.3",
+      "sha256": "9727da9b8650dc444d719113a6978a3a26a59bfd1fde011a98e4c1f4b476f748",
+      "size_bytes": 720
+    },
+    {
+      "id": "v03-record-invalid",
+      "kind": "data",
+      "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-invalid.jsonld",
+      "release": "v0.3",
+      "sha256": "e516f6a8e4ea811170c72e922b86ac7ea46594046704d01a55a2c8e13cd8f358",
+      "size_bytes": 405
+    },
+    {
+      "id": "v03-record-shapes",
+      "kind": "shapes",
+      "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-shapes.ttl",
+      "release": "v0.3",
+      "sha256": "84d1eee9cfeecd1791117552611e83d36af7df4f3b4c783ddbd75d45bae66c9a",
+      "size_bytes": 1520
+    },
+    {
+      "id": "v03-record-valid",
+      "kind": "data",
+      "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-valid.jsonld",
+      "release": "v0.3",
+      "sha256": "8f7509ad08fb9a62cdff1d6c904801c9421c3ce768bdd9ecb651cd480aa158e1",
+      "size_bytes": 454
+    },
+    {
+      "id": "v03-openapi",
+      "kind": "openapi",
+      "path": "C_Semantic_Treehouse/model/v0.3/openapi-fragment.yaml",
+      "release": "v0.3",
+      "sha256": "d0f52629f625f7b6656854e352be01b9c40b8d2a943dca0423b70cff168a473c",
+      "size_bytes": 2089
+    },
+    {
+      "id": "cq01-query",
+      "kind": "sparql-query",
+      "path": "C_Semantic_Treehouse/tests/sparql/queries/cq01-dataset-id.rq",
+      "release": "v0.3",
+      "sha256": "7964d1ba924602d827beb5c1cbe7c8c7af7331520cf76c87d7aefa5ffe86c9e4",
+      "size_bytes": 223
+    },
+    {
+      "id": "cq01-expected",
+      "kind": "expected-tsv",
+      "path": "C_Semantic_Treehouse/tests/sparql/expected/cq01-dataset-id.tsv",
+      "release": "v0.3",
+      "sha256": "48d4acfe26a34b362d5ba5670b8f35b34fbdd7cf71ad2e8f0facec694957c17d",
+      "size_bytes": 36
+    },
+    {
+      "id": "cq02-query",
+      "kind": "sparql-query",
+      "path": "C_Semantic_Treehouse/tests/sparql/queries/cq02-provider.rq",
+      "release": "v0.3",
+      "sha256": "0b468d38158039ba2fff4083d7d6df021425cbb02410ac75a23f6e9ca9be747a",
+      "size_bytes": 193
+    },
+    {
+      "id": "cq02-expected",
+      "kind": "expected-tsv",
+      "path": "C_Semantic_Treehouse/tests/sparql/expected/cq02-provider.tsv",
+      "release": "v0.3",
+      "sha256": "1dc6bbceaf5e4d09f9192613f299552b82295dd34edbd24c662b601ab9742de2",
+      "size_bytes": 39
+    },
+    {
+      "id": "cq03-query",
+      "kind": "sparql-query",
+      "path": "C_Semantic_Treehouse/tests/sparql/queries/cq03-endpoint.rq",
+      "release": "v0.3",
+      "sha256": "ccac37c49f83a4b5608af465a8f62df4a24d0295fe8f71322b99e15384188584",
+      "size_bytes": 189
+    },
+    {
+      "id": "cq03-expected",
+      "kind": "expected-tsv",
+      "path": "C_Semantic_Treehouse/tests/sparql/expected/cq03-endpoint.tsv",
+      "release": "v0.3",
+      "sha256": "69bacd4ad88ecb0066def483a8f778cd652a1d0dddf2e343195c198557120b51",
+      "size_bytes": 60
+    },
+    {
+      "id": "cq04-query",
+      "kind": "sparql-query",
+      "path": "C_Semantic_Treehouse/tests/sparql/queries/cq04-format-frequency.rq",
+      "release": "v0.3",
+      "sha256": "f5f88522cd4509acb0ebd7402833fb9f9d181d5773de492e48724ba5fa21c539",
+      "size_bytes": 228
+    },
+    {
+      "id": "cq04-expected",
+      "kind": "expected-tsv",
+      "path": "C_Semantic_Treehouse/tests/sparql/expected/cq04-format-frequency.tsv",
+      "release": "v0.3",
+      "sha256": "c5c13dc9d6eb801fe4c3b46a8daa0bc6b1e553324e6e5872fa4d8c1e6348b526",
+      "size_bytes": 29
+    },
+    {
+      "id": "cq05-query",
+      "kind": "sparql-query",
+      "path": "C_Semantic_Treehouse/tests/sparql/queries/cq05-unit.rq",
+      "release": "v0.3",
+      "sha256": "ce92a6d39530488b73dde4a7103b35078bdf0421a3769e4812e86923f80cdaff",
+      "size_bytes": 161
+    },
+    {
+      "id": "cq05-expected",
+      "kind": "expected-tsv",
+      "path": "C_Semantic_Treehouse/tests/sparql/expected/cq05-unit.tsv",
+      "release": "v0.3",
+      "sha256": "c5a3d03175d27f556f2a478dd22ece03c110ee5798a3a541edf94b5b7727ae51",
+      "size_bytes": 9
+    },
+    {
+      "id": "cq06-query",
+      "kind": "sparql-query",
+      "path": "C_Semantic_Treehouse/tests/sparql/queries/cq06-coverage.rq",
+      "release": "v0.3",
+      "sha256": "fc4ef70bb3ac15d6b8a5ee3ecc9e72eddca1adae6706c941712228c0c84d1670",
+      "size_bytes": 347
+    },
+    {
+      "id": "cq06-expected",
+      "kind": "expected-tsv",
+      "path": "C_Semantic_Treehouse/tests/sparql/expected/cq06-coverage.tsv",
+      "release": "v0.3",
+      "sha256": "137e0beb4bfb8f24f207a454e1eec0d724ec9faf65df1d90591beab811c57a34",
+      "size_bytes": 87
+    },
+    {
+      "id": "cq07-query",
+      "kind": "sparql-query",
+      "path": "C_Semantic_Treehouse/tests/sparql/queries/cq07-conforms-to.rq",
+      "release": "v0.3",
+      "sha256": "d9c73ec6f6e83295be47c908146ce9770b484fb24e2520c1381dc7639e0e1cfe",
+      "size_bytes": 232
+    },
+    {
+      "id": "cq07-expected",
+      "kind": "expected-tsv",
+      "path": "C_Semantic_Treehouse/tests/sparql/expected/cq07-conforms-to.tsv",
+      "release": "v0.3",
+      "sha256": "1b85c26bcc6c64153ee5eb323667594d61ef3c1413ba01564a3c6ae8db5cba08",
+      "size_bytes": 61
+    },
+    {
+      "id": "cq08-query",
+      "kind": "sparql-query",
+      "path": "C_Semantic_Treehouse/tests/sparql/queries/cq08-record-fields.rq",
+      "release": "v0.3",
+      "sha256": "2111de056c7f7303821ef11012b8e246eb857b187a54c8ff07df6ba66788531b",
+      "size_bytes": 304
+    },
+    {
+      "id": "cq08-expected",
+      "kind": "expected-tsv",
+      "path": "C_Semantic_Treehouse/tests/sparql/expected/cq08-record-fields.tsv",
+      "release": "v0.3",
+      "sha256": "b023b694a37bd01d0b8b8402f258326448b745373b12b53d9369de6046c6294a",
+      "size_bytes": 379
+    }
+  ],
+  "case_results": [
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "parse_success",
+          "passed": true
+        },
+        {
+          "actual": 30,
+          "expected": 30,
+          "name": "triple_count",
+          "passed": true
+        }
+      ],
+      "category": "rdf",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "rdf-v0-1-ontology",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.1",
+      "validator": "rdflib-turtle"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "parse_success",
+          "passed": true
+        },
+        {
+          "actual": 32,
+          "expected": 32,
+          "name": "triple_count",
+          "passed": true
+        }
+      ],
+      "category": "rdf",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "rdf-v0-1-metadata-shapes",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.1",
+      "validator": "rdflib-turtle"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "parse_success",
+          "passed": true
+        },
+        {
+          "actual": 54,
+          "expected": 54,
+          "name": "triple_count",
+          "passed": true
+        }
+      ],
+      "category": "rdf",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "rdf-v0-2-ontology",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.2",
+      "validator": "rdflib-turtle"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "parse_success",
+          "passed": true
+        },
+        {
+          "actual": 62,
+          "expected": 62,
+          "name": "triple_count",
+          "passed": true
+        }
+      ],
+      "category": "rdf",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "rdf-v0-2-metadata-shapes",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.2",
+      "validator": "rdflib-turtle"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "parse_success",
+          "passed": true
+        },
+        {
+          "actual": 101,
+          "expected": 101,
+          "name": "triple_count",
+          "passed": true
+        }
+      ],
+      "category": "rdf",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "rdf-v0-3-ontology",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "rdflib-turtle"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "parse_success",
+          "passed": true
+        },
+        {
+          "actual": 62,
+          "expected": 62,
+          "name": "triple_count",
+          "passed": true
+        }
+      ],
+      "category": "rdf",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "rdf-v0-3-metadata-shapes",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "rdflib-turtle"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "parse_success",
+          "passed": true
+        },
+        {
+          "actual": 40,
+          "expected": 40,
+          "name": "triple_count",
+          "passed": true
+        }
+      ],
+      "category": "rdf",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "rdf-v0-3-record-shapes",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "rdflib-turtle"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "json_parse_success",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "network_request_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "offline_expansion_success",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "top_level_node_count",
+          "passed": true
+        }
+      ],
+      "category": "jsonld",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "jsonld-v0-1-metadata-context",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.1",
+      "validator": "pyld-jsonld"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "json_parse_success",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "network_request_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "offline_expansion_success",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "top_level_node_count",
+          "passed": true
+        }
+      ],
+      "category": "jsonld",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "jsonld-v0-1-metadata-valid",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.1",
+      "validator": "pyld-jsonld"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "json_parse_success",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "network_request_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "offline_expansion_success",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "top_level_node_count",
+          "passed": true
+        }
+      ],
+      "category": "jsonld",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "jsonld-v0-2-metadata-context",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.2",
+      "validator": "pyld-jsonld"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "json_parse_success",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "network_request_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "offline_expansion_success",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "top_level_node_count",
+          "passed": true
+        }
+      ],
+      "category": "jsonld",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "jsonld-v0-2-metadata-valid",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.2",
+      "validator": "pyld-jsonld"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "json_parse_success",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "network_request_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "offline_expansion_success",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "top_level_node_count",
+          "passed": true
+        }
+      ],
+      "category": "jsonld",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "jsonld-v0-2-metadata-invalid",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.2",
+      "validator": "pyld-jsonld"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "json_parse_success",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "network_request_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "offline_expansion_success",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "top_level_node_count",
+          "passed": true
+        }
+      ],
+      "category": "jsonld",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "jsonld-v0-3-metadata-context",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "pyld-jsonld"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "json_parse_success",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "network_request_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "offline_expansion_success",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "top_level_node_count",
+          "passed": true
+        }
+      ],
+      "category": "jsonld",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "jsonld-v0-3-metadata-valid",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "pyld-jsonld"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "json_parse_success",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "network_request_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "offline_expansion_success",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "top_level_node_count",
+          "passed": true
+        }
+      ],
+      "category": "jsonld",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "jsonld-v0-3-record-context",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "pyld-jsonld"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "json_parse_success",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "network_request_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "offline_expansion_success",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "top_level_node_count",
+          "passed": true
+        }
+      ],
+      "category": "jsonld",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "jsonld-v0-3-record-valid",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "pyld-jsonld"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "json_parse_success",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "network_request_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "offline_expansion_success",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "top_level_node_count",
+          "passed": true
+        }
+      ],
+      "category": "jsonld",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "jsonld-v0-3-record-invalid",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "pyld-jsonld"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "conforms",
+          "passed": true
+        },
+        {
+          "actual": {
+            "abort_on_first": false,
+            "advanced": false,
+            "allow_infos": false,
+            "allow_warnings": false,
+            "inference": "none",
+            "meta_shacl": true
+          },
+          "expected": {
+            "abort_on_first": false,
+            "advanced": false,
+            "allow_infos": false,
+            "allow_warnings": false,
+            "inference": "none",
+            "meta_shacl": true
+          },
+          "name": "engine_config",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "graphs_separate",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "info_count",
+          "passed": true
+        },
+        {
+          "actual": [],
+          "expected": [],
+          "name": "normalized_results",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "expected": false,
+          "name": "owl_imports",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "report_conforms",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "result_count",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": {
+            "minimum": 1
+          },
+          "name": "target_activation_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "target_activation_nonzero",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "violation_count",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "warning_count",
+          "passed": true
+        }
+      ],
+      "category": "shacl",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "shacl-v0-1-metadata-valid",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.1",
+      "validator": "pyshacl"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "conforms",
+          "passed": true
+        },
+        {
+          "actual": {
+            "abort_on_first": false,
+            "advanced": false,
+            "allow_infos": false,
+            "allow_warnings": false,
+            "inference": "none",
+            "meta_shacl": true
+          },
+          "expected": {
+            "abort_on_first": false,
+            "advanced": false,
+            "allow_infos": false,
+            "allow_warnings": false,
+            "inference": "none",
+            "meta_shacl": true
+          },
+          "name": "engine_config",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "graphs_separate",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "info_count",
+          "passed": true
+        },
+        {
+          "actual": [],
+          "expected": [],
+          "name": "normalized_results",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "expected": false,
+          "name": "owl_imports",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "report_conforms",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "result_count",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": {
+            "minimum": 1
+          },
+          "name": "target_activation_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "target_activation_nonzero",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "violation_count",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "warning_count",
+          "passed": true
+        }
+      ],
+      "category": "shacl",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "shacl-v0-2-metadata-valid",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.2",
+      "validator": "pyshacl"
+    },
+    {
+      "actual_business_status": "FAIL",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "FAIL",
+          "expected": "FAIL",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "expected": false,
+          "name": "conforms",
+          "passed": true
+        },
+        {
+          "actual": {
+            "abort_on_first": false,
+            "advanced": false,
+            "allow_infos": false,
+            "allow_warnings": false,
+            "inference": "none",
+            "meta_shacl": true
+          },
+          "expected": {
+            "abort_on_first": false,
+            "advanced": false,
+            "allow_infos": false,
+            "allow_warnings": false,
+            "inference": "none",
+            "meta_shacl": true
+          },
+          "name": "engine_config",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "graphs_separate",
+          "passed": true
+        },
+        {
+          "actual": [
+            {
+              "constraint_component": "http://www.w3.org/ns/shacl#InConstraintComponent",
+              "count": 1,
+              "focus_node": "https://w3id.org/dssc-demo/building-energy/data-product/building-energy-hourly-v1-invalid",
+              "message": "unit must be kWh in v0.2.",
+              "path": "https://w3id.org/dssc-demo/building-energy#unit",
+              "severity": "http://www.w3.org/ns/shacl#Violation",
+              "source_shape": {
+                "kind": "anonymous-property-shape",
+                "owner_node_shape": "https://w3id.org/dssc-demo/building-energy#DataProductMetadataShape-v0_2"
+              }
+            },
+            {
+              "constraint_component": "http://www.w3.org/ns/shacl#MinCountConstraintComponent",
+              "count": 1,
+              "focus_node": "https://w3id.org/dssc-demo/building-energy/data-product/building-energy-hourly-v1-invalid",
+              "message": "providerName is required and must be a string.",
+              "path": "https://w3id.org/dssc-demo/building-energy#providerName",
+              "severity": "http://www.w3.org/ns/shacl#Violation",
+              "source_shape": {
+                "kind": "anonymous-property-shape",
+                "owner_node_shape": "https://w3id.org/dssc-demo/building-energy#DataProductMetadataShape-v0_2"
+              }
+            },
+            {
+              "constraint_component": "http://www.w3.org/ns/shacl#MinCountConstraintComponent",
+              "count": 1,
+              "focus_node": "https://w3id.org/dssc-demo/building-energy/data-product/building-energy-hourly-v1-invalid",
+              "message": "temporalEnd is required and must be an xsd:date.",
+              "path": "https://w3id.org/dssc-demo/building-energy#temporalEnd",
+              "severity": "http://www.w3.org/ns/shacl#Violation",
+              "source_shape": {
+                "kind": "anonymous-property-shape",
+                "owner_node_shape": "https://w3id.org/dssc-demo/building-energy#DataProductMetadataShape-v0_2"
+              }
+            }
+          ],
+          "expected": [
+            {
+              "constraint_component": "http://www.w3.org/ns/shacl#InConstraintComponent",
+              "count": 1,
+              "focus_node": "https://w3id.org/dssc-demo/building-energy/data-product/building-energy-hourly-v1-invalid",
+              "message": "unit must be kWh in v0.2.",
+              "path": "https://w3id.org/dssc-demo/building-energy#unit",
+              "severity": "http://www.w3.org/ns/shacl#Violation",
+              "source_shape": {
+                "kind": "anonymous-property-shape",
+                "owner_node_shape": "https://w3id.org/dssc-demo/building-energy#DataProductMetadataShape-v0_2"
+              }
+            },
+            {
+              "constraint_component": "http://www.w3.org/ns/shacl#MinCountConstraintComponent",
+              "count": 1,
+              "focus_node": "https://w3id.org/dssc-demo/building-energy/data-product/building-energy-hourly-v1-invalid",
+              "message": "providerName is required and must be a string.",
+              "path": "https://w3id.org/dssc-demo/building-energy#providerName",
+              "severity": "http://www.w3.org/ns/shacl#Violation",
+              "source_shape": {
+                "kind": "anonymous-property-shape",
+                "owner_node_shape": "https://w3id.org/dssc-demo/building-energy#DataProductMetadataShape-v0_2"
+              }
+            },
+            {
+              "constraint_component": "http://www.w3.org/ns/shacl#MinCountConstraintComponent",
+              "count": 1,
+              "focus_node": "https://w3id.org/dssc-demo/building-energy/data-product/building-energy-hourly-v1-invalid",
+              "message": "temporalEnd is required and must be an xsd:date.",
+              "path": "https://w3id.org/dssc-demo/building-energy#temporalEnd",
+              "severity": "http://www.w3.org/ns/shacl#Violation",
+              "source_shape": {
+                "kind": "anonymous-property-shape",
+                "owner_node_shape": "https://w3id.org/dssc-demo/building-energy#DataProductMetadataShape-v0_2"
+              }
+            }
+          ],
+          "name": "normalized_results",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "expected": false,
+          "name": "owl_imports",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "expected": false,
+          "name": "report_conforms",
+          "passed": true
+        },
+        {
+          "actual": 3,
+          "expected": {
+            "exact": 3
+          },
+          "name": "result_count",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": {
+            "minimum": 1
+          },
+          "name": "target_activation_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "target_activation_nonzero",
+          "passed": true
+        }
+      ],
+      "category": "shacl",
+      "expected_business_status": "FAIL",
+      "expected_program_status": "SUCCESS",
+      "id": "shacl-v0-2-metadata-invalid",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.2",
+      "validator": "pyshacl"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "conforms",
+          "passed": true
+        },
+        {
+          "actual": {
+            "abort_on_first": false,
+            "advanced": false,
+            "allow_infos": false,
+            "allow_warnings": false,
+            "inference": "none",
+            "meta_shacl": true
+          },
+          "expected": {
+            "abort_on_first": false,
+            "advanced": false,
+            "allow_infos": false,
+            "allow_warnings": false,
+            "inference": "none",
+            "meta_shacl": true
+          },
+          "name": "engine_config",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "graphs_separate",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "info_count",
+          "passed": true
+        },
+        {
+          "actual": [],
+          "expected": [],
+          "name": "normalized_results",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "expected": false,
+          "name": "owl_imports",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "report_conforms",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "result_count",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": {
+            "minimum": 1
+          },
+          "name": "target_activation_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "target_activation_nonzero",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "violation_count",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "warning_count",
+          "passed": true
+        }
+      ],
+      "category": "shacl",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "shacl-v0-3-metadata-valid",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "pyshacl"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "conforms",
+          "passed": true
+        },
+        {
+          "actual": {
+            "abort_on_first": false,
+            "advanced": false,
+            "allow_infos": false,
+            "allow_warnings": false,
+            "inference": "none",
+            "meta_shacl": true
+          },
+          "expected": {
+            "abort_on_first": false,
+            "advanced": false,
+            "allow_infos": false,
+            "allow_warnings": false,
+            "inference": "none",
+            "meta_shacl": true
+          },
+          "name": "engine_config",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "graphs_separate",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "info_count",
+          "passed": true
+        },
+        {
+          "actual": [],
+          "expected": [],
+          "name": "normalized_results",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "expected": false,
+          "name": "owl_imports",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "report_conforms",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "result_count",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": {
+            "minimum": 1
+          },
+          "name": "target_activation_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "target_activation_nonzero",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "violation_count",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "warning_count",
+          "passed": true
+        }
+      ],
+      "category": "shacl",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "shacl-v0-3-record-valid",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "pyshacl"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": {
+            "draft": "draft-07",
+            "format_checker": true
+          },
+          "expected": {
+            "draft": "draft-07",
+            "format_checker": true
+          },
+          "name": "engine_config",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": {
+            "exact": 0
+          },
+          "name": "error_count",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "external_reference_count",
+          "passed": true
+        },
+        {
+          "actual": [],
+          "expected": [],
+          "name": "normalized_errors",
+          "passed": true
+        }
+      ],
+      "category": "jsonschema",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "jsonschema-v0-3-record-valid",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "jsonschema-draft7"
+    },
+    {
+      "actual_business_status": "FAIL",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "FAIL",
+          "expected": "FAIL",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": {
+            "draft": "draft-07",
+            "format_checker": true
+          },
+          "expected": {
+            "draft": "draft-07",
+            "format_checker": true
+          },
+          "name": "engine_config",
+          "passed": true
+        },
+        {
+          "actual": 4,
+          "expected": {
+            "exact": 4
+          },
+          "name": "error_count",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "external_reference_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            {
+              "count": 1,
+              "instance_pointer": [
+                "energyKWh"
+              ],
+              "keyword": "type",
+              "message": "'12.4' is not of type 'number'",
+              "schema_pointer": [
+                "properties",
+                "energyKWh",
+                "type"
+              ]
+            },
+            {
+              "count": 1,
+              "instance_pointer": [
+                "timestamp"
+              ],
+              "keyword": "format",
+              "message": "'not-a-date-time' is not a 'date-time'",
+              "schema_pointer": [
+                "properties",
+                "timestamp",
+                "format"
+              ]
+            },
+            {
+              "count": 1,
+              "instance_pointer": [
+                "unit"
+              ],
+              "keyword": "enum",
+              "message": "'MWh' is not one of ['kWh']",
+              "schema_pointer": [
+                "properties",
+                "unit",
+                "enum"
+              ]
+            },
+            {
+              "count": 1,
+              "instance_pointer": [],
+              "keyword": "required",
+              "message": "'meterId' is a required property",
+              "schema_pointer": [
+                "required"
+              ]
+            }
+          ],
+          "expected": [
+            {
+              "count": 1,
+              "instance_pointer": [
+                "energyKWh"
+              ],
+              "keyword": "type",
+              "message": "'12.4' is not of type 'number'",
+              "schema_pointer": [
+                "properties",
+                "energyKWh",
+                "type"
+              ]
+            },
+            {
+              "count": 1,
+              "instance_pointer": [
+                "timestamp"
+              ],
+              "keyword": "format",
+              "message": "'not-a-date-time' is not a 'date-time'",
+              "schema_pointer": [
+                "properties",
+                "timestamp",
+                "format"
+              ]
+            },
+            {
+              "count": 1,
+              "instance_pointer": [
+                "unit"
+              ],
+              "keyword": "enum",
+              "message": "'MWh' is not one of ['kWh']",
+              "schema_pointer": [
+                "properties",
+                "unit",
+                "enum"
+              ]
+            },
+            {
+              "count": 1,
+              "instance_pointer": [],
+              "keyword": "required",
+              "message": "'meterId' is a required property",
+              "schema_pointer": [
+                "required"
+              ]
+            }
+          ],
+          "name": "normalized_errors",
+          "passed": true
+        }
+      ],
+      "category": "jsonschema",
+      "expected_business_status": "FAIL",
+      "expected_program_status": "SUCCESS",
+      "id": "jsonschema-v0-3-record-invalid",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "jsonschema-draft7"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": {
+            "full_validation": true,
+            "network_allowed": false
+          },
+          "expected": {
+            "full_validation": true,
+            "network_allowed": false
+          },
+          "name": "engine_config",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "external_reference_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "expected": true,
+          "name": "full_validation",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "network_request_count",
+          "passed": true
+        }
+      ],
+      "category": "openapi",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "openapi-v0-3-fragment-valid",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "openapi-spec-validator"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": {
+            "comparison": "exact-tsv",
+            "preserve_duplicates": true,
+            "sort_rows": true
+          },
+          "expected": {
+            "comparison": "exact-tsv",
+            "preserve_duplicates": true,
+            "sort_rows": true
+          },
+          "name": "engine_config",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "expected_tsv_row_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            "datasetId"
+          ],
+          "expected": [
+            "datasetId"
+          ],
+          "name": "expected_tsv_variables",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "result_row_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            "datasetId"
+          ],
+          "expected": [
+            "datasetId"
+          ],
+          "name": "result_variables",
+          "passed": true
+        },
+        {
+          "actual": {
+            "duplicates_preserved": true,
+            "sorted": true
+          },
+          "expected": {
+            "duplicates_preserved": true,
+            "sorted": true
+          },
+          "name": "row_materialization",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "service_clause_count",
+          "passed": true
+        },
+        {
+          "actual": {
+            "sha256": "48d4acfe26a34b362d5ba5670b8f35b34fbdd7cf71ad2e8f0facec694957c17d",
+            "utf8": "datasetId\nbuilding-energy-hourly-v1\n"
+          },
+          "expected": {
+            "sha256": "48d4acfe26a34b362d5ba5670b8f35b34fbdd7cf71ad2e8f0facec694957c17d",
+            "utf8": "datasetId\nbuilding-energy-hourly-v1\n"
+          },
+          "name": "tsv_bytes",
+          "passed": true
+        }
+      ],
+      "category": "sparql",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "sparql-cq01-dataset-id",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "rdflib-sparql"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": {
+            "comparison": "exact-tsv",
+            "preserve_duplicates": true,
+            "sort_rows": true
+          },
+          "expected": {
+            "comparison": "exact-tsv",
+            "preserve_duplicates": true,
+            "sort_rows": true
+          },
+          "name": "engine_config",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "expected_tsv_row_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            "providerName"
+          ],
+          "expected": [
+            "providerName"
+          ],
+          "name": "expected_tsv_variables",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "result_row_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            "providerName"
+          ],
+          "expected": [
+            "providerName"
+          ],
+          "name": "result_variables",
+          "passed": true
+        },
+        {
+          "actual": {
+            "duplicates_preserved": true,
+            "sorted": true
+          },
+          "expected": {
+            "duplicates_preserved": true,
+            "sorted": true
+          },
+          "name": "row_materialization",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "service_clause_count",
+          "passed": true
+        },
+        {
+          "actual": {
+            "sha256": "1dc6bbceaf5e4d09f9192613f299552b82295dd34edbd24c662b601ab9742de2",
+            "utf8": "providerName\nEnergy Data Provider Ltd.\n"
+          },
+          "expected": {
+            "sha256": "1dc6bbceaf5e4d09f9192613f299552b82295dd34edbd24c662b601ab9742de2",
+            "utf8": "providerName\nEnergy Data Provider Ltd.\n"
+          },
+          "name": "tsv_bytes",
+          "passed": true
+        }
+      ],
+      "category": "sparql",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "sparql-cq02-provider",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "rdflib-sparql"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": {
+            "comparison": "exact-tsv",
+            "preserve_duplicates": true,
+            "sort_rows": true
+          },
+          "expected": {
+            "comparison": "exact-tsv",
+            "preserve_duplicates": true,
+            "sort_rows": true
+          },
+          "name": "engine_config",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "expected_tsv_row_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            "endpointUrl"
+          ],
+          "expected": [
+            "endpointUrl"
+          ],
+          "name": "expected_tsv_variables",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "result_row_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            "endpointUrl"
+          ],
+          "expected": [
+            "endpointUrl"
+          ],
+          "name": "result_variables",
+          "passed": true
+        },
+        {
+          "actual": {
+            "duplicates_preserved": true,
+            "sorted": true
+          },
+          "expected": {
+            "duplicates_preserved": true,
+            "sorted": true
+          },
+          "name": "row_materialization",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "service_clause_count",
+          "passed": true
+        },
+        {
+          "actual": {
+            "sha256": "69bacd4ad88ecb0066def483a8f778cd652a1d0dddf2e343195c198557120b51",
+            "utf8": "endpointUrl\nhttps://api.example.org/energy/buildings/hourly\n"
+          },
+          "expected": {
+            "sha256": "69bacd4ad88ecb0066def483a8f778cd652a1d0dddf2e343195c198557120b51",
+            "utf8": "endpointUrl\nhttps://api.example.org/energy/buildings/hourly\n"
+          },
+          "name": "tsv_bytes",
+          "passed": true
+        }
+      ],
+      "category": "sparql",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "sparql-cq03-endpoint",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "rdflib-sparql"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": {
+            "comparison": "exact-tsv",
+            "preserve_duplicates": true,
+            "sort_rows": true
+          },
+          "expected": {
+            "comparison": "exact-tsv",
+            "preserve_duplicates": true,
+            "sort_rows": true
+          },
+          "name": "engine_config",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "expected_tsv_row_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            "format",
+            "frequency"
+          ],
+          "expected": [
+            "format",
+            "frequency"
+          ],
+          "name": "expected_tsv_variables",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "result_row_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            "format",
+            "frequency"
+          ],
+          "expected": [
+            "format",
+            "frequency"
+          ],
+          "name": "result_variables",
+          "passed": true
+        },
+        {
+          "actual": {
+            "duplicates_preserved": true,
+            "sorted": true
+          },
+          "expected": {
+            "duplicates_preserved": true,
+            "sorted": true
+          },
+          "name": "row_materialization",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "service_clause_count",
+          "passed": true
+        },
+        {
+          "actual": {
+            "sha256": "c5c13dc9d6eb801fe4c3b46a8daa0bc6b1e553324e6e5872fa4d8c1e6348b526",
+            "utf8": "format\tfrequency\nJSON\thourly\n"
+          },
+          "expected": {
+            "sha256": "c5c13dc9d6eb801fe4c3b46a8daa0bc6b1e553324e6e5872fa4d8c1e6348b526",
+            "utf8": "format\tfrequency\nJSON\thourly\n"
+          },
+          "name": "tsv_bytes",
+          "passed": true
+        }
+      ],
+      "category": "sparql",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "sparql-cq04-format-frequency",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "rdflib-sparql"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": {
+            "comparison": "exact-tsv",
+            "preserve_duplicates": true,
+            "sort_rows": true
+          },
+          "expected": {
+            "comparison": "exact-tsv",
+            "preserve_duplicates": true,
+            "sort_rows": true
+          },
+          "name": "engine_config",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "expected_tsv_row_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            "unit"
+          ],
+          "expected": [
+            "unit"
+          ],
+          "name": "expected_tsv_variables",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "result_row_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            "unit"
+          ],
+          "expected": [
+            "unit"
+          ],
+          "name": "result_variables",
+          "passed": true
+        },
+        {
+          "actual": {
+            "duplicates_preserved": true,
+            "sorted": true
+          },
+          "expected": {
+            "duplicates_preserved": true,
+            "sorted": true
+          },
+          "name": "row_materialization",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "service_clause_count",
+          "passed": true
+        },
+        {
+          "actual": {
+            "sha256": "c5a3d03175d27f556f2a478dd22ece03c110ee5798a3a541edf94b5b7727ae51",
+            "utf8": "unit\nkWh\n"
+          },
+          "expected": {
+            "sha256": "c5a3d03175d27f556f2a478dd22ece03c110ee5798a3a541edf94b5b7727ae51",
+            "utf8": "unit\nkWh\n"
+          },
+          "name": "tsv_bytes",
+          "passed": true
+        }
+      ],
+      "category": "sparql",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "sparql-cq05-unit",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "rdflib-sparql"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": {
+            "comparison": "exact-tsv",
+            "preserve_duplicates": true,
+            "sort_rows": true
+          },
+          "expected": {
+            "comparison": "exact-tsv",
+            "preserve_duplicates": true,
+            "sort_rows": true
+          },
+          "name": "engine_config",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "expected_tsv_row_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            "spatialCoverage",
+            "temporalStart",
+            "temporalEnd"
+          ],
+          "expected": [
+            "spatialCoverage",
+            "temporalStart",
+            "temporalEnd"
+          ],
+          "name": "expected_tsv_variables",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "result_row_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            "spatialCoverage",
+            "temporalStart",
+            "temporalEnd"
+          ],
+          "expected": [
+            "spatialCoverage",
+            "temporalStart",
+            "temporalEnd"
+          ],
+          "name": "result_variables",
+          "passed": true
+        },
+        {
+          "actual": {
+            "duplicates_preserved": true,
+            "sorted": true
+          },
+          "expected": {
+            "duplicates_preserved": true,
+            "sorted": true
+          },
+          "name": "row_materialization",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "service_clause_count",
+          "passed": true
+        },
+        {
+          "actual": {
+            "sha256": "137e0beb4bfb8f24f207a454e1eec0d724ec9faf65df1d90591beab811c57a34",
+            "utf8": "spatialCoverage\ttemporalStart\ttemporalEnd\nShenzhen demo district\t2026-05-01\t2026-05-02\n"
+          },
+          "expected": {
+            "sha256": "137e0beb4bfb8f24f207a454e1eec0d724ec9faf65df1d90591beab811c57a34",
+            "utf8": "spatialCoverage\ttemporalStart\ttemporalEnd\nShenzhen demo district\t2026-05-01\t2026-05-02\n"
+          },
+          "name": "tsv_bytes",
+          "passed": true
+        }
+      ],
+      "category": "sparql",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "sparql-cq06-coverage",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "rdflib-sparql"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": {
+            "comparison": "exact-tsv",
+            "preserve_duplicates": true,
+            "sort_rows": true
+          },
+          "expected": {
+            "comparison": "exact-tsv",
+            "preserve_duplicates": true,
+            "sort_rows": true
+          },
+          "name": "engine_config",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "expected_tsv_row_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            "modelVersion"
+          ],
+          "expected": [
+            "modelVersion"
+          ],
+          "name": "expected_tsv_variables",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "expected": 1,
+          "name": "result_row_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            "modelVersion"
+          ],
+          "expected": [
+            "modelVersion"
+          ],
+          "name": "result_variables",
+          "passed": true
+        },
+        {
+          "actual": {
+            "duplicates_preserved": true,
+            "sorted": true
+          },
+          "expected": {
+            "duplicates_preserved": true,
+            "sorted": true
+          },
+          "name": "row_materialization",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "service_clause_count",
+          "passed": true
+        },
+        {
+          "actual": {
+            "sha256": "1b85c26bcc6c64153ee5eb323667594d61ef3c1413ba01564a3c6ae8db5cba08",
+            "utf8": "modelVersion\nhttps://w3id.org/dssc-demo/building-energy/v0.3\n"
+          },
+          "expected": {
+            "sha256": "1b85c26bcc6c64153ee5eb323667594d61ef3c1413ba01564a3c6ae8db5cba08",
+            "utf8": "modelVersion\nhttps://w3id.org/dssc-demo/building-energy/v0.3\n"
+          },
+          "name": "tsv_bytes",
+          "passed": true
+        }
+      ],
+      "category": "sparql",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "sparql-cq07-conforms-to",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "rdflib-sparql"
+    },
+    {
+      "actual_business_status": "PASS",
+      "actual_program_status": "SUCCESS",
+      "assertions": [
+        {
+          "actual": "PASS",
+          "expected": "PASS",
+          "name": "business_status",
+          "passed": true
+        },
+        {
+          "actual": {
+            "comparison": "exact-tsv",
+            "preserve_duplicates": true,
+            "sort_rows": true
+          },
+          "expected": {
+            "comparison": "exact-tsv",
+            "preserve_duplicates": true,
+            "sort_rows": true
+          },
+          "name": "engine_config",
+          "passed": true
+        },
+        {
+          "actual": 6,
+          "expected": 6,
+          "name": "expected_tsv_row_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            "field",
+            "label"
+          ],
+          "expected": [
+            "field",
+            "label"
+          ],
+          "name": "expected_tsv_variables",
+          "passed": true
+        },
+        {
+          "actual": 6,
+          "expected": 6,
+          "name": "result_row_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            "field",
+            "label"
+          ],
+          "expected": [
+            "field",
+            "label"
+          ],
+          "name": "result_variables",
+          "passed": true
+        },
+        {
+          "actual": {
+            "duplicates_preserved": true,
+            "sorted": true
+          },
+          "expected": {
+            "duplicates_preserved": true,
+            "sorted": true
+          },
+          "name": "row_materialization",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "expected": 0,
+          "name": "service_clause_count",
+          "passed": true
+        },
+        {
+          "actual": {
+            "sha256": "b023b694a37bd01d0b8b8402f258326448b745373b12b53d9369de6046c6294a",
+            "utf8": "field\tlabel\nhttps://w3id.org/dssc-demo/building-energy#buildingId\tbuilding ID\nhttps://w3id.org/dssc-demo/building-energy#energyKWh\tenergy kWh\nhttps://w3id.org/dssc-demo/building-energy#location\tlocation\nhttps://w3id.org/dssc-demo/building-energy#meterId\tmeter ID\nhttps://w3id.org/dssc-demo/building-energy#timestamp\ttimestamp\nhttps://w3id.org/dssc-demo/building-energy#unit\tunit\n"
+          },
+          "expected": {
+            "sha256": "b023b694a37bd01d0b8b8402f258326448b745373b12b53d9369de6046c6294a",
+            "utf8": "field\tlabel\nhttps://w3id.org/dssc-demo/building-energy#buildingId\tbuilding ID\nhttps://w3id.org/dssc-demo/building-energy#energyKWh\tenergy kWh\nhttps://w3id.org/dssc-demo/building-energy#location\tlocation\nhttps://w3id.org/dssc-demo/building-energy#meterId\tmeter ID\nhttps://w3id.org/dssc-demo/building-energy#timestamp\ttimestamp\nhttps://w3id.org/dssc-demo/building-energy#unit\tunit\n"
+          },
+          "name": "tsv_bytes",
+          "passed": true
+        }
+      ],
+      "category": "sparql",
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "id": "sparql-cq08-record-fields",
+      "message": "case matched oracle",
+      "oracle_match": true,
+      "passed": true,
+      "release": "v0.3",
+      "validator": "rdflib-sparql"
+    }
+  ],
+  "category_counts": {
+    "jsonld": {
+      "discovered": 10,
+      "executed": 10,
+      "failed": 0,
+      "passed": 10,
+      "skipped": 0
+    },
+    "jsonschema": {
+      "discovered": 2,
+      "executed": 2,
+      "failed": 0,
+      "passed": 2,
+      "skipped": 0
+    },
+    "openapi": {
+      "discovered": 1,
+      "executed": 1,
+      "failed": 0,
+      "passed": 1,
+      "skipped": 0
+    },
+    "rdf": {
+      "discovered": 7,
+      "executed": 7,
+      "failed": 0,
+      "passed": 7,
+      "skipped": 0
+    },
+    "shacl": {
+      "discovered": 5,
+      "executed": 5,
+      "failed": 0,
+      "passed": 5,
+      "skipped": 0
+    },
+    "sparql": {
+      "discovered": 8,
+      "executed": 8,
+      "failed": 0,
+      "passed": 8,
+      "skipped": 0
+    }
+  },
+  "counts": {
+    "discovered": 33,
+    "executed": 33,
+    "failed": 0,
+    "passed": 33,
+    "skipped": 0
+  },
+  "execution_issues": [],
+  "execution_schema": "dssc.baseline.execution.v1",
+  "exit_code": 0,
+  "manifest_path": "C_Semantic_Treehouse/manifests/baseline-test-cases.json",
+  "manifest_schema_path": "C_Semantic_Treehouse/manifests/schemas/baseline-test-cases.schema.json",
+  "manifest_schema_sha256": "291cb5eae9212735b65fe5bad0bdef383d935b846f5fef07fc8f52c5fc79c6d8",
+  "manifest_schema_version": "1.0.0",
+  "manifest_sha256": "e8fb57fe2f609c48c0340cf8e3b78d2e8f81d0fe0fd3ab505468cfe315767e43",
+  "message": "all 33 baseline cases matched their oracles",
+  "preflight": {
+    "artifact_count": 37,
+    "artifact_kind_counts": {
+      "context": 4,
+      "data": 6,
+      "expected-tsv": 8,
+      "json-schema": 1,
+      "ontology": 3,
+      "openapi": 1,
+      "reference": 2,
+      "shapes": 4,
+      "sparql-query": 8
+    },
+    "artifact_release_counts": {
+      "baseline": 2,
+      "v0.1": 4,
+      "v0.2": 5,
+      "v0.3": 26
+    },
+    "case_count": 33,
+    "category_counts": {
+      "jsonld": 10,
+      "jsonschema": 2,
+      "openapi": 1,
+      "rdf": 7,
+      "shacl": 5,
+      "sparql": 8
+    },
+    "release_counts": {
+      "v0.1": 5,
+      "v0.2": 7,
+      "v0.3": 21
+    },
+    "status": "SUCCESS",
+    "validator_counts": {
+      "jsonschema-draft7": 2,
+      "openapi-spec-validator": 1,
+      "pyld-jsonld": 10,
+      "pyshacl": 5,
+      "rdflib-sparql": 8,
+      "rdflib-turtle": 7
+    }
+  },
+  "profile": "host",
+  "program_status": "SUCCESS",
+  "registry_contract_version": "1.1.0",
+  "registry_sha256": "70e3e0655eebbdc59455b401837fd10e6371092d734b8abbef2401d7bb66d459",
+  "required_case_ids": [
+    "rdf-v0-1-ontology",
+    "rdf-v0-1-metadata-shapes",
+    "rdf-v0-2-ontology",
+    "rdf-v0-2-metadata-shapes",
+    "rdf-v0-3-ontology",
+    "rdf-v0-3-metadata-shapes",
+    "rdf-v0-3-record-shapes",
+    "jsonld-v0-1-metadata-context",
+    "jsonld-v0-1-metadata-valid",
+    "jsonld-v0-2-metadata-context",
+    "jsonld-v0-2-metadata-valid",
+    "jsonld-v0-2-metadata-invalid",
+    "jsonld-v0-3-metadata-context",
+    "jsonld-v0-3-metadata-valid",
+    "jsonld-v0-3-record-context",
+    "jsonld-v0-3-record-valid",
+    "jsonld-v0-3-record-invalid",
+    "shacl-v0-1-metadata-valid",
+    "shacl-v0-2-metadata-valid",
+    "shacl-v0-2-metadata-invalid",
+    "shacl-v0-3-metadata-valid",
+    "shacl-v0-3-record-valid",
+    "jsonschema-v0-3-record-valid",
+    "jsonschema-v0-3-record-invalid",
+    "openapi-v0-3-fragment-valid",
+    "sparql-cq01-dataset-id",
+    "sparql-cq02-provider",
+    "sparql-cq03-endpoint",
+    "sparql-cq04-format-frequency",
+    "sparql-cq05-unit",
+    "sparql-cq06-coverage",
+    "sparql-cq07-conforms-to",
+    "sparql-cq08-record-fields"
+  ],
+  "requirements_lock_sha256": "d92c7ae708283c04a916da2a9c810a19fbcc65b1fcb154792099e5a3924baeb2",
+  "schema": "dssc.baseline.result.v1",
+  "source_hash_issues": [],
+  "source_hashes": {
+    "scripts/dssc_validation/__init__.py": "8b9374a28d7ec2f7c534bf9f4de5f9d3542333de79939dec97803eb892be70f1",
+    "scripts/dssc_validation/baseline_manifest.py": "2af85f6324713e8557a538146e188301c183bfea2d0ab9743180fdc27a90c564",
+    "scripts/dssc_validation/baseline_report.py": "0458ba11edba2fff16476f52f0733cdaa9d6067cbb8e1bf913430e37f59503ae",
+    "scripts/dssc_validation/baseline_runner.py": "9aad1e47b14c7dd5bbe5816ba6814ff5b3130a9280ad79850abb213a77ca7673",
+    "scripts/dssc_validation/checks_baseline.py": "977ab6ed8387defba0c48507179527bd321f8c6a4851f50177c5c49a5ec5cdba",
+    "scripts/dssc_validation/checks_environment.py": "d599b590d771d58ed4cef4bf19c2bb2a84e1a6bc23d6082b4c7c62b4355b5444",
+    "scripts/dssc_validation/checks_frozen.py": "2e920dd8a67abcbf18089767db1b96a22496f1134eee652a5530b9eccd73ff1d",
+    "scripts/dssc_validation/doctor_core.py": "950f10b2bbca66264ccb3d11df7a1f66603ae71d1838a1bde81cea3d9dc93a92",
+    "scripts/dssc_validation/entrypoint_catalog.py": "a102a5b2ae8509a83fa609dd182c35ad31d25c2f8936d969160851ae3f89e33c",
+    "scripts/dssc_validation/evidence.py": "915a4e343d0c815f2b2de32196e810f6109ab163ef9658f2f688702662a17bad",
+    "scripts/dssc_validation/hashing.py": "7daa83ded49ee3a01e6692d0c0269ea640d27f050d13e1af726eb6976bf11fe3",
+    "scripts/dssc_validation/lock_contract.py": "4cfcf85b0d09fd05201358df41faf05c780a743dce5f6ced0080b3784f157d4d",
+    "scripts/dssc_validation/paths.py": "8dd89398afb1547a33603dfe987404784b882107d8fc5bbc55d1a6b0c61a37f5",
+    "scripts/dssc_validation/profile_contract.py": "c032d9884b06e3d450105125419c083fd9e42db3d6c73fd5a50007556af834b5",
+    "scripts/dssc_validation/provenance.py": "6d816acd3cdc4fdf2603288213a0e6a7118a7c2df1b7ecaa874b1c8920543aef",
+    "scripts/dssc_validation/suite_registry.py": "6ea31afe0675dff63c18c7871bb936584807289ce49f1d0f72730eb9d7e73ab0",
+    "scripts/dssc_validation/venv_contract.py": "02e3b2cd06bc7df292b73af4e2d20f069d56608304929200de2902e376a94539",
+    "scripts/validate.py": "cb25014e0bdf27dbf03a0fe070ad4c9287eca8d64475f84198fc7320ba8544bc"
+  },
+  "suite": "baseline"
+}

@@ -1,0 +1,312 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/dssc-demo/schemas/sparql-test-cases.schema.json",
+  "title": "DSSC versioned SPARQL semantic test manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "manifest_schema_version",
+    "suite",
+    "authority_refs",
+    "required_query_ids",
+    "artifacts",
+    "queries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "sparql-test-cases.schema.json"
+    },
+    "manifest_schema_version": {
+      "const": "1.0.0"
+    },
+    "suite": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "validator"],
+      "properties": {
+        "id": {"const": "phase-06-sparql"},
+        "validator": {"const": "rdflib-sparql"}
+      }
+    },
+    "authority_refs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "release_manifest",
+        "baseline_test_cases",
+        "requirements",
+        "v0_4_test_cases",
+        "validation_suites"
+      ],
+      "properties": {
+        "release_manifest": {"const": "C_Semantic_Treehouse/manifests/release-manifest.json"},
+        "baseline_test_cases": {"const": "C_Semantic_Treehouse/manifests/baseline-test-cases.json"},
+        "requirements": {"const": "C_Semantic_Treehouse/manifests/v0.4-requirements.json"},
+        "v0_4_test_cases": {"const": "C_Semantic_Treehouse/manifests/v0.4-test-cases.json"},
+        "validation_suites": {"const": "C_Semantic_Treehouse/manifests/validation-suites.json"}
+      }
+    },
+    "required_query_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/id"}
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 2,
+      "items": {"$ref": "#/$defs/artifact"}
+    },
+    "queries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/query"}
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9][a-z0-9.-]*$"
+    },
+    "release": {
+      "type": "string",
+      "pattern": "^v0\\.[1-9][0-9]*$"
+    },
+    "repository_relative_path": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/+-]+$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "release", "kind", "path", "sha256"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "release": {"$ref": "#/$defs/release"},
+        "kind": {
+          "enum": [
+            "sparql-query",
+            "expected-tsv",
+            "expected-boolean",
+            "expected-integer"
+          ]
+        },
+        "path": {"$ref": "#/$defs/repository_relative_path"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "artifact_refs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["graph_inputs", "local_contexts", "query", "expected"],
+      "properties": {
+        "graph_inputs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/id"}
+        },
+        "local_contexts": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/id"}
+        },
+        "query": {"$ref": "#/$defs/id"},
+        "expected": {"$ref": "#/$defs/id"}
+      }
+    },
+    "comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "sort_rows", "preserve_duplicates"],
+      "properties": {
+        "kind": {"enum": ["exact-tsv", "exact-boolean", "exact-integer"]},
+        "sort_rows": {"type": "boolean"},
+        "preserve_duplicates": {"type": "boolean"}
+      }
+    },
+    "select_oracle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expected_variables", "expected_row_count", "allow_empty"],
+      "properties": {
+        "expected_variables": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"}
+        },
+        "expected_row_count": {"type": "integer", "minimum": 0},
+        "allow_empty": {"type": "boolean"},
+        "empty_result_reason": {"type": "string", "minLength": 1}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"allow_empty": {"const": true}}},
+          "then": {
+            "required": ["empty_result_reason"],
+            "properties": {"expected_row_count": {"const": 0}}
+          },
+          "else": {
+            "properties": {"expected_row_count": {"minimum": 1}}
+          }
+        }
+      ]
+    },
+    "ask_oracle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expected_boolean"],
+      "properties": {
+        "expected_boolean": {"type": "boolean"}
+      }
+    },
+    "count_oracle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expected_variables", "expected_count"],
+      "properties": {
+        "expected_variables": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {"type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"}
+        },
+        "expected_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "release_assertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_ref", "origin_type"],
+      "properties": {
+        "artifact_ref": {"$ref": "#/$defs/id"},
+        "origin_type": {"enum": ["frozen", "derived", "inherited"]},
+        "inherited_from": {"$ref": "#/$defs/release"},
+        "source_artifact": {"$ref": "#/$defs/id"},
+        "change": {"enum": ["none", "modified", "replaced"]}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"origin_type": {"const": "inherited"}}},
+          "then": {"required": ["inherited_from", "source_artifact", "change"]}
+        }
+      ]
+    },
+    "query": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "release",
+        "required",
+        "enabled",
+        "query_form",
+        "artifact_refs",
+        "requirement_refs",
+        "coverage",
+        "comparison",
+        "oracle",
+        "business_reason"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "release": {"$ref": "#/$defs/release"},
+        "required": {"type": "boolean"},
+        "enabled": {"type": "boolean"},
+        "query_form": {"enum": ["SELECT", "ASK", "COUNT"]},
+        "artifact_refs": {"$ref": "#/$defs/artifact_refs"},
+        "requirement_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^D04-R[0-9]{3}$"}
+        },
+        "coverage": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "historical-regression",
+              "dataset-cardinality",
+              "dataset-node-iri",
+              "core-metadata-values",
+              "distribution-values",
+              "temporal-values",
+              "temporal-order",
+              "optional-fields",
+              "profile-version-binding",
+              "named-shapes",
+              "constraint-components",
+              "closed-shape-inventory",
+              "inherited-record-contract"
+            ]
+          }
+        },
+        "comparison": {"$ref": "#/$defs/comparison"},
+        "oracle": {"type": "object"},
+        "release_assertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/release_assertion"}
+        },
+        "business_reason": {"type": "string", "minLength": 1}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"required": {"const": true}}},
+          "then": {"properties": {"enabled": {"const": true}}}
+        },
+        {
+          "if": {"properties": {"query_form": {"const": "SELECT"}}},
+          "then": {
+            "properties": {
+              "comparison": {
+                "allOf": [
+                  {"$ref": "#/$defs/comparison"},
+                  {"properties": {"kind": {"const": "exact-tsv"}}}
+                ]
+              },
+              "oracle": {"$ref": "#/$defs/select_oracle"}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"query_form": {"const": "ASK"}}},
+          "then": {
+            "properties": {
+              "comparison": {
+                "allOf": [
+                  {"$ref": "#/$defs/comparison"},
+                  {"properties": {"kind": {"const": "exact-boolean"}}}
+                ]
+              },
+              "oracle": {"$ref": "#/$defs/ask_oracle"}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"query_form": {"const": "COUNT"}}},
+          "then": {
+            "properties": {
+              "comparison": {
+                "allOf": [
+                  {"$ref": "#/$defs/comparison"},
+                  {"properties": {"kind": {"const": "exact-integer"}}}
+                ]
+              },
+              "oracle": {"$ref": "#/$defs/count_oracle"}
+            }
+          }
+        }
+      ]
+    }
+  }
+}

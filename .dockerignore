@@ -1,0 +1,46 @@
+# Exclude local env, VCS, caches, secrets, and optional external upstreams.
+# Keep frozen inputs, models, manifests, scripts, and locks for validation.
+
+.git
+.venv
+venv
+**/__pycache__
+**/*.py[cod]
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.coverage
+htmlcov
+
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+.idea
+.vscode
+*.swp
+Thumbs.db
+.DS_Store
+__MACOSX
+
+# Local build output is mounted at run time; no need in the image layers.
+build
+dist
+tmp
+temp
+_migration_staging*
+*.tmp
+*.bak
+*.log
+
+# Optional external upstream clone (not part of core validation).
+# Keep the tracked lock file so documentation links and clean-room image
+# layers can resolve the fixed upstream contract without shipping the clone.
+tools/semantic-treehouse/**
+!tools/semantic-treehouse/README.md
+!tools/semantic-treehouse/upstream.lock.json
+
+# Frozen source archives remain in the image: the container frozen suite checks
+# all 104 manifest records without mounting the host source tree.

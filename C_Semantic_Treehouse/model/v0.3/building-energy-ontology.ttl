@@ -1,0 +1,150 @@
+@prefix be: <https://w3id.org/dssc-demo/building-energy#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/dssc-demo/building-energy/v0.3>
+    a owl:Ontology ;
+    owl:versionIRI <https://w3id.org/dssc-demo/building-energy/v0.3> ;
+    owl:priorVersion <https://w3id.org/dssc-demo/building-energy/v0.2> ;
+    owl:versionInfo "0.3" ;
+    dct:title "Building Energy Semantic Model v0.3" ;
+    dct:description "Metadata vocabulary plus an Energy Reading Record payload profile." ;
+    dct:created "2026-06-25"^^xsd:date .
+
+be:DataProductMetadata
+    a owl:Class ;
+    rdfs:subClassOf dcat:Dataset ;
+    rdfs:label "Data Product Metadata" ;
+    rdfs:comment "Metadata describing a data product for catalogue discovery, connector offering creation, and SHACL validation." .
+
+be:EnergyReadingRecord
+    a owl:Class ;
+    rdfs:subClassOf sosa:Observation ;
+    rdfs:label "Energy Reading Record" ;
+    rdfs:comment "One API payload record representing an energy reading for a building meter." .
+
+be:Building
+    a owl:Class ;
+    rdfs:label "Building" ;
+    rdfs:comment "A building that is the feature of interest for an energy reading." .
+
+be:Meter
+    a owl:Class ;
+    rdfs:subClassOf sosa:Sensor ;
+    rdfs:label "Meter" ;
+    rdfs:comment "A metering device that produces building energy readings." .
+
+be:providerName
+    a owl:DatatypeProperty ;
+    rdfs:label "provider name" ;
+    rdfs:comment "Human-readable name of the organization publishing the data product." ;
+    rdfs:domain be:DataProductMetadata ;
+    rdfs:range xsd:string .
+
+be:endpointUrl
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf dcat:endpointURL ;
+    rdfs:label "endpoint URL" ;
+    rdfs:comment "IRI of the API endpoint that exposes the data product." ;
+    rdfs:domain be:DataProductMetadata .
+
+be:format
+    a owl:DatatypeProperty ;
+    rdfs:subPropertyOf dct:format ;
+    rdfs:label "format" ;
+    rdfs:comment "Serialization format used by the data product payload." ;
+    rdfs:domain be:DataProductMetadata ;
+    rdfs:range xsd:string .
+
+be:frequency
+    a owl:DatatypeProperty ;
+    rdfs:subPropertyOf dct:accrualPeriodicity ;
+    rdfs:label "frequency" ;
+    rdfs:comment "Expected update or accrual frequency of the data product." ;
+    rdfs:domain be:DataProductMetadata ;
+    rdfs:range xsd:string .
+
+be:unit
+    a owl:DatatypeProperty ;
+    rdfs:label "unit" ;
+    rdfs:comment "Required measurement unit token for energy values. The minimal profile uses the literal kWh; richer profiles can map this to QUDT or UCUM unit identifiers." ;
+    rdfs:range xsd:string .
+
+be:spatialCoverage
+    a owl:DatatypeProperty ;
+    rdfs:subPropertyOf dct:spatial ;
+    rdfs:label "spatial coverage" ;
+    rdfs:comment "Human-readable spatial coverage of the data product." ;
+    rdfs:domain be:DataProductMetadata ;
+    rdfs:range xsd:string .
+
+be:temporalStart
+    a owl:DatatypeProperty ;
+    rdfs:label "temporal start" ;
+    rdfs:comment "Inclusive start date of the data product temporal coverage." ;
+    rdfs:domain be:DataProductMetadata ;
+    rdfs:range xsd:date .
+
+be:temporalEnd
+    a owl:DatatypeProperty ;
+    rdfs:label "temporal end" ;
+    rdfs:comment "Inclusive end date of the data product temporal coverage." ;
+    rdfs:domain be:DataProductMetadata ;
+    rdfs:range xsd:date .
+
+be:buildingId
+    a owl:DatatypeProperty ;
+    rdfs:label "building ID" ;
+    rdfs:comment "Identifier of the building feature of interest for the reading." ;
+    rdfs:domain be:EnergyReadingRecord ;
+    rdfs:range xsd:string .
+
+be:meterId
+    a owl:DatatypeProperty ;
+    rdfs:label "meter ID" ;
+    rdfs:comment "Identifier of the meter or sensor that produced the reading." ;
+    rdfs:domain be:EnergyReadingRecord ;
+    rdfs:range xsd:string .
+
+be:timestamp
+    a owl:DatatypeProperty ;
+    rdfs:subPropertyOf sosa:resultTime ;
+    rdfs:label "timestamp" ;
+    rdfs:comment "Time at which the energy reading applies." ;
+    rdfs:domain be:EnergyReadingRecord ;
+    rdfs:range xsd:dateTime .
+
+be:energyKWh
+    a owl:DatatypeProperty ;
+    rdfs:subPropertyOf qudt:numericValue ;
+    rdfs:label "energy kWh" ;
+    rdfs:comment "Numeric energy consumption value expressed in kilowatt-hours." ;
+    rdfs:domain be:EnergyReadingRecord ;
+    rdfs:range xsd:decimal .
+
+be:location
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf dct:spatial ;
+    rdfs:label "location" ;
+    rdfs:comment "Place associated with an energy reading record." ;
+    rdfs:domain be:EnergyReadingRecord .
+
+be:city
+    a owl:DatatypeProperty ;
+    rdfs:subPropertyOf schema:addressLocality ;
+    rdfs:label "city" ;
+    rdfs:comment "City value inside the lightweight API location object." ;
+    rdfs:range xsd:string .
+
+be:district
+    a owl:DatatypeProperty ;
+    rdfs:subPropertyOf schema:containedInPlace ;
+    rdfs:label "district" ;
+    rdfs:comment "District value inside the lightweight API location object." ;
+    rdfs:range xsd:string .

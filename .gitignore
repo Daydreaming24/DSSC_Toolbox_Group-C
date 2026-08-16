@@ -1,0 +1,46 @@
+# Python
+.venv/
+venv/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Editors and operating systems
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+.DS_Store
+._*
+__MACOSX/
+
+# Generated and temporary content
+build/*
+!build/.gitkeep
+dist/
+tmp/
+temp/
+_migration_staging*/
+*.tmp
+*.bak
+*.zip
+!inputs/source-archives/received/*.zip
+*.log
+
+# Local validation output (release evidence is added deliberately)
+C_Semantic_Treehouse/validation/generated/
+C_Semantic_Treehouse/evidence/local/
+
+# Phase 08 optional Semantic Treehouse pinned upstream checkout
+tools/semantic-treehouse/upstream/

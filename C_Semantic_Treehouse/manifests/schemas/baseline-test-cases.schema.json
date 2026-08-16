@@ -1,0 +1,633 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dssc.local/schemas/baseline-test-cases.schema.json",
+  "title": "DSSC v0.1-v0.3 baseline test cases",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "manifest_schema_version",
+    "suite",
+    "releases",
+    "validators",
+    "artifacts",
+    "reference_artifact_ids",
+    "required_case_ids",
+    "cases"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "schemas/baseline-test-cases.schema.json"
+    },
+    "manifest_schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "suite": {
+      "const": "baseline"
+    },
+    "releases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "description"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^v0\\.[1-3]$"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "validators": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "category", "engine"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9.-]*$"
+          },
+          "category": {
+            "enum": ["rdf", "jsonld", "shacl", "jsonschema", "openapi", "sparql"]
+          },
+          "engine": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/artifact"
+      }
+    },
+    "reference_artifact_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "uniqueItems": true
+    },
+    "required_case_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "uniqueItems": true
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {"$ref": "#/$defs/rdfCase"},
+          {"$ref": "#/$defs/jsonldCase"},
+          {"$ref": "#/$defs/shaclPassCase"},
+          {"$ref": "#/$defs/shaclFailCase"},
+          {"$ref": "#/$defs/jsonSchemaPassCase"},
+          {"$ref": "#/$defs/jsonSchemaFailCase"},
+          {"$ref": "#/$defs/openApiCase"},
+          {"$ref": "#/$defs/sparqlCase"}
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9][a-z0-9.-]*$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "repoPath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*//)(?!.*\/$).+$"
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "release", "kind", "path", "sha256"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "release": {
+          "oneOf": [
+            {"type": "string", "pattern": "^v0\\.[1-3]$"},
+            {"const": "baseline"}
+          ]
+        },
+        "kind": {
+          "enum": [
+            "ontology",
+            "shapes",
+            "context",
+            "data",
+            "json-schema",
+            "openapi",
+            "sparql-query",
+            "expected-tsv",
+            "reference"
+          ]
+        },
+        "path": {"$ref": "#/$defs/repoPath"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "baseCase": {
+      "type": "object",
+      "required": [
+        "id",
+        "release",
+        "validator",
+        "category",
+        "enabled",
+        "required",
+        "expected_business_status",
+        "expected_program_status",
+        "artifact_refs",
+        "oracle"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "release": {
+          "type": "string",
+          "pattern": "^v0\\.[1-3]$"
+        },
+        "validator": {"$ref": "#/$defs/id"},
+        "category": {
+          "enum": ["rdf", "jsonld", "shacl", "jsonschema", "openapi", "sparql"]
+        },
+        "enabled": {"type": "boolean"},
+        "required": {"type": "boolean"},
+        "expected_business_status": {
+          "enum": ["PASS", "FAIL"]
+        },
+        "expected_program_status": {
+          "enum": ["SUCCESS", "ERROR"]
+        }
+      }
+    },
+    "countOracle": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["exact"],
+          "properties": {
+            "exact": {"type": "integer", "minimum": 0}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["minimum", "maximum"],
+          "properties": {
+            "minimum": {"type": "integer", "minimum": 0},
+            "maximum": {"type": "integer", "minimum": 0}
+          }
+        }
+      ]
+    },
+    "rdfCase": {
+      "allOf": [
+        {"$ref": "#/$defs/baseCase"},
+        {
+          "type": "object",
+          "properties": {
+            "validator": {"const": "rdflib-turtle"},
+            "category": {"const": "rdf"},
+            "expected_business_status": {"const": "PASS"},
+            "expected_program_status": {"const": "SUCCESS"},
+            "artifact_refs": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["input"],
+              "properties": {
+                "input": {"$ref": "#/$defs/id"}
+              }
+            },
+            "oracle": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["parse_success", "expected_triple_count"],
+              "properties": {
+                "parse_success": {"const": true},
+                "expected_triple_count": {"type": "integer", "minimum": 1}
+              }
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "jsonldCase": {
+      "allOf": [
+        {"$ref": "#/$defs/baseCase"},
+        {
+          "type": "object",
+          "properties": {
+            "validator": {"const": "pyld-jsonld"},
+            "category": {"const": "jsonld"},
+            "expected_business_status": {"const": "PASS"},
+            "expected_program_status": {"const": "SUCCESS"},
+            "artifact_refs": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["input", "local_contexts"],
+              "properties": {
+                "input": {"$ref": "#/$defs/id"},
+                "local_contexts": {
+                  "type": "array",
+                  "items": {"$ref": "#/$defs/id"},
+                  "uniqueItems": true
+                }
+              }
+            },
+            "oracle": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "json_parse_success",
+                "offline_expansion_success",
+                "network_request_count",
+                "expected_top_level_node_count"
+              ],
+              "properties": {
+                "json_parse_success": {"const": true},
+                "offline_expansion_success": {"const": true},
+                "network_request_count": {"const": 0},
+                "expected_top_level_node_count": {"type": "integer", "minimum": 0}
+              }
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "shaclEngineConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inference",
+        "advanced",
+        "abort_on_first",
+        "meta_shacl",
+        "allow_warnings",
+        "allow_infos"
+      ],
+      "properties": {
+        "inference": {"const": "none"},
+        "advanced": {"const": false},
+        "abort_on_first": {"const": false},
+        "meta_shacl": {"const": true},
+        "allow_warnings": {"const": false},
+        "allow_infos": {"const": false}
+      }
+    },
+    "shaclArtifactRefs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["data", "shapes", "local_contexts"],
+      "properties": {
+        "data": {"$ref": "#/$defs/id"},
+        "shapes": {"$ref": "#/$defs/id"},
+        "ontology": {"$ref": "#/$defs/id"},
+        "local_contexts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/id"},
+          "uniqueItems": true
+        }
+      }
+    },
+    "shaclPassOracle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expected_conforms",
+        "expected_target_activation_minimum",
+        "expected_result_count",
+        "expected_violation_count",
+        "expected_warning_count",
+        "expected_info_count"
+      ],
+      "properties": {
+        "expected_conforms": {"const": true},
+        "expected_target_activation_minimum": {"type": "integer", "minimum": 1},
+        "expected_result_count": {"const": 0},
+        "expected_violation_count": {"const": 0},
+        "expected_warning_count": {"const": 0},
+        "expected_info_count": {"const": 0}
+      }
+    },
+    "stableSourceShape": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "owner_node_shape"],
+      "properties": {
+        "kind": {"const": "anonymous-property-shape"},
+        "owner_node_shape": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "shaclExpectedResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_shape",
+        "focus_node",
+        "path",
+        "constraint_component",
+        "severity",
+        "message",
+        "count"
+      ],
+      "properties": {
+        "source_shape": {"$ref": "#/$defs/stableSourceShape"},
+        "focus_node": {"type": "string", "format": "uri"},
+        "path": {"type": "string", "format": "uri"},
+        "constraint_component": {"type": "string", "format": "uri"},
+        "severity": {"type": "string", "format": "uri"},
+        "message": {"type": "string", "minLength": 1},
+        "count": {"type": "integer", "minimum": 1}
+      }
+    },
+    "shaclFailOracle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expected_conforms",
+        "expected_target_activation_minimum",
+        "expected_result_count",
+        "expected_results"
+      ],
+      "properties": {
+        "expected_conforms": {"const": false},
+        "expected_target_activation_minimum": {"type": "integer", "minimum": 1},
+        "expected_result_count": {"$ref": "#/$defs/countOracle"},
+        "expected_results": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/shaclExpectedResult"}
+        }
+      }
+    },
+    "shaclPassCase": {
+      "allOf": [
+        {"$ref": "#/$defs/baseCase"},
+        {
+          "type": "object",
+          "required": ["engine_config"],
+          "properties": {
+            "validator": {"const": "pyshacl"},
+            "category": {"const": "shacl"},
+            "expected_business_status": {"const": "PASS"},
+            "expected_program_status": {"const": "SUCCESS"},
+            "artifact_refs": {"$ref": "#/$defs/shaclArtifactRefs"},
+            "engine_config": {"$ref": "#/$defs/shaclEngineConfig"},
+            "oracle": {"$ref": "#/$defs/shaclPassOracle"}
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "shaclFailCase": {
+      "allOf": [
+        {"$ref": "#/$defs/baseCase"},
+        {
+          "type": "object",
+          "required": ["engine_config"],
+          "properties": {
+            "validator": {"const": "pyshacl"},
+            "category": {"const": "shacl"},
+            "expected_business_status": {"const": "FAIL"},
+            "expected_program_status": {"const": "SUCCESS"},
+            "artifact_refs": {"$ref": "#/$defs/shaclArtifactRefs"},
+            "engine_config": {"$ref": "#/$defs/shaclEngineConfig"},
+            "oracle": {"$ref": "#/$defs/shaclFailOracle"}
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "jsonSchemaConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["draft", "format_checker"],
+      "properties": {
+        "draft": {"const": "draft-07"},
+        "format_checker": {"const": true}
+      }
+    },
+    "jsonSchemaArtifactRefs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instance", "schema"],
+      "properties": {
+        "instance": {"$ref": "#/$defs/id"},
+        "schema": {"$ref": "#/$defs/id"}
+      }
+    },
+    "jsonSchemaPassCase": {
+      "allOf": [
+        {"$ref": "#/$defs/baseCase"},
+        {
+          "type": "object",
+          "required": ["engine_config"],
+          "properties": {
+            "validator": {"const": "jsonschema-draft7"},
+            "category": {"const": "jsonschema"},
+            "expected_business_status": {"const": "PASS"},
+            "expected_program_status": {"const": "SUCCESS"},
+            "artifact_refs": {"$ref": "#/$defs/jsonSchemaArtifactRefs"},
+            "engine_config": {"$ref": "#/$defs/jsonSchemaConfig"},
+            "oracle": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["expected_error_count"],
+              "properties": {
+                "expected_error_count": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["exact"],
+                  "properties": {"exact": {"const": 0}}
+                }
+              }
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "jsonSchemaExpectedError": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "instance_pointer",
+        "schema_pointer",
+        "keyword",
+        "message",
+        "count"
+      ],
+      "properties": {
+        "instance_pointer": {"type": "string"},
+        "schema_pointer": {"type": "string"},
+        "keyword": {"enum": ["required", "format", "type", "enum"]},
+        "message": {"type": "string", "minLength": 1},
+        "count": {"type": "integer", "minimum": 1}
+      }
+    },
+    "jsonSchemaFailCase": {
+      "allOf": [
+        {"$ref": "#/$defs/baseCase"},
+        {
+          "type": "object",
+          "required": ["engine_config"],
+          "properties": {
+            "validator": {"const": "jsonschema-draft7"},
+            "category": {"const": "jsonschema"},
+            "expected_business_status": {"const": "FAIL"},
+            "expected_program_status": {"const": "SUCCESS"},
+            "artifact_refs": {"$ref": "#/$defs/jsonSchemaArtifactRefs"},
+            "engine_config": {"$ref": "#/$defs/jsonSchemaConfig"},
+            "oracle": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["expected_error_count", "expected_errors"],
+              "properties": {
+                "expected_error_count": {"$ref": "#/$defs/countOracle"},
+                "expected_errors": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {"$ref": "#/$defs/jsonSchemaExpectedError"}
+                }
+              }
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "openApiCase": {
+      "allOf": [
+        {"$ref": "#/$defs/baseCase"},
+        {
+          "type": "object",
+          "required": ["engine_config"],
+          "properties": {
+            "validator": {"const": "openapi-spec-validator"},
+            "category": {"const": "openapi"},
+            "expected_business_status": {"const": "PASS"},
+            "expected_program_status": {"const": "SUCCESS"},
+            "artifact_refs": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["document"],
+              "properties": {
+                "document": {"$ref": "#/$defs/id"}
+              }
+            },
+            "engine_config": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["full_validation", "network_allowed"],
+              "properties": {
+                "full_validation": {"const": true},
+                "network_allowed": {"const": false}
+              }
+            },
+            "oracle": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["expected_valid"],
+              "properties": {
+                "expected_valid": {"const": true}
+              }
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "sparqlCase": {
+      "allOf": [
+        {"$ref": "#/$defs/baseCase"},
+        {
+          "type": "object",
+          "required": ["engine_config"],
+          "properties": {
+            "validator": {"const": "rdflib-sparql"},
+            "category": {"const": "sparql"},
+            "expected_business_status": {"const": "PASS"},
+            "expected_program_status": {"const": "SUCCESS"},
+            "artifact_refs": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["graph_inputs", "local_contexts", "query", "expected"],
+              "properties": {
+                "graph_inputs": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {"$ref": "#/$defs/id"},
+                  "uniqueItems": true
+                },
+                "local_contexts": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {"$ref": "#/$defs/id"},
+                  "uniqueItems": true
+                },
+                "query": {"$ref": "#/$defs/id"},
+                "expected": {"$ref": "#/$defs/id"}
+              }
+            },
+            "engine_config": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["comparison", "sort_rows", "preserve_duplicates"],
+              "properties": {
+                "comparison": {"const": "exact-tsv"},
+                "sort_rows": {"const": true},
+                "preserve_duplicates": {"const": true}
+              }
+            },
+            "oracle": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["expected_variables", "expected_row_count"],
+              "properties": {
+                "expected_variables": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {"type": "string", "minLength": 1}
+                },
+                "expected_row_count": {"type": "integer", "minimum": 0}
+              }
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    }
+  }
+}

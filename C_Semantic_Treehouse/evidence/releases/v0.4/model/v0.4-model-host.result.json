@@ -1,0 +1,1880 @@
+{
+  "checks": [
+    {
+      "id": "release_manifest",
+      "status": "SUCCESS"
+    },
+    {
+      "id": "requirements_registry",
+      "status": "SUCCESS"
+    },
+    {
+      "id": "shape_derivation",
+      "status": "SUCCESS"
+    },
+    {
+      "id": "sha256sums",
+      "status": "SUCCESS"
+    },
+    {
+      "id": "turtle",
+      "status": "SUCCESS"
+    },
+    {
+      "id": "jsonld",
+      "status": "SUCCESS"
+    },
+    {
+      "id": "requirements_implementation",
+      "status": "SUCCESS"
+    },
+    {
+      "id": "record_inheritance",
+      "status": "SUCCESS"
+    },
+    {
+      "id": "traceability_evidence",
+      "status": "SUCCESS"
+    },
+    {
+      "id": "contract_smoke",
+      "status": "SUCCESS"
+    },
+    {
+      "id": "suite_registry",
+      "status": "SUCCESS"
+    }
+  ],
+  "contract_smoke": {
+    "cases": [
+      {
+        "actual_business_status": "PASS",
+        "assertions": [
+          {
+            "actual": "PASS",
+            "expected": "PASS",
+            "name": "business_status",
+            "passed": true
+          },
+          {
+            "actual": 4,
+            "expected": ">0",
+            "name": "target_nonzero",
+            "passed": true
+          },
+          {
+            "actual": 0,
+            "expected": 0,
+            "name": "violation_count",
+            "passed": true
+          },
+          {
+            "actual": 0,
+            "expected": 0,
+            "name": "warning_count",
+            "passed": true
+          }
+        ],
+        "expected_business_status": "PASS",
+        "id": "canonical-valid",
+        "passed": true,
+        "validation": {
+          "business_status": "PASS",
+          "data_triple_count": 13,
+          "engine_config": {
+            "abort_on_first": false,
+            "advanced": true,
+            "allow_infos": false,
+            "allow_warnings": false,
+            "debug": false,
+            "do_owl_imports": false,
+            "inference": "none",
+            "inplace": false,
+            "iterate_rules": false,
+            "meta_shacl": true,
+            "sparql_mode": false
+          },
+          "graphs_separate": true,
+          "ontology_graph_supplied": false,
+          "pyshacl_conforms": true,
+          "report_conforms": true,
+          "report_triple_count": 2,
+          "result_count": 0,
+          "results": [],
+          "severity_counts": {
+            "Info": 0,
+            "Violation": 0,
+            "Warning": 0
+          },
+          "shapes_graph_unchanged": true,
+          "shapes_triple_count": 179,
+          "target_activation_count": 4,
+          "throwaway_shapes_graph_supplied": true
+        }
+      },
+      {
+        "actual_business_status": "FAIL",
+        "assertions": [
+          {
+            "actual": "FAIL",
+            "expected": "FAIL",
+            "name": "business_status",
+            "passed": true
+          },
+          {
+            "actual": [
+              [
+                "https://example.org/dssc-energy#ProviderNameShape",
+                "http://www.w3.org/ns/shacl#MinCountConstraintComponent",
+                "https://example.org/dssc-energy#providerName"
+              ],
+              [
+                "https://example.org/dssc-energy#TemporalEndShape",
+                "http://www.w3.org/ns/shacl#MinCountConstraintComponent",
+                "https://example.org/dssc-energy#temporalEnd"
+              ],
+              [
+                "https://example.org/dssc-energy#UnitShape",
+                "http://www.w3.org/ns/shacl#InConstraintComponent",
+                "https://example.org/dssc-energy#unit"
+              ]
+            ],
+            "expected": [
+              [
+                "https://example.org/dssc-energy#ProviderNameShape",
+                "http://www.w3.org/ns/shacl#MinCountConstraintComponent",
+                "https://example.org/dssc-energy#providerName"
+              ],
+              [
+                "https://example.org/dssc-energy#TemporalEndShape",
+                "http://www.w3.org/ns/shacl#MinCountConstraintComponent",
+                "https://example.org/dssc-energy#temporalEnd"
+              ],
+              [
+                "https://example.org/dssc-energy#UnitShape",
+                "http://www.w3.org/ns/shacl#InConstraintComponent",
+                "https://example.org/dssc-energy#unit"
+              ]
+            ],
+            "name": "exact_required_results",
+            "passed": true
+          },
+          {
+            "actual": 4,
+            "expected": ">0",
+            "name": "target_nonzero",
+            "passed": true
+          }
+        ],
+        "expected_business_status": "FAIL",
+        "id": "source-invalid",
+        "passed": true,
+        "validation": {
+          "business_status": "FAIL",
+          "data_triple_count": 10,
+          "engine_config": {
+            "abort_on_first": false,
+            "advanced": true,
+            "allow_infos": false,
+            "allow_warnings": false,
+            "debug": false,
+            "do_owl_imports": false,
+            "inference": "none",
+            "inplace": false,
+            "iterate_rules": false,
+            "meta_shacl": true,
+            "sparql_mode": false
+          },
+          "graphs_separate": true,
+          "ontology_graph_supplied": false,
+          "pyshacl_conforms": false,
+          "report_conforms": false,
+          "report_triple_count": 27,
+          "result_count": 3,
+          "results": [
+            {
+              "constraint_component": "http://www.w3.org/ns/shacl#MinCountConstraintComponent",
+              "focus_node": "https://example.org/dssc-energy/datasets/building-energy-hourly-v1-invalid",
+              "message": "ex:providerName is required and must be one non-blank xsd:string.",
+              "path": "https://example.org/dssc-energy#providerName",
+              "severity": "http://www.w3.org/ns/shacl#Violation",
+              "severity_name": "Violation",
+              "source_shape": "https://example.org/dssc-energy#ProviderNameShape",
+              "value": null
+            },
+            {
+              "constraint_component": "http://www.w3.org/ns/shacl#MinCountConstraintComponent",
+              "focus_node": "https://example.org/dssc-energy/datasets/building-energy-hourly-v1-invalid",
+              "message": "ex:temporalEnd is required and must be one xsd:date.",
+              "path": "https://example.org/dssc-energy#temporalEnd",
+              "severity": "http://www.w3.org/ns/shacl#Violation",
+              "severity_name": "Violation",
+              "source_shape": "https://example.org/dssc-energy#TemporalEndShape",
+              "value": null
+            },
+            {
+              "constraint_component": "http://www.w3.org/ns/shacl#InConstraintComponent",
+              "focus_node": "https://example.org/dssc-energy/datasets/building-energy-hourly-v1-invalid",
+              "message": "ex:unit is required and must equal kWh (exact match, case-sensitive).",
+              "path": "https://example.org/dssc-energy#unit",
+              "severity": "http://www.w3.org/ns/shacl#Violation",
+              "severity_name": "Violation",
+              "source_shape": "https://example.org/dssc-energy#UnitShape",
+              "value": "MWh"
+            }
+          ],
+          "severity_counts": {
+            "Info": 0,
+            "Violation": 3,
+            "Warning": 0
+          },
+          "shapes_graph_unchanged": true,
+          "shapes_triple_count": 179,
+          "target_activation_count": 4,
+          "throwaway_shapes_graph_supplied": true
+        }
+      },
+      {
+        "actual_business_status": "INAPPLICABLE",
+        "assertions": [
+          {
+            "actual": "INAPPLICABLE",
+            "expected": "INAPPLICABLE",
+            "name": "business_status",
+            "passed": true
+          },
+          {
+            "actual": true,
+            "expected": true,
+            "name": "closed_warning_only",
+            "passed": true
+          },
+          {
+            "actual": 4,
+            "expected": ">0",
+            "name": "target_nonzero",
+            "passed": true
+          },
+          {
+            "actual": 0,
+            "expected": 0,
+            "name": "violation_count",
+            "passed": true
+          }
+        ],
+        "expected_business_status": "INAPPLICABLE",
+        "id": "conforms-to-warning",
+        "passed": true,
+        "validation": {
+          "business_status": "INAPPLICABLE",
+          "data_triple_count": 14,
+          "engine_config": {
+            "abort_on_first": false,
+            "advanced": true,
+            "allow_infos": false,
+            "allow_warnings": false,
+            "debug": false,
+            "do_owl_imports": false,
+            "inference": "none",
+            "inplace": false,
+            "iterate_rules": false,
+            "meta_shacl": true,
+            "sparql_mode": false
+          },
+          "graphs_separate": true,
+          "ontology_graph_supplied": false,
+          "pyshacl_conforms": false,
+          "report_conforms": false,
+          "report_triple_count": 11,
+          "result_count": 1,
+          "results": [
+            {
+              "constraint_component": "http://www.w3.org/ns/shacl#ClosedConstraintComponent",
+              "focus_node": "https://example.org/dssc-energy/datasets/building-energy-hourly-v1",
+              "message": "The dataset contains a property outside the declared metadata profile. Such properties are flagged as INAPPLICABLE.",
+              "path": "http://purl.org/dc/terms/conformsTo",
+              "severity": "http://www.w3.org/ns/shacl#Warning",
+              "severity_name": "Warning",
+              "source_shape": "https://example.org/dssc-energy#DatasetClosedShape",
+              "value": "https://w3id.org/dssc-demo/building-energy/v0.4"
+            }
+          ],
+          "severity_counts": {
+            "Info": 0,
+            "Violation": 0,
+            "Warning": 1
+          },
+          "shapes_graph_unchanged": true,
+          "shapes_triple_count": 179,
+          "target_activation_count": 4,
+          "throwaway_shapes_graph_supplied": true
+        }
+      },
+      {
+        "actual_business_status": "FAIL",
+        "assertions": [
+          {
+            "actual": "FAIL",
+            "expected": "FAIL",
+            "name": "business_status",
+            "passed": true
+          },
+          {
+            "actual": true,
+            "expected": true,
+            "name": "cardinality_sparql_hit",
+            "passed": true
+          },
+          {
+            "actual": 1,
+            "expected": ">0",
+            "name": "target_nonzero",
+            "passed": true
+          }
+        ],
+        "expected_business_status": "FAIL",
+        "id": "zero-dataset-control",
+        "passed": true,
+        "validation": {
+          "business_status": "FAIL",
+          "data_triple_count": 0,
+          "engine_config": {
+            "abort_on_first": false,
+            "advanced": true,
+            "allow_infos": false,
+            "allow_warnings": false,
+            "debug": false,
+            "do_owl_imports": false,
+            "inference": "none",
+            "inplace": false,
+            "iterate_rules": false,
+            "meta_shacl": true,
+            "sparql_mode": false
+          },
+          "graphs_separate": true,
+          "ontology_graph_supplied": false,
+          "pyshacl_conforms": false,
+          "report_conforms": false,
+          "report_triple_count": 14,
+          "result_count": 1,
+          "results": [
+            {
+              "constraint_component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+              "focus_node": "https://example.org/dssc-energy#ValidationSubmission",
+              "message": "The submitted RDF graph must contain exactly one dcat:Dataset. Found 0 or more than 1.",
+              "path": null,
+              "severity": "http://www.w3.org/ns/shacl#Violation",
+              "severity_name": "Violation",
+              "source_shape": "https://example.org/dssc-energy#DatasetCardinalityShape",
+              "value": "https://example.org/dssc-energy#ValidationSubmission"
+            }
+          ],
+          "severity_counts": {
+            "Info": 0,
+            "Violation": 1,
+            "Warning": 0
+          },
+          "shapes_graph_unchanged": true,
+          "shapes_triple_count": 179,
+          "target_activation_count": 1,
+          "throwaway_shapes_graph_supplied": true
+        }
+      },
+      {
+        "actual_business_status": "FAIL",
+        "assertions": [
+          {
+            "actual": "FAIL",
+            "expected": "FAIL",
+            "name": "business_status",
+            "passed": true
+          },
+          {
+            "actual": true,
+            "expected": true,
+            "name": "cardinality_sparql_hit",
+            "passed": true
+          },
+          {
+            "actual": 7,
+            "expected": ">0",
+            "name": "target_nonzero",
+            "passed": true
+          }
+        ],
+        "expected_business_status": "FAIL",
+        "id": "two-dataset-control",
+        "passed": true,
+        "validation": {
+          "business_status": "FAIL",
+          "data_triple_count": 26,
+          "engine_config": {
+            "abort_on_first": false,
+            "advanced": true,
+            "allow_infos": false,
+            "allow_warnings": false,
+            "debug": false,
+            "do_owl_imports": false,
+            "inference": "none",
+            "inplace": false,
+            "iterate_rules": false,
+            "meta_shacl": true,
+            "sparql_mode": false
+          },
+          "graphs_separate": true,
+          "ontology_graph_supplied": false,
+          "pyshacl_conforms": false,
+          "report_conforms": false,
+          "report_triple_count": 14,
+          "result_count": 1,
+          "results": [
+            {
+              "constraint_component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+              "focus_node": "https://example.org/dssc-energy#ValidationSubmission",
+              "message": "The submitted RDF graph must contain exactly one dcat:Dataset. Found 0 or more than 1.",
+              "path": null,
+              "severity": "http://www.w3.org/ns/shacl#Violation",
+              "severity_name": "Violation",
+              "source_shape": "https://example.org/dssc-energy#DatasetCardinalityShape",
+              "value": "https://example.org/dssc-energy#ValidationSubmission"
+            }
+          ],
+          "severity_counts": {
+            "Info": 0,
+            "Violation": 1,
+            "Warning": 0
+          },
+          "shapes_graph_unchanged": true,
+          "shapes_triple_count": 179,
+          "target_activation_count": 7,
+          "throwaway_shapes_graph_supplied": true
+        }
+      },
+      {
+        "actual_business_status": "FAIL",
+        "assertions": [
+          {
+            "actual": "FAIL",
+            "expected": "FAIL",
+            "name": "business_status",
+            "passed": true
+          },
+          {
+            "actual": 4,
+            "expected": ">0",
+            "name": "target_nonzero",
+            "passed": true
+          },
+          {
+            "actual": true,
+            "expected": true,
+            "name": "temporal_sparql_hit",
+            "passed": true
+          }
+        ],
+        "expected_business_status": "FAIL",
+        "id": "temporal-reversed-control",
+        "passed": true,
+        "validation": {
+          "business_status": "FAIL",
+          "data_triple_count": 13,
+          "engine_config": {
+            "abort_on_first": false,
+            "advanced": true,
+            "allow_infos": false,
+            "allow_warnings": false,
+            "debug": false,
+            "do_owl_imports": false,
+            "inference": "none",
+            "inplace": false,
+            "iterate_rules": false,
+            "meta_shacl": true,
+            "sparql_mode": false
+          },
+          "graphs_separate": true,
+          "ontology_graph_supplied": false,
+          "pyshacl_conforms": false,
+          "report_conforms": false,
+          "report_triple_count": 14,
+          "result_count": 1,
+          "results": [
+            {
+              "constraint_component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+              "focus_node": "https://example.org/dssc-energy/datasets/building-energy-hourly-v1",
+              "message": "ex:temporalStart must not be later than ex:temporalEnd.",
+              "path": null,
+              "severity": "http://www.w3.org/ns/shacl#Violation",
+              "severity_name": "Violation",
+              "source_shape": "https://example.org/dssc-energy#TemporalOrderShape",
+              "value": "https://example.org/dssc-energy/datasets/building-energy-hourly-v1"
+            }
+          ],
+          "severity_counts": {
+            "Info": 0,
+            "Violation": 1,
+            "Warning": 0
+          },
+          "shapes_graph_unchanged": true,
+          "shapes_triple_count": 179,
+          "target_activation_count": 4,
+          "throwaway_shapes_graph_supplied": true
+        }
+      }
+    ],
+    "counts": {
+      "discovered": 6,
+      "executed": 6,
+      "failed": 0,
+      "passed": 6,
+      "skipped": 0
+    },
+    "engine_config": {
+      "abort_on_first": false,
+      "advanced": true,
+      "allow_infos": false,
+      "allow_warnings": false,
+      "debug": false,
+      "do_owl_imports": false,
+      "inference": "none",
+      "inplace": false,
+      "iterate_rules": false,
+      "meta_shacl": true,
+      "sparql_mode": false
+    },
+    "issues": [],
+    "pyshacl": {
+      "locked_version": "0.40.1",
+      "runtime_version": "0.40.1"
+    },
+    "status": "SUCCESS"
+  },
+  "counts": {
+    "discovered": 11,
+    "executed": 11,
+    "failed": 0,
+    "passed": 11,
+    "skipped": 0
+  },
+  "exit_code": 0,
+  "jsonld": {
+    "context_assertions": [
+      {
+        "actual": {
+          "Dataset": "dcat:Dataset",
+          "datasetId": "ex:datasetId",
+          "dcat": "http://www.w3.org/ns/dcat#",
+          "dct": "http://purl.org/dc/terms/",
+          "description": "dct:description",
+          "endpointUrl": {
+            "@id": "dcat:endpointURL",
+            "@type": "@id"
+          },
+          "ex": "https://example.org/dssc-energy#",
+          "format": "dct:format",
+          "frequency": "dct:accrualPeriodicity",
+          "license": {
+            "@id": "dct:license",
+            "@type": "@id"
+          },
+          "providerName": "ex:providerName",
+          "spatial": "dct:spatial",
+          "temporalEnd": {
+            "@id": "ex:temporalEnd",
+            "@type": "xsd:date"
+          },
+          "temporalStart": {
+            "@id": "ex:temporalStart",
+            "@type": "xsd:date"
+          },
+          "title": "dct:title",
+          "unit": "ex:unit",
+          "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "expected": {
+          "Dataset": "dcat:Dataset",
+          "datasetId": "ex:datasetId",
+          "dcat": "http://www.w3.org/ns/dcat#",
+          "dct": "http://purl.org/dc/terms/",
+          "description": "dct:description",
+          "endpointUrl": {
+            "@id": "dcat:endpointURL",
+            "@type": "@id"
+          },
+          "ex": "https://example.org/dssc-energy#",
+          "format": "dct:format",
+          "frequency": "dct:accrualPeriodicity",
+          "license": {
+            "@id": "dct:license",
+            "@type": "@id"
+          },
+          "providerName": "ex:providerName",
+          "spatial": "dct:spatial",
+          "temporalEnd": {
+            "@id": "ex:temporalEnd",
+            "@type": "xsd:date"
+          },
+          "temporalStart": {
+            "@id": "ex:temporalStart",
+            "@type": "xsd:date"
+          },
+          "title": "dct:title",
+          "unit": "ex:unit",
+          "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "name": "exact_term_mapping_and_coercion",
+        "passed": true
+      }
+    ],
+    "context_path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+    "context_sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391",
+    "data_triple_count": 13,
+    "dataset_count": 1,
+    "dataset_is_iri": true,
+    "example_path": "C_Semantic_Treehouse/model/v0.4/data-product-valid.jsonld",
+    "example_sha256": "9acc287ae274e549becd15852231b325c43e1dbddc14e9f2459f4c490420f239",
+    "expansion": {
+      "contexts": [
+        {
+          "document_url": "https://dssc.local/repository/C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+          "logical_path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld"
+        }
+      ],
+      "document_url": "https://dssc.local/repository/C_Semantic_Treehouse/model/v0.4/data-product-valid.jsonld",
+      "expanded_node_count": 1,
+      "input": "C_Semantic_Treehouse/model/v0.4/data-product-valid.jsonld",
+      "loader_request_count": 1,
+      "network_request_count": 0
+    },
+    "graph_assertions": [
+      {
+        "actual": 13,
+        "expected": 13,
+        "name": "exact_triple_count",
+        "passed": true
+      },
+      {
+        "actual_triple_count": 13,
+        "expected_triple_count": 13,
+        "missing": [],
+        "name": "exact_canonical_scenario_graph",
+        "passed": true,
+        "unexpected": []
+      }
+    ],
+    "issues": [],
+    "status": "SUCCESS"
+  },
+  "message": "v0.4 release model passed",
+  "profile": "host",
+  "program_status": "SUCCESS",
+  "record_inheritance": {
+    "artifacts": [
+      {
+        "actual_sha256": "9727da9b8650dc444d719113a6978a3a26a59bfd1fde011a98e4c1f4b476f748",
+        "expanded_node_count": 0,
+        "expansion": {
+          "contexts": [],
+          "document_url": "https://dssc.local/repository/C_Semantic_Treehouse/model/v0.3/energy-reading-record-context.jsonld",
+          "expanded_node_count": 0,
+          "input": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-context.jsonld",
+          "loader_request_count": 0,
+          "network_request_count": 0
+        },
+        "expected_sha256": "9727da9b8650dc444d719113a6978a3a26a59bfd1fde011a98e4c1f4b476f748",
+        "parse_status": "SUCCESS",
+        "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-context.jsonld"
+      },
+      {
+        "actual_sha256": "e516f6a8e4ea811170c72e922b86ac7ea46594046704d01a55a2c8e13cd8f358",
+        "expansion": {
+          "contexts": [
+            {
+              "document_url": "https://dssc.local/repository/C_Semantic_Treehouse/model/v0.3/energy-reading-record-context.jsonld",
+              "logical_path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-context.jsonld"
+            }
+          ],
+          "document_url": "https://dssc.local/repository/C_Semantic_Treehouse/model/v0.3/energy-reading-record-invalid.jsonld",
+          "expanded_node_count": 1,
+          "input": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-invalid.jsonld",
+          "loader_request_count": 1,
+          "network_request_count": 0
+        },
+        "expected_sha256": "e516f6a8e4ea811170c72e922b86ac7ea46594046704d01a55a2c8e13cd8f358",
+        "parse_status": "SUCCESS",
+        "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-invalid.jsonld",
+        "triple_count": 9
+      },
+      {
+        "actual_sha256": "84d1eee9cfeecd1791117552611e83d36af7df4f3b4c783ddbd75d45bae66c9a",
+        "expected_sha256": "84d1eee9cfeecd1791117552611e83d36af7df4f3b4c783ddbd75d45bae66c9a",
+        "meta_shacl": {
+          "conforms": true,
+          "error_type": null,
+          "message": "Meta-SHACL passed",
+          "report_triple_count": 2,
+          "result_count": 0,
+          "status": "SUCCESS"
+        },
+        "parse_status": "SUCCESS",
+        "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-shapes.ttl",
+        "triple_count": 40
+      },
+      {
+        "actual_sha256": "8f7509ad08fb9a62cdff1d6c904801c9421c3ce768bdd9ecb651cd480aa158e1",
+        "expansion": {
+          "contexts": [
+            {
+              "document_url": "https://dssc.local/repository/C_Semantic_Treehouse/model/v0.3/energy-reading-record-context.jsonld",
+              "logical_path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-context.jsonld"
+            }
+          ],
+          "document_url": "https://dssc.local/repository/C_Semantic_Treehouse/model/v0.3/energy-reading-record-valid.jsonld",
+          "expanded_node_count": 1,
+          "input": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-valid.jsonld",
+          "loader_request_count": 1,
+          "network_request_count": 0
+        },
+        "expected_sha256": "8f7509ad08fb9a62cdff1d6c904801c9421c3ce768bdd9ecb651cd480aa158e1",
+        "parse_status": "SUCCESS",
+        "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-valid.jsonld",
+        "triple_count": 10
+      },
+      {
+        "actual_sha256": "dd07414e3752bf582bf5e721009064e16d7be3e1e06d60daaad08000869ccfa9",
+        "expected_sha256": "dd07414e3752bf582bf5e721009064e16d7be3e1e06d60daaad08000869ccfa9",
+        "parse_status": "SUCCESS",
+        "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record.schema.json",
+        "schema_dialect": "http://json-schema.org/draft-07/schema#"
+      }
+    ],
+    "issues": [],
+    "status": "SUCCESS"
+  },
+  "registry_contract_version": "1.3.0",
+  "registry_path": "C_Semantic_Treehouse/manifests/validation-suites.json",
+  "registry_schema_path": "C_Semantic_Treehouse/manifests/schemas/validation-suites.schema.json",
+  "registry_schema_sha256": "70d436cd0509da2fcec8b602c1bffc5f00490d24c13c2ee47caf84791199802a",
+  "registry_sha256": "1ae6361e956c2bf41f86e987caf0879ce4483f76f9f1e042b0442edb3f049829",
+  "release_manifest": {
+    "artifact_count": 30,
+    "artifact_ids": [
+      "v01-metadata-context",
+      "v01-metadata-shapes",
+      "v01-metadata-valid",
+      "v01-ontology",
+      "v02-metadata-context",
+      "v02-metadata-invalid",
+      "v02-metadata-shapes",
+      "v02-metadata-valid",
+      "v02-ontology",
+      "v03-metadata-context",
+      "v03-metadata-shapes",
+      "v03-metadata-valid",
+      "v03-ontology",
+      "v03-openapi",
+      "v03-record-context",
+      "v03-record-invalid",
+      "v03-record-schema",
+      "v03-record-shapes",
+      "v03-record-valid",
+      "v04-checksums",
+      "v04-inherited-record-context",
+      "v04-inherited-record-invalid",
+      "v04-inherited-record-schema",
+      "v04-inherited-record-shapes",
+      "v04-inherited-record-valid",
+      "v04-metadata-context",
+      "v04-metadata-shapes",
+      "v04-metadata-valid",
+      "v04-ontology",
+      "v04-release-readme"
+    ],
+    "current_release": "v0.4",
+    "historical_baseline": {
+      "actual": [
+        {
+          "id": "v01-metadata-context",
+          "path": "C_Semantic_Treehouse/model/v0.1/data-product-context.jsonld",
+          "release": "v0.1",
+          "role": "metadata-context",
+          "sha256": "5bd7e049128f249879f3a52e93d979acfc14b8cabcb828a4e966379b243b05cc"
+        },
+        {
+          "id": "v01-metadata-shapes",
+          "path": "C_Semantic_Treehouse/model/v0.1/data-product-metadata-shapes.ttl",
+          "release": "v0.1",
+          "role": "metadata-shapes",
+          "sha256": "7f93a41b0aa70478a6398b3ee223d13a7dbb64f5dd2cc9409e51a64c60912721"
+        },
+        {
+          "id": "v01-metadata-valid",
+          "path": "C_Semantic_Treehouse/model/v0.1/data-product-valid.jsonld",
+          "release": "v0.1",
+          "role": "metadata-valid-example",
+          "sha256": "1f99d51492f7bfac467fac6cda4827f98f770ffd6947d934996367b046aaf86c"
+        },
+        {
+          "id": "v01-ontology",
+          "path": "C_Semantic_Treehouse/model/v0.1/building-energy-ontology.ttl",
+          "release": "v0.1",
+          "role": "ontology",
+          "sha256": "c851b37acfca56e72913475ed8b6048a617214b149be8beffb0858dc36c5bcac"
+        },
+        {
+          "id": "v02-metadata-context",
+          "path": "C_Semantic_Treehouse/model/v0.2/data-product-context.jsonld",
+          "release": "v0.2",
+          "role": "metadata-context",
+          "sha256": "fe96dd475dd5d116d6271ad1b14a3228f59686a865313ac2dbb81d6c91b6da2a"
+        },
+        {
+          "id": "v02-metadata-invalid",
+          "path": "C_Semantic_Treehouse/model/v0.2/data-product-invalid.jsonld",
+          "release": "v0.2",
+          "role": "metadata-invalid-example",
+          "sha256": "9fe8164622db3fb54fe72ed7411fa10c45dafce6c63122151360249ca08431e2"
+        },
+        {
+          "id": "v02-metadata-shapes",
+          "path": "C_Semantic_Treehouse/model/v0.2/data-product-metadata-shapes.ttl",
+          "release": "v0.2",
+          "role": "metadata-shapes",
+          "sha256": "1a8bbcf62022313488d227969e47285537dda1c7347e787399eff8d2229ab351"
+        },
+        {
+          "id": "v02-metadata-valid",
+          "path": "C_Semantic_Treehouse/model/v0.2/data-product-valid.jsonld",
+          "release": "v0.2",
+          "role": "metadata-valid-example",
+          "sha256": "34aadddd5523c12fa8bab6cc3c7c31c161168284b5d9be853e36ee03ecc38f5a"
+        },
+        {
+          "id": "v02-ontology",
+          "path": "C_Semantic_Treehouse/model/v0.2/building-energy-ontology.ttl",
+          "release": "v0.2",
+          "role": "ontology",
+          "sha256": "800f74d26133fd0c111747113945029ccd2edeca990cad5d893007a973032631"
+        },
+        {
+          "id": "v03-metadata-context",
+          "path": "C_Semantic_Treehouse/model/v0.3/data-product-context.jsonld",
+          "release": "v0.3",
+          "role": "metadata-context",
+          "sha256": "fe96dd475dd5d116d6271ad1b14a3228f59686a865313ac2dbb81d6c91b6da2a"
+        },
+        {
+          "id": "v03-metadata-shapes",
+          "path": "C_Semantic_Treehouse/model/v0.3/data-product-metadata-shapes.ttl",
+          "release": "v0.3",
+          "role": "metadata-shapes",
+          "sha256": "3241483f15de178c6e1f8d40ea931e600975cddcb1e30845ae2dbf747e734a2f"
+        },
+        {
+          "id": "v03-metadata-valid",
+          "path": "C_Semantic_Treehouse/model/v0.3/data-product-valid.jsonld",
+          "release": "v0.3",
+          "role": "metadata-valid-example",
+          "sha256": "ab16fcafc72a7af02e7fba079f37a6216ac89356504e755377b2ba9cf3afab21"
+        },
+        {
+          "id": "v03-ontology",
+          "path": "C_Semantic_Treehouse/model/v0.3/building-energy-ontology.ttl",
+          "release": "v0.3",
+          "role": "ontology",
+          "sha256": "b3081a4ea960e7b90f4a2e836e99dfa092f29346106cd1e2b9f7c58b0d598e7d"
+        },
+        {
+          "id": "v03-openapi",
+          "path": "C_Semantic_Treehouse/model/v0.3/openapi-fragment.yaml",
+          "release": "v0.3",
+          "role": "openapi",
+          "sha256": "d0f52629f625f7b6656854e352be01b9c40b8d2a943dca0423b70cff168a473c"
+        },
+        {
+          "id": "v03-record-context",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-context.jsonld",
+          "release": "v0.3",
+          "role": "record-context",
+          "sha256": "9727da9b8650dc444d719113a6978a3a26a59bfd1fde011a98e4c1f4b476f748"
+        },
+        {
+          "id": "v03-record-invalid",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-invalid.jsonld",
+          "release": "v0.3",
+          "role": "record-invalid-example",
+          "sha256": "e516f6a8e4ea811170c72e922b86ac7ea46594046704d01a55a2c8e13cd8f358"
+        },
+        {
+          "id": "v03-record-schema",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record.schema.json",
+          "release": "v0.3",
+          "role": "record-json-schema",
+          "sha256": "dd07414e3752bf582bf5e721009064e16d7be3e1e06d60daaad08000869ccfa9"
+        },
+        {
+          "id": "v03-record-shapes",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-shapes.ttl",
+          "release": "v0.3",
+          "role": "record-shapes",
+          "sha256": "84d1eee9cfeecd1791117552611e83d36af7df4f3b4c783ddbd75d45bae66c9a"
+        },
+        {
+          "id": "v03-record-valid",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-valid.jsonld",
+          "release": "v0.3",
+          "role": "record-valid-example",
+          "sha256": "8f7509ad08fb9a62cdff1d6c904801c9421c3ce768bdd9ecb651cd480aa158e1"
+        }
+      ],
+      "baseline_manifest_sha256": "e8fb57fe2f609c48c0340cf8e3b78d2e8f81d0fe0fd3ab505468cfe315767e43",
+      "expected": [
+        {
+          "id": "v01-metadata-context",
+          "path": "C_Semantic_Treehouse/model/v0.1/data-product-context.jsonld",
+          "release": "v0.1",
+          "role": "metadata-context",
+          "sha256": "5bd7e049128f249879f3a52e93d979acfc14b8cabcb828a4e966379b243b05cc"
+        },
+        {
+          "id": "v01-metadata-shapes",
+          "path": "C_Semantic_Treehouse/model/v0.1/data-product-metadata-shapes.ttl",
+          "release": "v0.1",
+          "role": "metadata-shapes",
+          "sha256": "7f93a41b0aa70478a6398b3ee223d13a7dbb64f5dd2cc9409e51a64c60912721"
+        },
+        {
+          "id": "v01-metadata-valid",
+          "path": "C_Semantic_Treehouse/model/v0.1/data-product-valid.jsonld",
+          "release": "v0.1",
+          "role": "metadata-valid-example",
+          "sha256": "1f99d51492f7bfac467fac6cda4827f98f770ffd6947d934996367b046aaf86c"
+        },
+        {
+          "id": "v01-ontology",
+          "path": "C_Semantic_Treehouse/model/v0.1/building-energy-ontology.ttl",
+          "release": "v0.1",
+          "role": "ontology",
+          "sha256": "c851b37acfca56e72913475ed8b6048a617214b149be8beffb0858dc36c5bcac"
+        },
+        {
+          "id": "v02-metadata-context",
+          "path": "C_Semantic_Treehouse/model/v0.2/data-product-context.jsonld",
+          "release": "v0.2",
+          "role": "metadata-context",
+          "sha256": "fe96dd475dd5d116d6271ad1b14a3228f59686a865313ac2dbb81d6c91b6da2a"
+        },
+        {
+          "id": "v02-metadata-invalid",
+          "path": "C_Semantic_Treehouse/model/v0.2/data-product-invalid.jsonld",
+          "release": "v0.2",
+          "role": "metadata-invalid-example",
+          "sha256": "9fe8164622db3fb54fe72ed7411fa10c45dafce6c63122151360249ca08431e2"
+        },
+        {
+          "id": "v02-metadata-shapes",
+          "path": "C_Semantic_Treehouse/model/v0.2/data-product-metadata-shapes.ttl",
+          "release": "v0.2",
+          "role": "metadata-shapes",
+          "sha256": "1a8bbcf62022313488d227969e47285537dda1c7347e787399eff8d2229ab351"
+        },
+        {
+          "id": "v02-metadata-valid",
+          "path": "C_Semantic_Treehouse/model/v0.2/data-product-valid.jsonld",
+          "release": "v0.2",
+          "role": "metadata-valid-example",
+          "sha256": "34aadddd5523c12fa8bab6cc3c7c31c161168284b5d9be853e36ee03ecc38f5a"
+        },
+        {
+          "id": "v02-ontology",
+          "path": "C_Semantic_Treehouse/model/v0.2/building-energy-ontology.ttl",
+          "release": "v0.2",
+          "role": "ontology",
+          "sha256": "800f74d26133fd0c111747113945029ccd2edeca990cad5d893007a973032631"
+        },
+        {
+          "id": "v03-metadata-context",
+          "path": "C_Semantic_Treehouse/model/v0.3/data-product-context.jsonld",
+          "release": "v0.3",
+          "role": "metadata-context",
+          "sha256": "fe96dd475dd5d116d6271ad1b14a3228f59686a865313ac2dbb81d6c91b6da2a"
+        },
+        {
+          "id": "v03-metadata-shapes",
+          "path": "C_Semantic_Treehouse/model/v0.3/data-product-metadata-shapes.ttl",
+          "release": "v0.3",
+          "role": "metadata-shapes",
+          "sha256": "3241483f15de178c6e1f8d40ea931e600975cddcb1e30845ae2dbf747e734a2f"
+        },
+        {
+          "id": "v03-metadata-valid",
+          "path": "C_Semantic_Treehouse/model/v0.3/data-product-valid.jsonld",
+          "release": "v0.3",
+          "role": "metadata-valid-example",
+          "sha256": "ab16fcafc72a7af02e7fba079f37a6216ac89356504e755377b2ba9cf3afab21"
+        },
+        {
+          "id": "v03-ontology",
+          "path": "C_Semantic_Treehouse/model/v0.3/building-energy-ontology.ttl",
+          "release": "v0.3",
+          "role": "ontology",
+          "sha256": "b3081a4ea960e7b90f4a2e836e99dfa092f29346106cd1e2b9f7c58b0d598e7d"
+        },
+        {
+          "id": "v03-openapi",
+          "path": "C_Semantic_Treehouse/model/v0.3/openapi-fragment.yaml",
+          "release": "v0.3",
+          "role": "openapi",
+          "sha256": "d0f52629f625f7b6656854e352be01b9c40b8d2a943dca0423b70cff168a473c"
+        },
+        {
+          "id": "v03-record-context",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-context.jsonld",
+          "release": "v0.3",
+          "role": "record-context",
+          "sha256": "9727da9b8650dc444d719113a6978a3a26a59bfd1fde011a98e4c1f4b476f748"
+        },
+        {
+          "id": "v03-record-invalid",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-invalid.jsonld",
+          "release": "v0.3",
+          "role": "record-invalid-example",
+          "sha256": "e516f6a8e4ea811170c72e922b86ac7ea46594046704d01a55a2c8e13cd8f358"
+        },
+        {
+          "id": "v03-record-schema",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record.schema.json",
+          "release": "v0.3",
+          "role": "record-json-schema",
+          "sha256": "dd07414e3752bf582bf5e721009064e16d7be3e1e06d60daaad08000869ccfa9"
+        },
+        {
+          "id": "v03-record-shapes",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-shapes.ttl",
+          "release": "v0.3",
+          "role": "record-shapes",
+          "sha256": "84d1eee9cfeecd1791117552611e83d36af7df4f3b4c783ddbd75d45bae66c9a"
+        },
+        {
+          "id": "v03-record-valid",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-valid.jsonld",
+          "release": "v0.3",
+          "role": "record-valid-example",
+          "sha256": "8f7509ad08fb9a62cdff1d6c904801c9421c3ce768bdd9ecb651cd480aa158e1"
+        }
+      ],
+      "status": "SUCCESS"
+    },
+    "issues": [],
+    "manifest_path": "C_Semantic_Treehouse/manifests/release-manifest.json",
+    "manifest_schema_version": "1.0.0",
+    "manifest_sha256": "7d75676b898fdbc00c9b1da78900054aec5f426690822e07970200b5fd88076a",
+    "record_inheritance": [
+      {
+        "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-context.jsonld",
+        "sha256": "9727da9b8650dc444d719113a6978a3a26a59bfd1fde011a98e4c1f4b476f748"
+      },
+      {
+        "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-invalid.jsonld",
+        "sha256": "e516f6a8e4ea811170c72e922b86ac7ea46594046704d01a55a2c8e13cd8f358"
+      },
+      {
+        "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-shapes.ttl",
+        "sha256": "84d1eee9cfeecd1791117552611e83d36af7df4f3b4c783ddbd75d45bae66c9a"
+      },
+      {
+        "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-valid.jsonld",
+        "sha256": "8f7509ad08fb9a62cdff1d6c904801c9421c3ce768bdd9ecb651cd480aa158e1"
+      },
+      {
+        "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record.schema.json",
+        "sha256": "dd07414e3752bf582bf5e721009064e16d7be3e1e06d60daaad08000869ccfa9"
+      }
+    ],
+    "release_ids": [
+      "v0.1",
+      "v0.2",
+      "v0.3",
+      "v0.4"
+    ],
+    "requirement_registry_ids": [
+      "v04-requirements"
+    ],
+    "schema_path": "C_Semantic_Treehouse/manifests/schemas/release-manifest.schema.json",
+    "schema_sha256": "9029520a45dfc9933cbd254d9cbf4c65e7669ecbd0b20cf916c793a09ac695d3",
+    "source_ids": [
+      "baseline-contract",
+      "frozen-files",
+      "d-shape-v04",
+      "d-change-note",
+      "scenario-valid",
+      "scenario-invalid",
+      "adr-001",
+      "adr-002",
+      "adr-003",
+      "version-naming"
+    ],
+    "status": "SUCCESS"
+  },
+  "requirements_implementation": {
+    "issues": [],
+    "requirements": [
+      {
+        "coverage_complete": true,
+        "id": "D04-R001",
+        "implemented_artifacts": [
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+          }
+        ],
+        "overall_status": "PLANNED",
+        "required_artifacts": [
+          "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl"
+        ]
+      },
+      {
+        "coverage_complete": true,
+        "id": "D04-R002",
+        "implemented_artifacts": [
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+            "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+          }
+        ],
+        "overall_status": "PLANNED",
+        "required_artifacts": [
+          "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+          "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl"
+        ]
+      },
+      {
+        "coverage_complete": true,
+        "id": "D04-R003",
+        "implemented_artifacts": [
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl",
+            "sha256": "c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+            "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+          }
+        ],
+        "overall_status": "PLANNED",
+        "required_artifacts": [
+          "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl",
+          "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+          "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl"
+        ]
+      },
+      {
+        "coverage_complete": true,
+        "id": "D04-R004",
+        "implemented_artifacts": [
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+            "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+          }
+        ],
+        "overall_status": "PLANNED",
+        "required_artifacts": [
+          "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+          "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl"
+        ]
+      },
+      {
+        "coverage_complete": true,
+        "id": "D04-R005",
+        "implemented_artifacts": [
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl",
+            "sha256": "c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+            "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+          }
+        ],
+        "overall_status": "PLANNED",
+        "required_artifacts": [
+          "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl",
+          "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+          "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl"
+        ]
+      },
+      {
+        "coverage_complete": true,
+        "id": "D04-R006",
+        "implemented_artifacts": [
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+            "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+          }
+        ],
+        "overall_status": "PLANNED",
+        "required_artifacts": [
+          "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+          "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl"
+        ]
+      },
+      {
+        "coverage_complete": true,
+        "id": "D04-R007",
+        "implemented_artifacts": [
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+            "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+          }
+        ],
+        "overall_status": "PLANNED",
+        "required_artifacts": [
+          "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+          "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl"
+        ]
+      },
+      {
+        "coverage_complete": true,
+        "id": "D04-R008",
+        "implemented_artifacts": [
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl",
+            "sha256": "c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+            "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+          }
+        ],
+        "overall_status": "PLANNED",
+        "required_artifacts": [
+          "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl",
+          "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+          "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl"
+        ]
+      },
+      {
+        "coverage_complete": true,
+        "id": "D04-R009",
+        "implemented_artifacts": [
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+            "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+          }
+        ],
+        "overall_status": "PLANNED",
+        "required_artifacts": [
+          "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+          "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl"
+        ]
+      },
+      {
+        "coverage_complete": true,
+        "id": "D04-R010",
+        "implemented_artifacts": [
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+            "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+          }
+        ],
+        "overall_status": "PLANNED",
+        "required_artifacts": [
+          "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+          "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl"
+        ]
+      },
+      {
+        "coverage_complete": true,
+        "id": "D04-R011",
+        "implemented_artifacts": [
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl",
+            "sha256": "c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+            "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+          }
+        ],
+        "overall_status": "PLANNED",
+        "required_artifacts": [
+          "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl",
+          "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+          "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl"
+        ]
+      },
+      {
+        "coverage_complete": true,
+        "id": "D04-R012",
+        "implemented_artifacts": [
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl",
+            "sha256": "c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+            "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+          }
+        ],
+        "overall_status": "PLANNED",
+        "required_artifacts": [
+          "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl",
+          "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+          "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl"
+        ]
+      },
+      {
+        "coverage_complete": true,
+        "id": "D04-R013",
+        "implemented_artifacts": [
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl",
+            "sha256": "c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+            "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+          }
+        ],
+        "overall_status": "PLANNED",
+        "required_artifacts": [
+          "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl",
+          "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+          "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl"
+        ]
+      },
+      {
+        "coverage_complete": true,
+        "id": "D04-R014",
+        "implemented_artifacts": [
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+            "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+          }
+        ],
+        "overall_status": "PLANNED",
+        "required_artifacts": [
+          "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+          "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl"
+        ]
+      },
+      {
+        "coverage_complete": true,
+        "id": "D04-R015",
+        "implemented_artifacts": [
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+            "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+          }
+        ],
+        "overall_status": "PLANNED",
+        "required_artifacts": [
+          "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+          "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl"
+        ]
+      },
+      {
+        "coverage_complete": true,
+        "id": "D04-R016",
+        "implemented_artifacts": [
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl",
+            "sha256": "c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+            "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391"
+          },
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+          }
+        ],
+        "overall_status": "PLANNED",
+        "required_artifacts": [
+          "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl",
+          "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+          "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl"
+        ]
+      },
+      {
+        "coverage_complete": true,
+        "id": "D04-R017",
+        "implemented_artifacts": [
+          {
+            "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+          },
+          {
+            "path": "scripts/dssc_validation/model_contract.py",
+            "sha256": "75e975db21b07fd2efe7210ddee4feb95682ab0821fbaaeaf4e765feda50686c"
+          }
+        ],
+        "overall_status": "PLANNED",
+        "required_artifacts": [
+          "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+          "scripts/dssc_validation/model_contract.py"
+        ]
+      }
+    ],
+    "semantic_projection": {
+      "actual_sha256": "8a6d4bee6c06623915e4fa2664d465b666e087db9caf0b315ef2f5831bd0e3fe",
+      "actual_size_bytes": 79254,
+      "algorithm": "remove $.requirements[*].implementation; canonical JSON UTF-8 sort_keys=true,separators=(',',':'),ensure_ascii=false; LF",
+      "expected_phase03_sha256": "8a6d4bee6c06623915e4fa2664d465b666e087db9caf0b315ef2f5831bd0e3fe",
+      "expected_phase03_size_bytes": 79254,
+      "unchanged": true
+    },
+    "status": "SUCCESS"
+  },
+  "requirements_lock_sha256": "d92c7ae708283c04a916da2a9c810a19fbcc65b1fcb154792099e5a3924baeb2",
+  "requirements_registry": {
+    "issues": [],
+    "manifest_path": "C_Semantic_Treehouse/manifests/v0.4-requirements.json",
+    "manifest_schema_version": "1.0.0",
+    "manifest_sha256": "53953e915d6da6159b342a04f1dc6d0ff6a8f53bd5892eb7933551710ebe014e",
+    "planned_case_count": 70,
+    "planned_case_ids": [
+      "D04-PC001",
+      "D04-PC002",
+      "D04-PC003",
+      "D04-PC004",
+      "D04-PC005",
+      "D04-PC006",
+      "D04-PC007",
+      "D04-PC008",
+      "D04-PC009",
+      "D04-PC010",
+      "D04-PC011",
+      "D04-PC012",
+      "D04-PC013",
+      "D04-PC014",
+      "D04-PC015",
+      "D04-PC016",
+      "D04-PC017",
+      "D04-PC018",
+      "D04-PC019",
+      "D04-PC020",
+      "D04-PC021",
+      "D04-PC022",
+      "D04-PC023",
+      "D04-PC024",
+      "D04-PC025",
+      "D04-PC026",
+      "D04-PC027",
+      "D04-PC028",
+      "D04-PC029",
+      "D04-PC030",
+      "D04-PC031",
+      "D04-PC032",
+      "D04-PC033",
+      "D04-PC034",
+      "D04-PC035",
+      "D04-PC036",
+      "D04-PC037",
+      "D04-PC038",
+      "D04-PC039",
+      "D04-PC040",
+      "D04-PC041",
+      "D04-PC042",
+      "D04-PC043",
+      "D04-PC044",
+      "D04-PC045",
+      "D04-PC046",
+      "D04-PC047",
+      "D04-PC048",
+      "D04-PC049",
+      "D04-PC050",
+      "D04-PC051",
+      "D04-PC052",
+      "D04-PC053",
+      "D04-PC054",
+      "D04-PC055",
+      "D04-PC056",
+      "D04-PC057",
+      "D04-PC058",
+      "D04-PC059",
+      "D04-PC060",
+      "D04-PC061",
+      "D04-PC062",
+      "D04-PC063",
+      "D04-PC064",
+      "D04-PC065",
+      "D04-PC066",
+      "D04-PC067",
+      "D04-PC068",
+      "D04-PC069",
+      "D04-PC070"
+    ],
+    "requirement_count": 17,
+    "requirement_ids": [
+      "D04-R001",
+      "D04-R002",
+      "D04-R003",
+      "D04-R004",
+      "D04-R005",
+      "D04-R006",
+      "D04-R007",
+      "D04-R008",
+      "D04-R009",
+      "D04-R010",
+      "D04-R011",
+      "D04-R012",
+      "D04-R013",
+      "D04-R014",
+      "D04-R015",
+      "D04-R016",
+      "D04-R017"
+    ],
+    "schema_path": "C_Semantic_Treehouse/manifests/schemas/v0.4-requirements.schema.json",
+    "schema_sha256": "32a65c25e7a425e8550a17c42ed413c961ac004c3a9778b379bca52cc03d99fb",
+    "status": "SUCCESS",
+    "test_obligation_count": 48,
+    "test_obligation_ids": [
+      "D04-TO-R001-POSITIVE",
+      "D04-TO-R001-CARDINALITY",
+      "D04-TO-R002-POSITIVE",
+      "D04-TO-R002-BLANK",
+      "D04-TO-R003-POSITIVE",
+      "D04-TO-R003-CARDINALITY-TYPE",
+      "D04-TO-R003-BLANK",
+      "D04-TO-R004-POSITIVE",
+      "D04-TO-R004-CARDINALITY-TYPE",
+      "D04-TO-R004-BLANK",
+      "D04-TO-R005-POSITIVE",
+      "D04-TO-R005-CARDINALITY-TYPE",
+      "D04-TO-R005-BLANK",
+      "D04-TO-R005-PRECEDENCE",
+      "D04-TO-R006-POSITIVE",
+      "D04-TO-R006-CARDINALITY-TYPE",
+      "D04-TO-R006-BLANK",
+      "D04-TO-R007-POSITIVE",
+      "D04-TO-R007-CARDINALITY-TYPE",
+      "D04-TO-R007-ENUM",
+      "D04-TO-R008-POSITIVE",
+      "D04-TO-R008-CARDINALITY-TYPE",
+      "D04-TO-R008-ENUM",
+      "D04-TO-R009-POSITIVE",
+      "D04-TO-R009-CARDINALITY-TYPE",
+      "D04-TO-R009-ENUM",
+      "D04-TO-R010-POSITIVE",
+      "D04-TO-R010-CARDINALITY-KIND",
+      "D04-TO-R010-SCHEME",
+      "D04-TO-R011-POSITIVE",
+      "D04-TO-R011-NEGATIVE",
+      "D04-TO-R012-POSITIVE",
+      "D04-TO-R012-NEGATIVE",
+      "D04-TO-R013-POSITIVE",
+      "D04-TO-R013-EQUAL",
+      "D04-TO-R013-REVERSED",
+      "D04-TO-R014-POSITIVE",
+      "D04-TO-R014-NEGATIVE",
+      "D04-TO-R015-POSITIVE",
+      "D04-TO-R015-NEGATIVE",
+      "D04-TO-R015-SCHEME",
+      "D04-TO-R016-POSITIVE",
+      "D04-TO-R016-EXTRA",
+      "D04-TO-R016-PRECEDENCE",
+      "D04-TO-R017-POSITIVE",
+      "D04-TO-R017-SUT-LOAD",
+      "D04-TO-R017-FAULT-INJECTION",
+      "D04-TO-R017-PREFLIGHT-ERROR"
+    ]
+  },
+  "requirements_validation": {
+    "issues": [],
+    "status": "SUCCESS"
+  },
+  "schema": "dssc.v0.4-model.result.v1",
+  "sha256sums": {
+    "issues": [],
+    "path": "C_Semantic_Treehouse/model/v0.4/SHA256SUMS",
+    "records": [
+      {
+        "actual_sha256": "388e4dd823c60b55772946eb7fa37e90c2e5cf52e8300b784bba29ae4364873c",
+        "path": "C_Semantic_Treehouse/model/v0.4/README.md",
+        "sha256": "388e4dd823c60b55772946eb7fa37e90c2e5cf52e8300b784bba29ae4364873c"
+      },
+      {
+        "actual_sha256": "c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9",
+        "path": "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl",
+        "sha256": "c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9"
+      },
+      {
+        "actual_sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391",
+        "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+        "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391"
+      },
+      {
+        "actual_sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda",
+        "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+        "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+      },
+      {
+        "actual_sha256": "9acc287ae274e549becd15852231b325c43e1dbddc14e9f2459f4c490420f239",
+        "path": "C_Semantic_Treehouse/model/v0.4/data-product-valid.jsonld",
+        "sha256": "9acc287ae274e549becd15852231b325c43e1dbddc14e9f2459f4c490420f239"
+      }
+    ],
+    "sha256": "66cd79dd5cd05299c6a07010b087b4da87b138045223aa39449548ea7c46484a",
+    "status": "SUCCESS"
+  },
+  "shape_derivation": {
+    "byte_identical": true,
+    "gitattributes_rule": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl -text",
+    "issues": [],
+    "source_path": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl",
+    "source_sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda",
+    "status": "SUCCESS",
+    "target_path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+    "target_sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+  },
+  "source_hash_issues": [],
+  "source_hashes": {
+    "scripts/dssc_validation/__init__.py": "8b9374a28d7ec2f7c534bf9f4de5f9d3542333de79939dec97803eb892be70f1",
+    "scripts/dssc_validation/baseline_manifest.py": "2af85f6324713e8557a538146e188301c183bfea2d0ab9743180fdc27a90c564",
+    "scripts/dssc_validation/baseline_report.py": "c1d6cf8f478042990422da6fc7029bd6f80925708820a76a66b04d712d18e4fa",
+    "scripts/dssc_validation/baseline_runner.py": "9aad1e47b14c7dd5bbe5816ba6814ff5b3130a9280ad79850abb213a77ca7673",
+    "scripts/dssc_validation/checks_baseline.py": "8ea0b5d427f7e98bfbf6da35fe81e5b1c1a15832ad101b2bee3b028989aca5dc",
+    "scripts/dssc_validation/checks_environment.py": "d599b590d771d58ed4cef4bf19c2bb2a84e1a6bc23d6082b4c7c62b4355b5444",
+    "scripts/dssc_validation/checks_frozen.py": "2e920dd8a67abcbf18089767db1b96a22496f1134eee652a5530b9eccd73ff1d",
+    "scripts/dssc_validation/checks_model.py": "8245ca66163ffa3311ee1eafbfef2f828726f195891abfd7b9f30e121abee5a8",
+    "scripts/dssc_validation/checks_traceability.py": "6ab3846a5fa8ce02a88e52c9e10eda5874d8be40a93a844b362d96715c896fa4",
+    "scripts/dssc_validation/d_group_contract.py": "64303239832ab1452bc09eda44afd75351fc36a0d96711c63a93c04f0ed04a57",
+    "scripts/dssc_validation/doctor_core.py": "950f10b2bbca66264ccb3d11df7a1f66603ae71d1838a1bde81cea3d9dc93a92",
+    "scripts/dssc_validation/entrypoint_catalog.py": "e919ae67a42a53df466447b53d12d8604b92fb78b149471144d1db250800190e",
+    "scripts/dssc_validation/evidence.py": "915a4e343d0c815f2b2de32196e810f6109ab163ef9658f2f688702662a17bad",
+    "scripts/dssc_validation/hashing.py": "7daa83ded49ee3a01e6692d0c0269ea640d27f050d13e1af726eb6976bf11fe3",
+    "scripts/dssc_validation/lock_contract.py": "4cfcf85b0d09fd05201358df41faf05c780a743dce5f6ced0080b3784f157d4d",
+    "scripts/dssc_validation/model_contract.py": "75e975db21b07fd2efe7210ddee4feb95682ab0821fbaaeaf4e765feda50686c",
+    "scripts/dssc_validation/model_report.py": "1990c1bdc49662daad1b89c65364218c11d59b9ac646bc1a0a1b1ffc5c772f35",
+    "scripts/dssc_validation/model_validation.py": "f454b22c0cdc7c6400a2f13d8ef7d42bc7b04c6d5d6b9c573d87fff489929100",
+    "scripts/dssc_validation/paths.py": "8dd89398afb1547a33603dfe987404784b882107d8fc5bbc55d1a6b0c61a37f5",
+    "scripts/dssc_validation/profile_contract.py": "c032d9884b06e3d450105125419c083fd9e42db3d6c73fd5a50007556af834b5",
+    "scripts/dssc_validation/provenance.py": "6d816acd3cdc4fdf2603288213a0e6a7118a7c2df1b7ecaa874b1c8920543aef",
+    "scripts/dssc_validation/release_manifest.py": "1969407851cfb24b502236b3308edf795633d73d0a6c3e97b63fe421f7141741",
+    "scripts/dssc_validation/requirements_registry.py": "2b34f9c959c7194f4b579abd3861ee636b78f538b2b8e852e3c05701ff3ee754",
+    "scripts/dssc_validation/suite_registry.py": "6ea31afe0675dff63c18c7871bb936584807289ce49f1d0f72730eb9d7e73ab0",
+    "scripts/dssc_validation/traceability_report.py": "f359f4f816aec03ae3a87db62043f28d53b5fb2f9f3b558c88d1fa09b5ff9a18",
+    "scripts/dssc_validation/venv_contract.py": "02e3b2cd06bc7df292b73af4e2d20f069d56608304929200de2902e376a94539",
+    "scripts/validate.py": "cb25014e0bdf27dbf03a0fe070ad4c9287eca8d64475f84198fc7320ba8544bc"
+  },
+  "suite": "v0.4-model",
+  "suite_registry": {
+    "contract_version": "1.3.0",
+    "issues": [],
+    "path": "C_Semantic_Treehouse/manifests/validation-suites.json",
+    "schema_path": "C_Semantic_Treehouse/manifests/schemas/validation-suites.schema.json",
+    "schema_sha256": "70d436cd0509da2fcec8b602c1bffc5f00490d24c13c2ee47caf84791199802a",
+    "sha256": "1ae6361e956c2bf41f86e987caf0879ce4483f76f9f1e042b0442edb3f049829",
+    "status": "SUCCESS"
+  },
+  "traceability_evidence": {
+    "d_source_sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda",
+    "issues": [],
+    "meta_shacl": {
+      "conforms": true,
+      "result_count": 0,
+      "status": "SUCCESS"
+    },
+    "path": "traceability-host.result.json",
+    "requirements_sha256": "53953e915d6da6159b342a04f1dc6d0ff6a8f53bd5892eb7933551710ebe014e",
+    "sha256": "2fbc18a08731033a12e695e8b982e95e5927676055c6432f8f89caac7b57e31a",
+    "status": "SUCCESS"
+  },
+  "turtle": {
+    "artifacts": [
+      {
+        "path": "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl",
+        "sha256": "c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9",
+        "triple_count": 32
+      },
+      {
+        "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+        "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda",
+        "triple_count": 179
+      }
+    ],
+    "issues": [],
+    "ontology_assertions": [
+      {
+        "actual": true,
+        "expected": true,
+        "name": "breaking_description",
+        "passed": true
+      },
+      {
+        "actual": true,
+        "expected": true,
+        "name": "created",
+        "passed": true
+      },
+      {
+        "actual": true,
+        "expected": true,
+        "name": "ontology_type",
+        "passed": true
+      },
+      {
+        "actual": true,
+        "expected": true,
+        "name": "prior_version",
+        "passed": true
+      },
+      {
+        "actual": true,
+        "expected": true,
+        "name": "title",
+        "passed": true
+      },
+      {
+        "actual": true,
+        "expected": true,
+        "name": "version_info",
+        "passed": true
+      },
+      {
+        "actual": true,
+        "expected": true,
+        "name": "version_iri",
+        "passed": true
+      },
+      {
+        "actual": [
+          "https://example.org/dssc-energy#datasetId",
+          "https://example.org/dssc-energy#providerName",
+          "https://example.org/dssc-energy#temporalEnd",
+          "https://example.org/dssc-energy#temporalStart",
+          "https://example.org/dssc-energy#unit"
+        ],
+        "expected": [
+          "https://example.org/dssc-energy#datasetId",
+          "https://example.org/dssc-energy#providerName",
+          "https://example.org/dssc-energy#temporalEnd",
+          "https://example.org/dssc-energy#temporalStart",
+          "https://example.org/dssc-energy#unit"
+        ],
+        "name": "exact_local_property_set",
+        "passed": true
+      },
+      {
+        "actual": true,
+        "expected": {
+          "domain": "http://www.w3.org/ns/dcat#Dataset",
+          "range": "http://www.w3.org/2001/XMLSchema#string",
+          "type": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+        },
+        "name": "property_contract:https://example.org/dssc-energy#datasetId",
+        "passed": true
+      },
+      {
+        "actual": true,
+        "expected": {
+          "domain": "http://www.w3.org/ns/dcat#Dataset",
+          "range": "http://www.w3.org/2001/XMLSchema#string",
+          "type": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+        },
+        "name": "property_contract:https://example.org/dssc-energy#providerName",
+        "passed": true
+      },
+      {
+        "actual": true,
+        "expected": {
+          "domain": "http://www.w3.org/ns/dcat#Dataset",
+          "range": "http://www.w3.org/2001/XMLSchema#date",
+          "type": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+        },
+        "name": "property_contract:https://example.org/dssc-energy#temporalEnd",
+        "passed": true
+      },
+      {
+        "actual": true,
+        "expected": {
+          "domain": "http://www.w3.org/ns/dcat#Dataset",
+          "range": "http://www.w3.org/2001/XMLSchema#date",
+          "type": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+        },
+        "name": "property_contract:https://example.org/dssc-energy#temporalStart",
+        "passed": true
+      },
+      {
+        "actual": true,
+        "expected": {
+          "domain": "http://www.w3.org/ns/dcat#Dataset",
+          "range": "http://www.w3.org/2001/XMLSchema#string",
+          "type": "http://www.w3.org/2002/07/owl#DatatypeProperty"
+        },
+        "name": "property_contract:https://example.org/dssc-energy#unit",
+        "passed": true
+      },
+      {
+        "actual": {
+          "adapter_predicates": [],
+          "be_terms": []
+        },
+        "expected": {
+          "adapter_predicates": [],
+          "be_terms": []
+        },
+        "name": "no_namespace_adapter",
+        "passed": true
+      }
+    ],
+    "status": "SUCCESS"
+  }
+}

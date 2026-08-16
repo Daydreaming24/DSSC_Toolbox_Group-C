@@ -1,0 +1,26 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    {
+      "gx": "https://w3id.org/gaia-x/development#"
+    }
+  ],
+  "id": "https://example.org/dssc-energy/credentials/legal-participant-energy-provider",
+  "type": [
+    "VerifiableCredential",
+    "LegalParticipant"
+  ],
+  "issuer": "did:web:example.org",
+  "issuanceDate": "2026-05-01T00:00:00Z",
+  "credentialSubject": {
+    "id": "did:web:energy-provider.example.org",
+    "gx:legalName": "Energy Data Provider Ltd.",
+    "gx:legalRegistrationNumber": "DEMO-ENERGY-001",
+    "gx:headquarterAddress": {
+      "gx:countrySubdivisionCode": "CN-GD"
+    },
+    "gx:legalAddress": {
+      "gx:countrySubdivisionCode": "CN-GD"
+    }
+  }
+}

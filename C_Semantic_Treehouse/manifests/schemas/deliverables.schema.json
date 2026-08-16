@@ -1,0 +1,317 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dssc.local/schemas/deliverables.schema.json",
+  "title": "DSSC v0.4 final deliverables manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "release_id",
+    "profile_id",
+    "validation_suites",
+    "license_decisions",
+    "deliverables"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "schemas/deliverables.schema.json"
+    },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "release_id": {
+      "type": "string",
+      "const": "v0.4"
+    },
+    "profile_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "validation_suites": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifest_path",
+        "schema_path",
+        "contract_version",
+        "manifest_sha256"
+      ],
+      "properties": {
+        "manifest_path": {
+          "const": "C_Semantic_Treehouse/manifests/validation-suites.json"
+        },
+        "schema_path": {
+          "const": "C_Semantic_Treehouse/manifests/schemas/validation-suites.schema.json"
+        },
+        "contract_version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "license_decisions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/licenseDecision"
+      }
+    },
+    "deliverables": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/deliverable"
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "repoPath": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Repository-relative POSIX path. No absolute paths, drive letters, backslashes, .. segments, globs, or trailing slash.",
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*//)(?!.*[*?\\[\\]{}])(?!.*/$).+$"
+    },
+    "deliverableId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+    },
+    "origin": {
+      "type": "string",
+      "enum": [
+        "project-authored",
+        "derived",
+        "inherited",
+        "third-party",
+        "generated-reviewed"
+      ]
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "model",
+        "fixture",
+        "test",
+        "manifest",
+        "schema",
+        "script",
+        "checker",
+        "documentation",
+        "evidence",
+        "workflow",
+        "environment",
+        "governance",
+        "mapping",
+        "quality",
+        "handoff",
+        "input",
+        "provenance",
+        "prompt",
+        "administrative",
+        "lock",
+        "other"
+      ]
+    },
+    "mediaType": {
+      "type": "string",
+      "enum": [
+        "application/json",
+        "application/ld+json",
+        "application/schema+json",
+        "application/yaml",
+        "application/xml",
+        "application/zip",
+        "application/octet-stream",
+        "text/markdown",
+        "text/plain",
+        "text/turtle",
+        "text/csv",
+        "text/tab-separated-values",
+        "text/x-python",
+        "text/x-shellscript",
+        "text/x-powershell",
+        "text/x-sparql",
+        "text/x-mermaid",
+        "text/x-dockerfile"
+      ]
+    },
+    "redistribution": {
+      "type": "string",
+      "description": "Publication/redistribution authority classification. publish-without-license-grant permits repository publication while granting no downstream copyright reuse license.",
+      "enum": [
+        "publish-with-repository-license",
+        "publish-without-license-grant",
+        "publish-with-file-license",
+        "third-party-with-notice",
+        "source-archive-with-privacy-review",
+        "pending-publication-decision",
+        "do-not-publish"
+      ]
+    },
+    "licenseDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "summary"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Z0-9][A-Z0-9._-]*$"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["INTERIM", "APPROVED", "KNOWN_SOURCE", "DENIED"]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "sourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["path-hash", "manifest-ref", "release-artifact"]
+        },
+        "path": {
+          "$ref": "#/$defs/repoPath"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "manifest_path": {
+          "$ref": "#/$defs/repoPath"
+        },
+        "manifest_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "kind": { "const": "path-hash" } },
+            "required": ["kind"]
+          },
+          "then": {
+            "required": ["path", "sha256"]
+          }
+        },
+        {
+          "if": {
+            "properties": { "kind": { "const": "manifest-ref" } },
+            "required": ["kind"]
+          },
+          "then": {
+            "required": ["manifest_path", "manifest_ref"]
+          }
+        },
+        {
+          "if": {
+            "properties": { "kind": { "const": "release-artifact" } },
+            "required": ["kind"]
+          },
+          "then": {
+            "required": ["manifest_path", "manifest_ref"]
+          }
+        }
+      ]
+    },
+    "deliverable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "path",
+        "sha256",
+        "media_type",
+        "role",
+        "required",
+        "publish",
+        "origin",
+        "redistribution",
+        "license_id",
+        "decision_id"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/deliverableId"
+        },
+        "path": {
+          "$ref": "#/$defs/repoPath"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "media_type": {
+          "$ref": "#/$defs/mediaType"
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "publish": {
+          "type": "boolean"
+        },
+        "origin": {
+          "$ref": "#/$defs/origin"
+        },
+        "redistribution": {
+          "$ref": "#/$defs/redistribution"
+        },
+        "license_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "SPDX license identifier or NOASSERTION"
+        },
+        "decision_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Z0-9][A-Z0-9._-]*$"
+        },
+        "source": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/sourceRef" }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "origin": {
+                "enum": ["derived", "inherited", "third-party"]
+              }
+            },
+            "required": ["origin"]
+          },
+          "then": {
+            "required": ["source"],
+            "properties": {
+              "source": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

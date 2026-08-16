@@ -1,0 +1,13 @@
+* text=auto eol=lf
+
+# Byte-preserved historical and external inputs. These files are verified by SHA-256.
+inputs/source-archives/received/** -text
+inputs/original-plan/** -text
+inputs/project/v0.4/** -text
+inputs/d-group/**/received/** -text
+archive/** -text
+prompts/v0/** -text
+C_Semantic_Treehouse/model/v0.1/** -text
+C_Semantic_Treehouse/model/v0.2/** -text
+C_Semantic_Treehouse/model/v0.3/** -text
+C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl -text

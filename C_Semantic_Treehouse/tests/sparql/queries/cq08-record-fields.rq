@@ -1,0 +1,15 @@
+PREFIX be: <https://w3id.org/dssc-demo/building-energy#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?field ?label WHERE {
+  VALUES ?field {
+    be:buildingId
+    be:meterId
+    be:timestamp
+    be:energyKWh
+    be:unit
+    be:location
+  }
+  ?field rdfs:label ?label .
+}
+ORDER BY ?field

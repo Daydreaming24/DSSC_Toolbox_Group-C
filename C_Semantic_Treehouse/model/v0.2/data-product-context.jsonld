@@ -1,0 +1,31 @@
+{
+  "@context": {
+    "be": "https://w3id.org/dssc-demo/building-energy#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dct": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "DataProductMetadata": "be:DataProductMetadata",
+    "datasetId": "dct:identifier",
+    "providerName": "be:providerName",
+    "endpointUrl": {
+      "@id": "be:endpointUrl",
+      "@type": "@id"
+    },
+    "format": "be:format",
+    "frequency": "be:frequency",
+    "unit": "be:unit",
+    "spatialCoverage": "be:spatialCoverage",
+    "temporalStart": {
+      "@id": "be:temporalStart",
+      "@type": "xsd:date"
+    },
+    "temporalEnd": {
+      "@id": "be:temporalEnd",
+      "@type": "xsd:date"
+    },
+    "conformsTo": {
+      "@id": "dct:conformsTo",
+      "@type": "@id"
+    }
+  }
+}

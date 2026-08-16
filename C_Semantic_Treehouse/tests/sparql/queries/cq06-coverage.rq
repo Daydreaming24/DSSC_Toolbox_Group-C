@@ -1,0 +1,9 @@
+PREFIX be: <https://w3id.org/dssc-demo/building-energy#>
+
+SELECT ?spatialCoverage ?temporalStart ?temporalEnd WHERE {
+  ?dataset a be:DataProductMetadata ;
+           be:spatialCoverage ?spatialCoverage ;
+           be:temporalStart ?temporalStart ;
+           be:temporalEnd ?temporalEnd .
+}
+ORDER BY ?spatialCoverage ?temporalStart ?temporalEnd

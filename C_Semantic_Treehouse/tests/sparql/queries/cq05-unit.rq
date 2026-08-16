@@ -1,0 +1,7 @@
+PREFIX be: <https://w3id.org/dssc-demo/building-energy#>
+
+SELECT ?unit WHERE {
+  ?dataset a be:DataProductMetadata ;
+           be:unit ?unit .
+}
+ORDER BY ?unit

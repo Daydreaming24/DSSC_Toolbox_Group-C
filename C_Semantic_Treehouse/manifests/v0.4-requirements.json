@@ -1,0 +1,719 @@
+{
+  "$schema": "schemas/v0.4-requirements.schema.json",
+  "manifest_schema_version": "1.0.0",
+  "profile": {
+    "id": "dssc-building-energy-metadata-v0.4",
+    "version": "v0.4",
+    "normative_source": {
+      "path": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl",
+      "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+    },
+    "explanatory_sources": [
+      {
+        "path": "inputs/d-group/v0.4/received/初始TTL到最终TTL修改说明.md",
+        "sha256": "d95a98be50641dbf4c131818547756183bf795edc426668c7c43c00f934bc7b4"
+      }
+    ],
+    "status_header_source": {
+      "path": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl",
+      "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda",
+      "line_start": 14,
+      "line_end": 18
+    },
+    "query_hash_algorithm": "SHA-256-UTF8-RDF-LEXICAL-FORM",
+    "business_status_precedence": ["UNTESTABLE", "FAIL", "INAPPLICABLE", "PASS"]
+  },
+  "decision_catalog": [
+    {
+      "id": "ADR-001",
+      "path": "docs/v0.4/decisions/ADR-001-dct-conforms-to.md"
+    },
+    {
+      "id": "ADR-002",
+      "path": "docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md"
+    },
+    {
+      "id": "ADR-003",
+      "path": "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md"
+    }
+  ],
+  "issue_catalog": [
+    {
+      "id": "D04-I001",
+      "status": "DOCUMENTED",
+      "summary": "ex:BuildingEnergyDatasetShape has no explicit sh:message and a node-level NodeKind result has no result path, while the explanatory change note describes message/path-based report location in general terms.",
+      "resolution": "Preserve the authoritative TTL exactly: D04-R002 records messages as an empty array and path as null; engine-generated text is not a normative source message."
+    }
+  ],
+  "planned_cases": [
+    {
+      "id": "D04-PC001",
+      "title": "Valid one-Dataset IRI baseline",
+      "mutation_axis": "none; declared fields only and all normative values valid",
+      "baseline": "authoritative original valid metadata",
+      "single_axis": true,
+      "expected_business_status": "PASS",
+      "expected_program_status": "SUCCESS",
+      "expected_source_shapes": [],
+      "covers_requirement_ids": ["D04-R001", "D04-R002", "D04-R003", "D04-R004", "D04-R005", "D04-R006", "D04-R007", "D04-R008", "D04-R009", "D04-R010", "D04-R011", "D04-R012", "D04-R013", "D04-R014", "D04-R015", "D04-R016", "D04-R017"],
+      "covers_components": ["sh:ClosedConstraintComponent", "sh:DatatypeConstraintComponent", "sh:InConstraintComponent", "sh:MaxCountConstraintComponent", "sh:MinCountConstraintComponent", "sh:MinLengthConstraintComponent", "sh:NodeKindConstraintComponent", "sh:PatternConstraintComponent", "sh:PropertyConstraintComponent", "sh:SPARQLConstraintComponent"],
+      "artifact_status": "PLANNED",
+      "fixture_ref": null
+    },
+    {
+      "id": "D04-PC002",
+      "title": "Zero Dataset nodes",
+      "mutation_axis": "remove the only dcat:Dataset",
+      "baseline": "valid baseline",
+      "single_axis": true,
+      "expected_business_status": "FAIL",
+      "expected_program_status": "SUCCESS",
+      "expected_source_shapes": ["ex:DatasetCardinalityShape"],
+      "covers_requirement_ids": ["D04-R001"],
+      "covers_components": ["sh:SPARQLConstraintComponent"],
+      "artifact_status": "PLANNED",
+      "fixture_ref": null
+    },
+    {
+      "id": "D04-PC003",
+      "title": "Two Dataset nodes",
+      "mutation_axis": "add a second distinct dcat:Dataset",
+      "baseline": "valid baseline",
+      "single_axis": true,
+      "expected_business_status": "FAIL",
+      "expected_program_status": "SUCCESS",
+      "expected_source_shapes": ["ex:DatasetCardinalityShape"],
+      "covers_requirement_ids": ["D04-R001"],
+      "covers_components": ["sh:SPARQLConstraintComponent"],
+      "artifact_status": "PLANNED",
+      "fixture_ref": null
+    },
+    {
+      "id": "D04-PC004",
+      "title": "Blank-node Dataset",
+      "mutation_axis": "replace the Dataset IRI with one blank node",
+      "baseline": "valid baseline",
+      "single_axis": true,
+      "expected_business_status": "FAIL",
+      "expected_program_status": "SUCCESS",
+      "expected_source_shapes": ["ex:BuildingEnergyDatasetShape"],
+      "covers_requirement_ids": ["D04-R002"],
+      "covers_components": ["sh:NodeKindConstraintComponent"],
+      "artifact_status": "PLANNED",
+      "fixture_ref": null
+    },
+    {"id": "D04-PC005", "title": "datasetId missing", "mutation_axis": "remove ex:datasetId", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:DatasetIdShape"], "covers_requirement_ids": ["D04-R003"], "covers_components": ["sh:MinCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC006", "title": "datasetId multi-valued", "mutation_axis": "add a second ex:datasetId", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:DatasetIdShape"], "covers_requirement_ids": ["D04-R003"], "covers_components": ["sh:MaxCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC007", "title": "datasetId non-string", "mutation_axis": "replace ex:datasetId with an IRI", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:DatasetIdShape"], "covers_requirement_ids": ["D04-R003"], "covers_components": ["sh:DatatypeConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC008", "title": "datasetId empty string", "mutation_axis": "set ex:datasetId to the zero-length string", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:DatasetIdShape"], "covers_requirement_ids": ["D04-R003"], "covers_components": ["sh:MinLengthConstraintComponent", "sh:PatternConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC009", "title": "datasetId whitespace string", "mutation_axis": "set ex:datasetId to spaces and a tab", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:DatasetIdShape"], "covers_requirement_ids": ["D04-R003"], "covers_components": ["sh:PatternConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC010", "title": "title missing", "mutation_axis": "remove dct:title", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:TitleShape"], "covers_requirement_ids": ["D04-R004"], "covers_components": ["sh:MinCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC011", "title": "title multi-valued", "mutation_axis": "add a second dct:title", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:TitleShape"], "covers_requirement_ids": ["D04-R004"], "covers_components": ["sh:MaxCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC012", "title": "title non-string", "mutation_axis": "replace dct:title with an IRI", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:TitleShape"], "covers_requirement_ids": ["D04-R004"], "covers_components": ["sh:DatatypeConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC013", "title": "title empty string", "mutation_axis": "set dct:title to the zero-length string", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:TitleShape"], "covers_requirement_ids": ["D04-R004"], "covers_components": ["sh:MinLengthConstraintComponent", "sh:PatternConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC014", "title": "title whitespace string", "mutation_axis": "set dct:title to spaces and a tab", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:TitleShape"], "covers_requirement_ids": ["D04-R004"], "covers_components": ["sh:PatternConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC015", "title": "providerName missing", "mutation_axis": "remove ex:providerName", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:ProviderNameShape"], "covers_requirement_ids": ["D04-R005"], "covers_components": ["sh:MinCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC016", "title": "providerName multi-valued", "mutation_axis": "add a second ex:providerName", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:ProviderNameShape"], "covers_requirement_ids": ["D04-R005"], "covers_components": ["sh:MaxCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC017", "title": "providerName non-string", "mutation_axis": "replace ex:providerName with an IRI", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:ProviderNameShape"], "covers_requirement_ids": ["D04-R005"], "covers_components": ["sh:DatatypeConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC018", "title": "providerName empty string", "mutation_axis": "set ex:providerName to the zero-length string", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:ProviderNameShape"], "covers_requirement_ids": ["D04-R005"], "covers_components": ["sh:MinLengthConstraintComponent", "sh:PatternConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC019", "title": "providerName whitespace string", "mutation_axis": "set ex:providerName to spaces and a tab", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:ProviderNameShape"], "covers_requirement_ids": ["D04-R005"], "covers_components": ["sh:PatternConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC020", "title": "spatial missing", "mutation_axis": "remove dct:spatial", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:SpatialShape"], "covers_requirement_ids": ["D04-R006"], "covers_components": ["sh:MinCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC021", "title": "spatial multi-valued", "mutation_axis": "add a second dct:spatial", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:SpatialShape"], "covers_requirement_ids": ["D04-R006"], "covers_components": ["sh:MaxCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC022", "title": "spatial non-string", "mutation_axis": "replace dct:spatial with an IRI", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:SpatialShape"], "covers_requirement_ids": ["D04-R006"], "covers_components": ["sh:DatatypeConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC023", "title": "spatial empty string", "mutation_axis": "set dct:spatial to the zero-length string", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:SpatialShape"], "covers_requirement_ids": ["D04-R006"], "covers_components": ["sh:MinLengthConstraintComponent", "sh:PatternConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC024", "title": "spatial whitespace string", "mutation_axis": "set dct:spatial to spaces and a tab", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:SpatialShape"], "covers_requirement_ids": ["D04-R006"], "covers_components": ["sh:PatternConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC025", "title": "frequency missing", "mutation_axis": "remove dct:accrualPeriodicity", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:FrequencyShape"], "covers_requirement_ids": ["D04-R007"], "covers_components": ["sh:MinCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC026", "title": "frequency multi-value bypass", "mutation_axis": "add daily beside hourly", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:FrequencyShape"], "covers_requirement_ids": ["D04-R007"], "covers_components": ["sh:MaxCountConstraintComponent", "sh:InConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC027", "title": "frequency non-string", "mutation_axis": "replace hourly with an IRI", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:FrequencyShape"], "covers_requirement_ids": ["D04-R007"], "covers_components": ["sh:DatatypeConstraintComponent", "sh:InConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC028", "title": "frequency wrong value", "mutation_axis": "replace hourly with daily", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:FrequencyShape"], "covers_requirement_ids": ["D04-R007"], "covers_components": ["sh:InConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC029", "title": "frequency case mismatch", "mutation_axis": "replace hourly with Hourly", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:FrequencyShape"], "covers_requirement_ids": ["D04-R007"], "covers_components": ["sh:InConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC030", "title": "unit missing", "mutation_axis": "remove ex:unit", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:UnitShape"], "covers_requirement_ids": ["D04-R008"], "covers_components": ["sh:MinCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC031", "title": "unit multi-value bypass", "mutation_axis": "add MWh beside kWh", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:UnitShape"], "covers_requirement_ids": ["D04-R008"], "covers_components": ["sh:MaxCountConstraintComponent", "sh:InConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC032", "title": "unit non-string", "mutation_axis": "replace kWh with an IRI", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:UnitShape"], "covers_requirement_ids": ["D04-R008"], "covers_components": ["sh:DatatypeConstraintComponent", "sh:InConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC033", "title": "unit wrong value", "mutation_axis": "replace kWh with MWh", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:UnitShape"], "covers_requirement_ids": ["D04-R008"], "covers_components": ["sh:InConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC034", "title": "format missing", "mutation_axis": "remove dct:format", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:FormatShape"], "covers_requirement_ids": ["D04-R009"], "covers_components": ["sh:MinCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC035", "title": "format multi-value bypass", "mutation_axis": "add text/csv beside application/json", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:FormatShape"], "covers_requirement_ids": ["D04-R009"], "covers_components": ["sh:MaxCountConstraintComponent", "sh:InConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC036", "title": "format non-string", "mutation_axis": "replace application/json with an IRI", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:FormatShape"], "covers_requirement_ids": ["D04-R009"], "covers_components": ["sh:DatatypeConstraintComponent", "sh:InConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC037", "title": "format wrong value", "mutation_axis": "replace application/json with text/csv", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:FormatShape"], "covers_requirement_ids": ["D04-R009"], "covers_components": ["sh:InConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC038", "title": "endpoint missing", "mutation_axis": "remove dcat:endpointURL", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:EndpointUrlShape"], "covers_requirement_ids": ["D04-R010"], "covers_components": ["sh:MinCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC039", "title": "endpoint multi-valued", "mutation_axis": "add a second HTTPS endpoint IRI", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:EndpointUrlShape"], "covers_requirement_ids": ["D04-R010"], "covers_components": ["sh:MaxCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC040", "title": "endpoint ordinary string", "mutation_axis": "encode an HTTPS URL as a literal", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:EndpointUrlShape"], "covers_requirement_ids": ["D04-R010"], "covers_components": ["sh:NodeKindConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC041", "title": "endpoint HTTP IRI", "mutation_axis": "replace the HTTPS endpoint with an HTTP IRI", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:EndpointUrlShape"], "covers_requirement_ids": ["D04-R010"], "covers_components": ["sh:PatternConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC042", "title": "temporalStart missing", "mutation_axis": "remove ex:temporalStart", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:TemporalStartShape"], "covers_requirement_ids": ["D04-R011"], "covers_components": ["sh:MinCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC043", "title": "temporalStart multi-valued", "mutation_axis": "add a second xsd:date temporal start", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:TemporalStartShape"], "covers_requirement_ids": ["D04-R011"], "covers_components": ["sh:MaxCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC044", "title": "temporalStart wrong datatype", "mutation_axis": "encode temporal start as xsd:string", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:TemporalStartShape"], "covers_requirement_ids": ["D04-R011"], "covers_components": ["sh:DatatypeConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC045", "title": "temporalEnd missing", "mutation_axis": "remove ex:temporalEnd", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:TemporalEndShape"], "covers_requirement_ids": ["D04-R012"], "covers_components": ["sh:MinCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC046", "title": "temporalEnd multi-valued", "mutation_axis": "add a second xsd:date temporal end", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:TemporalEndShape"], "covers_requirement_ids": ["D04-R012"], "covers_components": ["sh:MaxCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC047", "title": "temporalEnd wrong datatype", "mutation_axis": "encode temporal end as xsd:string", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:TemporalEndShape"], "covers_requirement_ids": ["D04-R012"], "covers_components": ["sh:DatatypeConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC048", "title": "Equal temporal boundaries", "mutation_axis": "set temporalEnd equal to temporalStart", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "expected_source_shapes": [], "covers_requirement_ids": ["D04-R013"], "covers_components": ["sh:SPARQLConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC049", "title": "Reversed temporal boundaries", "mutation_axis": "set temporalStart later than temporalEnd", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:TemporalOrderShape"], "covers_requirement_ids": ["D04-R013"], "covers_components": ["sh:SPARQLConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC050", "title": "Description omitted", "mutation_axis": "remove optional dct:description", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "expected_source_shapes": [], "covers_requirement_ids": ["D04-R014"], "covers_components": ["sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC051", "title": "Description valid string", "mutation_axis": "supply one xsd:string description", "baseline": "valid baseline without description", "single_axis": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "expected_source_shapes": [], "covers_requirement_ids": ["D04-R014"], "covers_components": ["sh:DatatypeConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC052", "title": "Description multi-valued", "mutation_axis": "add a second dct:description", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:DescriptionShape"], "covers_requirement_ids": ["D04-R014"], "covers_components": ["sh:MaxCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC053", "title": "Description wrong datatype", "mutation_axis": "replace description string with an IRI", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:DescriptionShape"], "covers_requirement_ids": ["D04-R014"], "covers_components": ["sh:DatatypeConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC054", "title": "License omitted", "mutation_axis": "remove optional dct:license", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "expected_source_shapes": [], "covers_requirement_ids": ["D04-R015"], "covers_components": ["sh:MaxCountConstraintComponent", "sh:NodeKindConstraintComponent", "sh:PatternConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC055", "title": "License valid HTTPS IRI", "mutation_axis": "supply one HTTPS license IRI", "baseline": "valid baseline without license", "single_axis": true, "expected_business_status": "PASS", "expected_program_status": "SUCCESS", "expected_source_shapes": [], "covers_requirement_ids": ["D04-R015"], "covers_components": ["sh:NodeKindConstraintComponent", "sh:PatternConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC056", "title": "License multi-valued", "mutation_axis": "add a second HTTPS license IRI", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:LicenseShape"], "covers_requirement_ids": ["D04-R015"], "covers_components": ["sh:MaxCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC057", "title": "License ordinary string", "mutation_axis": "encode the license as a literal", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:LicenseShape"], "covers_requirement_ids": ["D04-R015"], "covers_components": ["sh:NodeKindConstraintComponent", "sh:PatternConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC058", "title": "License HTTP IRI", "mutation_axis": "replace the HTTPS license with an HTTP IRI", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:LicenseShape"], "covers_requirement_ids": ["D04-R015"], "covers_components": ["sh:PatternConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC059", "title": "Single undeclared Dataset property", "mutation_axis": "add one property outside the Closed Shape allowlist", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "INAPPLICABLE", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:DatasetClosedShape"], "covers_requirement_ids": ["D04-R016"], "covers_components": ["sh:ClosedConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC060", "title": "Undeclared property plus Violation", "mutation_axis": "add one undeclared property and remove providerName to exercise precedence", "baseline": "valid baseline", "single_axis": false, "expected_business_status": "FAIL", "expected_program_status": "SUCCESS", "expected_source_shapes": ["ex:DatasetClosedShape", "ex:ProviderNameShape"], "covers_requirement_ids": ["D04-R005", "D04-R016"], "covers_components": ["sh:ClosedConstraintComponent", "sh:MinCountConstraintComponent"], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC061", "title": "Malformed JSON SUT", "mutation_axis": "make the SUT bytes syntactically invalid JSON", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "UNTESTABLE", "expected_program_status": "SUCCESS", "expected_source_shapes": [], "covers_requirement_ids": ["D04-R017"], "covers_components": [], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC062", "title": "Invalid JSON-LD SUT", "mutation_axis": "keep valid JSON syntax but violate JSON-LD expansion rules", "baseline": "valid baseline", "single_axis": true, "expected_business_status": "UNTESTABLE", "expected_program_status": "SUCCESS", "expected_source_shapes": [], "covers_requirement_ids": ["D04-R017"], "covers_components": [], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC063", "title": "Missing local context required by SUT", "mutation_axis": "remove one required local offline context", "baseline": "valid baseline using a local context", "single_axis": true, "expected_business_status": "UNTESTABLE", "expected_program_status": "SUCCESS", "expected_source_shapes": [], "covers_requirement_ids": ["D04-R017"], "covers_components": [], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC064", "title": "Controlled validator timeout", "mutation_axis": "inject a named validator timeout after all authority and dependency preflights pass", "baseline": "preflight-passed valid SUT", "single_axis": true, "expected_business_status": "UNTESTABLE", "expected_program_status": "SUCCESS", "expected_source_shapes": [], "covers_requirement_ids": ["D04-R017"], "covers_components": [], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC065", "title": "Controlled validator crash", "mutation_axis": "inject a named validator crash after all authority and dependency preflights pass", "baseline": "preflight-passed valid SUT", "single_axis": true, "expected_business_status": "UNTESTABLE", "expected_program_status": "SUCCESS", "expected_source_shapes": [], "covers_requirement_ids": ["D04-R017"], "covers_components": [], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC066", "title": "Controlled service-runtime infrastructure fault", "mutation_axis": "inject one named controlled service runtime/infrastructure fault after all authority and dependency preflights pass", "baseline": "preflight-passed valid SUT", "single_axis": true, "expected_business_status": "UNTESTABLE", "expected_program_status": "SUCCESS", "expected_source_shapes": [], "covers_requirement_ids": ["D04-R017"], "covers_components": [], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC067", "title": "Authoritative Shape preflight failure", "mutation_axis": "make the authoritative Shape unavailable or invalid before SUT execution", "baseline": "valid baseline", "single_axis": true, "expected_business_status": null, "expected_program_status": "ERROR", "expected_source_shapes": [], "covers_requirement_ids": ["D04-R017"], "covers_components": [], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC068", "title": "Test manifest preflight failure", "mutation_axis": "make the test manifest invalid before SUT execution", "baseline": "valid baseline", "single_axis": true, "expected_business_status": null, "expected_program_status": "ERROR", "expected_source_shapes": [], "covers_requirement_ids": ["D04-R017"], "covers_components": [], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC069", "title": "Harness preflight failure", "mutation_axis": "make the controlled harness invalid before SUT execution", "baseline": "valid baseline", "single_axis": true, "expected_business_status": null, "expected_program_status": "ERROR", "expected_source_shapes": [], "covers_requirement_ids": ["D04-R017"], "covers_components": [], "artifact_status": "PLANNED", "fixture_ref": null},
+    {"id": "D04-PC070", "title": "Core dependency preflight failure", "mutation_axis": "make a required core dependency fail before SUT execution", "baseline": "valid baseline", "single_axis": true, "expected_business_status": null, "expected_program_status": "ERROR", "expected_source_shapes": [], "covers_requirement_ids": ["D04-R017"], "covers_components": [], "artifact_status": "PLANNED", "fixture_ref": null}
+  ],
+  "requirements": [
+    {
+      "id": "D04-R001",
+      "rule_kind": "NORMATIVE_SHACL",
+      "business_rule": "提交 RDF 图必须恰好包含一个 dcat:Dataset。",
+      "sources": [
+        {
+          "source_type": "NORMATIVE",
+          "locator": {
+            "kind": "SHACL_SHAPE",
+            "document": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda",
+            "shape": "ex:DatasetCardinalityShape",
+            "target": {"kind": "DIRECT_TARGET_NODE", "predicate": "sh:targetNode", "value": {"term_type": "IRI", "value": "ex:ValidationSubmission"}, "owner_shape": null},
+            "path": null,
+            "severity": "sh:Violation",
+            "messages": ["The submitted RDF graph must contain exactly one dcat:Dataset. Found 0 or more than 1."],
+            "constraint_components": ["sh:SPARQLConstraintComponent"],
+            "constraints": [
+              {
+                "component": "sh:SPARQLConstraintComponent",
+                "predicate": "sh:sparql",
+                "value": {
+                  "term_type": "SPARQL_CONSTRAINT",
+                  "rdf_types": ["sh:SPARQLConstraint"],
+                  "messages": ["The submitted RDF graph must contain exactly one dcat:Dataset. Found 0 or more than 1."],
+                  "select": {"hash_algorithm": "SHA-256-UTF8-RDF-LEXICAL-FORM", "sha256": "9aeff8d74deada3d27af8a0ae1cb1320ef275165ef5821bcf5f590b45eab1cc4", "length_chars": 625}
+                }
+              }
+            ],
+            "sparql": {"hash_algorithm": "SHA-256-UTF8-RDF-LEXICAL-FORM", "sha256": "9aeff8d74deada3d27af8a0ae1cb1320ef275165ef5821bcf5f590b45eab1cc4", "length_chars": 625}
+          }
+        }
+      ],
+      "boundaries": {
+        "positive": ["图中存在且只存在一个 dcat:Dataset；固定 targetNode ex:ValidationSubmission 必须实际执行。"],
+        "negative": ["图中没有 dcat:Dataset。", "图中存在两个或更多不同的 dcat:Dataset。"]
+      },
+      "expected_business_statuses": ["PASS", "FAIL"],
+      "v0_3_compatibility": {"impact": "ADDITIVE", "summary": "v0.3 没有提交图级 Dataset 数量约束；v0.4 新增全图恰一约束。"},
+      "implementation": {
+        "status": "PLANNED",
+        "artifact_refs": [{"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl", "description": "Phase 04 byte-copy release Shape; SHA-256: a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda."}],
+        "fixture_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "Fixtures identified by this requirement's planned case IDs."}],
+        "evidence_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "Deterministic validation reports for the planned cases."}]
+      },
+      "test_obligations": [
+        {"id": "D04-TO-R001-POSITIVE", "type": "POSITIVE", "assertion": "One Dataset activates DatasetCardinalityShape and produces no cardinality result.", "covers_components": ["sh:SPARQLConstraintComponent"], "planned_case_ids": ["D04-PC001"]},
+        {"id": "D04-TO-R001-CARDINALITY", "type": "NEGATIVE", "assertion": "Both zero and two Dataset nodes produce a DatasetCardinalityShape Violation.", "covers_components": ["sh:SPARQLConstraintComponent"], "planned_case_ids": ["D04-PC002", "D04-PC003"]}
+      ],
+      "decision_refs": ["docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md"],
+      "issue_refs": []
+    },
+    {
+      "id": "D04-R002",
+      "rule_kind": "NORMATIVE_SHACL",
+      "business_rule": "dcat:Dataset 焦点节点必须是 IRI；该 NodeShape 同时挂接全部十二个命名 PropertyShape。",
+      "sources": [
+        {
+          "source_type": "NORMATIVE",
+          "locator": {
+            "kind": "SHACL_SHAPE",
+            "document": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda",
+            "shape": "ex:BuildingEnergyDatasetShape",
+            "target": {"kind": "DIRECT_TARGET_CLASS", "predicate": "sh:targetClass", "value": {"term_type": "IRI", "value": "dcat:Dataset"}, "owner_shape": null},
+            "path": null,
+            "severity": "sh:Violation",
+            "messages": [],
+            "constraint_components": ["sh:NodeKindConstraintComponent", "sh:PropertyConstraintComponent"],
+            "constraints": [
+              {"component": "sh:NodeKindConstraintComponent", "predicate": "sh:nodeKind", "value": {"term_type": "IRI", "value": "sh:IRI"}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "IRI", "value": "ex:DatasetIdShape"}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "IRI", "value": "ex:TitleShape"}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "IRI", "value": "ex:ProviderNameShape"}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "IRI", "value": "ex:SpatialShape"}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "IRI", "value": "ex:FrequencyShape"}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "IRI", "value": "ex:UnitShape"}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "IRI", "value": "ex:TemporalStartShape"}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "IRI", "value": "ex:TemporalEndShape"}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "IRI", "value": "ex:EndpointUrlShape"}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "IRI", "value": "ex:FormatShape"}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "IRI", "value": "ex:DescriptionShape"}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "IRI", "value": "ex:LicenseShape"}}
+            ]
+          }
+        }
+      ],
+      "boundaries": {
+        "positive": ["唯一 dcat:Dataset 使用 IRI 标识并通过 NodeKind 约束。"],
+        "negative": ["唯一 dcat:Dataset 使用 blank node，产生 NodeKind Violation。"]
+      },
+      "expected_business_statuses": ["PASS", "FAIL"],
+      "v0_3_compatibility": {"impact": "BREAKING", "summary": "v0.3 使用 be:DataProductMetadata；v0.4 wire type 改为 dcat:Dataset 并要求 IRI。"},
+      "implementation": {
+        "status": "PLANNED",
+        "artifact_refs": [
+          {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl", "description": "Phase 04 byte-copy release Shape; SHA-256: a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda."},
+          {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld", "description": "Phase 04 offline JSON-LD context; SHA-256: f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391."}
+        ],
+        "fixture_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "IRI and blank-node Dataset fixtures."}],
+        "evidence_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "NodeKind and property-linkage validation evidence."}]
+      },
+      "test_obligations": [
+        {"id": "D04-TO-R002-POSITIVE", "type": "POSITIVE", "assertion": "An IRI Dataset passes NodeKind and all twelve linked PropertyShape constraints are reachable from the owner shape.", "covers_components": ["sh:NodeKindConstraintComponent", "sh:PropertyConstraintComponent"], "planned_case_ids": ["D04-PC001"]},
+        {"id": "D04-TO-R002-BLANK", "type": "NEGATIVE", "assertion": "A blank-node Dataset produces BuildingEnergyDatasetShape NodeKind Violation without requiring a result path.", "covers_components": ["sh:NodeKindConstraintComponent"], "planned_case_ids": ["D04-PC004"]}
+      ],
+      "decision_refs": ["docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md"],
+      "issue_refs": ["D04-I001"]
+    },
+    {
+      "id": "D04-R003",
+      "rule_kind": "NORMATIVE_SHACL",
+      "business_rule": "ex:datasetId 必填、单值，并且是至少含一个非空白字符的 xsd:string。",
+      "sources": [{"source_type": "NORMATIVE", "locator": {
+        "kind": "SHACL_SHAPE", "document": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl", "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda", "shape": "ex:DatasetIdShape",
+        "target": {"kind": "OWNER_TARGET_CLASS", "predicate": "sh:targetClass", "value": {"term_type": "IRI", "value": "dcat:Dataset"}, "owner_shape": "ex:BuildingEnergyDatasetShape"}, "path": "ex:datasetId", "severity": "sh:Violation",
+        "messages": ["ex:datasetId is required and must be one non-blank xsd:string."],
+        "constraint_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent", "sh:MinLengthConstraintComponent", "sh:PatternConstraintComponent"],
+        "constraints": [
+          {"component": "sh:MinCountConstraintComponent", "predicate": "sh:minCount", "value": {"term_type": "INTEGER", "value": 1}},
+          {"component": "sh:MaxCountConstraintComponent", "predicate": "sh:maxCount", "value": {"term_type": "INTEGER", "value": 1}},
+          {"component": "sh:DatatypeConstraintComponent", "predicate": "sh:datatype", "value": {"term_type": "IRI", "value": "xsd:string"}},
+          {"component": "sh:MinLengthConstraintComponent", "predicate": "sh:minLength", "value": {"term_type": "INTEGER", "value": 1}},
+          {"component": "sh:PatternConstraintComponent", "predicate": "sh:pattern", "value": {"term_type": "LITERAL", "value": "\\S"}}
+        ]
+      }}],
+      "boundaries": {"positive": ["一个非空白 xsd:string datasetId。"], "negative": ["字段缺失、多值、非 string、空串或纯空白串。"]},
+      "expected_business_statuses": ["PASS", "FAIL"],
+      "v0_3_compatibility": {"impact": "BREAKING", "summary": "v0.3 使用 dct:identifier；v0.4 改为 ex:datasetId 并新增非空白约束。"},
+      "implementation": {"status": "PLANNED", "artifact_refs": [{"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl", "description": "Phase 04 byte-copy release Shape; SHA-256: a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl", "description": "Phase 04 v0.4 wire ontology; SHA-256: c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld", "description": "Phase 04 offline JSON-LD context; SHA-256: f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391."}], "fixture_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "datasetId boundary fixtures."}], "evidence_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "datasetId validation evidence."}]},
+      "test_obligations": [
+        {"id": "D04-TO-R003-POSITIVE", "type": "POSITIVE", "assertion": "One non-blank xsd:string passes all datasetId components.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent", "sh:MinLengthConstraintComponent", "sh:PatternConstraintComponent"], "planned_case_ids": ["D04-PC001"]},
+        {"id": "D04-TO-R003-CARDINALITY-TYPE", "type": "NEGATIVE", "assertion": "Missing, multi-valued and non-string datasetId values fail their individual components.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent"], "planned_case_ids": ["D04-PC005", "D04-PC006", "D04-PC007"]},
+        {"id": "D04-TO-R003-BLANK", "type": "BOUNDARY", "assertion": "Empty and whitespace-only datasetId values fail minLength and/or pattern.", "covers_components": ["sh:MinLengthConstraintComponent", "sh:PatternConstraintComponent"], "planned_case_ids": ["D04-PC008", "D04-PC009"]}
+      ],
+      "decision_refs": ["docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md"], "issue_refs": []
+    },
+    {
+      "id": "D04-R004",
+      "rule_kind": "NORMATIVE_SHACL",
+      "business_rule": "dct:title 必填、单值，并且是至少含一个非空白字符的 xsd:string。",
+      "sources": [{"source_type": "NORMATIVE", "locator": {
+        "kind": "SHACL_SHAPE", "document": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl", "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda", "shape": "ex:TitleShape",
+        "target": {"kind": "OWNER_TARGET_CLASS", "predicate": "sh:targetClass", "value": {"term_type": "IRI", "value": "dcat:Dataset"}, "owner_shape": "ex:BuildingEnergyDatasetShape"}, "path": "dct:title", "severity": "sh:Violation",
+        "messages": ["dct:title is required and must be one non-blank xsd:string."],
+        "constraint_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent", "sh:MinLengthConstraintComponent", "sh:PatternConstraintComponent"],
+        "constraints": [
+          {"component": "sh:MinCountConstraintComponent", "predicate": "sh:minCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:MaxCountConstraintComponent", "predicate": "sh:maxCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:DatatypeConstraintComponent", "predicate": "sh:datatype", "value": {"term_type": "IRI", "value": "xsd:string"}}, {"component": "sh:MinLengthConstraintComponent", "predicate": "sh:minLength", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:PatternConstraintComponent", "predicate": "sh:pattern", "value": {"term_type": "LITERAL", "value": "\\S"}}
+        ]
+      }}],
+      "boundaries": {"positive": ["一个非空白 xsd:string title。"], "negative": ["字段缺失、多值、非 string、空串或纯空白串。"]},
+      "expected_business_statuses": ["PASS", "FAIL"],
+      "v0_3_compatibility": {"impact": "BREAKING", "summary": "v0.3 没有显式 title 要求；v0.4 新增必填且非空白的 dct:title。"},
+      "implementation": {"status": "PLANNED", "artifact_refs": [{"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl", "description": "Phase 04 byte-copy release Shape; SHA-256: a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld", "description": "Phase 04 offline JSON-LD context; SHA-256: f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391."}], "fixture_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "title boundary fixtures."}], "evidence_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "title validation evidence."}]},
+      "test_obligations": [
+        {"id": "D04-TO-R004-POSITIVE", "type": "POSITIVE", "assertion": "One non-blank xsd:string passes all title components.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent", "sh:MinLengthConstraintComponent", "sh:PatternConstraintComponent"], "planned_case_ids": ["D04-PC001"]},
+        {"id": "D04-TO-R004-CARDINALITY-TYPE", "type": "NEGATIVE", "assertion": "Missing, multi-valued and non-string title values fail their individual components.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent"], "planned_case_ids": ["D04-PC010", "D04-PC011", "D04-PC012"]},
+        {"id": "D04-TO-R004-BLANK", "type": "BOUNDARY", "assertion": "Empty and whitespace-only title values fail minLength and/or pattern.", "covers_components": ["sh:MinLengthConstraintComponent", "sh:PatternConstraintComponent"], "planned_case_ids": ["D04-PC013", "D04-PC014"]}
+      ],
+      "decision_refs": ["docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md"], "issue_refs": []
+    },
+    {
+      "id": "D04-R005",
+      "rule_kind": "NORMATIVE_SHACL",
+      "business_rule": "ex:providerName 必填、单值，并且是至少含一个非空白字符的 xsd:string。",
+      "sources": [{"source_type": "NORMATIVE", "locator": {
+        "kind": "SHACL_SHAPE", "document": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl", "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda", "shape": "ex:ProviderNameShape",
+        "target": {"kind": "OWNER_TARGET_CLASS", "predicate": "sh:targetClass", "value": {"term_type": "IRI", "value": "dcat:Dataset"}, "owner_shape": "ex:BuildingEnergyDatasetShape"}, "path": "ex:providerName", "severity": "sh:Violation",
+        "messages": ["ex:providerName is required and must be one non-blank xsd:string."],
+        "constraint_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent", "sh:MinLengthConstraintComponent", "sh:PatternConstraintComponent"],
+        "constraints": [
+          {"component": "sh:MinCountConstraintComponent", "predicate": "sh:minCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:MaxCountConstraintComponent", "predicate": "sh:maxCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:DatatypeConstraintComponent", "predicate": "sh:datatype", "value": {"term_type": "IRI", "value": "xsd:string"}}, {"component": "sh:MinLengthConstraintComponent", "predicate": "sh:minLength", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:PatternConstraintComponent", "predicate": "sh:pattern", "value": {"term_type": "LITERAL", "value": "\\S"}}
+        ]
+      }}],
+      "boundaries": {"positive": ["一个非空白 xsd:string providerName。"], "negative": ["字段缺失、多值、非 string、空串或纯空白串。"]},
+      "expected_business_statuses": ["PASS", "FAIL"],
+      "v0_3_compatibility": {"impact": "BREAKING", "summary": "v0.3 使用 be:providerName；v0.4 wire path 改为 ex:providerName 并新增非空白约束。"},
+      "implementation": {"status": "PLANNED", "artifact_refs": [{"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl", "description": "Phase 04 byte-copy release Shape; SHA-256: a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl", "description": "Phase 04 v0.4 wire ontology; SHA-256: c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld", "description": "Phase 04 offline JSON-LD context; SHA-256: f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391."}], "fixture_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "providerName boundary fixtures."}], "evidence_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "providerName validation evidence."}]},
+      "test_obligations": [
+        {"id": "D04-TO-R005-POSITIVE", "type": "POSITIVE", "assertion": "One non-blank xsd:string passes all providerName components.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent", "sh:MinLengthConstraintComponent", "sh:PatternConstraintComponent"], "planned_case_ids": ["D04-PC001"]},
+        {"id": "D04-TO-R005-CARDINALITY-TYPE", "type": "NEGATIVE", "assertion": "Missing, multi-valued and non-string providerName values fail their individual components.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent"], "planned_case_ids": ["D04-PC015", "D04-PC016", "D04-PC017"]},
+        {"id": "D04-TO-R005-BLANK", "type": "BOUNDARY", "assertion": "Empty and whitespace-only providerName values fail minLength and/or pattern.", "covers_components": ["sh:MinLengthConstraintComponent", "sh:PatternConstraintComponent"], "planned_case_ids": ["D04-PC018", "D04-PC019"]},
+        {"id": "D04-TO-R005-PRECEDENCE", "type": "BOUNDARY", "assertion": "A providerName Violation combined with a Closed Shape Warning remains FAIL.", "covers_components": ["sh:MinCountConstraintComponent"], "planned_case_ids": ["D04-PC060"]}
+      ],
+      "decision_refs": ["docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md"], "issue_refs": []
+    },
+    {
+      "id": "D04-R006",
+      "rule_kind": "NORMATIVE_SHACL",
+      "business_rule": "dct:spatial 必填、单值，并且是至少含一个非空白字符的 xsd:string。",
+      "sources": [{"source_type": "NORMATIVE", "locator": {
+        "kind": "SHACL_SHAPE", "document": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl", "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda", "shape": "ex:SpatialShape",
+        "target": {"kind": "OWNER_TARGET_CLASS", "predicate": "sh:targetClass", "value": {"term_type": "IRI", "value": "dcat:Dataset"}, "owner_shape": "ex:BuildingEnergyDatasetShape"}, "path": "dct:spatial", "severity": "sh:Violation",
+        "messages": ["dct:spatial is required and must be one non-blank xsd:string."],
+        "constraint_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent", "sh:MinLengthConstraintComponent", "sh:PatternConstraintComponent"],
+        "constraints": [
+          {"component": "sh:MinCountConstraintComponent", "predicate": "sh:minCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:MaxCountConstraintComponent", "predicate": "sh:maxCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:DatatypeConstraintComponent", "predicate": "sh:datatype", "value": {"term_type": "IRI", "value": "xsd:string"}}, {"component": "sh:MinLengthConstraintComponent", "predicate": "sh:minLength", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:PatternConstraintComponent", "predicate": "sh:pattern", "value": {"term_type": "LITERAL", "value": "\\S"}}
+        ]
+      }}],
+      "boundaries": {"positive": ["一个非空白 xsd:string spatial 值。"], "negative": ["字段缺失、多值、非 string、空串或纯空白串。"]},
+      "expected_business_statuses": ["PASS", "FAIL"],
+      "v0_3_compatibility": {"impact": "BREAKING", "summary": "v0.3 使用 be:spatialCoverage；v0.4 wire path 改为 dct:spatial 并新增单值/非空白约束。"},
+      "implementation": {"status": "PLANNED", "artifact_refs": [{"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl", "description": "Phase 04 byte-copy release Shape; SHA-256: a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld", "description": "Phase 04 offline JSON-LD context; SHA-256: f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391."}], "fixture_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "spatial boundary fixtures."}], "evidence_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "spatial validation evidence."}]},
+      "test_obligations": [
+        {"id": "D04-TO-R006-POSITIVE", "type": "POSITIVE", "assertion": "One non-blank xsd:string passes all spatial components.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent", "sh:MinLengthConstraintComponent", "sh:PatternConstraintComponent"], "planned_case_ids": ["D04-PC001"]},
+        {"id": "D04-TO-R006-CARDINALITY-TYPE", "type": "NEGATIVE", "assertion": "Missing, multi-valued and non-string spatial values fail their individual components.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent"], "planned_case_ids": ["D04-PC020", "D04-PC021", "D04-PC022"]},
+        {"id": "D04-TO-R006-BLANK", "type": "BOUNDARY", "assertion": "Empty and whitespace-only spatial values fail minLength and/or pattern.", "covers_components": ["sh:MinLengthConstraintComponent", "sh:PatternConstraintComponent"], "planned_case_ids": ["D04-PC023", "D04-PC024"]}
+      ],
+      "decision_refs": ["docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md"], "issue_refs": []
+    },
+    {
+      "id": "D04-R007",
+      "rule_kind": "NORMATIVE_SHACL",
+      "business_rule": "dct:accrualPeriodicity 必填、单值、为 xsd:string，并且大小写敏感地精确等于 hourly。",
+      "sources": [{"source_type": "NORMATIVE", "locator": {
+        "kind": "SHACL_SHAPE", "document": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl", "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda", "shape": "ex:FrequencyShape",
+        "target": {"kind": "OWNER_TARGET_CLASS", "predicate": "sh:targetClass", "value": {"term_type": "IRI", "value": "dcat:Dataset"}, "owner_shape": "ex:BuildingEnergyDatasetShape"}, "path": "dct:accrualPeriodicity", "severity": "sh:Violation",
+        "messages": ["dct:accrualPeriodicity is required and must equal hourly (exact match, case-sensitive)."],
+        "constraint_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent", "sh:InConstraintComponent"],
+        "constraints": [
+          {"component": "sh:MinCountConstraintComponent", "predicate": "sh:minCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:MaxCountConstraintComponent", "predicate": "sh:maxCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:DatatypeConstraintComponent", "predicate": "sh:datatype", "value": {"term_type": "IRI", "value": "xsd:string"}}, {"component": "sh:InConstraintComponent", "predicate": "sh:in", "value": {"term_type": "RDF_LIST", "items": [{"term_type": "LITERAL", "value": "hourly"}]}}
+        ]
+      }}],
+      "boundaries": {"positive": ["一个 xsd:string 值 hourly。"], "negative": ["字段缺失、多值、非 string、daily 或 Hourly。"]},
+      "expected_business_statuses": ["PASS", "FAIL"],
+      "v0_3_compatibility": {"impact": "BREAKING", "summary": "v0.3 使用 be:frequency；v0.4 改为 dct:accrualPeriodicity 并固定 hourly。"},
+      "implementation": {"status": "PLANNED", "artifact_refs": [{"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl", "description": "Phase 04 byte-copy release Shape; SHA-256: a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld", "description": "Phase 04 offline JSON-LD context; SHA-256: f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391."}], "fixture_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "frequency boundary fixtures."}], "evidence_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "frequency validation evidence."}]},
+      "test_obligations": [
+        {"id": "D04-TO-R007-POSITIVE", "type": "POSITIVE", "assertion": "One xsd:string hourly passes all frequency components.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent", "sh:InConstraintComponent"], "planned_case_ids": ["D04-PC001"]},
+        {"id": "D04-TO-R007-CARDINALITY-TYPE", "type": "NEGATIVE", "assertion": "Missing, multi-valued and non-string frequency values fail min/max/datatype and cannot bypass sh:in.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent", "sh:InConstraintComponent"], "planned_case_ids": ["D04-PC025", "D04-PC026", "D04-PC027"]},
+        {"id": "D04-TO-R007-ENUM", "type": "BOUNDARY", "assertion": "daily and Hourly fail the exact case-sensitive sh:in list.", "covers_components": ["sh:InConstraintComponent"], "planned_case_ids": ["D04-PC028", "D04-PC029"]}
+      ],
+      "decision_refs": ["docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md"], "issue_refs": []
+    },
+    {
+      "id": "D04-R008",
+      "rule_kind": "NORMATIVE_SHACL",
+      "business_rule": "ex:unit 必填、单值、为 xsd:string，并且精确等于 kWh。",
+      "sources": [{"source_type": "NORMATIVE", "locator": {
+        "kind": "SHACL_SHAPE", "document": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl", "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda", "shape": "ex:UnitShape",
+        "target": {"kind": "OWNER_TARGET_CLASS", "predicate": "sh:targetClass", "value": {"term_type": "IRI", "value": "dcat:Dataset"}, "owner_shape": "ex:BuildingEnergyDatasetShape"}, "path": "ex:unit", "severity": "sh:Violation",
+        "messages": ["ex:unit is required and must equal kWh (exact match, case-sensitive)."],
+        "constraint_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent", "sh:InConstraintComponent"],
+        "constraints": [
+          {"component": "sh:MinCountConstraintComponent", "predicate": "sh:minCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:MaxCountConstraintComponent", "predicate": "sh:maxCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:DatatypeConstraintComponent", "predicate": "sh:datatype", "value": {"term_type": "IRI", "value": "xsd:string"}}, {"component": "sh:InConstraintComponent", "predicate": "sh:in", "value": {"term_type": "RDF_LIST", "items": [{"term_type": "LITERAL", "value": "kWh"}]}}
+        ]
+      }}],
+      "boundaries": {"positive": ["一个 xsd:string 值 kWh。"], "negative": ["字段缺失、多值绕过、非 string 或 MWh。"]},
+      "expected_business_statuses": ["PASS", "FAIL"],
+      "v0_3_compatibility": {"impact": "BREAKING", "summary": "v0.3 使用 be:unit 和可绕过的 hasValue；v0.4 改为 ex:unit 的单值 sh:in。"},
+      "implementation": {"status": "PLANNED", "artifact_refs": [{"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl", "description": "Phase 04 byte-copy release Shape; SHA-256: a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl", "description": "Phase 04 v0.4 wire ontology; SHA-256: c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld", "description": "Phase 04 offline JSON-LD context; SHA-256: f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391."}], "fixture_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "unit boundary fixtures."}], "evidence_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "unit validation evidence."}]},
+      "test_obligations": [
+        {"id": "D04-TO-R008-POSITIVE", "type": "POSITIVE", "assertion": "One xsd:string kWh passes all unit components.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent", "sh:InConstraintComponent"], "planned_case_ids": ["D04-PC001"]},
+        {"id": "D04-TO-R008-CARDINALITY-TYPE", "type": "NEGATIVE", "assertion": "Missing, kWh-plus-MWh and non-string values fail without hasValue bypass.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent", "sh:InConstraintComponent"], "planned_case_ids": ["D04-PC030", "D04-PC031", "D04-PC032"]},
+        {"id": "D04-TO-R008-ENUM", "type": "BOUNDARY", "assertion": "A single MWh value fails sh:in.", "covers_components": ["sh:InConstraintComponent"], "planned_case_ids": ["D04-PC033"]}
+      ],
+      "decision_refs": ["docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md"], "issue_refs": []
+    },
+    {
+      "id": "D04-R009",
+      "rule_kind": "NORMATIVE_SHACL",
+      "business_rule": "dct:format 必填、单值、为 xsd:string，并且精确等于 application/json。",
+      "sources": [{"source_type": "NORMATIVE", "locator": {
+        "kind": "SHACL_SHAPE", "document": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl", "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda", "shape": "ex:FormatShape",
+        "target": {"kind": "OWNER_TARGET_CLASS", "predicate": "sh:targetClass", "value": {"term_type": "IRI", "value": "dcat:Dataset"}, "owner_shape": "ex:BuildingEnergyDatasetShape"}, "path": "dct:format", "severity": "sh:Violation",
+        "messages": ["dct:format is required and must equal application/json."],
+        "constraint_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent", "sh:InConstraintComponent"],
+        "constraints": [
+          {"component": "sh:MinCountConstraintComponent", "predicate": "sh:minCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:MaxCountConstraintComponent", "predicate": "sh:maxCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:DatatypeConstraintComponent", "predicate": "sh:datatype", "value": {"term_type": "IRI", "value": "xsd:string"}}, {"component": "sh:InConstraintComponent", "predicate": "sh:in", "value": {"term_type": "RDF_LIST", "items": [{"term_type": "LITERAL", "value": "application/json"}]}}
+        ]
+      }}],
+      "boundaries": {"positive": ["一个 xsd:string 值 application/json。"], "negative": ["字段缺失、多值绕过、非 string 或 text/csv。"]},
+      "expected_business_statuses": ["PASS", "FAIL"],
+      "v0_3_compatibility": {"impact": "BREAKING", "summary": "v0.3 使用 be:format=JSON；v0.4 改为 dct:format=application/json 并禁止多值绕过。"},
+      "implementation": {"status": "PLANNED", "artifact_refs": [{"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl", "description": "Phase 04 byte-copy release Shape; SHA-256: a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld", "description": "Phase 04 offline JSON-LD context; SHA-256: f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391."}], "fixture_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "format boundary fixtures."}], "evidence_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "format validation evidence."}]},
+      "test_obligations": [
+        {"id": "D04-TO-R009-POSITIVE", "type": "POSITIVE", "assertion": "One xsd:string application/json passes all format components.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent", "sh:InConstraintComponent"], "planned_case_ids": ["D04-PC001"]},
+        {"id": "D04-TO-R009-CARDINALITY-TYPE", "type": "NEGATIVE", "assertion": "Missing, application/json-plus-text/csv and non-string values fail without hasValue bypass.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent", "sh:InConstraintComponent"], "planned_case_ids": ["D04-PC034", "D04-PC035", "D04-PC036"]},
+        {"id": "D04-TO-R009-ENUM", "type": "BOUNDARY", "assertion": "A single text/csv value fails sh:in.", "covers_components": ["sh:InConstraintComponent"], "planned_case_ids": ["D04-PC037"]}
+      ],
+      "decision_refs": ["docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md"], "issue_refs": []
+    },
+    {
+      "id": "D04-R010",
+      "rule_kind": "NORMATIVE_SHACL",
+      "business_rule": "dcat:endpointURL 必填、单值、为 IRI，并且其字符串表示以 https:// 开头。",
+      "sources": [{"source_type": "NORMATIVE", "locator": {
+        "kind": "SHACL_SHAPE", "document": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl", "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda", "shape": "ex:EndpointUrlShape",
+        "target": {"kind": "OWNER_TARGET_CLASS", "predicate": "sh:targetClass", "value": {"term_type": "IRI", "value": "dcat:Dataset"}, "owner_shape": "ex:BuildingEnergyDatasetShape"}, "path": "dcat:endpointURL", "severity": "sh:Violation",
+        "messages": ["dcat:endpointURL is required and must be one HTTPS IRI."],
+        "constraint_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:NodeKindConstraintComponent", "sh:PatternConstraintComponent"],
+        "constraints": [
+          {"component": "sh:MinCountConstraintComponent", "predicate": "sh:minCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:MaxCountConstraintComponent", "predicate": "sh:maxCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:NodeKindConstraintComponent", "predicate": "sh:nodeKind", "value": {"term_type": "IRI", "value": "sh:IRI"}}, {"component": "sh:PatternConstraintComponent", "predicate": "sh:pattern", "value": {"term_type": "LITERAL", "value": "^https://"}}
+        ]
+      }}],
+      "boundaries": {"positive": ["一个以 https:// 开头的 endpoint IRI。"], "negative": ["字段缺失、多值、普通字符串或 HTTP IRI。"]},
+      "expected_business_statuses": ["PASS", "FAIL"],
+      "v0_3_compatibility": {"impact": "BREAKING", "summary": "v0.3 使用 be:endpointUrl；v0.4 改为 dcat:endpointURL 并强制单值 HTTPS IRI。"},
+      "implementation": {"status": "PLANNED", "artifact_refs": [{"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl", "description": "Phase 04 byte-copy release Shape; SHA-256: a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld", "description": "Phase 04 offline JSON-LD context; SHA-256: f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391."}], "fixture_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "endpoint boundary fixtures."}], "evidence_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "endpoint validation evidence."}]},
+      "test_obligations": [
+        {"id": "D04-TO-R010-POSITIVE", "type": "POSITIVE", "assertion": "One HTTPS IRI endpoint passes min/max, node kind and pattern.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:NodeKindConstraintComponent", "sh:PatternConstraintComponent"], "planned_case_ids": ["D04-PC001"]},
+        {"id": "D04-TO-R010-CARDINALITY-KIND", "type": "NEGATIVE", "assertion": "Missing, multiple and literal endpoints fail minCount, maxCount and nodeKind respectively.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:NodeKindConstraintComponent"], "planned_case_ids": ["D04-PC038", "D04-PC039", "D04-PC040"]},
+        {"id": "D04-TO-R010-SCHEME", "type": "BOUNDARY", "assertion": "An HTTP IRI fails the exact ^https:// pattern.", "covers_components": ["sh:PatternConstraintComponent"], "planned_case_ids": ["D04-PC041"]}
+      ],
+      "decision_refs": ["docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md"], "issue_refs": []
+    },
+    {
+      "id": "D04-R011",
+      "rule_kind": "NORMATIVE_SHACL",
+      "business_rule": "ex:temporalStart 必填、单值，并且是 xsd:date。",
+      "sources": [{"source_type": "NORMATIVE", "locator": {
+        "kind": "SHACL_SHAPE", "document": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl", "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda", "shape": "ex:TemporalStartShape",
+        "target": {"kind": "OWNER_TARGET_CLASS", "predicate": "sh:targetClass", "value": {"term_type": "IRI", "value": "dcat:Dataset"}, "owner_shape": "ex:BuildingEnergyDatasetShape"}, "path": "ex:temporalStart", "severity": "sh:Violation",
+        "messages": ["ex:temporalStart is required and must be one xsd:date."],
+        "constraint_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent"],
+        "constraints": [
+          {"component": "sh:MinCountConstraintComponent", "predicate": "sh:minCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:MaxCountConstraintComponent", "predicate": "sh:maxCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:DatatypeConstraintComponent", "predicate": "sh:datatype", "value": {"term_type": "IRI", "value": "xsd:date"}}
+        ]
+      }}],
+      "boundaries": {"positive": ["一个合法 xsd:date temporalStart。"], "negative": ["字段缺失、多值或错误 datatype。"]},
+      "expected_business_statuses": ["PASS", "FAIL"],
+      "v0_3_compatibility": {"impact": "BREAKING", "summary": "v0.3 使用 be:temporalStart；v0.4 改为 ex:temporalStart 并新增单值约束。"},
+      "implementation": {"status": "PLANNED", "artifact_refs": [{"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl", "description": "Phase 04 byte-copy release Shape; SHA-256: a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl", "description": "Phase 04 v0.4 wire ontology; SHA-256: c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld", "description": "Phase 04 offline JSON-LD context; SHA-256: f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391."}], "fixture_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "temporalStart boundary fixtures."}], "evidence_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "temporalStart validation evidence."}]},
+      "test_obligations": [
+        {"id": "D04-TO-R011-POSITIVE", "type": "POSITIVE", "assertion": "One xsd:date start passes min/max/datatype.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent"], "planned_case_ids": ["D04-PC001"]},
+        {"id": "D04-TO-R011-NEGATIVE", "type": "NEGATIVE", "assertion": "Missing, multiple and xsd:string start values fail individual components.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent"], "planned_case_ids": ["D04-PC042", "D04-PC043", "D04-PC044"]}
+      ],
+      "decision_refs": ["docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md"], "issue_refs": []
+    },
+    {
+      "id": "D04-R012",
+      "rule_kind": "NORMATIVE_SHACL",
+      "business_rule": "ex:temporalEnd 必填、单值，并且是 xsd:date。",
+      "sources": [{"source_type": "NORMATIVE", "locator": {
+        "kind": "SHACL_SHAPE", "document": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl", "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda", "shape": "ex:TemporalEndShape",
+        "target": {"kind": "OWNER_TARGET_CLASS", "predicate": "sh:targetClass", "value": {"term_type": "IRI", "value": "dcat:Dataset"}, "owner_shape": "ex:BuildingEnergyDatasetShape"}, "path": "ex:temporalEnd", "severity": "sh:Violation",
+        "messages": ["ex:temporalEnd is required and must be one xsd:date."],
+        "constraint_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent"],
+        "constraints": [
+          {"component": "sh:MinCountConstraintComponent", "predicate": "sh:minCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:MaxCountConstraintComponent", "predicate": "sh:maxCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:DatatypeConstraintComponent", "predicate": "sh:datatype", "value": {"term_type": "IRI", "value": "xsd:date"}}
+        ]
+      }}],
+      "boundaries": {"positive": ["一个合法 xsd:date temporalEnd。"], "negative": ["字段缺失、多值或错误 datatype。"]},
+      "expected_business_statuses": ["PASS", "FAIL"],
+      "v0_3_compatibility": {"impact": "BREAKING", "summary": "v0.3 使用 be:temporalEnd；v0.4 改为 ex:temporalEnd 并新增单值约束。"},
+      "implementation": {"status": "PLANNED", "artifact_refs": [{"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl", "description": "Phase 04 byte-copy release Shape; SHA-256: a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl", "description": "Phase 04 v0.4 wire ontology; SHA-256: c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld", "description": "Phase 04 offline JSON-LD context; SHA-256: f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391."}], "fixture_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "temporalEnd boundary fixtures."}], "evidence_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "temporalEnd validation evidence."}]},
+      "test_obligations": [
+        {"id": "D04-TO-R012-POSITIVE", "type": "POSITIVE", "assertion": "One xsd:date end passes min/max/datatype.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent"], "planned_case_ids": ["D04-PC001"]},
+        {"id": "D04-TO-R012-NEGATIVE", "type": "NEGATIVE", "assertion": "Missing, multiple and xsd:string end values fail individual components.", "covers_components": ["sh:MinCountConstraintComponent", "sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent"], "planned_case_ids": ["D04-PC045", "D04-PC046", "D04-PC047"]}
+      ],
+      "decision_refs": ["docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md"], "issue_refs": []
+    },
+    {
+      "id": "D04-R013",
+      "rule_kind": "NORMATIVE_SHACL",
+      "business_rule": "当两个值均为 xsd:date 时，ex:temporalStart 不得晚于 ex:temporalEnd。",
+      "sources": [{"source_type": "NORMATIVE", "locator": {
+        "kind": "SHACL_SHAPE", "document": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl", "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda", "shape": "ex:TemporalOrderShape",
+        "target": {"kind": "DIRECT_TARGET_CLASS", "predicate": "sh:targetClass", "value": {"term_type": "IRI", "value": "dcat:Dataset"}, "owner_shape": null}, "path": null, "severity": "sh:Violation",
+        "messages": ["ex:temporalStart must not be later than ex:temporalEnd."],
+        "constraint_components": ["sh:SPARQLConstraintComponent"],
+        "constraints": [{"component": "sh:SPARQLConstraintComponent", "predicate": "sh:sparql", "value": {"term_type": "SPARQL_CONSTRAINT", "rdf_types": ["sh:SPARQLConstraint"], "messages": ["ex:temporalStart must not be later than ex:temporalEnd."], "select": {"hash_algorithm": "SHA-256-UTF8-RDF-LEXICAL-FORM", "sha256": "2d931b480a4a348311c34eeecd055575f56fb5dd290c9bcb7c5e2649123712ce", "length_chars": 472}}}],
+        "sparql": {"hash_algorithm": "SHA-256-UTF8-RDF-LEXICAL-FORM", "sha256": "2d931b480a4a348311c34eeecd055575f56fb5dd290c9bcb7c5e2649123712ce", "length_chars": 472}
+      }}],
+      "boundaries": {"positive": ["start 早于 end。", "start 等于 end。"], "negative": ["start 晚于 end。"]},
+      "expected_business_statuses": ["PASS", "FAIL"],
+      "v0_3_compatibility": {"impact": "TIGHTENED", "summary": "v0.3 只验证日期 datatype；v0.4 新增日期顺序关系。"},
+      "implementation": {"status": "PLANNED", "artifact_refs": [{"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl", "description": "Phase 04 byte-copy release Shape; SHA-256: a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl", "description": "Phase 04 v0.4 wire ontology; SHA-256: c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld", "description": "Phase 04 offline JSON-LD context; SHA-256: f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391."}], "fixture_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "temporal-order boundary fixtures."}], "evidence_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "SPARQL order validation evidence."}]},
+      "test_obligations": [
+        {"id": "D04-TO-R013-POSITIVE", "type": "POSITIVE", "assertion": "An ordered range produces no TemporalOrderShape result.", "covers_components": ["sh:SPARQLConstraintComponent"], "planned_case_ids": ["D04-PC001"]},
+        {"id": "D04-TO-R013-EQUAL", "type": "BOUNDARY", "assertion": "Equal start and end dates are permitted.", "covers_components": ["sh:SPARQLConstraintComponent"], "planned_case_ids": ["D04-PC048"]},
+        {"id": "D04-TO-R013-REVERSED", "type": "NEGATIVE", "assertion": "A later start produces a TemporalOrderShape SPARQL Violation.", "covers_components": ["sh:SPARQLConstraintComponent"], "planned_case_ids": ["D04-PC049"]}
+      ],
+      "decision_refs": ["docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md"], "issue_refs": []
+    },
+    {
+      "id": "D04-R014",
+      "rule_kind": "NORMATIVE_SHACL",
+      "business_rule": "dct:description 可缺省；出现时最多一个且必须为 xsd:string。",
+      "sources": [{"source_type": "NORMATIVE", "locator": {
+        "kind": "SHACL_SHAPE", "document": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl", "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda", "shape": "ex:DescriptionShape",
+        "target": {"kind": "OWNER_TARGET_CLASS", "predicate": "sh:targetClass", "value": {"term_type": "IRI", "value": "dcat:Dataset"}, "owner_shape": "ex:BuildingEnergyDatasetShape"}, "path": "dct:description", "severity": "sh:Violation",
+        "messages": ["dct:description is optional; if supplied, it must be one xsd:string."],
+        "constraint_components": ["sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent"],
+        "constraints": [{"component": "sh:MaxCountConstraintComponent", "predicate": "sh:maxCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:DatatypeConstraintComponent", "predicate": "sh:datatype", "value": {"term_type": "IRI", "value": "xsd:string"}}]
+      }}],
+      "boundaries": {"positive": ["description 缺省。", "一个 xsd:string description。"], "negative": ["description 多值或为非 string。"]},
+      "expected_business_statuses": ["PASS", "FAIL"],
+      "v0_3_compatibility": {"impact": "ADDITIVE", "summary": "v0.3 Shape 未声明 description；v0.4 将 dct:description 显式列为可选单值 string。"},
+      "implementation": {"status": "PLANNED", "artifact_refs": [{"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl", "description": "Phase 04 byte-copy release Shape; SHA-256: a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld", "description": "Phase 04 offline JSON-LD context; SHA-256: f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391."}], "fixture_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "description optional/type fixtures."}], "evidence_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "description validation evidence."}]},
+      "test_obligations": [
+        {"id": "D04-TO-R014-POSITIVE", "type": "POSITIVE", "assertion": "The valid baseline, omission and one xsd:string description pass.", "covers_components": ["sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent"], "planned_case_ids": ["D04-PC001", "D04-PC050", "D04-PC051"]},
+        {"id": "D04-TO-R014-NEGATIVE", "type": "NEGATIVE", "assertion": "Multiple descriptions and an IRI description fail maxCount and datatype respectively.", "covers_components": ["sh:MaxCountConstraintComponent", "sh:DatatypeConstraintComponent"], "planned_case_ids": ["D04-PC052", "D04-PC053"]}
+      ],
+      "decision_refs": ["docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md"], "issue_refs": []
+    },
+    {
+      "id": "D04-R015",
+      "rule_kind": "NORMATIVE_SHACL",
+      "business_rule": "dct:license 可缺省；出现时最多一个、必须为 IRI，并且其字符串表示以 https:// 开头。",
+      "sources": [{"source_type": "NORMATIVE", "locator": {
+        "kind": "SHACL_SHAPE", "document": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl", "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda", "shape": "ex:LicenseShape",
+        "target": {"kind": "OWNER_TARGET_CLASS", "predicate": "sh:targetClass", "value": {"term_type": "IRI", "value": "dcat:Dataset"}, "owner_shape": "ex:BuildingEnergyDatasetShape"}, "path": "dct:license", "severity": "sh:Violation",
+        "messages": ["dct:license is optional; if supplied, it must be one HTTPS IRI."],
+        "constraint_components": ["sh:MaxCountConstraintComponent", "sh:NodeKindConstraintComponent", "sh:PatternConstraintComponent"],
+        "constraints": [{"component": "sh:MaxCountConstraintComponent", "predicate": "sh:maxCount", "value": {"term_type": "INTEGER", "value": 1}}, {"component": "sh:NodeKindConstraintComponent", "predicate": "sh:nodeKind", "value": {"term_type": "IRI", "value": "sh:IRI"}}, {"component": "sh:PatternConstraintComponent", "predicate": "sh:pattern", "value": {"term_type": "LITERAL", "value": "^https://"}}]
+      }}],
+      "boundaries": {"positive": ["license 缺省。", "一个 HTTPS license IRI。"], "negative": ["license 多值、普通字符串或 HTTP IRI。"]},
+      "expected_business_statuses": ["PASS", "FAIL"],
+      "v0_3_compatibility": {"impact": "ADDITIVE", "summary": "v0.3 Shape 未声明 license；v0.4 将 dct:license 显式列为可选单值 HTTPS IRI。"},
+      "implementation": {"status": "PLANNED", "artifact_refs": [{"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl", "description": "Phase 04 byte-copy release Shape; SHA-256: a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda."}, {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld", "description": "Phase 04 offline JSON-LD context; SHA-256: f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391."}], "fixture_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "license optional/kind/scheme fixtures."}], "evidence_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "license validation evidence."}]},
+      "test_obligations": [
+        {"id": "D04-TO-R015-POSITIVE", "type": "POSITIVE", "assertion": "The valid baseline, omission and one HTTPS IRI license pass.", "covers_components": ["sh:MaxCountConstraintComponent", "sh:NodeKindConstraintComponent", "sh:PatternConstraintComponent"], "planned_case_ids": ["D04-PC001", "D04-PC054", "D04-PC055"]},
+        {"id": "D04-TO-R015-NEGATIVE", "type": "NEGATIVE", "assertion": "Multiple and literal license values fail maxCount and nodeKind.", "covers_components": ["sh:MaxCountConstraintComponent", "sh:NodeKindConstraintComponent", "sh:PatternConstraintComponent"], "planned_case_ids": ["D04-PC056", "D04-PC057"]},
+        {"id": "D04-TO-R015-SCHEME", "type": "BOUNDARY", "assertion": "An HTTP license IRI fails the exact ^https:// pattern.", "covers_components": ["sh:PatternConstraintComponent"], "planned_case_ids": ["D04-PC058"]}
+      ],
+      "decision_refs": ["docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md"], "issue_refs": []
+    },
+    {
+      "id": "D04-R016",
+      "rule_kind": "NORMATIVE_SHACL",
+      "business_rule": "dcat:Dataset 只允许 Closed Shape 列出的十二个 metadata path，rdf:type 被忽略；单独出现未声明属性时产生 sh:Warning 并由业务分类器映射为 INAPPLICABLE，若同时有 Violation 则结果为 FAIL。",
+      "sources": [
+        {
+          "source_type": "NORMATIVE",
+          "locator": {
+            "kind": "SHACL_SHAPE",
+            "document": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda",
+            "shape": "ex:DatasetClosedShape",
+            "target": {"kind": "DIRECT_TARGET_CLASS", "predicate": "sh:targetClass", "value": {"term_type": "IRI", "value": "dcat:Dataset"}, "owner_shape": null},
+            "path": null,
+            "severity": "sh:Warning",
+            "messages": ["The dataset contains a property outside the declared metadata profile. Such properties are flagged as INAPPLICABLE."],
+            "constraint_components": ["sh:ClosedConstraintComponent", "sh:PropertyConstraintComponent"],
+            "constraints": [
+              {"component": "sh:ClosedConstraintComponent", "predicate": "sh:closed", "value": {"term_type": "BOOLEAN", "value": true}},
+              {"component": "sh:ClosedConstraintComponent", "predicate": "sh:ignoredProperties", "value": {"term_type": "RDF_LIST", "items": [{"term_type": "IRI", "value": "rdf:type"}]}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "PROPERTY_PATH_SHAPE", "path": {"term_type": "IRI", "value": "ex:datasetId"}}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "PROPERTY_PATH_SHAPE", "path": {"term_type": "IRI", "value": "dct:title"}}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "PROPERTY_PATH_SHAPE", "path": {"term_type": "IRI", "value": "dct:description"}}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "PROPERTY_PATH_SHAPE", "path": {"term_type": "IRI", "value": "ex:providerName"}}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "PROPERTY_PATH_SHAPE", "path": {"term_type": "IRI", "value": "dct:license"}}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "PROPERTY_PATH_SHAPE", "path": {"term_type": "IRI", "value": "dct:spatial"}}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "PROPERTY_PATH_SHAPE", "path": {"term_type": "IRI", "value": "dct:accrualPeriodicity"}}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "PROPERTY_PATH_SHAPE", "path": {"term_type": "IRI", "value": "ex:unit"}}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "PROPERTY_PATH_SHAPE", "path": {"term_type": "IRI", "value": "ex:temporalStart"}}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "PROPERTY_PATH_SHAPE", "path": {"term_type": "IRI", "value": "ex:temporalEnd"}}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "PROPERTY_PATH_SHAPE", "path": {"term_type": "IRI", "value": "dcat:endpointURL"}}},
+              {"component": "sh:PropertyConstraintComponent", "predicate": "sh:property", "value": {"term_type": "PROPERTY_PATH_SHAPE", "path": {"term_type": "IRI", "value": "dct:format"}}}
+            ]
+          }
+        },
+        {
+          "source_type": "OPERATIONAL",
+          "locator": {
+            "kind": "TTL_HEADER_COMMENT",
+            "document": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda",
+            "line_start": 17,
+            "line_end": 17,
+            "quoted_text": "#   INAPPLICABLE  — SUT提交了本profile未声明的多余字段",
+            "target": {"kind": "OPERATIONAL_SCOPE", "predicate": null, "value": null, "owner_shape": null},
+            "shape": null,
+            "path": null,
+            "severity": null,
+            "messages": [],
+            "constraint_components": [],
+            "constraints": []
+          }
+        }
+      ],
+      "boundaries": {
+        "positive": ["Dataset 只包含 allowlist path 与被忽略的 rdf:type，Closed Shape 不产生 Warning。"],
+        "negative": ["一个额外属性且无 Violation 时产生 DatasetClosedShape Warning 并映射 INAPPLICABLE。", "额外属性与任何 Violation 同时出现时，FAIL 优先于 INAPPLICABLE。"]
+      },
+      "expected_business_statuses": ["PASS", "INAPPLICABLE", "FAIL"],
+      "v0_3_compatibility": {"impact": "ADDITIVE", "summary": "v0.3 没有 Closed Shape；v0.4 新增 allowlist，现有 dct:conformsTo payload 将产生 INAPPLICABLE。"},
+      "implementation": {
+        "status": "PLANNED",
+        "artifact_refs": [
+          {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl", "description": "Phase 04 byte-copy release Shape; SHA-256: a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda."},
+          {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl", "description": "Phase 04 v0.4 wire ontology; SHA-256: c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9."},
+          {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld", "description": "Phase 04 offline JSON-LD context; SHA-256: f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391."}
+        ],
+        "fixture_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "Declared-only, extra-property and mixed Warning/Violation fixtures."}],
+        "evidence_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "Closed Shape report and four-state precedence evidence."}]
+      },
+      "test_obligations": [
+        {"id": "D04-TO-R016-POSITIVE", "type": "POSITIVE", "assertion": "Declared-only metadata plus rdf:type produces no Closed Shape result and all twelve allowlist property refs are active.", "covers_components": ["sh:ClosedConstraintComponent", "sh:PropertyConstraintComponent"], "planned_case_ids": ["D04-PC001"]},
+        {"id": "D04-TO-R016-EXTRA", "type": "NEGATIVE", "assertion": "One undeclared property produces only a DatasetClosedShape Warning and maps to INAPPLICABLE.", "covers_components": ["sh:ClosedConstraintComponent"], "planned_case_ids": ["D04-PC059"]},
+        {"id": "D04-TO-R016-PRECEDENCE", "type": "BOUNDARY", "assertion": "A Closed Shape Warning combined with providerName Violation maps to FAIL.", "covers_components": ["sh:ClosedConstraintComponent"], "planned_case_ids": ["D04-PC060"]}
+      ],
+      "decision_refs": ["docs/v0.4/decisions/ADR-001-dct-conforms-to.md", "docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md"],
+      "issue_refs": []
+    },
+    {
+      "id": "D04-R017",
+      "rule_kind": "OPERATIONAL_CLASSIFICATION",
+      "business_rule": "在权威 Shape、manifest、harness 与核心依赖预检全部成功后，SUT 解析或离线加载失败，以及具名受控的 validator timeout、validator crash 或 service runtime fault，映射为 UNTESTABLE；权威合同、harness 或核心依赖故障产生程序 ERROR，不形成可信业务状态。",
+      "sources": [
+        {
+          "source_type": "OPERATIONAL",
+          "locator": {
+            "kind": "TTL_HEADER_COMMENT",
+            "document": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl",
+            "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda",
+            "line_start": 18,
+            "line_end": 18,
+            "quoted_text": "#   UNTESTABLE    — 文件无法解析、Validator超时或基础设施故障",
+            "target": {"kind": "OPERATIONAL_SCOPE", "predicate": null, "value": null, "owner_shape": null},
+            "shape": null,
+            "path": null,
+            "severity": null,
+            "messages": [],
+            "constraint_components": [],
+            "constraints": []
+          }
+        }
+      ],
+      "boundaries": {
+        "positive": ["所有预检通过且 SUT 可解析、可离线加载、validator 正常完成；随后由 report graph 决定 PASS、FAIL 或 INAPPLICABLE。"],
+        "negative": ["malformed JSON、无效 JSON-LD 或 SUT 所需本地 context 缺失映射 UNTESTABLE。", "预检成功后的受控 validator timeout、crash 或 service runtime fault 映射 UNTESTABLE。", "权威 Shape、test manifest、harness 或核心依赖预检失败产生程序 ERROR，expected_business_status 为 null。"]
+      },
+      "expected_business_statuses": ["PASS", "UNTESTABLE"],
+      "v0_3_compatibility": {"impact": "OPERATIONAL", "summary": "v0.3 baseline 只有 PASS/FAIL；v0.4 增加 SUT/runtime fault 的 UNTESTABLE 分类并把合同/基础设施预检错误留在程序 ERROR。"},
+      "implementation": {
+        "status": "PLANNED",
+        "artifact_refs": [
+          {"status": "IMPLEMENTED", "phase": "04", "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl", "description": "Phase 04 byte-copy release Shape; SHA-256: a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda."},
+          {"status": "IMPLEMENTED", "phase": "04", "path": "scripts/dssc_validation/model_contract.py", "description": "Phase 04 model smoke and result-classification contract; SHA-256: 75e975db21b07fd2efe7210ddee4feb95682ab0821fbaaeaf4e765feda50686c."},
+          {"status": "PLANNED", "phase": "05", "path": null, "description": "Four-state classifier and controlled fault-injection harness."}
+        ],
+        "fixture_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "Malformed input, offline-load and controlled runtime-fault cases."}],
+        "evidence_refs": [{"status": "PLANNED", "phase": "05", "path": null, "description": "Harness SUCCESS/ERROR and business-state separation evidence."}]
+      },
+      "test_obligations": [
+        {"id": "D04-TO-R017-POSITIVE", "type": "POSITIVE", "assertion": "A preflight-passed valid SUT completes validation and is not classified UNTESTABLE.", "covers_components": [], "planned_case_ids": ["D04-PC001"]},
+        {"id": "D04-TO-R017-SUT-LOAD", "type": "OPERATIONAL", "assertion": "Malformed JSON, invalid JSON-LD and a missing SUT-local context are deterministically classified UNTESTABLE with harness SUCCESS.", "covers_components": [], "planned_case_ids": ["D04-PC061", "D04-PC062", "D04-PC063"]},
+        {"id": "D04-TO-R017-FAULT-INJECTION", "type": "OPERATIONAL", "assertion": "Named validator timeout, validator crash and controlled service runtime/infrastructure fault injections occur only after authority/dependency preflight and classify UNTESTABLE with harness SUCCESS.", "covers_components": [], "planned_case_ids": ["D04-PC064", "D04-PC065", "D04-PC066"]},
+        {"id": "D04-TO-R017-PREFLIGHT-ERROR", "type": "BOUNDARY", "assertion": "Authoritative Shape, manifest, harness and core dependency failures produce program ERROR and no business status.", "covers_components": [], "planned_case_ids": ["D04-PC067", "D04-PC068", "D04-PC069", "D04-PC070"]}
+      ],
+      "decision_refs": ["docs/v0.4/decisions/ADR-001-dct-conforms-to.md", "docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md"],
+      "issue_refs": []
+    }
+  ]
+}

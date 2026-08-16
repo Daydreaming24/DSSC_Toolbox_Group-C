@@ -1,0 +1,17 @@
+shape	shapeType	severity
+https://example.org/dssc-energy#BuildingEnergyDatasetShape	http://www.w3.org/ns/shacl#NodeShape	http://www.w3.org/ns/shacl#Violation
+https://example.org/dssc-energy#DatasetCardinalityShape	http://www.w3.org/ns/shacl#NodeShape	http://www.w3.org/ns/shacl#Violation
+https://example.org/dssc-energy#DatasetClosedShape	http://www.w3.org/ns/shacl#NodeShape	http://www.w3.org/ns/shacl#Warning
+https://example.org/dssc-energy#DatasetIdShape	http://www.w3.org/ns/shacl#PropertyShape	http://www.w3.org/ns/shacl#Violation
+https://example.org/dssc-energy#DescriptionShape	http://www.w3.org/ns/shacl#PropertyShape	http://www.w3.org/ns/shacl#Violation
+https://example.org/dssc-energy#EndpointUrlShape	http://www.w3.org/ns/shacl#PropertyShape	http://www.w3.org/ns/shacl#Violation
+https://example.org/dssc-energy#FormatShape	http://www.w3.org/ns/shacl#PropertyShape	http://www.w3.org/ns/shacl#Violation
+https://example.org/dssc-energy#FrequencyShape	http://www.w3.org/ns/shacl#PropertyShape	http://www.w3.org/ns/shacl#Violation
+https://example.org/dssc-energy#LicenseShape	http://www.w3.org/ns/shacl#PropertyShape	http://www.w3.org/ns/shacl#Violation
+https://example.org/dssc-energy#ProviderNameShape	http://www.w3.org/ns/shacl#PropertyShape	http://www.w3.org/ns/shacl#Violation
+https://example.org/dssc-energy#SpatialShape	http://www.w3.org/ns/shacl#PropertyShape	http://www.w3.org/ns/shacl#Violation
+https://example.org/dssc-energy#TemporalEndShape	http://www.w3.org/ns/shacl#PropertyShape	http://www.w3.org/ns/shacl#Violation
+https://example.org/dssc-energy#TemporalOrderShape	http://www.w3.org/ns/shacl#NodeShape	http://www.w3.org/ns/shacl#Violation
+https://example.org/dssc-energy#TemporalStartShape	http://www.w3.org/ns/shacl#PropertyShape	http://www.w3.org/ns/shacl#Violation
+https://example.org/dssc-energy#TitleShape	http://www.w3.org/ns/shacl#PropertyShape	http://www.w3.org/ns/shacl#Violation
+https://example.org/dssc-energy#UnitShape	http://www.w3.org/ns/shacl#PropertyShape	http://www.w3.org/ns/shacl#Violation

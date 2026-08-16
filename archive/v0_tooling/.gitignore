@@ -1,0 +1,44 @@
+# Python and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Node and frontend tooling
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Logs and temporary runtime output
+*.log
+*.tmp
+tmp/
+temp/
+!C_Semantic_Treehouse/evidence/*.log
+
+# Generated screenshots and local evidence captures
+C_Semantic_Treehouse/evidence/screenshots/tmp/
+C_Semantic_Treehouse/evidence/tmp/
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Keep final validation reports tracked.
+!C_Semantic_Treehouse/validation/*.md
+
+# External tool clones are evidence inputs, not project source.
+tools/semantic-treehouse/upstream/

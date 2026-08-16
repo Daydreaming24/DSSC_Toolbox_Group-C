@@ -1,0 +1,29 @@
+DSSC Toolbox — Group C
+======================
+
+Maintainer: 陈凌石 (Chen Lingshi; GitHub `Daydreaming24`).
+Repository migration, v0.4 model derivation, validation harness, governance
+materials and release engineering were carried out by the maintainer on behalf
+of DSSC Group C. Group-level attribution for the shared semantic model is
+retained in `C_Semantic_Treehouse/governance/provenance.jsonld`.
+
+No general repository license is granted for the v0.4 publication.
+
+The maintainer has explicitly approved publishing v0.4 without a general
+copyright license grant (`DEC-P09-LICENSE-NONE-FINAL-V0.4`, APPROVED).
+Project-authored software and documentation therefore remain under SPDX
+`NOASSERTION` and redistribution classification
+`publish-without-license-grant`. Public availability, browsing, downloading,
+or cloning does not grant permission to use, modify, or redistribute those
+project-authored materials. A previous MIT draft was withdrawn before
+publication. Any future license grant requires a separate explicit decision
+and corresponding repository update.
+
+Third-party and externally constrained materials are listed in
+`THIRD_PARTY_MATERIALS.md`. Maintainer redistribution decisions for D-group
+materials and source ZIP archives are recorded in
+`docs/v0.4/human-decisions.md` and referenced from
+`C_Semantic_Treehouse/manifests/deliverables.json`.
+
+Scenario data under `inputs/original-plan/` remains under CC-BY-4.0 for that
+scenario data only and does not relicense the rest of this repository.

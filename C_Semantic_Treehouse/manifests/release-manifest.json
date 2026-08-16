@@ -1,0 +1,446 @@
+{
+  "$schema": "schemas/release-manifest.schema.json",
+  "manifest_schema_version": "1.0.0",
+  "currentRelease": "v0.4",
+  "sourceCatalog": [
+    {
+      "id": "baseline-contract",
+      "kind": "frozen-contract",
+      "path": "C_Semantic_Treehouse/manifests/baseline-test-cases.json",
+      "mediaType": "application/json",
+      "sha256": "e8fb57fe2f609c48c0340cf8e3b78d2e8f81d0fe0fd3ab505468cfe315767e43"
+    },
+    {
+      "id": "frozen-files",
+      "kind": "frozen-contract",
+      "path": "docs/provenance/manifests/frozen-files-SHA256SUMS",
+      "mediaType": "text/plain",
+      "sha256": "d699b5a5f29083e882d714995800b03b3bd0ff289531ee88766dd2b6728c7cb2"
+    },
+    {
+      "id": "d-shape-v04",
+      "kind": "normative-contract",
+      "path": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl",
+      "mediaType": "text/turtle",
+      "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+    },
+    {
+      "id": "d-change-note",
+      "kind": "explanatory-source",
+      "path": "inputs/d-group/v0.4/received/初始TTL到最终TTL修改说明.md",
+      "mediaType": "text/markdown",
+      "sha256": "d95a98be50641dbf4c131818547756183bf795edc426668c7c43c00f934bc7b4"
+    },
+    {
+      "id": "scenario-valid",
+      "kind": "scenario-source",
+      "path": "inputs/original-plan/DSSC_Minimal_Energy_Scenario/metadata/data-product-valid.jsonld",
+      "mediaType": "application/ld+json",
+      "sha256": "fd64b653877fbf7df3bd9f66d482dafb576df7ce096cdb54c2f36079aa521013"
+    },
+    {
+      "id": "scenario-invalid",
+      "kind": "scenario-source",
+      "path": "inputs/original-plan/DSSC_Minimal_Energy_Scenario/metadata/data-product-invalid.jsonld",
+      "mediaType": "application/ld+json",
+      "sha256": "e298d7aaf9b26dff54b539ba973900345783e35a549f6c03119487bbb8a66355"
+    },
+    {
+      "id": "adr-001",
+      "kind": "accepted-decision",
+      "path": "docs/v0.4/decisions/ADR-001-dct-conforms-to.md",
+      "mediaType": "text/markdown",
+      "sha256": "1f32a23a955cedc4c4b06a10a3ea82efd4ad2be3890562193838ac706b18988a"
+    },
+    {
+      "id": "adr-002",
+      "kind": "accepted-decision",
+      "path": "docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md",
+      "mediaType": "text/markdown",
+      "sha256": "fcefb0a0aa615cc194d7077b2a20f0dcd62a19d446c163abe8adb8b8d39aa759"
+    },
+    {
+      "id": "adr-003",
+      "kind": "accepted-decision",
+      "path": "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md",
+      "mediaType": "text/markdown",
+      "sha256": "d1bdfe0a533261bcff6bad0306c0436de7c6a415db19decf159dc34993729286"
+    },
+    {
+      "id": "version-naming",
+      "kind": "explanatory-source",
+      "path": "docs/version-naming.md",
+      "mediaType": "text/markdown",
+      "sha256": "4fc4d5d656e7519cbb065d232a9d68f16469cedec69a732d7c787af74c21d26a"
+    }
+  ],
+  "validationSuiteRegistry": {
+    "path": "C_Semantic_Treehouse/manifests/validation-suites.json",
+    "sha256": "09c74417a9b674206070ea2d25cea45ed7704f9485269eb264446f0472d51836",
+    "contractVersion": "1.6.0"
+  },
+  "requirementRegistries": [
+    {
+      "id": "v04-requirements",
+      "path": "C_Semantic_Treehouse/manifests/v0.4-requirements.json",
+      "sha256": "53953e915d6da6159b342a04f1dc6d0ff6a8f53bd5892eb7933551710ebe014e",
+      "phase03Sha256": "67391a561c61aa540535463df371e2aa5a0c4f8fff93b45c52a18b0067258ae1"
+    }
+  ],
+  "releases": [
+    {
+      "id": "v0.1",
+      "status": "frozen",
+      "versionIri": "https://w3id.org/dssc-demo/building-energy/v0.1",
+      "root": "C_Semantic_Treehouse/model/v0.1",
+      "priorRelease": null,
+      "compatibilityClassification": "initial",
+      "normativeInputRefs": ["baseline-contract", "frozen-files"],
+      "applicableValidatorRefs": ["rdflib-turtle", "pyld-jsonld", "pyshacl"],
+      "requirementRegistryRefs": [],
+      "artifacts": [
+        {
+          "id": "v01-ontology",
+          "role": "ontology",
+          "path": "C_Semantic_Treehouse/model/v0.1/building-energy-ontology.ttl",
+          "mediaType": "text/turtle",
+          "sha256": "c851b37acfca56e72913475ed8b6048a617214b149be8beffb0858dc36c5bcac",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        },
+        {
+          "id": "v01-metadata-context",
+          "role": "metadata-context",
+          "path": "C_Semantic_Treehouse/model/v0.1/data-product-context.jsonld",
+          "mediaType": "application/ld+json",
+          "sha256": "5bd7e049128f249879f3a52e93d979acfc14b8cabcb828a4e966379b243b05cc",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        },
+        {
+          "id": "v01-metadata-shapes",
+          "role": "metadata-shapes",
+          "path": "C_Semantic_Treehouse/model/v0.1/data-product-metadata-shapes.ttl",
+          "mediaType": "text/turtle",
+          "sha256": "7f93a41b0aa70478a6398b3ee223d13a7dbb64f5dd2cc9409e51a64c60912721",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        },
+        {
+          "id": "v01-metadata-valid",
+          "role": "metadata-valid-example",
+          "path": "C_Semantic_Treehouse/model/v0.1/data-product-valid.jsonld",
+          "mediaType": "application/ld+json",
+          "sha256": "1f99d51492f7bfac467fac6cda4827f98f770ffd6947d934996367b046aaf86c",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        }
+      ]
+    },
+    {
+      "id": "v0.2",
+      "status": "frozen",
+      "versionIri": "https://w3id.org/dssc-demo/building-energy/v0.2",
+      "root": "C_Semantic_Treehouse/model/v0.2",
+      "priorRelease": "v0.1",
+      "compatibilityClassification": "validation-tightening",
+      "normativeInputRefs": ["baseline-contract", "frozen-files"],
+      "applicableValidatorRefs": ["rdflib-turtle", "pyld-jsonld", "pyshacl"],
+      "requirementRegistryRefs": [],
+      "artifacts": [
+        {
+          "id": "v02-ontology",
+          "role": "ontology",
+          "path": "C_Semantic_Treehouse/model/v0.2/building-energy-ontology.ttl",
+          "mediaType": "text/turtle",
+          "sha256": "800f74d26133fd0c111747113945029ccd2edeca990cad5d893007a973032631",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        },
+        {
+          "id": "v02-metadata-context",
+          "role": "metadata-context",
+          "path": "C_Semantic_Treehouse/model/v0.2/data-product-context.jsonld",
+          "mediaType": "application/ld+json",
+          "sha256": "fe96dd475dd5d116d6271ad1b14a3228f59686a865313ac2dbb81d6c91b6da2a",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        },
+        {
+          "id": "v02-metadata-invalid",
+          "role": "metadata-invalid-example",
+          "path": "C_Semantic_Treehouse/model/v0.2/data-product-invalid.jsonld",
+          "mediaType": "application/ld+json",
+          "sha256": "9fe8164622db3fb54fe72ed7411fa10c45dafce6c63122151360249ca08431e2",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        },
+        {
+          "id": "v02-metadata-shapes",
+          "role": "metadata-shapes",
+          "path": "C_Semantic_Treehouse/model/v0.2/data-product-metadata-shapes.ttl",
+          "mediaType": "text/turtle",
+          "sha256": "1a8bbcf62022313488d227969e47285537dda1c7347e787399eff8d2229ab351",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        },
+        {
+          "id": "v02-metadata-valid",
+          "role": "metadata-valid-example",
+          "path": "C_Semantic_Treehouse/model/v0.2/data-product-valid.jsonld",
+          "mediaType": "application/ld+json",
+          "sha256": "34aadddd5523c12fa8bab6cc3c7c31c161168284b5d9be853e36ee03ecc38f5a",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        }
+      ]
+    },
+    {
+      "id": "v0.3",
+      "status": "frozen",
+      "versionIri": "https://w3id.org/dssc-demo/building-energy/v0.3",
+      "root": "C_Semantic_Treehouse/model/v0.3",
+      "priorRelease": "v0.2",
+      "compatibilityClassification": "additive",
+      "normativeInputRefs": ["baseline-contract", "frozen-files"],
+      "applicableValidatorRefs": ["rdflib-turtle", "pyld-jsonld", "pyshacl", "jsonschema-draft7", "openapi-spec-validator"],
+      "requirementRegistryRefs": [],
+      "artifacts": [
+        {
+          "id": "v03-ontology",
+          "role": "ontology",
+          "path": "C_Semantic_Treehouse/model/v0.3/building-energy-ontology.ttl",
+          "mediaType": "text/turtle",
+          "sha256": "b3081a4ea960e7b90f4a2e836e99dfa092f29346106cd1e2b9f7c58b0d598e7d",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        },
+        {
+          "id": "v03-metadata-context",
+          "role": "metadata-context",
+          "path": "C_Semantic_Treehouse/model/v0.3/data-product-context.jsonld",
+          "mediaType": "application/ld+json",
+          "sha256": "fe96dd475dd5d116d6271ad1b14a3228f59686a865313ac2dbb81d6c91b6da2a",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        },
+        {
+          "id": "v03-metadata-shapes",
+          "role": "metadata-shapes",
+          "path": "C_Semantic_Treehouse/model/v0.3/data-product-metadata-shapes.ttl",
+          "mediaType": "text/turtle",
+          "sha256": "3241483f15de178c6e1f8d40ea931e600975cddcb1e30845ae2dbf747e734a2f",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        },
+        {
+          "id": "v03-metadata-valid",
+          "role": "metadata-valid-example",
+          "path": "C_Semantic_Treehouse/model/v0.3/data-product-valid.jsonld",
+          "mediaType": "application/ld+json",
+          "sha256": "ab16fcafc72a7af02e7fba079f37a6216ac89356504e755377b2ba9cf3afab21",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        },
+        {
+          "id": "v03-record-schema",
+          "role": "record-json-schema",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record.schema.json",
+          "mediaType": "application/schema+json",
+          "sha256": "dd07414e3752bf582bf5e721009064e16d7be3e1e06d60daaad08000869ccfa9",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        },
+        {
+          "id": "v03-record-context",
+          "role": "record-context",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-context.jsonld",
+          "mediaType": "application/ld+json",
+          "sha256": "9727da9b8650dc444d719113a6978a3a26a59bfd1fde011a98e4c1f4b476f748",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        },
+        {
+          "id": "v03-record-invalid",
+          "role": "record-invalid-example",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-invalid.jsonld",
+          "mediaType": "application/ld+json",
+          "sha256": "e516f6a8e4ea811170c72e922b86ac7ea46594046704d01a55a2c8e13cd8f358",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        },
+        {
+          "id": "v03-record-shapes",
+          "role": "record-shapes",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-shapes.ttl",
+          "mediaType": "text/turtle",
+          "sha256": "84d1eee9cfeecd1791117552611e83d36af7df4f3b4c783ddbd75d45bae66c9a",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        },
+        {
+          "id": "v03-record-valid",
+          "role": "record-valid-example",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-valid.jsonld",
+          "mediaType": "application/ld+json",
+          "sha256": "8f7509ad08fb9a62cdff1d6c904801c9421c3ce768bdd9ecb651cd480aa158e1",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        },
+        {
+          "id": "v03-openapi",
+          "role": "openapi",
+          "path": "C_Semantic_Treehouse/model/v0.3/openapi-fragment.yaml",
+          "mediaType": "application/yaml",
+          "sha256": "d0f52629f625f7b6656854e352be01b9c40b8d2a943dca0423b70cff168a473c",
+          "origin": {"type": "frozen", "verifiedBy": ["baseline-contract", "frozen-files"]}
+        }
+      ]
+    },
+    {
+      "id": "v0.4",
+      "status": "current",
+      "versionIri": "https://w3id.org/dssc-demo/building-energy/v0.4",
+      "root": "C_Semantic_Treehouse/model/v0.4",
+      "priorRelease": "v0.3",
+      "compatibilityClassification": "wire-profile-breaking",
+      "normativeInputRefs": ["d-shape-v04"],
+      "applicableValidatorRefs": ["rdflib-turtle", "pyld-jsonld", "pyshacl", "jsonschema-draft7"],
+      "requirementRegistryRefs": [
+        {
+          "registryRef": "v04-requirements",
+          "requirementIds": [
+            "D04-R001", "D04-R002", "D04-R003", "D04-R004", "D04-R005", "D04-R006",
+            "D04-R007", "D04-R008", "D04-R009", "D04-R010", "D04-R011", "D04-R012",
+            "D04-R013", "D04-R014", "D04-R015", "D04-R016", "D04-R017"
+          ]
+        }
+      ],
+      "artifacts": [
+        {
+          "id": "v04-release-readme",
+          "role": "release-documentation",
+          "path": "C_Semantic_Treehouse/model/v0.4/README.md",
+          "mediaType": "text/markdown",
+          "sha256": "388e4dd823c60b55772946eb7fa37e90c2e5cf52e8300b784bba29ae4364873c",
+          "origin": {
+            "type": "derived",
+            "sources": [
+              {"kind": "input", "ref": "d-shape-v04", "path": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl", "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"},
+              {"kind": "input", "ref": "d-change-note", "path": "inputs/d-group/v0.4/received/初始TTL到最终TTL修改说明.md", "sha256": "d95a98be50641dbf4c131818547756183bf795edc426668c7c43c00f934bc7b4"},
+              {"kind": "input", "ref": "adr-001", "path": "docs/v0.4/decisions/ADR-001-dct-conforms-to.md", "sha256": "1f32a23a955cedc4c4b06a10a3ea82efd4ad2be3890562193838ac706b18988a"},
+              {"kind": "input", "ref": "adr-002", "path": "docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "sha256": "fcefb0a0aa615cc194d7077b2a20f0dcd62a19d446c163abe8adb8b8d39aa759"},
+              {"kind": "input", "ref": "adr-003", "path": "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md", "sha256": "d1bdfe0a533261bcff6bad0306c0436de7c6a415db19decf159dc34993729286"}
+            ],
+            "transformation": "manual-derivation"
+          }
+        },
+        {
+          "id": "v04-ontology",
+          "role": "ontology",
+          "path": "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl",
+          "mediaType": "text/turtle",
+          "sha256": "c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9",
+          "origin": {
+            "type": "derived",
+            "sources": [
+              {"kind": "input", "ref": "d-shape-v04", "path": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl", "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"},
+              {"kind": "input", "ref": "adr-002", "path": "docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "sha256": "fcefb0a0aa615cc194d7077b2a20f0dcd62a19d446c163abe8adb8b8d39aa759"},
+              {"kind": "input", "ref": "adr-003", "path": "docs/v0.4/decisions/ADR-003-energy-record-inheritance.md", "sha256": "d1bdfe0a533261bcff6bad0306c0436de7c6a415db19decf159dc34993729286"},
+              {"kind": "input", "ref": "version-naming", "path": "docs/version-naming.md", "sha256": "4fc4d5d656e7519cbb065d232a9d68f16469cedec69a732d7c787af74c21d26a"},
+              {"kind": "artifact", "ref": "v03-ontology", "path": "C_Semantic_Treehouse/model/v0.3/building-energy-ontology.ttl", "sha256": "b3081a4ea960e7b90f4a2e836e99dfa092f29346106cd1e2b9f7c58b0d598e7d"}
+            ],
+            "transformation": "manual-derivation"
+          }
+        },
+        {
+          "id": "v04-metadata-context",
+          "role": "metadata-context",
+          "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld",
+          "mediaType": "application/ld+json",
+          "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391",
+          "origin": {
+            "type": "derived",
+            "sources": [
+              {"kind": "input", "ref": "d-shape-v04", "path": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl", "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"},
+              {"kind": "input", "ref": "scenario-valid", "path": "inputs/original-plan/DSSC_Minimal_Energy_Scenario/metadata/data-product-valid.jsonld", "sha256": "fd64b653877fbf7df3bd9f66d482dafb576df7ce096cdb54c2f36079aa521013"},
+              {"kind": "input", "ref": "adr-002", "path": "docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "sha256": "fcefb0a0aa615cc194d7077b2a20f0dcd62a19d446c163abe8adb8b8d39aa759"}
+            ],
+            "transformation": "manual-derivation"
+          }
+        },
+        {
+          "id": "v04-metadata-shapes",
+          "role": "metadata-shapes",
+          "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+          "mediaType": "text/turtle",
+          "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda",
+          "origin": {
+            "type": "derived",
+            "sources": [
+              {"kind": "input", "ref": "d-shape-v04", "path": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl", "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"}
+            ],
+            "transformation": "byte-copy"
+          }
+        },
+        {
+          "id": "v04-metadata-valid",
+          "role": "metadata-valid-example",
+          "path": "C_Semantic_Treehouse/model/v0.4/data-product-valid.jsonld",
+          "mediaType": "application/ld+json",
+          "sha256": "9acc287ae274e549becd15852231b325c43e1dbddc14e9f2459f4c490420f239",
+          "origin": {
+            "type": "derived",
+            "sources": [
+              {"kind": "input", "ref": "scenario-valid", "path": "inputs/original-plan/DSSC_Minimal_Energy_Scenario/metadata/data-product-valid.jsonld", "sha256": "fd64b653877fbf7df3bd9f66d482dafb576df7ce096cdb54c2f36079aa521013"},
+              {"kind": "artifact", "ref": "v04-metadata-context", "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld", "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391"},
+              {"kind": "input", "ref": "adr-001", "path": "docs/v0.4/decisions/ADR-001-dct-conforms-to.md", "sha256": "1f32a23a955cedc4c4b06a10a3ea82efd4ad2be3890562193838ac706b18988a"},
+              {"kind": "input", "ref": "adr-002", "path": "docs/v0.4/decisions/ADR-002-wire-profile-and-version-identity.md", "sha256": "fcefb0a0aa615cc194d7077b2a20f0dcd62a19d446c163abe8adb8b8d39aa759"}
+            ],
+            "transformation": "manual-derivation"
+          }
+        },
+        {
+          "id": "v04-checksums",
+          "role": "checksum-manifest",
+          "path": "C_Semantic_Treehouse/model/v0.4/SHA256SUMS",
+          "mediaType": "text/plain",
+          "sha256": "66cd79dd5cd05299c6a07010b087b4da87b138045223aa39449548ea7c46484a",
+          "origin": {
+            "type": "derived",
+            "sources": [
+              {"kind": "artifact", "ref": "v04-release-readme", "path": "C_Semantic_Treehouse/model/v0.4/README.md", "sha256": "388e4dd823c60b55772946eb7fa37e90c2e5cf52e8300b784bba29ae4364873c"},
+              {"kind": "artifact", "ref": "v04-ontology", "path": "C_Semantic_Treehouse/model/v0.4/building-energy-ontology.ttl", "sha256": "c2139583d8b2c92fbd805db49f9a30e883c1aea27cb704063c3ea9d0456df5d9"},
+              {"kind": "artifact", "ref": "v04-metadata-context", "path": "C_Semantic_Treehouse/model/v0.4/data-product-context.jsonld", "sha256": "f46d3056239cc1cb7d678707e749b33e336564e5fce23ffcccd528eae6cbe391"},
+              {"kind": "artifact", "ref": "v04-metadata-shapes", "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl", "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"},
+              {"kind": "artifact", "ref": "v04-metadata-valid", "path": "C_Semantic_Treehouse/model/v0.4/data-product-valid.jsonld", "sha256": "9acc287ae274e549becd15852231b325c43e1dbddc14e9f2459f4c490420f239"}
+            ],
+            "transformation": "sha256-manifest"
+          }
+        },
+        {
+          "id": "v04-inherited-record-schema",
+          "role": "record-json-schema",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record.schema.json",
+          "mediaType": "application/schema+json",
+          "sha256": "dd07414e3752bf582bf5e721009064e16d7be3e1e06d60daaad08000869ccfa9",
+          "origin": {"type": "inherited", "inheritedFrom": "v0.3", "sourceArtifact": "v03-record-schema", "change": "none"}
+        },
+        {
+          "id": "v04-inherited-record-context",
+          "role": "record-context",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-context.jsonld",
+          "mediaType": "application/ld+json",
+          "sha256": "9727da9b8650dc444d719113a6978a3a26a59bfd1fde011a98e4c1f4b476f748",
+          "origin": {"type": "inherited", "inheritedFrom": "v0.3", "sourceArtifact": "v03-record-context", "change": "none"}
+        },
+        {
+          "id": "v04-inherited-record-shapes",
+          "role": "record-shapes",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-shapes.ttl",
+          "mediaType": "text/turtle",
+          "sha256": "84d1eee9cfeecd1791117552611e83d36af7df4f3b4c783ddbd75d45bae66c9a",
+          "origin": {"type": "inherited", "inheritedFrom": "v0.3", "sourceArtifact": "v03-record-shapes", "change": "none"}
+        },
+        {
+          "id": "v04-inherited-record-valid",
+          "role": "record-valid-example",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-valid.jsonld",
+          "mediaType": "application/ld+json",
+          "sha256": "8f7509ad08fb9a62cdff1d6c904801c9421c3ce768bdd9ecb651cd480aa158e1",
+          "origin": {"type": "inherited", "inheritedFrom": "v0.3", "sourceArtifact": "v03-record-valid", "change": "none"}
+        },
+        {
+          "id": "v04-inherited-record-invalid",
+          "role": "record-invalid-example",
+          "path": "C_Semantic_Treehouse/model/v0.3/energy-reading-record-invalid.jsonld",
+          "mediaType": "application/ld+json",
+          "sha256": "e516f6a8e4ea811170c72e922b86ac7ea46594046704d01a55a2c8e13cd8f358",
+          "origin": {"type": "inherited", "inheritedFrom": "v0.3", "sourceArtifact": "v03-record-invalid", "change": "none"}
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+PREFIX ex: <https://example.org/dssc-energy#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+
+SELECT ?shape ?shapeType ?severity WHERE {
+  VALUES ?shape {
+    ex:DatasetCardinalityShape
+    ex:BuildingEnergyDatasetShape
+    ex:DatasetIdShape
+    ex:TitleShape
+    ex:ProviderNameShape
+    ex:SpatialShape
+    ex:FrequencyShape
+    ex:UnitShape
+    ex:FormatShape
+    ex:EndpointUrlShape
+    ex:TemporalStartShape
+    ex:TemporalEndShape
+    ex:TemporalOrderShape
+    ex:DescriptionShape
+    ex:LicenseShape
+    ex:DatasetClosedShape
+  }
+  VALUES ?shapeType { sh:NodeShape sh:PropertyShape }
+  ?shape a ?shapeType ;
+         sh:severity ?severity .
+}
+ORDER BY ?shape ?shapeType ?severity

@@ -1,0 +1,582 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dssc.local/schemas/release-manifest.schema.json",
+  "title": "DSSC unified semantic-model release manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "manifest_schema_version",
+    "currentRelease",
+    "sourceCatalog",
+    "validationSuiteRegistry",
+    "requirementRegistries",
+    "releases"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "schemas/release-manifest.schema.json"
+    },
+    "manifest_schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "currentRelease": {
+      "const": "v0.4"
+    },
+    "sourceCatalog": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/sourceCatalogEntry"
+      }
+    },
+    "validationSuiteRegistry": {
+      "$ref": "#/$defs/validationSuiteRegistry"
+    },
+    "requirementRegistries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/requirementRegistry"
+      }
+    },
+    "releases": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "$ref": "#/$defs/release"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "const": "v0.1"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "const": "v0.2"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "const": "v0.3"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "const": "v0.4"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": ["status"],
+            "properties": {
+              "status": {
+                "const": "current"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "catalogId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9][a-z0-9.-]*$"
+    },
+    "artifactId": {
+      "$ref": "#/$defs/catalogId"
+    },
+    "releaseId": {
+      "enum": ["v0.1", "v0.2", "v0.3", "v0.4"]
+    },
+    "requirementId": {
+      "type": "string",
+      "pattern": "^D04-R0(?:0[1-9]|1[0-7])$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "repoPath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*//)(?!.*[*?\\[\\]{}])(?!.*/$).+$"
+    },
+    "mediaType": {
+      "enum": [
+        "application/json",
+        "application/ld+json",
+        "application/schema+json",
+        "application/yaml",
+        "text/markdown",
+        "text/plain",
+        "text/turtle"
+      ]
+    },
+    "sourceCatalogEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "path", "mediaType", "sha256"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/catalogId"
+        },
+        "kind": {
+          "enum": [
+            "accepted-decision",
+            "explanatory-source",
+            "frozen-contract",
+            "normative-contract",
+            "scenario-source"
+          ]
+        },
+        "path": {
+          "$ref": "#/$defs/repoPath"
+        },
+        "mediaType": {
+          "$ref": "#/$defs/mediaType"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "validationSuiteRegistry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "contractVersion"],
+      "properties": {
+        "path": {
+          "const": "C_Semantic_Treehouse/manifests/validation-suites.json"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "contractVersion": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        }
+      }
+    },
+    "requirementRegistry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "path", "sha256", "phase03Sha256"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/catalogId"
+        },
+        "path": {
+          "$ref": "#/$defs/repoPath"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "phase03Sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "requirementRegistryReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["registryRef", "requirementIds"],
+      "properties": {
+        "registryRef": {
+          "$ref": "#/$defs/catalogId"
+        },
+        "requirementIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/requirementId"
+          }
+        }
+      }
+    },
+    "sourceBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "ref", "path", "sha256"],
+      "properties": {
+        "kind": {
+          "enum": ["artifact", "input"]
+        },
+        "ref": {
+          "$ref": "#/$defs/catalogId"
+        },
+        "path": {
+          "$ref": "#/$defs/repoPath"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "frozenOrigin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "verifiedBy"],
+      "properties": {
+        "type": {
+          "const": "frozen"
+        },
+        "verifiedBy": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/catalogId"
+          }
+        }
+      }
+    },
+    "derivedOrigin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "sources", "transformation"],
+      "properties": {
+        "type": {
+          "const": "derived"
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/sourceBinding"
+          }
+        },
+        "transformation": {
+          "enum": [
+            "byte-copy",
+            "manual-derivation",
+            "sha256-manifest"
+          ]
+        }
+      }
+    },
+    "inheritedOrigin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "inheritedFrom", "sourceArtifact", "change"],
+      "properties": {
+        "type": {
+          "const": "inherited"
+        },
+        "inheritedFrom": {
+          "$ref": "#/$defs/releaseId"
+        },
+        "sourceArtifact": {
+          "$ref": "#/$defs/artifactId"
+        },
+        "change": {
+          "const": "none"
+        }
+      }
+    },
+    "artifactOrigin": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/frozenOrigin"
+        },
+        {
+          "$ref": "#/$defs/derivedOrigin"
+        },
+        {
+          "$ref": "#/$defs/inheritedOrigin"
+        }
+      ]
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "role", "path", "mediaType", "sha256", "origin"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/artifactId"
+        },
+        "role": {
+          "enum": [
+            "checksum-manifest",
+            "metadata-context",
+            "metadata-invalid-example",
+            "metadata-shapes",
+            "metadata-valid-example",
+            "ontology",
+            "openapi",
+            "record-context",
+            "record-invalid-example",
+            "record-json-schema",
+            "record-shapes",
+            "record-valid-example",
+            "release-documentation"
+          ]
+        },
+        "path": {
+          "$ref": "#/$defs/repoPath"
+        },
+        "mediaType": {
+          "$ref": "#/$defs/mediaType"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "origin": {
+          "$ref": "#/$defs/artifactOrigin"
+        }
+      }
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status",
+        "versionIri",
+        "root",
+        "priorRelease",
+        "compatibilityClassification",
+        "normativeInputRefs",
+        "applicableValidatorRefs",
+        "requirementRegistryRefs",
+        "artifacts"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/releaseId"
+        },
+        "status": {
+          "enum": ["current", "frozen"]
+        },
+        "versionIri": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "root": {
+          "$ref": "#/$defs/repoPath"
+        },
+        "priorRelease": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/releaseId"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "compatibilityClassification": {
+          "enum": [
+            "additive",
+            "initial",
+            "validation-tightening",
+            "wire-profile-breaking"
+          ]
+        },
+        "normativeInputRefs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/catalogId"
+          }
+        },
+        "applicableValidatorRefs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/catalogId"
+          }
+        },
+        "requirementRegistryRefs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/requirementRegistryReference"
+          }
+        },
+        "artifacts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/artifact"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "const": "v0.1"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "status": {
+                "const": "frozen"
+              },
+              "versionIri": {
+                "const": "https://w3id.org/dssc-demo/building-energy/v0.1"
+              },
+              "root": {
+                "const": "C_Semantic_Treehouse/model/v0.1"
+              },
+              "priorRelease": {
+                "type": "null"
+              },
+              "compatibilityClassification": {
+                "const": "initial"
+              },
+              "requirementRegistryRefs": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "const": "v0.2"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "status": {
+                "const": "frozen"
+              },
+              "versionIri": {
+                "const": "https://w3id.org/dssc-demo/building-energy/v0.2"
+              },
+              "root": {
+                "const": "C_Semantic_Treehouse/model/v0.2"
+              },
+              "priorRelease": {
+                "const": "v0.1"
+              },
+              "compatibilityClassification": {
+                "const": "validation-tightening"
+              },
+              "requirementRegistryRefs": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "const": "v0.3"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "status": {
+                "const": "frozen"
+              },
+              "versionIri": {
+                "const": "https://w3id.org/dssc-demo/building-energy/v0.3"
+              },
+              "root": {
+                "const": "C_Semantic_Treehouse/model/v0.3"
+              },
+              "priorRelease": {
+                "const": "v0.2"
+              },
+              "compatibilityClassification": {
+                "const": "additive"
+              },
+              "requirementRegistryRefs": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "const": "v0.4"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "status": {
+                "const": "current"
+              },
+              "versionIri": {
+                "const": "https://w3id.org/dssc-demo/building-energy/v0.4"
+              },
+              "root": {
+                "const": "C_Semantic_Treehouse/model/v0.4"
+              },
+              "priorRelease": {
+                "const": "v0.3"
+              },
+              "compatibilityClassification": {
+                "const": "wire-profile-breaking"
+              },
+              "requirementRegistryRefs": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

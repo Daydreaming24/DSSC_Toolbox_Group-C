@@ -1,0 +1,878 @@
+{
+  "controls": [
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "empty-manifest-object",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "empty-case-list",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "duplicate_case_id"
+        ]
+      },
+      "id": "duplicate-case-id",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "case_artifact_contract",
+          "case_set",
+          "duplicate_case_id"
+        ],
+        "outcome": "REJECTED",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "duplicate_artifact_id"
+        ]
+      },
+      "id": "duplicate-artifact-id",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "artifact_set",
+          "dangling_reference_artifact",
+          "duplicate_artifact_id"
+        ],
+        "outcome": "REJECTED",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "case_contract",
+          "artifact_release_mismatch"
+        ]
+      },
+      "id": "case-release-cross-reference",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "artifact_release_mismatch",
+          "case_contract",
+          "case_release_counts"
+        ],
+        "outcome": "REJECTED",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "case-validator-cross-reference",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "dangling_artifact_reference"
+        ]
+      },
+      "id": "case-artifact-dangling-reference",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "case_artifact_contract",
+          "dangling_artifact_reference",
+          "unreferenced_artifact"
+        ],
+        "outcome": "REJECTED",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_failed_assertions": [
+          "normalized_results"
+        ],
+        "target_case_id": "shacl-v0-2-metadata-invalid"
+      },
+      "id": "case-oracle-wrong-reference",
+      "layer": "baseline-runner",
+      "observed": {
+        "outcome": "REJECTED",
+        "suite_counts": {
+          "discovered": 33,
+          "executed": 33,
+          "failed": 1,
+          "passed": 32,
+          "skipped": 0
+        },
+        "suite_program_status": "ERROR",
+        "target_case": {
+          "actual_business_status": "FAIL",
+          "actual_program_status": "ERROR",
+          "error_types": [],
+          "failed_assertions": [
+            "normalized_results"
+          ],
+          "found": true,
+          "oracle_match": false,
+          "passed": false
+        }
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "required_case_set",
+          "case_set"
+        ]
+      },
+      "id": "missing-required-case",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "case_release_counts",
+          "case_set",
+          "category_counts",
+          "required_case_set",
+          "unreferenced_artifact",
+          "validator_counts"
+        ],
+        "outcome": "REJECTED",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "artifact_hash_mismatch"
+        ]
+      },
+      "id": "artifact-hash-mismatch",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "artifact_hash_mismatch"
+        ],
+        "outcome": "REJECTED",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_failed_assertions": [
+          "target_activation_count",
+          "target_activation_nonzero"
+        ],
+        "target_case_id": "shacl-v0-1-metadata-valid"
+      },
+      "id": "shacl-actual-target-zero",
+      "layer": "baseline-runner",
+      "observed": {
+        "outcome": "REJECTED",
+        "suite_counts": {
+          "discovered": 33,
+          "executed": 33,
+          "failed": 1,
+          "passed": 32,
+          "skipped": 0
+        },
+        "suite_program_status": "ERROR",
+        "target_case": {
+          "actual_business_status": "PASS",
+          "actual_program_status": "ERROR",
+          "error_types": [],
+          "failed_assertions": [
+            "target_activation_count",
+            "target_activation_nonzero"
+          ],
+          "found": true,
+          "oracle_match": false,
+          "passed": false
+        }
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_failed_assertions": [
+          "execution"
+        ],
+        "target_case_id": "openapi-v0-3-fragment-valid"
+      },
+      "id": "openapi-validator-unavailable",
+      "layer": "baseline-runner",
+      "observed": {
+        "outcome": "REJECTED",
+        "suite_counts": {
+          "discovered": 33,
+          "executed": 33,
+          "failed": 1,
+          "passed": 32,
+          "skipped": 0
+        },
+        "suite_program_status": "ERROR",
+        "target_case": {
+          "actual_business_status": "UNTESTABLE",
+          "actual_program_status": "ERROR",
+          "error_types": [
+            "BaselineExecutionError"
+          ],
+          "failed_assertions": [
+            "execution"
+          ],
+          "found": true,
+          "oracle_match": false,
+          "passed": false
+        }
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_failed_assertions": [
+          "normalized_results"
+        ],
+        "target_case_id": "shacl-v0-2-metadata-invalid"
+      },
+      "id": "shacl-expected-invalid-unexpected-result",
+      "layer": "baseline-runner",
+      "observed": {
+        "outcome": "REJECTED",
+        "suite_counts": {
+          "discovered": 33,
+          "executed": 33,
+          "failed": 1,
+          "passed": 32,
+          "skipped": 0
+        },
+        "suite_program_status": "ERROR",
+        "target_case": {
+          "actual_business_status": "FAIL",
+          "actual_program_status": "ERROR",
+          "error_types": [],
+          "failed_assertions": [
+            "normalized_results"
+          ],
+          "found": true,
+          "oracle_match": false,
+          "passed": false
+        }
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_failed_assertions": [
+          "normalized_errors"
+        ],
+        "target_case_id": "jsonschema-v0-3-record-invalid"
+      },
+      "id": "jsonschema-expected-invalid-unexpected-error",
+      "layer": "baseline-runner",
+      "observed": {
+        "outcome": "REJECTED",
+        "suite_counts": {
+          "discovered": 33,
+          "executed": 33,
+          "failed": 1,
+          "passed": 32,
+          "skipped": 0
+        },
+        "suite_program_status": "ERROR",
+        "target_case": {
+          "actual_business_status": "FAIL",
+          "actual_program_status": "ERROR",
+          "error_types": [],
+          "failed_assertions": [
+            "normalized_errors"
+          ],
+          "found": true,
+          "oracle_match": false,
+          "passed": false
+        }
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_failed_assertions": [
+          "execution"
+        ],
+        "target_case_id": "jsonschema-v0-3-record-invalid"
+      },
+      "id": "expected-invalid-parse-error",
+      "layer": "baseline-runner",
+      "observed": {
+        "outcome": "REJECTED",
+        "suite_counts": {
+          "discovered": 33,
+          "executed": 33,
+          "failed": 2,
+          "passed": 31,
+          "skipped": 0
+        },
+        "suite_program_status": "ERROR",
+        "target_case": {
+          "actual_business_status": "UNTESTABLE",
+          "actual_program_status": "ERROR",
+          "error_types": [
+            "BaselineExecutionError"
+          ],
+          "failed_assertions": [
+            "execution"
+          ],
+          "found": true,
+          "oracle_match": false,
+          "passed": false
+        }
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "shacl-config-unknown-value",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "shacl-config-missing-field",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_failed_assertions": [
+          "execution"
+        ],
+        "target_case_id": "shacl-v0-1-metadata-valid"
+      },
+      "id": "shacl-config-runtime-mismatch",
+      "layer": "runner-defense",
+      "observed": {
+        "outcome": "REJECTED",
+        "suite_counts": {
+          "discovered": 33,
+          "executed": 33,
+          "failed": 1,
+          "passed": 32,
+          "skipped": 0
+        },
+        "suite_program_status": "ERROR",
+        "target_case": {
+          "actual_business_status": "UNTESTABLE",
+          "actual_program_status": "ERROR",
+          "error_types": [
+            "BaselineExecutionError"
+          ],
+          "failed_assertions": [
+            "execution"
+          ],
+          "found": true,
+          "oracle_match": false,
+          "passed": false
+        }
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_failed_assertions": [
+          "execution"
+        ],
+        "target_case_id": "shacl-v0-1-metadata-valid"
+      },
+      "id": "shacl-invalid-shapes-graph",
+      "layer": "baseline-runner",
+      "observed": {
+        "outcome": "REJECTED",
+        "suite_counts": {
+          "discovered": 33,
+          "executed": 33,
+          "failed": 2,
+          "passed": 31,
+          "skipped": 0
+        },
+        "suite_program_status": "ERROR",
+        "target_case": {
+          "actual_business_status": "UNTESTABLE",
+          "actual_program_status": "ERROR",
+          "error_types": [
+            "BaselineExecutionError"
+          ],
+          "failed_assertions": [
+            "execution"
+          ],
+          "found": true,
+          "oracle_match": false,
+          "passed": false
+        }
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "case_artifact_contract"
+        ]
+      },
+      "id": "shacl-wrong-data-shapes-reference",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "case_artifact_contract"
+        ],
+        "outcome": "REJECTED",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_failed_assertions": [
+          "execution"
+        ],
+        "target_case_id": "shacl-v0-1-metadata-valid"
+      },
+      "id": "shacl-data-shapes-merged-graph",
+      "layer": "baseline-runner",
+      "observed": {
+        "outcome": "REJECTED",
+        "suite_counts": {
+          "discovered": 33,
+          "executed": 33,
+          "failed": 1,
+          "passed": 32,
+          "skipped": 0
+        },
+        "suite_program_status": "ERROR",
+        "target_case": {
+          "actual_business_status": "UNTESTABLE",
+          "actual_program_status": "ERROR",
+          "error_types": [
+            "BaselineExecutionError"
+          ],
+          "failed_assertions": [
+            "execution"
+          ],
+          "found": true,
+          "oracle_match": false,
+          "passed": false
+        }
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "shacl-pass-fake-source-shape",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "shacl-pass-fake-results",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "shacl-pass-target-minimum-zero",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "shacl-pass-result-count-nonzero",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "shacl-fail-missing-source-shape",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "shacl-fail-missing-path",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "shacl-fail-missing-constraint-component",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "shacl-fail-missing-severity",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "shacl-fail-missing-message",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "shacl-fail-missing-count",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "same_path_hash_conflict"
+        ]
+      },
+      "id": "artifact-same-path-hash-conflict",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "artifact_hash_mismatch",
+          "same_path_hash_conflict"
+        ],
+        "outcome": "REJECTED",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "artifact-absolute-path",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "artifact-backslash-path",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "artifact-dotdot-path",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "disabled_case"
+        ]
+      },
+      "id": "disabled-required-case",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "disabled_case"
+        ],
+        "outcome": "REJECTED",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "expected": {
+        "outcome": "REJECTED",
+        "required_issue_codes": [
+          "schema_violation"
+        ]
+      },
+      "id": "skipped-required-case",
+      "layer": "manifest-preflight",
+      "observed": {
+        "issue_codes": [
+          "schema_violation"
+        ],
+        "outcome": "REJECTED",
+        "stage": "schema"
+      },
+      "passed": true
+    }
+  ],
+  "counts": {
+    "discovered": 37,
+    "executed": 37,
+    "failed": 0,
+    "passed": 37,
+    "skipped": 0
+  },
+  "program_status": "SUCCESS",
+  "schema": "dssc.phase02.baseline-negative-controls.v1",
+  "source_files": [
+    {
+      "path": "C_Semantic_Treehouse/manifests/baseline-test-cases.json",
+      "sha256": "e8fb57fe2f609c48c0340cf8e3b78d2e8f81d0fe0fd3ab505468cfe315767e43"
+    },
+    {
+      "path": "C_Semantic_Treehouse/manifests/schemas/baseline-test-cases.schema.json",
+      "sha256": "291cb5eae9212735b65fe5bad0bdef383d935b846f5fef07fc8f52c5fc79c6d8"
+    },
+    {
+      "path": "requirements.lock",
+      "sha256": "d92c7ae708283c04a916da2a9c810a19fbcc65b1fcb154792099e5a3924baeb2"
+    },
+    {
+      "path": "scripts/dssc_validation/baseline_manifest.py",
+      "sha256": "2af85f6324713e8557a538146e188301c183bfea2d0ab9743180fdc27a90c564"
+    },
+    {
+      "path": "scripts/dssc_validation/baseline_runner.py",
+      "sha256": "9aad1e47b14c7dd5bbe5816ba6814ff5b3130a9280ad79850abb213a77ca7673"
+    },
+    {
+      "path": "build/phase-02/tools/run_baseline_negative_controls.py",
+      "sha256": "11161bb8382d5f5839f7db696327af27d9039ddde0cc5ef0562d2e8f8b44b1da"
+    }
+  ],
+  "suite": "baseline-negative-controls"
+}

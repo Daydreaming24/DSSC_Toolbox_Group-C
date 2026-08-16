@@ -1,0 +1,49 @@
+@prefix be: <https://w3id.org/dssc-demo/building-energy#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+be:EnergyReadingRecordShape-v0_3
+    a sh:NodeShape ;
+    sh:targetClass be:EnergyReadingRecord ;
+    sh:property [
+        sh:path be:buildingId ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "buildingId is required and must be a string." ;
+    ] ;
+    sh:property [
+        sh:path be:meterId ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "meterId is required and must be a string." ;
+    ] ;
+    sh:property [
+        sh:path be:timestamp ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:dateTime ;
+        sh:message "timestamp is required and must be an xsd:dateTime." ;
+    ] ;
+    sh:property [
+        sh:path be:energyKWh ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minInclusive 0 ;
+        sh:message "energyKWh is required and must be a non-negative numeric literal." ;
+    ] ;
+    sh:property [
+        sh:path be:unit ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in ("kWh") ;
+        sh:message "unit must be kWh for Energy Reading Record." ;
+    ] ;
+    sh:property [
+        sh:path be:location ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:message "location is required and must be represented as a JSON-LD node." ;
+    ] .

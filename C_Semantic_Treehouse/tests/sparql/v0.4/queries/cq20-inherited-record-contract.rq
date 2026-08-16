@@ -1,0 +1,14 @@
+PREFIX be: <https://w3id.org/dssc-demo/building-energy#>
+
+SELECT ?buildingId ?meterId ?timestamp ?energyKWh ?unit ?city ?district WHERE {
+  ?record a be:EnergyReadingRecord ;
+          be:buildingId ?buildingId ;
+          be:meterId ?meterId ;
+          be:timestamp ?timestamp ;
+          be:energyKWh ?energyKWh ;
+          be:unit ?unit ;
+          be:location ?location .
+  ?location be:city ?city ;
+            be:district ?district .
+}
+ORDER BY ?buildingId ?meterId ?timestamp ?energyKWh ?unit ?city ?district

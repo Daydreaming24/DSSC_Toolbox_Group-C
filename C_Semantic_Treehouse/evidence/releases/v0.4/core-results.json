@@ -1,0 +1,434 @@
+{
+  "schema": "dssc.phase09.core-results.v1",
+  "schema_version": "1.0.0",
+  "release_id": "v0.4",
+  "description": "Deterministic aggregation of the upstream core validation-suites suite `all` gate results for the v0.4 GitHub candidate. This file records stable contract bindings and gate outcomes only. It does not embed deliverables.json content hash, Phase 09 deliverables/safety/freshness self-check results, realtime timestamps, current commit SHA, or CI run IDs.",
+  "validation_suites": {
+    "manifest_path": "C_Semantic_Treehouse/manifests/validation-suites.json",
+    "schema_path": "C_Semantic_Treehouse/manifests/schemas/validation-suites.schema.json",
+    "contract_version": "1.6.0",
+    "manifest_sha256": "09c74417a9b674206070ea2d25cea45ed7704f9485269eb264446f0472d51836",
+    "schema_sha256": "70d436cd0509da2fcec8b602c1bffc5f00490d24c13c2ee47caf84791199802a"
+  },
+  "upstream_manifests": {
+    "C_Semantic_Treehouse/manifests/release-manifest.json": {
+      "path": "C_Semantic_Treehouse/manifests/release-manifest.json",
+      "sha256": "35b194fe0c280c9a01067d2c9eac205c9e178da235ba06596719144b975111d8"
+    },
+    "C_Semantic_Treehouse/manifests/baseline-test-cases.json": {
+      "path": "C_Semantic_Treehouse/manifests/baseline-test-cases.json",
+      "sha256": "e8fb57fe2f609c48c0340cf8e3b78d2e8f81d0fe0fd3ab505468cfe315767e43"
+    },
+    "C_Semantic_Treehouse/manifests/v0.4-requirements.json": {
+      "path": "C_Semantic_Treehouse/manifests/v0.4-requirements.json",
+      "sha256": "53953e915d6da6159b342a04f1dc6d0ff6a8f53bd5892eb7933551710ebe014e"
+    },
+    "C_Semantic_Treehouse/manifests/v0.4-test-cases.json": {
+      "path": "C_Semantic_Treehouse/manifests/v0.4-test-cases.json",
+      "sha256": "87e367ea285ddc7feb5fa7f3f4b6c0035be0b768de5e56398ac422abaf494e5a"
+    }
+  },
+  "lock": {
+    "path": "requirements.lock",
+    "sha256": "d92c7ae708283c04a916da2a9c810a19fbcc65b1fcb154792099e5a3924baeb2"
+  },
+  "deliverables": {
+    "path": "C_Semantic_Treehouse/manifests/deliverables.json",
+    "note": "Stable path only. deliverables.json runtime SHA-256 is recorded only in ignored Phase 09 checker evidence, never in this file."
+  },
+  "source_hashes": {
+    "scripts/check_documentation.py": "c317fc57719bfcac5ce857edf8f3b066a6fc1a3e7f1118fa42cb4b563ec0d52d",
+    "scripts/doctor.py": "39d3a43249ec3470793577b533516e9b0048ab2503121994834635b49e50143f",
+    "scripts/dssc_validation/__init__.py": "8b9374a28d7ec2f7c534bf9f4de5f9d3542333de79939dec97803eb892be70f1",
+    "scripts/dssc_validation/baseline_manifest.py": "2af85f6324713e8557a538146e188301c183bfea2d0ab9743180fdc27a90c564",
+    "scripts/dssc_validation/baseline_report.py": "c1d6cf8f478042990422da6fc7029bd6f80925708820a76a66b04d712d18e4fa",
+    "scripts/dssc_validation/baseline_runner.py": "9aad1e47b14c7dd5bbe5816ba6814ff5b3130a9280ad79850abb213a77ca7673",
+    "scripts/dssc_validation/checks_all.py": "1d539eb983ff138a4151c1abe6800cc4293c133744a96d7e94be499e8a7d4b35",
+    "scripts/dssc_validation/checks_baseline.py": "8ea0b5d427f7e98bfbf6da35fe81e5b1c1a15832ad101b2bee3b028989aca5dc",
+    "scripts/dssc_validation/checks_environment.py": "d599b590d771d58ed4cef4bf19c2bb2a84e1a6bc23d6082b4c7c62b4355b5444",
+    "scripts/dssc_validation/checks_frozen.py": "2e920dd8a67abcbf18089767db1b96a22496f1134eee652a5530b9eccd73ff1d",
+    "scripts/dssc_validation/checks_model.py": "8245ca66163ffa3311ee1eafbfef2f828726f195891abfd7b9f30e121abee5a8",
+    "scripts/dssc_validation/checks_phase06.py": "ddca05f9a48b9ce2610ad85863bc583a47f77ef9c2136c7b0761a33aa5710331",
+    "scripts/dssc_validation/checks_traceability.py": "6ab3846a5fa8ce02a88e52c9e10eda5874d8be40a93a844b362d96715c896fa4",
+    "scripts/dssc_validation/checks_v04.py": "dfb0e7244179db957eb4e3fedbbf79b2e02716fe18196b513724c9e1bd157302",
+    "scripts/dssc_validation/d_group_contract.py": "64303239832ab1452bc09eda44afd75351fc36a0d96711c63a93c04f0ed04a57",
+    "scripts/dssc_validation/doctor_core.py": "d3dcb4fc18b82386aa2a4579aec6857a9facaff8ef40ee9e6a56e9529d961faa",
+    "scripts/dssc_validation/entrypoint_catalog.py": "aef63d7df168d80a7614f5ff49c4681f431feb8f52a0c9e12eca0fa27821c088",
+    "scripts/dssc_validation/evidence.py": "ce57ba02a9b05c58c8c5ff5a925498ad3cc86363ff0993ca2b0a5e02f17a3aa3",
+    "scripts/dssc_validation/hashing.py": "7daa83ded49ee3a01e6692d0c0269ea640d27f050d13e1af726eb6976bf11fe3",
+    "scripts/dssc_validation/lock_contract.py": "4cfcf85b0d09fd05201358df41faf05c780a743dce5f6ced0080b3784f157d4d",
+    "scripts/dssc_validation/model_contract.py": "75e975db21b07fd2efe7210ddee4feb95682ab0821fbaaeaf4e765feda50686c",
+    "scripts/dssc_validation/model_report.py": "1990c1bdc49662daad1b89c65364218c11d59b9ac646bc1a0a1b1ffc5c772f35",
+    "scripts/dssc_validation/model_validation.py": "f454b22c0cdc7c6400a2f13d8ef7d42bc7b04c6d5d6b9c573d87fff489929100",
+    "scripts/dssc_validation/paths.py": "8dd89398afb1547a33603dfe987404784b882107d8fc5bbc55d1a6b0c61a37f5",
+    "scripts/dssc_validation/profile_contract.py": "c032d9884b06e3d450105125419c083fd9e42db3d6c73fd5a50007556af834b5",
+    "scripts/dssc_validation/provenance.py": "6d816acd3cdc4fdf2603288213a0e6a7118a7c2df1b7ecaa874b1c8920543aef",
+    "scripts/dssc_validation/release_manifest.py": "07e29d09d6860e0c0672ee88a57a3b165a0de9990439b041d6f2f8a78521cba3",
+    "scripts/dssc_validation/requirements_registry.py": "2b34f9c959c7194f4b579abd3861ee636b78f538b2b8e852e3c05701ff3ee754",
+    "scripts/dssc_validation/suite_registry.py": "6ea31afe0675dff63c18c7871bb936584807289ce49f1d0f72730eb9d7e73ab0",
+    "scripts/dssc_validation/traceability_report.py": "f359f4f816aec03ae3a87db62043f28d53b5fb2f9f3b558c88d1fa09b5ff9a18",
+    "scripts/dssc_validation/v04_classifier.py": "166dacd3fb078bd4cd2bb88dc02e9def3276a6113a6fa355317623874d538bcd",
+    "scripts/dssc_validation/v04_controls.py": "5dca90834bc813009d2025eaf9c4b3d31e1ec47151b14c6a6dab0b84b8c65f75",
+    "scripts/dssc_validation/v04_harness.py": "b05bcca7edc65ad9004e097bacc2c4e41ef318c4409bde39ebc22b2dbcd507ae",
+    "scripts/dssc_validation/v04_manifest.py": "f94ffa122f44e6d9454baef980beaf4ae2c44d0718732914842d2499c7162845",
+    "scripts/dssc_validation/v04_report.py": "400dfeed74c0c2200e2123aaa18fff4c0237a06f6b5bcf5b87e693e0a1f0ba69",
+    "scripts/dssc_validation/v04_reporter.py": "e3630c2d03685e78ae67a738999ced2104210c5709c440b41d3f84036adb0743",
+    "scripts/dssc_validation/venv_contract.py": "02e3b2cd06bc7df292b73af4e2d20f069d56608304929200de2902e376a94539",
+    "scripts/validate.py": "0ead93869a34eacc497412679a2fb4365f2743a2fbbc24e61283c3a5fa9b497f",
+    "scripts/verify_frozen_files.py": "ee8db8d2613821222c307b4983187af5c714f1d8a4fc7cf98658515e9ca8738c"
+  },
+  "source_hash_policy": "must-match-disk",
+  "source_hash_issues": [],
+  "gates": {
+    "suite": "all",
+    "program_status": "SUCCESS",
+    "exit_code": 0,
+    "counts": {
+      "discovered": 17,
+      "executed": 17,
+      "failed": 0,
+      "passed": 17,
+      "skipped": 0
+    },
+    "required_skipped": 0,
+    "components": [
+      {
+        "id": "frozen.manifest",
+        "suite_id": "frozen",
+        "entrypoint": "check_frozen_files",
+        "program_status": "SUCCESS",
+        "status": "PASS",
+        "message": "frozen verification passed: 104 file(s)",
+        "summary": {
+          "checked": 104,
+          "records": 104,
+          "failure_count": 0
+        }
+      },
+      {
+        "id": "environment.doctor",
+        "suite_id": "environment",
+        "entrypoint": "check_environment",
+        "program_status": "SUCCESS",
+        "status": "PASS",
+        "message": "environment doctor overall_status=PASS profile=host"
+      },
+      {
+        "id": "baseline.reproduction",
+        "suite_id": "baseline",
+        "entrypoint": "check_baseline",
+        "program_status": "SUCCESS",
+        "status": "PASS",
+        "message": "baseline reproduction passed: 33/33 cases",
+        "summary": {
+          "counts": {
+            "discovered": 33,
+            "executed": 33,
+            "failed": 0,
+            "passed": 33,
+            "skipped": 0
+          }
+        }
+      },
+      {
+        "id": "traceability.contract-audit",
+        "suite_id": "traceability",
+        "entrypoint": "check_traceability",
+        "program_status": "SUCCESS",
+        "status": "PASS",
+        "message": "D-group requirements traceability passed"
+      },
+      {
+        "id": "v0.4-model.release-contract",
+        "suite_id": "v0.4-model",
+        "entrypoint": "check_v04_model",
+        "program_status": "SUCCESS",
+        "status": "PASS",
+        "message": "v0.4 release model passed",
+        "summary": {
+          "program_status": "SUCCESS",
+          "counts": {
+            "discovered": 11,
+            "executed": 11,
+            "failed": 0,
+            "passed": 11,
+            "skipped": 0
+          }
+        }
+      },
+      {
+        "id": "v0.4.test-case-schema",
+        "suite_id": "v0.4",
+        "entrypoint": "check_v04_test_case_schema",
+        "program_status": "SUCCESS",
+        "status": "PASS",
+        "message": "v0.4 test-case schema validation passed",
+        "summary": {
+          "case_count": 66
+        }
+      },
+      {
+        "id": "v0.4.manifest-semantics",
+        "suite_id": "v0.4",
+        "entrypoint": "check_v04_manifest_semantics",
+        "program_status": "SUCCESS",
+        "status": "PASS",
+        "message": "v0.4 manifest semantic validation passed",
+        "summary": {
+          "case_count": 66,
+          "business_status_counts": {
+            "FAIL": 53,
+            "INAPPLICABLE": 1,
+            "PASS": 6,
+            "UNTESTABLE": 6
+          }
+        }
+      },
+      {
+        "id": "v0.4.fixture-hashes",
+        "suite_id": "v0.4",
+        "entrypoint": "check_v04_fixture_hashes",
+        "program_status": "SUCCESS",
+        "status": "PASS",
+        "message": "v0.4 fixture byte validation passed",
+        "summary": {
+          "fixture_count": 66,
+          "issue_count": 0
+        }
+      },
+      {
+        "id": "v0.4.four-state",
+        "suite_id": "v0.4",
+        "entrypoint": "check_v04_four_state",
+        "program_status": "SUCCESS",
+        "status": "PASS",
+        "message": "v0.4 fixture validation passed",
+        "summary": {
+          "counts": {
+            "discovered": 66,
+            "executed": 66,
+            "failed": 0,
+            "passed": 66,
+            "skipped": 0
+          },
+          "business_status_counts": {
+            "FAIL": 53,
+            "INAPPLICABLE": 1,
+            "PASS": 6,
+            "UNTESTABLE": 6
+          },
+          "four_states_present": true
+        }
+      },
+      {
+        "id": "v0.4.report-assertions",
+        "suite_id": "v0.4",
+        "entrypoint": "check_v04_report_assertions",
+        "program_status": "SUCCESS",
+        "status": "PASS",
+        "message": "v0.4 report assertions passed",
+        "summary": {
+          "case_count": 66,
+          "assertion_count": 467
+        }
+      },
+      {
+        "id": "v0.4.target-activation",
+        "suite_id": "v0.4",
+        "entrypoint": "check_v04_target_activation",
+        "program_status": "SUCCESS",
+        "status": "PASS",
+        "message": "v0.4 target activation passed",
+        "summary": {
+          "checked_report_cases": 60
+        }
+      },
+      {
+        "id": "v0.4.fault-injection",
+        "suite_id": "v0.4",
+        "entrypoint": "check_v04_fault_injection",
+        "program_status": "SUCCESS",
+        "status": "PASS",
+        "message": "v0.4 fault-injection controls passed",
+        "summary": {
+          "runtime_control_counts": {
+            "discovered": 13,
+            "executed": 13,
+            "failed": 0,
+            "passed": 13,
+            "skipped": 0
+          },
+          "contract_control_counts": {
+            "discovered": 34,
+            "executed": 34,
+            "failed": 0,
+            "passed": 34,
+            "skipped": 0
+          },
+          "failure_boundary_counts": {
+            "discovered": 6,
+            "executed": 6,
+            "failed": 0,
+            "passed": 6,
+            "skipped": 0
+          }
+        }
+      },
+      {
+        "id": "all.composition",
+        "suite_id": "all",
+        "entrypoint": "check_all_composition",
+        "program_status": "SUCCESS",
+        "status": "PASS",
+        "message": "all expands the six constituent public suites and runs the Phase 06 semantic/quality/governance checks plus Phase 07 documentation deterministically",
+        "summary": {
+          "constituent_suites": [
+            "frozen",
+            "environment",
+            "baseline",
+            "traceability",
+            "v0.4-model",
+            "v0.4"
+          ],
+          "expanded_component_count": 17,
+          "expanded_component_ids": [
+            "frozen.manifest",
+            "environment.doctor",
+            "baseline.reproduction",
+            "traceability.contract-audit",
+            "v0.4-model.release-contract",
+            "v0.4.test-case-schema",
+            "v0.4.manifest-semantics",
+            "v0.4.fixture-hashes",
+            "v0.4.four-state",
+            "v0.4.report-assertions",
+            "v0.4.target-activation",
+            "v0.4.fault-injection",
+            "all.composition",
+            "all.semantic-sparql",
+            "all.quality",
+            "all.governance",
+            "all.documentation"
+          ],
+          "contract_version": "1.6.0",
+          "registry_sha256": "09c74417a9b674206070ea2d25cea45ed7704f9485269eb264446f0472d51836"
+        }
+      },
+      {
+        "id": "all.semantic-sparql",
+        "suite_id": "all",
+        "entrypoint": "check_semantic_sparql",
+        "program_status": "SUCCESS",
+        "status": "PASS",
+        "message": "20 version-bound SPARQL competency questions passed",
+        "summary": {
+          "manifest_sha256": "6a86950dd10b1ecddfc33b62bd02f4f4d9615712748e19943bddae28fb9e4d45",
+          "issue_count": 0
+        }
+      },
+      {
+        "id": "all.quality",
+        "suite_id": "all",
+        "entrypoint": "check_quality_metrics",
+        "program_status": "SUCCESS",
+        "status": "PASS",
+        "message": "Phase 06 quality metrics, SSSOM, and breaking-change checks passed.",
+        "summary": {
+          "metric_count": 8,
+          "assessment_sha256": "d8b20992929d32c4d9e94ecddaac0aafa7472a83ddbff3a9b23b4565d8d1d8ad"
+        }
+      },
+      {
+        "id": "all.governance",
+        "suite_id": "all",
+        "entrypoint": "check_governance",
+        "program_status": "SUCCESS",
+        "status": "PASS",
+        "message": "governance and provenance validation passed",
+        "summary": {
+          "counts": {
+            "discovered": 21,
+            "executed": 21,
+            "failed": 0,
+            "passed": 21,
+            "skipped": 0
+          }
+        }
+      },
+      {
+        "id": "all.documentation",
+        "suite_id": "all",
+        "entrypoint": "check_documentation",
+        "program_status": "SUCCESS",
+        "status": "PASS",
+        "message": "Phase 07 documentation and Mermaid structural checks passed",
+        "summary": {
+          "check_id": "all.documentation",
+          "counts": {
+            "diagrams": 2,
+            "discovered": 16,
+            "documents": 14,
+            "executed": 20,
+            "failed": 0,
+            "passed": 20,
+            "skipped": 0
+          },
+          "issue_count": 0
+        }
+      }
+    ]
+  },
+  "platforms": {
+    "host": {
+      "profile": "host",
+      "program_status": "SUCCESS",
+      "exit_code": 0,
+      "counts": {
+        "discovered": 17,
+        "executed": 17,
+        "failed": 0,
+        "passed": 17,
+        "skipped": 0
+      },
+      "evidence_phase": "05",
+      "result_content_sha256": "5a1504a1bfb00d4fde676d101298a6d4db5afc4f143332a664ef569629edd34f",
+      "runtime_result_path": "build/phase-05/current/suite-all-host.result.json",
+      "note": "runtime_result_path is ignored build evidence; only the content SHA-256 is a stable fingerprint of the gate run."
+    },
+    "container": {
+      "profile": "container",
+      "program_status": "SUCCESS",
+      "exit_code": 0,
+      "counts": {
+        "discovered": 17,
+        "executed": 17,
+        "failed": 0,
+        "passed": 17,
+        "skipped": 0
+      },
+      "evidence_phase": "05",
+      "result_content_sha256": "fa72bc651c705b74f3984ff03912118d247b77d6d810fe0ce461628559bef28c",
+      "runtime_result_path": "build/ci/docker/phase-05/current/suite-all-container.result.json",
+      "note": "runtime_result_path is ignored build evidence; only the content SHA-256 is a stable fingerprint of the gate run."
+    }
+  },
+  "platform_consistency": {
+    "contract_version_equal": true,
+    "registry_sha256_equal": true,
+    "counts_equal": true,
+    "source_hashes_equal": true,
+    "component_program_status_equal": true,
+    "both_success": true
+  },
+  "exclusions": {
+    "deliverables_content_hash": "excluded",
+    "phase09_deliverables_checker_result": "excluded",
+    "phase09_publication_safety_checker_result": "excluded",
+    "phase09_evidence_freshness_checker_result": "excluded",
+    "realtime_timestamp": "excluded",
+    "current_commit_sha": "excluded",
+    "ci_run_id": "excluded",
+    "ci_run_url": "excluded",
+    "remote_clone_binding": "excluded"
+  }
+}

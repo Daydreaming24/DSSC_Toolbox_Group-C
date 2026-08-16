@@ -1,0 +1,135 @@
+{
+  "schema": "dssc.semantic-treehouse.upstream-lock.v1",
+  "upstream": {
+    "url": "https://gitlab.com/semantic-treehouse/semantic-treehouse.git",
+    "reference": "refs/tags/v4.3.0",
+    "commit": "e6d7315a09afdfaadbe3ad1a09cf5305f8d13faf"
+  },
+  "license": {
+    "expected_spdx": "Apache-2.0",
+    "reference_path": "LICENSE",
+    "reference_url": "https://gitlab.com/semantic-treehouse/semantic-treehouse/-/blob/e6d7315a09afdfaadbe3ad1a09cf5305f8d13faf/LICENSE"
+  },
+  "compose": {
+    "path": "docker-compose.yml",
+    "reference_url": "https://gitlab.com/semantic-treehouse/semantic-treehouse/-/blob/e6d7315a09afdfaadbe3ad1a09cf5305f8d13faf/docker-compose.yml",
+    "project_name": "dssc-semantic-treehouse-v04",
+    "execution_mode": "production-explicit-service",
+    "profiles": []
+  },
+  "checkout": {
+    "path": "tools/semantic-treehouse/upstream",
+    "mode": "exact-detached-commit",
+    "follow_default_branch": false
+  },
+  "source_materialization": {
+    "mode": "bounded-sparse-fixed-commit",
+    "required_scopes": [
+      "frontend",
+      "backend",
+      "deployment"
+    ],
+    "required_files": [
+      ".dockerignore",
+      "Dockerfile",
+      "LICENSE",
+      "docker-compose.yml",
+      "frontend/package.json",
+      "frontend/pnpm-lock.yaml",
+      "backend/composer.json",
+      "backend/composer.lock",
+      "deployment/compose/create_test_db.sh"
+    ],
+    "sha256": {
+      ".dockerignore": "b9adfae1901924da63437e146b4c2221ba95efeb6e78fbe2277c67a5f2685dab",
+      "Dockerfile": "67127d5c3b64a46eef802835a25065528d36e8a83a6a1e921a87b22562430056",
+      "LICENSE": "eefef5d8058f9b0c8bbdbcf18727ca801f3b7e9f0979245590b177974bc6f3f1",
+      "docker-compose.yml": "7e4ecd4a47d3795b4affa402ad92e0ac6f1924e07e2f43405a93e749bb6ae0a0",
+      "frontend/package.json": "f1a055c67631161d4a0d877e977c441f7602df979ea13956c06fff311e7c095c",
+      "frontend/pnpm-lock.yaml": "12dc644b15635bdd7de228069942b5b83e4b980c203be74029ef92adc7c5a4f0",
+      "backend/composer.json": "85184a7bd28294bf9ae80d52bf43449bae3b4776d6e1f204a0179c7a9317b771",
+      "backend/composer.lock": "26b793ec30a5b4bb40259e03b7562ec2156411301fe71ef113d455d5f26b539a",
+      "deployment/compose/create_test_db.sh": "f0e988067997e31f1f1b578b061c1f3f6ac61bb345ab407be42f674243d099d1"
+    }
+  },
+  "runtime": {
+    "platform": "linux/amd64",
+    "target_service": "sth",
+    "dependency_services": [
+      "sth-db2"
+    ],
+    "bind_address": "127.0.0.1",
+    "default_http_port": 18014,
+    "container_http_port": 80,
+    "network_topology": "dual-network-app-ingress",
+    "internal_network": true,
+    "app_outbound_access": true,
+    "project_scoped_volumes": true,
+    "automatic_env_copy": false,
+    "network_name": "dssc-semantic-treehouse-v04-internal",
+    "ingress_network_name": "dssc-semantic-treehouse-v04-ingress",
+    "ingress_network_internal": false,
+    "ingress_services": [
+      "sth"
+    ],
+    "realized_network_options": {
+      "com.docker.network.enable_ipv4": "true",
+      "com.docker.network.enable_ipv6": "false"
+    },
+    "volume_names": {
+      "sth-app-data": "dssc-semantic-treehouse-v04-sth-app-data",
+      "sth-db2-data": "dssc-semantic-treehouse-v04-sth-db2-data"
+    },
+    "optional_services": {
+      "shacl-validator": {
+        "enabled_by_default": false,
+        "execution_mode": "local-review-explicit-opt-in",
+        "source_service": "shacl-validator",
+        "source_profile": "tools",
+        "compose_project_name": "dssc-semantic-treehouse-v04-shacl",
+        "container_name": "dssc-semantic-treehouse-v04-shacl-validator",
+        "network_name": "dssc-semantic-treehouse-v04-validator-internal",
+        "internal_network": true,
+        "host_ports": [],
+        "volumes": [],
+        "runtime_user": "65532:65532",
+        "read_only_root_filesystem": true,
+        "application_endpoint": "http://shacl-validator:8000/validate",
+        "generated_schema": false,
+        "user_shacl_transport": "raw-turtle-local-review-bridge"
+      }
+    }
+  },
+  "images": [
+    {
+      "reference": "node:22",
+      "use": "Dockerfile frontend-builder",
+      "index_digest": "sha256:0557ac14e0d45d02ed563067b82856ca5e7aa3437fa28d98d4350ea9c3d9494a",
+      "linux_amd64_digest": "sha256:673fce836d5a9185da33352682bfedb17c174d016370d08616748dff76fda862"
+    },
+    {
+      "reference": "composer:2",
+      "use": "Dockerfile backend-builder",
+      "index_digest": "sha256:4d71c3c2109c61d5415544264b59ad4087e4c5b7244481723664138fd36d5040",
+      "linux_amd64_digest": "sha256:e05b92289b813a788b045c8b9cd45831479d071d4615cc8612f1d64935851fd1"
+    },
+    {
+      "reference": "dunglas/frankenphp:php8.4",
+      "use": "Dockerfile runtime",
+      "index_digest": "sha256:a8bb7b5bfc67280952801541a3b21f1d084d31cea4cd3c65df4a69736348d25e",
+      "linux_amd64_digest": "sha256:c27a8112bba186ceb309030d356a3474fba1fe66a1855d665cf5e447adf58eaf"
+    },
+    {
+      "reference": "mariadb:11.4",
+      "use": "sth-db2 runtime",
+      "index_digest": "sha256:67873d30a17f6a9c331f06363b2fa15f38abca415529966d67c84f87f82439fe",
+      "linux_amd64_digest": "sha256:c6b7cffe4ad6623509a8edefd6418f6d33aa4b9bc81d2fadcf0d354e7c94a73d"
+    },
+    {
+      "reference": "europe-west4-docker.pkg.dev/sacred-sol-99413/sth-public/shacl-validator:87c963c0",
+      "use": "optional local-review SHACL validator base runtime",
+      "index_digest": "sha256:208dc8b9be042d96164ef85d2f9a904c8a0da8f7df366057d5ba5f43dffc2b0b",
+      "linux_amd64_digest": "sha256:208dc8b9be042d96164ef85d2f9a904c8a0da8f7df366057d5ba5f43dffc2b0b"
+    }
+  ]
+}

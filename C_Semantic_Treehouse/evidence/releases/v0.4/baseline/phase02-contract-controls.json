@@ -1,0 +1,368 @@
+{
+  "controls": [
+    {
+      "actual": false,
+      "expected": false,
+      "id": "absolute_outside_path_rejected",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "id": "absolute_phase_identifier_rejected",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "components": [],
+        "status": "NOT_IMPLEMENTED"
+      },
+      "expected": {
+        "components": [],
+        "status": "NOT_IMPLEMENTED"
+      },
+      "id": "all_remains_not_implemented",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "all_other_suites_rejected": true,
+        "allowed_suites": [
+          "baseline"
+        ],
+        "baseline_allowed": true,
+        "wrong_suite_resolution_rejected": true
+      },
+      "expected": {
+        "all_other_suites_rejected": true,
+        "allowed_suites": [
+          "baseline"
+        ],
+        "baseline_allowed": true,
+        "wrong_suite_resolution_rejected": true
+      },
+      "id": "baseline_catalog_scope",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "components": [
+          {
+            "entrypoint": "check_baseline",
+            "id": "baseline.reproduction"
+          }
+        ],
+        "expanded_entrypoints": [
+          "check_environment",
+          "check_baseline"
+        ],
+        "expansion_error": null,
+        "owner_phase": "02",
+        "status": "IMPLEMENTED"
+      },
+      "expected": {
+        "components": [
+          {
+            "entrypoint": "check_baseline",
+            "id": "baseline.reproduction"
+          }
+        ],
+        "expanded_entrypoints": [
+          "check_environment",
+          "check_baseline"
+        ],
+        "expansion_error": null,
+        "owner_phase": "02",
+        "status": "IMPLEMENTED"
+      },
+      "id": "baseline_implemented_controlled_component",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": "02",
+      "expected": "02",
+      "id": "canonical_active_phase_02",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "load_ok": true,
+        "schema_issue_codes": [],
+        "semantic_issue_codes": []
+      },
+      "expected": {
+        "load_ok": true,
+        "schema_issue_codes": [],
+        "semantic_issue_codes": []
+      },
+      "id": "canonical_registry_schema_and_semantics",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "docker_socket_mount": false,
+        "git_mount": false,
+        "source_tree_mount": false,
+        "venv_mount": false
+      },
+      "expected": {
+        "docker_socket_mount": false,
+        "git_mount": false,
+        "source_tree_mount": false,
+        "venv_mount": false
+      },
+      "id": "compose_forbidden_mounts_absent",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "cap_drop_all": true,
+        "network_mode": "none",
+        "no_new_privileges": true,
+        "read_only": true
+      },
+      "expected": {
+        "cap_drop_all": true,
+        "network_mode": "none",
+        "no_new_privileges": true,
+        "read_only": true
+      },
+      "id": "compose_runtime_isolation",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "all_short_syntax_binds": true,
+        "exact_mount_contract": true,
+        "volume_count": 2
+      },
+      "expected": {
+        "all_short_syntax_binds": true,
+        "exact_mount_contract": true,
+        "volume_count": 2
+      },
+      "id": "compose_two_narrow_evidence_binds",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": "1.1.0",
+      "expected": "1.1.0",
+      "id": "contract_version_1_1_0",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "id": "dangling_dependency_rejected",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "id": "dependency_cycle_rejected",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "phase_01": true,
+        "phase_02": true
+      },
+      "expected": {
+        "phase_01": true,
+        "phase_02": true
+      },
+      "id": "dockerfile_precreates_phase_evidence_directories",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "args_after_lock_before_source_copy": true,
+        "required_tokens_present": true
+      },
+      "expected": {
+        "args_after_lock_before_source_copy": true,
+        "required_tokens_present": true
+      },
+      "id": "dockerfile_source_provenance_args_contract",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "id": "duplicate_component_rejected",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "id": "duplicate_entrypoint_rejected",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "id": "duplicate_suite_rejected",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "id": "exact_phase_02_path_accepted",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": [
+        "frozen",
+        "environment",
+        "baseline",
+        "traceability",
+        "v0.4-model",
+        "v0.4",
+        "all"
+      ],
+      "expected": [
+        "frozen",
+        "environment",
+        "baseline",
+        "traceability",
+        "v0.4-model",
+        "v0.4",
+        "all"
+      ],
+      "id": "fixed_suite_set_and_order",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "id": "implemented_zero_components_rejected",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "id": "link_like_output_component_rejected",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": "01",
+      "expected": "01",
+      "id": "no_implemented_suite_falls_back_to_phase_01",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "active_phase": "02",
+        "all_owner_phase": "07",
+        "all_status": "NOT_IMPLEMENTED"
+      },
+      "expected": {
+        "active_phase": "02",
+        "all_owner_phase": "07",
+        "all_status": "NOT_IMPLEMENTED"
+      },
+      "id": "not_implemented_all_owner_phase_07_is_ignored",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "active_raises": true,
+        "safe_phase": "02"
+      },
+      "expected": {
+        "active_raises": true,
+        "safe_phase": "02"
+      },
+      "id": "owner_phase_99_rejected",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": {
+        "active_raises": true,
+        "safe_phase": "02"
+      },
+      "expected": {
+        "active_raises": true,
+        "safe_phase": "02"
+      },
+      "id": "owner_phase_mismatch_rejected",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "id": "phase_identifier_99_rejected",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "id": "shell_payload_rejected",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": true,
+      "expected": true,
+      "id": "unknown_entrypoint_rejected",
+      "passed": true,
+      "status": "PASS"
+    },
+    {
+      "actual": false,
+      "expected": false,
+      "id": "wrong_phase_path_rejected",
+      "passed": true,
+      "status": "PASS"
+    }
+  ],
+  "counts": {
+    "discovered": 30,
+    "executed": 30,
+    "failed": 0,
+    "passed": 30,
+    "skipped": 0
+  },
+  "exit_code": 0,
+  "normalization_guard": "PASS",
+  "program_status": "SUCCESS",
+  "schema": "dssc.phase02.contract-controls.v1",
+  "source_hashes": {
+    "C_Semantic_Treehouse/manifests/schemas/validation-suites.schema.json": "70d436cd0509da2fcec8b602c1bffc5f00490d24c13c2ee47caf84791199802a",
+    "C_Semantic_Treehouse/manifests/validation-suites.json": "70e3e0655eebbdc59455b401837fd10e6371092d734b8abbef2401d7bb66d459",
+    "Dockerfile.validation": "85d7ffc8e431341d73d62b9805e3446d11bf23e44dc2dc5074779710439c02c4",
+    "build/phase-02/tools/run_phase02_contract_controls.py": "9b80891b3040c57d701140ce8a427764046b7dfb55e2ca1e92c57b3f9871f12a",
+    "docker-compose.validation.yml": "254087cb113aec1c28bb8d61468140e1ef205093c1a2a84c371d8d680f1affe0",
+    "scripts/dssc_validation/entrypoint_catalog.py": "a102a5b2ae8509a83fa609dd182c35ad31d25c2f8936d969160851ae3f89e33c",
+    "scripts/dssc_validation/paths.py": "8dd89398afb1547a33603dfe987404784b882107d8fc5bbc55d1a6b0c61a37f5",
+    "scripts/dssc_validation/suite_registry.py": "6ea31afe0675dff63c18c7871bb936584807289ce49f1d0f72730eb9d7e73ab0",
+    "scripts/validate.py": "cb25014e0bdf27dbf03a0fe070ad4c9287eca8d64475f84198fc7320ba8544bc"
+  }
+}

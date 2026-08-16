@@ -1,0 +1,4 @@
+# Compatibility entrypoint only. The repository-root requirements.in and
+# requirements.lock are the sole authoritative dependency inputs.
+--require-hashes
+-r ../requirements.lock

@@ -1,0 +1,28 @@
+{
+  "@context": {
+    "be": "https://w3id.org/dssc-demo/building-energy#",
+    "dct": "http://purl.org/dc/terms/",
+    "schema": "https://schema.org/",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "EnergyReadingRecord": "be:EnergyReadingRecord",
+    "buildingId": "be:buildingId",
+    "meterId": "be:meterId",
+    "timestamp": {
+      "@id": "be:timestamp",
+      "@type": "xsd:dateTime"
+    },
+    "energyKWh": {
+      "@id": "be:energyKWh",
+      "@type": "xsd:decimal"
+    },
+    "unit": "be:unit",
+    "location": "be:location",
+    "city": "be:city",
+    "district": "be:district",
+    "conformsTo": {
+      "@id": "dct:conformsTo",
+      "@type": "@id"
+    }
+  }
+}

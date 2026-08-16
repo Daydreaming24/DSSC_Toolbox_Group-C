@@ -1,0 +1,11 @@
+constraintComponent
+http://www.w3.org/ns/shacl#ClosedConstraintComponent
+http://www.w3.org/ns/shacl#DatatypeConstraintComponent
+http://www.w3.org/ns/shacl#InConstraintComponent
+http://www.w3.org/ns/shacl#MaxCountConstraintComponent
+http://www.w3.org/ns/shacl#MinCountConstraintComponent
+http://www.w3.org/ns/shacl#MinLengthConstraintComponent
+http://www.w3.org/ns/shacl#NodeKindConstraintComponent
+http://www.w3.org/ns/shacl#PatternConstraintComponent
+http://www.w3.org/ns/shacl#PropertyConstraintComponent
+http://www.w3.org/ns/shacl#SPARQLConstraintComponent

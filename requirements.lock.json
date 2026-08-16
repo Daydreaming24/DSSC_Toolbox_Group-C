@@ -1,0 +1,85 @@
+{
+  "bootstrap_tools": {
+    "pip": "25.0.1",
+    "pip-tools": "7.4.1",
+    "setuptools": "75.8.2",
+    "wheel": "0.45.1"
+  },
+  "generator": {
+    "commands": {
+      "bootstrap": [
+        "python",
+        "-m",
+        "piptools",
+        "compile",
+        "--no-config",
+        "--resolver=backtracking",
+        "--generate-hashes",
+        "--allow-unsafe",
+        "--strip-extras",
+        "--newline=lf",
+        "--index-url",
+        "https://pypi.org/simple",
+        "--output-file",
+        "requirements-bootstrap.lock",
+        "requirements-bootstrap.in"
+      ],
+      "runtime": [
+        "python",
+        "-m",
+        "piptools",
+        "compile",
+        "--no-config",
+        "--resolver=backtracking",
+        "--generate-hashes",
+        "--allow-unsafe",
+        "--strip-extras",
+        "--newline=lf",
+        "--index-url",
+        "https://pypi.org/simple",
+        "--output-file",
+        "requirements.lock",
+        "requirements.in"
+      ]
+    },
+    "name": "pip-tools",
+    "pip_version": "25.0.1",
+    "verified_self_hosted_regeneration": true,
+    "version": "7.4.1"
+  },
+  "index": "https://pypi.org/simple",
+  "inputs": {
+    "requirements-bootstrap.in": {
+      "sha256": "fa4d621be23fe64c1a837eb4cb3c1b5a10d1b0f4549665af0702419f2778144e"
+    },
+    "requirements.in": {
+      "sha256": "1bd0f8c61ca2fcc4155312fb91bb1075d25405c30a931d2c8b141d7d85fe3299"
+    }
+  },
+  "locks": {
+    "requirements-bootstrap.lock": {
+      "sha256": "8b94bcc369c574d801a5d0923df54b103efc4dfd1bdadb508846a3cd42a81bff"
+    },
+    "requirements.lock": {
+      "sha256": "d92c7ae708283c04a916da2a9c810a19fbcc65b1fcb154792099e5a3924baeb2"
+    }
+  },
+  "python": {
+    "ensurepip_version": "25.0.1",
+    "implementation": "CPython",
+    "version": "3.12.10"
+  },
+  "schema": "dssc.requirements_lock_metadata.v1",
+  "targets": [
+    {
+      "architecture": "AMD64",
+      "os": "Windows",
+      "python": "3.12.10"
+    },
+    {
+      "architecture": "amd64",
+      "os": "Linux",
+      "python": "3.12.10"
+    }
+  ]
+}

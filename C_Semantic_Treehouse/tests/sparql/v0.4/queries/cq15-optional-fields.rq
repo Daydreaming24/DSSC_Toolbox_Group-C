@@ -1,0 +1,18 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ex: <https://example.org/dssc-energy#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+ASK WHERE {
+  ex:DescriptionShape
+      sh:path dct:description ;
+      sh:maxCount 1 ;
+      sh:datatype xsd:string .
+  ex:LicenseShape
+      sh:path dct:license ;
+      sh:maxCount 1 ;
+      sh:nodeKind sh:IRI ;
+      sh:pattern "^https://" .
+  FILTER NOT EXISTS { ex:DescriptionShape sh:minCount ?descriptionMinimum }
+  FILTER NOT EXISTS { ex:LicenseShape sh:minCount ?licenseMinimum }
+}

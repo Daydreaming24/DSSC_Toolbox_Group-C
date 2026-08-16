@@ -1,0 +1,10 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+ASK WHERE {
+  ?dataset a dcat:Dataset .
+  FILTER (isIRI(?dataset))
+  FILTER NOT EXISTS {
+    ?other a dcat:Dataset .
+    FILTER (?other != ?dataset)
+  }
+}

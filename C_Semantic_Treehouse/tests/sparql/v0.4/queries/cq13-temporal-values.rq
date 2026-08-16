@@ -1,0 +1,9 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX ex: <https://example.org/dssc-energy#>
+
+SELECT ?temporalStart ?temporalEnd WHERE {
+  ?dataset a dcat:Dataset ;
+           ex:temporalStart ?temporalStart ;
+           ex:temporalEnd ?temporalEnd .
+}
+ORDER BY ?temporalStart ?temporalEnd

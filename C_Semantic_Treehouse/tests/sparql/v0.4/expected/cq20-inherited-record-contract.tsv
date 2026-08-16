@@ -1,0 +1,2 @@
+buildingId	meterId	timestamp	energyKWh	unit	city	district
+BLD-001	MTR-001	2026-05-01T00:00:00+08:00	12.4	kWh	Shenzhen	Nanshan

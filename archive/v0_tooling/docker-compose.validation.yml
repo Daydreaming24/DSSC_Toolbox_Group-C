@@ -1,0 +1,9 @@
+services:
+  validation:
+    build:
+      context: .
+      dockerfile: Dockerfile.validation
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    command: ["make", "validate"]

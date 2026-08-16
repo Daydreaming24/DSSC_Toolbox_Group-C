@@ -1,0 +1,8 @@
+PREFIX be: <https://w3id.org/dssc-demo/building-energy#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+SELECT ?datasetId WHERE {
+  ?dataset a be:DataProductMetadata ;
+           dct:identifier ?datasetId .
+}
+ORDER BY ?datasetId

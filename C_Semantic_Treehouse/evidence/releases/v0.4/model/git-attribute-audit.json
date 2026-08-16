@@ -1,0 +1,44 @@
+{
+  "attributes": [
+    {
+      "name": "eol",
+      "value": "lf"
+    },
+    {
+      "name": "text",
+      "value": "unset"
+    }
+  ],
+  "byte_identical": true,
+  "command": [
+    "git",
+    "check-attr",
+    "-a",
+    "--",
+    "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl"
+  ],
+  "exact_rule_count": 1,
+  "exact_target": true,
+  "exit_code": 0,
+  "git_exit_code": 0,
+  "gitattributes": {
+    "path": ".gitattributes",
+    "sha256": "9c356619eeaff5c742b21b92fb4d07cbc64441e3d58ff5da034ee38456fc7df1"
+  },
+  "issues": [],
+  "schema": "dssc.phase04.git-attribute-audit.v1",
+  "source": {
+    "path": "inputs/d-group/v0.4/received/building-energy-shapes_D.ttl",
+    "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+  },
+  "status": "SUCCESS",
+  "target": {
+    "path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+    "sha256": "a556039c0ec3030a9c4273c62a787e448b8869f7648e948663e10d3fe007cbda"
+  },
+  "target_path": "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl",
+  "text_unset": true,
+  "v0.4_negative_text_rules": [
+    "C_Semantic_Treehouse/model/v0.4/data-product-metadata-shapes.ttl -text"
+  ]
+}

@@ -1,0 +1,84 @@
+openapi: 3.0.3
+info:
+  title: Building Energy Consumption Dataset API
+  version: 0.3.0
+  description: Minimal OpenAPI fragment aligned with the v0.3 Energy Reading Record model.
+servers:
+  - url: https://api.example.org
+paths:
+  /energy/buildings/hourly:
+    get:
+      summary: Return hourly building energy readings.
+      operationId: listHourlyBuildingEnergyReadings
+      parameters:
+        - name: buildingId
+          in: query
+          required: false
+          schema:
+            type: string
+          example: BLD-001
+        - name: from
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+          example: "2026-05-01T00:00:00+08:00"
+        - name: to
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+          example: "2026-05-02T00:00:00+08:00"
+      responses:
+        "200":
+          description: Array of energy reading records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EnergyReadingRecord"
+components:
+  schemas:
+    EnergyReadingRecord:
+      type: object
+      required:
+        - buildingId
+        - meterId
+        - timestamp
+        - energyKWh
+        - unit
+        - location
+      properties:
+        buildingId:
+          type: string
+          example: BLD-001
+        meterId:
+          type: string
+          example: MTR-001
+        timestamp:
+          type: string
+          format: date-time
+          example: "2026-05-01T00:00:00+08:00"
+        energyKWh:
+          type: number
+          minimum: 0
+          example: 12.4
+        unit:
+          type: string
+          enum:
+            - kWh
+        location:
+          type: object
+          required:
+            - city
+            - district
+          properties:
+            city:
+              type: string
+              example: Shenzhen
+            district:
+              type: string
+              example: Nanshan

@@ -1,0 +1,36 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    {
+      "gx": "https://w3id.org/gaia-x/development#"
+    }
+  ],
+  "id": "https://example.org/dssc-energy/credentials/service-offering-building-energy",
+  "type": [
+    "VerifiableCredential",
+    "ServiceOffering"
+  ],
+  "issuer": "did:web:energy-provider.example.org",
+  "issuanceDate": "2026-05-01T00:00:00Z",
+  "credentialSubject": {
+    "id": "https://example.org/dssc-energy/service-offerings/building-energy-hourly-v1",
+    "gx:providedBy": "did:web:energy-provider.example.org",
+    "gx:name": "Building Energy Consumption Dataset API",
+    "gx:description": "Hourly electricity consumption data for demo buildings.",
+    "gx:aggregationOf": [
+      "https://example.org/dssc-energy/datasets/building-energy-hourly-v1"
+    ],
+    "gx:termsAndConditions": {
+      "gx:URL": "https://creativecommons.org/licenses/by/4.0/",
+      "gx:hash": "demo-only-no-hash"
+    },
+    "gx:policy": [
+      "research-use-only"
+    ],
+    "gx:dataAccountExport": {
+      "gx:requestType": "API",
+      "gx:accessType": "digital",
+      "gx:formatType": "application/json"
+    }
+  }
+}

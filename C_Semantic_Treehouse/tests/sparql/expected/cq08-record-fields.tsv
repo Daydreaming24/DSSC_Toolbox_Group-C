@@ -1,0 +1,7 @@
+field	label
+https://w3id.org/dssc-demo/building-energy#buildingId	building ID
+https://w3id.org/dssc-demo/building-energy#energyKWh	energy kWh
+https://w3id.org/dssc-demo/building-energy#location	location
+https://w3id.org/dssc-demo/building-energy#meterId	meter ID
+https://w3id.org/dssc-demo/building-energy#timestamp	timestamp
+https://w3id.org/dssc-demo/building-energy#unit	unit

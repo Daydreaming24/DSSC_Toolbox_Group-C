@@ -1,0 +1,7 @@
+PREFIX be: <https://w3id.org/dssc-demo/building-energy#>
+
+SELECT ?endpointUrl WHERE {
+  ?dataset a be:DataProductMetadata ;
+           be:endpointUrl ?endpointUrl .
+}
+ORDER BY ?endpointUrl

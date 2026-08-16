@@ -1,0 +1,32 @@
+%% Phase 07 validates structure only. Mermaid parser, renderer, and visual QA: NOT RUN.
+flowchart TD
+    FrozenD["D frozen input<br/>normative Shape and source hash"]
+    Requirements["Machine-readable requirements<br/>D04-R001 through D04-R017"]
+    Decision["Accepted decisions<br/>ADR-001, ADR-002, ADR-003"]
+    ReleaseManifest["Release manifest<br/>version, artifact, hash, inheritance"]
+    Fixtures["Four-state fixtures<br/>PASS, FAIL, INAPPLICABLE, UNTESTABLE"]
+    TestManifest["Test manifest<br/>expected status and report oracle"]
+    Validation["Deterministic validation<br/>SUCCESS or ERROR"]
+    SemanticReview["C Group semantic review<br/>human gate"]
+    DomainReview["Domain review<br/>human gate"]
+    Handoff["A, B, and D handoff"]
+    Release["Human-authorized release"]
+    Monitor["Monitor evidence, use, and issues"]
+    Deprecate["Deprecate with migration guidance"]
+    Treehouse["Semantic Treehouse<br/>optional external evidence: NOT RUN"]
+
+    FrozenD -->|"extract contract"| Requirements
+    FrozenD -->|"resolve interpretation"| Decision
+    Requirements -->|"bind requirement IDs"| ReleaseManifest
+    Decision -->|"bind approved migration"| ReleaseManifest
+    ReleaseManifest -->|"select artifact bytes"| Fixtures
+    ReleaseManifest -->|"bind release and profile"| TestManifest
+    Fixtures -->|"SUT inputs"| Validation
+    TestManifest -->|"expected oracle"| Validation
+    Validation -->|"machine evidence"| SemanticReview
+    SemanticReview -->|"reviewed meaning"| DomainReview
+    DomainReview -->|"reviewed domain fit"| Handoff
+    Handoff -->|"release-approval input"| Release
+    Release -->|"published lifecycle"| Monitor
+    Monitor -->|"breaking issue or lifecycle change"| Deprecate
+    Validation -.->|"optional evidence branch"| Treehouse

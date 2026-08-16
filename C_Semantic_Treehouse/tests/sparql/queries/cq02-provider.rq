@@ -1,0 +1,7 @@
+PREFIX be: <https://w3id.org/dssc-demo/building-energy#>
+
+SELECT ?providerName WHERE {
+  ?dataset a be:DataProductMetadata ;
+           be:providerName ?providerName .
+}
+ORDER BY ?providerName
